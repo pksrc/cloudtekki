@@ -1,0 +1,6 @@
+[submodule "themes/leaveit"]
+	path = themes/leaveit
+	url = https://github.com/liuzc/LeaveIt.git
+[submodule "themes/loveit"]
+	path = themes/loveit
+	url = https://github.com/dillonzq/LoveIt
