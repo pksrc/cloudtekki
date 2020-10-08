@@ -1,10 +1,13 @@
 ---
-title: "My Fifth Post"
-date: 2020-09-07T21:14:30-07:00
+title: "How the Internet works - The Application"
+date: 2020-10-24T00:00:00-00:00
 draft: true
-categories: [Internet]
+categories: [INTERNET]
+author: Partheeban Kandasamy
+authorLink: "/about/"
+tags:
+- Internet
 ---
-
 
 # Obvius et praepes doctis modo vulnere velis
 

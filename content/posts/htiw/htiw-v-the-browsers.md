@@ -1,12 +1,12 @@
 ---
-title: "My First Post"
-date: 2019-08-06T21:14:30-07:00
+title: "How the Internet works - The browsers"
+date: 2020-10-24T00:00:00-00:00
 draft: true
-categories: [veba]
+categories: [INTERNET]
 author: Partheeban Kandasamy
 authorLink: "/about/"
 tags:
-- Event-Driven
+- Internet
 ---
 
 

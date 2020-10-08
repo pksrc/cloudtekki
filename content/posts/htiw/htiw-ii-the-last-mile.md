@@ -1,7 +1,12 @@
 ---
-title: "My Third Post"
-date: 2020-08-08T21:14:30-07:00
+title: "How the Internet works - The last mile"
+date: 2020-10-24T00:00:00-00:00
 draft: true
+categories: [INTERNET]
+author: Partheeban Kandasamy
+authorLink: "/about/"
+tags:
+- Internet
 ---
 
 
