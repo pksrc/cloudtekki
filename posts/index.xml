@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - Cloud Tekki</title>
+        <link>http://pksrc.github.io/cloudtekki/posts/</link>
+        <description>All Posts | Cloud Tekki</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 07 Aug 2020 21:14:30 -0700</lastBuildDate><atom:link href="http://pksrc.github.io/cloudtekki/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>My Second Post</title>
+    <link>http://pksrc.github.io/cloudtekki/posts/my-second-post/</link>
+    <pubDate>Fri, 07 Aug 2020 21:14:30 -0700</pubDate>
+    <author>Author</author>
+    <guid>http://pksrc.github.io/cloudtekki/posts/my-second-post/</guid>
+    <description><![CDATA[Obvius et praepes doctis modo vulnere velis Non dura spoliis vasti dat status Tlepolemus Lorem markdownum premeret; erat visa, per rura Ulixis enumerare a facta vocalia iussit est Antigonen. Totoque serisque; domum ait meo latitantia se illuc formosa, incanduit Ismenides in omnia. Eurytidae vulnere et fessis terras.
+Unum Ixione Ciconum, haec erubuisse deduxisse sortes resumere dum; suis, mora! Fronte quaesitique alta feritatis qui neque querno medio omne quibus tarda! Amor causa licet sacris deforme non caerula tantum meditata ora licet retiaque!]]></description>
+</item></channel>
+</rss>
