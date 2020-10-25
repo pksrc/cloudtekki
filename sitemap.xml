@@ -2,9 +2,19 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://cloudtekki.pdotk.com/categories/</loc><lastmod>2020-10-08T10:38:40-07:00</lastmod></url><url>
-            <loc>http://cloudtekki.pdotk.com/categories/cloud/</loc><lastmod>2020-10-08T10:38:40-07:00</lastmod></url><url>
-            <loc>http://cloudtekki.pdotk.com/</loc><lastmod>2020-10-08T10:38:40-07:00</lastmod></url><url>
-            <loc>http://cloudtekki.pdotk.com/posts/my-second-post/</loc><lastmod>2020-10-08T10:38:40-07:00</lastmod></url><url>
-            <loc>http://cloudtekki.pdotk.com/posts/</loc><lastmod>2020-10-08T10:38:40-07:00</lastmod></url><url>
-            <loc>http://cloudtekki.pdotk.com/tags/</loc></url></urlset>
+            <loc>https://cloudtekki.pdotk.com/about/</loc><lastmod>2020-10-25T13:39:22-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/categories/</loc><lastmod>2020-10-25T13:39:22-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/</loc><lastmod>2020-10-25T13:39:22-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/categories/internet/</loc><lastmod>2020-10-25T13:39:22-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/post/my-sixth-post/</loc><lastmod>2020-10-25T13:39:22-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/posts/</loc><lastmod>2020-10-25T13:39:22-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/post/my-fifth-post/</loc><lastmod>2020-10-25T13:39:22-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/tags/</loc><lastmod>2020-10-25T13:39:22-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/tags/test/</loc><lastmod>2020-10-25T13:39:22-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/post/my-fourth-post/</loc><lastmod>2020-10-25T13:39:22-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/post/my-third-post/</loc><lastmod>2020-10-25T13:39:22-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/categories/cloud/</loc><lastmod>2020-10-08T10:38:40-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/post/my-second-post/</loc><lastmod>2020-10-08T10:38:40-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/tags/event-driven/</loc><lastmod>2020-10-25T13:39:22-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/post/my-first-post/</loc><lastmod>2020-10-25T13:39:22-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.pdotk.com/categories/veba/</loc><lastmod>2020-10-25T13:39:22-07:00</lastmod></url></urlset>

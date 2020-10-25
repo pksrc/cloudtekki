@@ -1,7 +1,22 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Tags - Tag - Cloud Tekki</title>
-        <link>http://cloudtekki.pdotk.com/tags/</link>
+        <link>https://cloudtekki.pdotk.com/tags/</link>
         <description>Tags - Tag - Cloud Tekki</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="http://cloudtekki.pdotk.com/tags/" rel="self" type="application/rss+xml" /></channel>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (P.K)</managingEditor>
+            <webMaster>partheeban.kandasamy@gmail.com (P.K)</webMaster><lastBuildDate>Mon, 07 Sep 2020 21:14:30 -0700</lastBuildDate><atom:link href="https://cloudtekki.pdotk.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Test</title>
+    <link>https://cloudtekki.pdotk.com/tags/test/</link>
+    <pubDate>Mon, 07 Sep 2020 21:14:30 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.pdotk.com/tags/test/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Event-Driven</title>
+    <link>https://cloudtekki.pdotk.com/tags/event-driven/</link>
+    <pubDate>Tue, 06 Aug 2019 21:14:30 -0700</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.pdotk.com/tags/event-driven/</guid>
+    <description><![CDATA[]]></description>
+</item></channel>
 </rss>
