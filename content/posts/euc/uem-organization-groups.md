@@ -1,16 +1,14 @@
 ---
-title: "What are Organization Groups in Workspace ONE?"
+title: "Unpacking Organization Groups in Workspace ONE UEM"
 date: 2020-11-21T00:00:00-00:00
 draft: false
 categories: [UEM, EUC]
-author: Partheeban Kandasamy
-authorLink: "/about/"
 tags:
-- UEM
-- EUC
+- Unified Endpoint Management
+- End User Computing
 ---
 
-What are Organization Groups? 
+What are Organization Groups in Workspace One UEM? 
 
 What are the best practices with how to set Organization Groups up for our use case? 
 
@@ -131,7 +129,7 @@ A good rule of thumb is to be ruthlessly conservative and take a minimalist appr
 - **Assignments**: Use Smart Groups instead as they offer more flexibility
 
 ### Probably a Good Idea
-- **Device Ownership**: You don't need to create OGs to separate devices by ownership types unless you have some Settings/Configurations (SDK policies for example) that are different for these device types
+- **Device Ownership**: You don't need to create OGs to separate devices by ownership types unless you have some Settings/Configurations (SDK or policies for example) that are different for these device types
 - **Device Type or Model**: You don't need to unless you have teams segregated by device types (iOS team vs Windows team)
 
 ### You should
@@ -141,7 +139,7 @@ A good rule of thumb is to be ruthlessly conservative and take a minimalist appr
 
 ## Take Away
 
-**I could give you a few examples but they would be misleading!** As the software continues to evolve, what was once a great idea for setting up Organization Groups are probably not relevant anymore. They were setup based on the requirements, the design constraints and the capabilities available in the software at that point in time. Organization groups could be adapted a number of different ways and what worked for an Industry or a Customer might not work for others. 
+**I could give you a few examples but they would be misleading!** As the software continues to evolve, what was once a great idea for setting up Organization Groups are probably not relevant anymore. They were setup based on the requirements, the design constraints and the capabilities available in the software at that point in time. Organization groups could be adapted a number of different ways and what worked for an Industry or a Customer at a certain point in time might not work for others. 
 
 Hope this gives you an understanding of what Organization Groups are, why they exists and how to use them. The bottom line is to not get too constrained by Organization Groups and conversely don't get carried away with Organization Groups. 
 

@@ -1,2 +1,2 @@
-# cloudtekki
+# Cloud Tekki
 Website for the Blog

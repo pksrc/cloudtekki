@@ -3,8 +3,6 @@ title: "Beginner's Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm
 date: 2020-10-24T00:00:00-00:00
 draft: false
 categories: [KUBERNETES]
-author: Partheeban Kandasamy
-authorLink: "/about/"
 tags:
 - Kubernetes
 - Automation
@@ -274,6 +272,6 @@ After running the `kubeadm join` command you should get a response like below if
 
 <img src="/img/k8s/bootstrap-k8s/node.png">
 
-Hope you are succesfully able to follow these instructions and get a working Kubernetes cluster with Calico on Ubuntu 20.04 using kubeadm. 
+Hope you are successfully able to follow these instructions and get a working Kubernetes cluster with Calico on Ubuntu 20.04 using kubeadm. 
 
 Please provide feedback by leaving a comment and share this post using the social media icons shown below. That's all folks! 

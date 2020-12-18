@@ -1,4 +1,4 @@
-baseURL = "https://cloudtekki.pdotk.com"
+baseURL = "https://cloudtekki.com"
 # [en, zh-cn, fr, ...] determines default content language
 defaultContentLanguage = "en"
 # language code
@@ -14,12 +14,11 @@ enableEmoji = true
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
 
-
 # Author config
 [author]
-  name = "P.K"
+  name = "Partheeban Kandasamy (PK)"
   email = "partheeban.kandasamy@gmail.com"
-  link = "/about/"
+  link = "/about-pk/"
 
 [params]
   # LoveIt theme version
@@ -33,17 +32,17 @@ theme = "LoveIt"
   # date format
   dateFormat = "2006-01-02"
   # site description
-  description = "CloudTekki is a personal website which provides content covering Cloud Technologies"
+  description = "Cloud Tekki aims to Simplify and Clarify Technology Concepts and Solutions for those that strive to thrive"
   # site keywords
-  keywords = ["Partheeban", "Kandasamy", "PK", "P.K", "VMware", "CNA", "Cloud-Native", "Tanzu", "vSphere", "VEBA", "Vmware Event Broker Appliance"]
+  keywords = ["Partheeban", "Kandasamy", "PK", "Cloud Tekki", "VMware", "CNA", "Cloud-Native", "Tanzu", "vSphere", "VEBA", "Vmware Event Broker Appliance"]
   # App icon config
   [params.app]
     # optional site title override for the app when added to an iOS home screen or Android launcher
-    title = "P.K"
+    title = "Cloud Tekki"
     # whether to omit favicon resource links
     noFavicon = false
     # modern SVG favicon to use in place of older style .png and .ico files
-    svgFavicon = "/favicon.ico"
+    svgFavicon = "/img/logo/cloud-tekki-fav.png"
     # Android browser theme color
     themeColor = "#ffffff"
     # Safari mask icon color
@@ -51,6 +50,9 @@ theme = "LoveIt"
     # Windows v8-10 tile color
     tileColor = "#da532c"
   # Search config
+  [outputs]
+    home = ["HTML", "RSS", "JSON"]
+  
   [params.search]
     enable = true
     # type of search engine ("lunr", "algolia")
@@ -81,17 +83,17 @@ theme = "LoveIt"
       # Gravatar Email for preferred avatar in home page
       gravatarEmail = ""
       # URL of avatar shown in home page
-      avatarURL = "/img/logo/ct-logo.png"
+      avatarURL = "/img/logo/cloud-tekki.png"
       # title shown in home page
-      title = 'Exploring the Technology behind all things Cloud'
+      title = "Demystifying Technology for those that Strive to Thrive"
       # subtitle shown in home page
-      subtitle = 'Partheeban Kandasamy also known as P.K is a Staff Customer Success Architect at VMware, a Technologist interested in exploring topics around Cloud, Kubernetes, Automation and End User Computing'
+      subtitle = 'CLOUD TEKKI® is managed by PK (short for Partheeban Kandasamy) who is currently a Staff Customer Success Architect at VMware. PK, a Technology Generalist aims to explore new ideas and their implementation techniques that make Digital Transformation possible. Topics will be focussed around Cloud, Cloud Native Technologies, Automation Technologies, End User Computing and the synergy between People, Process and Product'
       # whether to use typeit animation for subtitle
       typeit = false
       # whether to show social links
       social = true
       # disclaimer (HTML format is supported)
-      disclaimer = "All opinions my own. Content could change (for the better). Please remember to link and credit"
+      disclaimer = "All opinions are my own. Content will evolve. Please remember to link and credit"
     # Home page posts
     [params.home.posts]
       enable = true
@@ -163,11 +165,14 @@ theme = "LoveIt"
     Email = "partheeban.kandasamy@gmail.com"
     RSS = true
 
+[params.css]
+    custom_css = ["css/ct.css"]
+
 [menu]
 [[menu.main]]
   identifier = "posts"
   # you can add extra information before the name (HTML format is supported), such as icons
-  pre = ""
+  pre = "<span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span>"
   # you can add extra information after the name (HTML format is supported), such as icons
   post = ""
   name = "Posts"
@@ -175,30 +180,32 @@ theme = "LoveIt"
   # title will be shown when you hover on this menu link
   title = ""
   weight = 1
+  [menu.main.params]
+      class = "highlight-menu-item"
 [[menu.main]]
   identifier = "tags"
-  pre = ""
+  pre = "<span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span>"
   post = ""
   name = "Tags"
   url = "/tags/"
   title = ""
-  weight = 2
+  weight = 3
 [[menu.main]]
   identifier = "categories"
-  pre = ""
+  pre = "<span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span>"
   post = ""
   name = "Categories"
   url = "/categories/"
   title = ""
-  weight = 3
+  weight = 2
 [[menu.main]]
   identifier = "about"
-  pre = ""
+  pre = "<span class='menuicon'><img src='/img/menu/author.png' class='img'/></span>"
   post = ""
   name = "About"
-  url = "/about/"
   title = ""
   weight = 4
+  url = "/about-pk/"
 
  # Section (all posts) page config
 [params.section]
@@ -227,9 +234,9 @@ theme = "LoveIt"
   # Header title config
   [params.header.title]
     # URL of the LOGO
-    logo = "/img/logo/ct-logo.png"
+    logo = "/img/logo/cloud-tekki-logo.png"
     # title name
-    name = "Cloud Tekki"
+    name = ""
     # you can add extra information before the name (HTML format is supported), such as icons
     #pre = "<i class='far fa-kiss-wink-heart fa-fw'></i>"
     # you can add extra information after the name (HTML format is supported), such as icons
@@ -241,15 +248,15 @@ theme = "LoveIt"
 [params.footer]
   enable = true
   # Custom content (HTML format is supported)
-  custom = 'Powered by Hugo | Github Pages'
+  custom = '<p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages'
   # whether to show Hugo and theme info
   hugo = false
   # whether to show copyright info
   copyright = true
   # whether to show the author
-  author = true
+  author = false
   # site creation time
-  since = 2020
+  since = 2008
   # ICP info only in China (HTML format is supported)
   icp = ""
   # license info (HTML format is supported)
@@ -304,7 +311,7 @@ theme = "LoveIt"
   # Mapbox GL JS config (Mapbox GL JS https://docs.mapbox.com/mapbox-gl-js)
   [params.page.mapbox]
     # access token of Mapbox GL JS
-    accessToken = "pk.Test"
+    accessToken = "pk.eyJ1IjoiY2xvdWR0ZWtraSIsImEiOiJja2lxZDRhN3cwZDgwMnRvOHY0c3cyOW1yIn0.HcNaCOKf0e6U6VM8qUGjDg"
     # style for the light theme
     lightStyle = "mapbox://styles/mapbox/light-v10?optimize=true"
     # style for the dark theme
