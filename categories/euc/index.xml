@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>EUC - Category - Cloud Tekki</title>
+        <link>https://cloudtekki.com/categories/euc/</link>
+        <description>EUC - Category - Cloud Tekki</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/categories/euc/" rel="self" type="application/rss+xml" /><item>
+    <title>Unpacking Organization Groups in Workspace ONE UEM</title>
+    <link>https://cloudtekki.com/post/uem-organization-groups/</link>
+    <pubDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/post/uem-organization-groups/</guid>
+    <description><![CDATA[What are Organization Groups in Workspace One UEM?
+What are the best practices with how to set Organization Groups up for our use case?
+Can we insert an OG between OGs? Do we have the right setup?
+These are very common questions on Organization Groups which is a very foundational element within Workspace ONE UEM. Over the several years of working with Workspace ONE UEM (formerly AirWatch), no one has tried to provide a complete picture of what an Organization Group is.]]></description>
+</item><item>
+    <title>Access: The tale of the hidden APIs</title>
+    <link>https://cloudtekki.com/post/access-apis/</link>
+    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/post/access-apis/</guid>
+    <description><![CDATA[Evolving Access through APIs Workspace One Access is VMware&rsquo;s Product Line that helps provide seamless single sign on and conditional access for Applications from End User&rsquo;s client devices. It is built using technologies such as
+ SAML (RFC 7522) OAuth (RFC 6749) and Open ID Connect  If you are new to the Product, you can find more details about WorkspaceONE(WS1) Access
+ Product Page - here Documentation - here  In this post, I&rsquo;m going to cover a neat trick that will help you find and build on the APIs that are available with WS1 Access.]]></description>
+</item></channel>
+</rss>

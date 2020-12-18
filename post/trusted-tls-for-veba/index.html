@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Publicly trusted TLS for VMware Eventing Platform - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to Simplify and Clarify Technology Concepts and Solutions for those that strive to thrive"><meta property="og:title" content="Publicly trusted TLS for VMware Eventing Platform" />
+<meta property="og:description" content="Info  This post was originally published in Medium - pkblah.medium.com/publicly-trusted-tls-for-vmware-eventing-platform   Vmware Event Broker Appliance (VEBA) continues to gain momentum and as Enterprise Customers start adopting the Appliance, we continue to broach Enterprise Features such as gauranteeing High Availability or the ability to upload/bootstrap the appliance with Internal CA signed or Public TLS certificates. While I had previously covered in part how the default self-signed TLS cert that is bound to OpenFaaS gateway can be updated through our documentation below, In this short post, I wanted to provide an end to end overview of obtaining a public certificate and binding it to the Ingress Gateway." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cloudtekki.com/post/trusted-tls-for-veba/" />
+<meta property="article:published_time" content="2020-06-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-18T15:18:51-08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Publicly trusted TLS for VMware Eventing Platform"/>
+<meta name="twitter:description" content="Info  This post was originally published in Medium - pkblah.medium.com/publicly-trusted-tls-for-vmware-eventing-platform   Vmware Event Broker Appliance (VEBA) continues to gain momentum and as Enterprise Customers start adopting the Appliance, we continue to broach Enterprise Features such as gauranteeing High Availability or the ability to upload/bootstrap the appliance with Internal CA signed or Public TLS certificates. While I had previously covered in part how the default self-signed TLS cert that is bound to OpenFaaS gateway can be updated through our documentation below, In this short post, I wanted to provide an end to end overview of obtaining a public certificate and binding it to the Ingress Gateway."/>
+<meta name="application-name" content="Cloud Tekki">
+<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/logo/cloud-tekki-fav.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/trusted-tls-for-veba/" /><link rel="prev" href="https://cloudtekki.com/post/rest-api-fn/" /><link rel="next" href="https://cloudtekki.com/post/self-service-for-your-datacenter/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Publicly trusted TLS for VMware Eventing Platform",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cloudtekki.com\/post\/trusted-tls-for-veba\/"
+        },"genre": "posts","keywords": "event-driven, cloud-native","wordcount":  849 ,
+        "url": "https:\/\/cloudtekki.com\/post\/trusted-tls-for-veba\/","datePublished": "2020-06-11T00:00:00+00:00","dateModified": "2020-12-18T15:18:51-08:00","publisher": {
+            "@type": "Organization",
+            "name": "Partheeban Kandasamy"},"author": {
+                "@type": "Person",
+                "name": "Partheeban Kandasamy (PK)"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span> Posts 
+                    </a><a class="menu-item" href="/categories/"><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span> Categories 
+                    </a><a class="menu-item" href="/tags/"><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span> Tags 
+                    </a><a class="menu-item" href="/about-pk/"><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span> About 
+                    </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span>Posts</a><a class="menu-item" href="/categories/" title=""><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span>Categories</a><a class="menu-item" href="/tags/" title=""><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span>Tags</a><a class="menu-item" href="/about-pk/" title=""><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="twitter-auto" style="position: relative; margin-top: 1rem; padding-top: 1rem;">
+                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah?ref_src=twsrc%5Etfw">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            </div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Publicly trusted TLS for VMware Eventing Platform</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/veba/"><i class="far fa-folder fa-fw"></i>VEBA</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/trusted-tls-for-veba/" data-title="Publicly trusted TLS for VMware Eventing Platform" data-via="pkblah" data-hashtags="event-driven,cloud-native"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/trusted-tls-for-veba/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/trusted-tls-for-veba/" data-title="Publicly trusted TLS for VMware Eventing Platform" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/trusted-tls-for-veba/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/trusted-tls-for-veba/" data-title="Publicly trusted TLS for VMware Eventing Platform" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-06-11">2020-06-11</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;849 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#lets-encrypt">Let’s Encrypt</a></li>
+    <li><a href="#obtaining-the-ssl-certificate">Obtaining the SSL certificate</a></li>
+    <li><a href="#binding-public-certificate-to-veba">Binding Public Certificate to VEBA</a>
+      <ul>
+        <li><a href="#assumption">Assumption</a></li>
+        <li><a href="#steps"><strong>Steps</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#automation-and-beyond">Automation and Beyond</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">This post was originally published in Medium - <a href="https://medium.com/publicly-trusted-tls-for-vmware-eventing-platform-6c6f5d0a14fb" target="_blank">pkblah.medium.com/publicly-trusted-tls-for-vmware-eventing-platform</a></div>
+        </div>
+    </div>
+<p><strong>V</strong><a href="https://flings.vmware.com/vmware-event-broker-appliance" target="_blank">mware Event Broker Appliance</a> (VEBA) continues to gain momentum and as Enterprise Customers start adopting the Appliance, we continue to broach Enterprise Features such as gauranteeing High Availability or the ability to upload/bootstrap the appliance with Internal CA signed or Public TLS certificates. While I had previously covered in part how the default self-signed TLS cert that is bound to OpenFaaS gateway can be updated through our documentation below, In this short post, I wanted to provide an end to end overview of obtaining a public certificate and binding it to the Ingress Gateway.</p>
+<blockquote>
+<p><a href="https://vmweventbroker.io/kb/advanced-certificates" target="_blank">VMware Event Broker Appliance - Certificates</a></p>
+</blockquote>
+<h2 id="lets-encrypt">Let’s Encrypt</h2>
+<p>I’m going to be using  <a href="https://letsencrypt.org/" target="_blank">&lt;strong&gt;Let’s Encrypt&lt;/strong&gt;</a> which is a f<strong>ree, automated, open, non-profit Certificate Authority</strong> that provides digital certificates to improve internet security by lowering the barrier to entry for obtaining and binding certificates. Here’s a quick view of their rise in under 3 years —</p>
+<figure><a class="lightgallery" href="https://miro.medium.com/max/1788/1*dY4UkRL-4gUIhsAneLHpvw.png" title="https://miro.medium.com/max/1788/1*dY4UkRL-4gUIhsAneLHpvw.png" data-thumbnail="https://miro.medium.com/max/1788/1*dY4UkRL-4gUIhsAneLHpvw.png" data-sub-html="<h2>https://letsencrypt.org/stats/</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/1788/1*dY4UkRL-4gUIhsAneLHpvw.png"
+            data-srcset="https://miro.medium.com/max/1788/1*dY4UkRL-4gUIhsAneLHpvw.png, https://miro.medium.com/max/1788/1*dY4UkRL-4gUIhsAneLHpvw.png 1.5x, https://miro.medium.com/max/1788/1*dY4UkRL-4gUIhsAneLHpvw.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/1788/1*dY4UkRL-4gUIhsAneLHpvw.png" />
+    </a><figcaption class="image-caption"><a href="https://letsencrypt.org/stats/">https://letsencrypt.org/stats/</a></figcaption>
+    </figure>
+<h2 id="obtaining-the-ssl-certificate">Obtaining the SSL certificate</h2>
+<p>Let’s Encrypt provides a couple of methods that I’m familiar with to generate a publicly trusted TLS certificate.</p>
+<ul>
+<li>One mechanism assumes that you own the website and are able to standup an endpoint to prove ownership(<code>_http://example.com/.well-known/acme-challenge/testfile_</code>)</li>
+<li>The other mechanism assumes that you own the domain and are able to add a TXT record to prove ownership</li>
+</ul>
+<p>For VEBA, we are going to take the domain route. To get started, you’ll need the certbot cli installed. On a mac, i was able to install the certbot using homebrew.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">brew install certbot
+</code></pre></td></tr></table>
+</div>
+</div><p>Once certbot is succesfully installed, you can generate the certificate using the command below.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo certbot certonly --manual -d path.domain.com --preferred-challenges dns
+</code></pre></td></tr></table>
+</div>
+</div><p>After providing the affirmation to a couple of questions, certbot will request you to update the DNS to create a TXT record with <code>_acme-challenge.path.domain.com</code> with a generated value from certbot. This</p>
+<p>{{ <image src="https://miro.medium.com/max/3780/1*I5N5vxGLxximDSW3HzaJFA.png" caption="Updating TXT record for your domain" >}}</p>
+<p>can be done from your domain manager as shown in the screenshot. For certbot to validate the DNS TXT record under the key <code>_acme-challenge.path.domain.com</code> you’ll provide the key “<code>_acme-challenge.path</code>” for the <strong>Host</strong> and populate the <strong>TXT value</strong> with the generated string from certbot.</p>
+<figure class="imageright"><a class="lightgallery" href="https://miro.medium.com/max/1220/1*8PiIJxAkovWo04mxVGfcgA.png" title="https://miro.medium.com/max/1220/1*8PiIJxAkovWo04mxVGfcgA.png" data-thumbnail="https://miro.medium.com/max/1220/1*8PiIJxAkovWo04mxVGfcgA.png" data-sub-html="<h2>Let&rsquo;s Encrypt results</h2>">
+        <img
+            class="lazyload img-imageright"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/1220/1*8PiIJxAkovWo04mxVGfcgA.png"
+            data-srcset="https://miro.medium.com/max/1220/1*8PiIJxAkovWo04mxVGfcgA.png, https://miro.medium.com/max/1220/1*8PiIJxAkovWo04mxVGfcgA.png 1.5x, https://miro.medium.com/max/1220/1*8PiIJxAkovWo04mxVGfcgA.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/1220/1*8PiIJxAkovWo04mxVGfcgA.png" />
+    </a><figcaption class="image-caption">Let&rsquo;s Encrypt results</figcaption>
+    </figure>
+<p>Verify that the DNS record has propagated using tools like the one shown below.</p>
+<ul>
+<li><a href="https://dnschecker.org/#TXT/_acme-challenge.path.domain.com" target="_blank">DNS Checker - DNS Check Propagation Tool</a></li>
+</ul>
+<p>Once verified, hit enter on the prompt for certbot to complete the certificate generation.</p>
+<p>The certs are now available under the path indicated and in the pem format which we can readily use with VMware Event Broker Appliance.</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Let’s Encrypt generates certificate that are short lived (3 months) when compared to other CAs but the generation and renewal is fairly easy and can be automated</div>
+        </div>
+    </div>
+<h2 id="binding-public-certificate-to-veba">Binding Public Certificate to VEBA</h2>
+<h3 id="assumption">Assumption</h3>
+<ul>
+<li>Access to VMware Event Broker Appliance terminal</li>
+<li>Certificates from a trusted authority pre-downloaded onto the Appliance</li>
+</ul>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube-nocookie.com/embed/7oMCvxvL2ns" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>I’ve documented the steps to update the certificate without disrupting VEBA here — <a href="https://vmweventbroker.io/kb/advanced-certificates" target="_blank">https://vmweventbroker.io/kb/advanced-certificates</a> and also made it available as a short video as shown. To provide the end to end view of how easy it is to update VEBA with new certificates, the steps are provided below.</p>
+<h3 id="steps"><strong>Steps</strong></h3>
+<p>Run the commands below to update the certificates</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">cd /folder/certs/location  
+CERT_NAME=eventrouter-tls #DO NOT CHANGE THIS  
+KEY_FILE=&lt;private-key-file&gt;.pem  
+CERT_FILE=&lt;public-cert-chain&gt;.pem#recreate the tls secret  
+kubectl --kubeconfig /root/.kube/config -n vmware delete secret ${CERT_NAME}  
+kubectl --kubeconfig /root/.kube/config -n vmware create secret tls ${CERT_NAME} --key ${KEY_FILE} --cert ${CERT_FILE}#reapply the config to take the new certificate  
+kubectl --kubeconfig /root/.kube/config apply -f /root/config/ingressroute-gateway.yaml
+</code></pre></td></tr></table>
+</div>
+</div><p>Once you have the certs in place, the last task is to ensure your Load Balancer or Networking rules are setup (for VMC customers, you can NAT traffic from Elastic IP to VEBA IP) to ensure the traffic flows through to VEBA. Once this is confirmed, update your domain’s record to have a A record pointing to the Load Balancer’s VIP or the Elastic IP.</p>
+<p>You should now have a VEBA endpoint that is secured with a publicly trusted TLS certificate!</p>
+<h2 id="automation-and-beyond">Automation and Beyond</h2>
+<p>I wanted to dive deeper and automate parts of this and It is worth noting that automating cert generation and renewal with Let’s Encrypt has been covered by <a href="https://medium.com/u/9e783a6f12f6?source=post_page-----6c6f5d0a14fb--------------------------------" target="_blank">Kelsey Hightower</a> in 2016. For customers or individuals looking to use Let’s Encrypt and if there is sufficient interest, I’ll look to provide an automated method of generating Let’s Encrypt certificates along with certificate regeneration specific to VEBA.</p>
+<p>Hopefully, this provides a complete overview to obtaining a public TLS certificate and binding that to VEBA. While I’ve used Let’s Encrypt here, Enterprises may want to use their existing Certificate Authorities to obtain a valid certificate and follow the steps to update the certs for VEBA.</p>
+<p>You may recall that the <a href="https://vmweventbroker.io/#team-veba" target="_blank">VMware Event Broker Appliance team</a> works on their spare time to bring you the capabilities of event-driven automation and an extensibility platform to our VMware SDDC customers. We strive to meet market demand and build new capabilities either through features or documentation as appropriate to ensure progress. We encourage our customers to continue providing those feedbacks on where and how we can improve our product.</p>
+<p>Happy Eventing!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-12-18&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/6061f623fafff7331df39faf517bd0434b1ce005" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 6061f623fafff7331df39faf517bd0434b1ce005: v1 ready website with Posts from VEBA, Access, WS1 and K8s">
+                                    <i class="fas fa-hashtag fa-fw"></i>6061f62</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share sharebtns">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/trusted-tls-for-veba/" data-title="Publicly trusted TLS for VMware Eventing Platform" data-via="pkblah" data-hashtags="event-driven,cloud-native"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/trusted-tls-for-veba/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/trusted-tls-for-veba/" data-title="Publicly trusted TLS for VMware Eventing Platform" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/trusted-tls-for-veba/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/trusted-tls-for-veba/" data-title="Publicly trusted TLS for VMware Eventing Platform" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/event-driven/">event-driven</a>,&nbsp;<a href="/tags/cloud-native/">cloud-native</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/post/rest-api-fn/" class="prev" rel="prev" title="A Function for all REST APIs"><i class="fas fa-angle-left fa-fw"></i>A Function for all REST APIs</a>
+            <a href="/post/self-service-for-your-datacenter/" class="next" rel="next" title="Enabling Self Service for your DataCenter — Part I">Enabling Self Service for your DataCenter — Part I<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2020</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":80},"comment":{"gitalk":{"admin":["pksrc"],"clientID":"asdasda","clientSecret":"asdasdads","id":"2020-06-11T00:00:00Z","owner":"pksrc","repo":"my-gitalk","title":"Publicly trusted TLS for VMware Eventing Platform"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-XXXXXABCD-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXABCD-1" async></script></body>
+</html>

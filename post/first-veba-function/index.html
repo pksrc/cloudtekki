@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Writing your first Serverless Function - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to Simplify and Clarify Technology Concepts and Solutions for those that strive to thrive"><meta property="og:title" content="Writing your first Serverless Function" />
+<meta property="og:description" content="Info  This post was originally published in Medium - pkblah.medium.com/writing-your-first-serverless-function   A function is a unit of execution in the Serverless world that does one thing and one thing really well. With the current product VMware Event Broker Appliance (VEBA) that i’m managing, we aim to provide a simple solution that provides a way to execute your functions driven by vCenter events. This is a significant capability that exposes a plethora of integrations and allows seamless automation opportunities for a VMware SDDC customer." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cloudtekki.com/post/first-veba-function/" />
+<meta property="article:published_time" content="2020-04-23T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-18T15:18:51-08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Writing your first Serverless Function"/>
+<meta name="twitter:description" content="Info  This post was originally published in Medium - pkblah.medium.com/writing-your-first-serverless-function   A function is a unit of execution in the Serverless world that does one thing and one thing really well. With the current product VMware Event Broker Appliance (VEBA) that i’m managing, we aim to provide a simple solution that provides a way to execute your functions driven by vCenter events. This is a significant capability that exposes a plethora of integrations and allows seamless automation opportunities for a VMware SDDC customer."/>
+<meta name="application-name" content="Cloud Tekki">
+<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/logo/cloud-tekki-fav.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/first-veba-function/" /><link rel="next" href="https://cloudtekki.com/post/serverless-fn-template/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Writing your first Serverless Function",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cloudtekki.com\/post\/first-veba-function\/"
+        },"genre": "posts","keywords": "event-driven, cloud-native","wordcount":  1388 ,
+        "url": "https:\/\/cloudtekki.com\/post\/first-veba-function\/","datePublished": "2020-04-23T00:00:00+00:00","dateModified": "2020-12-18T15:18:51-08:00","publisher": {
+            "@type": "Organization",
+            "name": "Partheeban Kandasamy"},"author": {
+                "@type": "Person",
+                "name": "Partheeban Kandasamy (PK)"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span> Posts 
+                    </a><a class="menu-item" href="/categories/"><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span> Categories 
+                    </a><a class="menu-item" href="/tags/"><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span> Tags 
+                    </a><a class="menu-item" href="/about-pk/"><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span> About 
+                    </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span>Posts</a><a class="menu-item" href="/categories/" title=""><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span>Categories</a><a class="menu-item" href="/tags/" title=""><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span>Tags</a><a class="menu-item" href="/about-pk/" title=""><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="twitter-auto" style="position: relative; margin-top: 1rem; padding-top: 1rem;">
+                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah?ref_src=twsrc%5Etfw">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            </div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Writing your first Serverless Function</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/veba/"><i class="far fa-folder fa-fw"></i>VEBA</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/first-veba-function/" data-title="Writing your first Serverless Function" data-via="pkblah" data-hashtags="event-driven,cloud-native"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/first-veba-function/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/first-veba-function/" data-title="Writing your first Serverless Function" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/first-veba-function/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/first-veba-function/" data-title="Writing your first Serverless Function" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-23">2020-04-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1388 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#development-setup">Development Setup</a></li>
+    <li><a href="#function-execution-flow">Function Execution Flow</a></li>
+    <li><a href="#writing-the-function">Writing the Function</a>
+      <ul>
+        <li><a href="#hello-serverless">Hello Serverless</a></li>
+        <li><a href="#here-we-go">Here we go..</a></li>
+        <li><a href="#pseudocode">Pseudocode</a></li>
+      </ul>
+    </li>
+    <li><a href="#start-coding">Start Coding</a>
+      <ul>
+        <li><a href="#1-parse-the-cloudevent"><strong>1. Parse the CloudEvent</strong></a></li>
+        <li><a href="#2-read-the-configuration-file"><strong>2. Read the Configuration file</strong></a></li>
+        <li><a href="#3-validate-event-and-config--build-api-body"><strong>3. Validate Event and Config + Build API Body</strong></a></li>
+        <li><a href="#4-make-the-api-call"><strong>4. Make the API call</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#wrap-up">Wrap Up</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">This post was originally published in Medium - <a href="https://pkblah.medium.com/writing-your-first-serverless-function-23508cb4ea11" target="_blank">pkblah.medium.com/writing-your-first-serverless-function</a></div>
+        </div>
+    </div>
+<p>A function is a unit of execution in the Serverless world that does one thing and one thing really well. With the current product <a href="https://github.com/vmware-samples/vcenter-event-broker-appliance" target="_blank">VMware Event Broker Appliance</a> (VEBA) that i’m managing, we aim to provide a simple solution that provides a way to execute your functions driven by vCenter events. This is a significant capability that exposes a plethora of integrations and allows seamless automation opportunities for a VMware SDDC customer.</p>
+<p>As the Product Manager, I wanted to take the opportunity to write a function not only to contribute and help the team but also as an effective way to understand one of our persona that we are targetting — developers and especially the ones that are new to programming. This exercise of building a function gave me several insights as well as enabled me to learn more about our product and the underlying tech capabilities and constraints. Here is my account of my experience and learnings!</p>
+<a class="lightgallery" href="https://miro.medium.com/max/1920/0*mUvkWiBfhKiV55L9" title="https://miro.medium.com/max/1920/0*mUvkWiBfhKiV55L9" data-thumbnail="https://miro.medium.com/max/1920/0*mUvkWiBfhKiV55L9">
+        <img
+            class="lazyload img-imageright"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/1920/0*mUvkWiBfhKiV55L9"
+            data-srcset="https://miro.medium.com/max/1920/0*mUvkWiBfhKiV55L9, https://miro.medium.com/max/1920/0*mUvkWiBfhKiV55L9 1.5x, https://miro.medium.com/max/1920/0*mUvkWiBfhKiV55L9 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/1920/0*mUvkWiBfhKiV55L9" width="25%" />
+    </a>
+<h2 id="development-setup">Development Setup</h2>
+<p><strong>OS</strong>: macOS Catalina</p>
+<p><strong>IDE</strong>: VisualStudio Code</p>
+<p>**Version Control:**Git</p>
+<p><strong>Language</strong> <strong>of choice</strong>: Python (no prior professional experience but have dabbled with it a few times)</p>
+<p><strong>FaaS Platform:</strong> VEBA deployed with <a href="https://www.openfaas.com/" target="_blank">OpenFaaS</a>. Alternatively, you could have OpenFaaS running on Kubernetes w/ VMware Event router container deployed to get the same functionality</p>
+<p><strong>vCenter:</strong> Required since our functions will be driven by events generated within the SDDC. I have a homelab that i can work with for testing purposes.</p>
+<h2 id="function-execution-flow">Function Execution Flow</h2>
+<p>VMware Event Broker Appliance deployed with <a href="https://www.openfaas.com/" target="_blank">OpenFaaS</a> makes it easy to write functions and before we start writing the function, it’s good to get a visualization of what the function execution flow look like.</p>
+<p>The VMware Event Router streams the events from vCenter, packages those events into CloudEvent spec and invokes the appropriate function when it sees the right event.</p>
+<p>The Event is passed to OpenFaaS as a http request which then invokes the function passing the event down as a std input argument which you can read and start building your business logic.</p>
+<figure><a class="lightgallery" href="https://miro.medium.com/max/1920/1*KW6s2ZISEwHyymX9CQkZ7g.gif" title="https://miro.medium.com/max/1920/1*KW6s2ZISEwHyymX9CQkZ7g.gif" data-thumbnail="https://miro.medium.com/max/1920/1*KW6s2ZISEwHyymX9CQkZ7g.gif" data-sub-html="<h2>Function execution flow with vCenter Event Broker Appliance</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/1920/1*KW6s2ZISEwHyymX9CQkZ7g.gif"
+            data-srcset="https://miro.medium.com/max/1920/1*KW6s2ZISEwHyymX9CQkZ7g.gif, https://miro.medium.com/max/1920/1*KW6s2ZISEwHyymX9CQkZ7g.gif 1.5x, https://miro.medium.com/max/1920/1*KW6s2ZISEwHyymX9CQkZ7g.gif 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/1920/1*KW6s2ZISEwHyymX9CQkZ7g.gif" />
+    </a><figcaption class="image-caption">Function execution flow with vCenter Event Broker Appliance</figcaption>
+    </figure>
+<p>OpenFaaS provides readily available templates that you can use to get started and also has <a href="https://github.com/openfaas/workshop" target="_blank">workshops</a> that you can also use as a resource.</p>
+<h2 id="writing-the-function">Writing the Function</h2>
+<p>For my first function, i’m going to trigger a Pagerduty incident upon an event in vCenter. After some quick research, i was able to setup Pagerduty with a developer account, nailed down the API that i want to call and also decided on using the VM Power On/Off event to trigger an incident.</p>
+<h3 id="hello-serverless">Hello Serverless</h3>
+<p>Now before jumping into the code itself, i spent some time putting together a minimal structure to get the function working and doing something simple— such as printing the event passed down to my Function. This is what the file structure looks like..</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">├── README.md      &gt; A descriptive documentation for your function
+├── handler        &gt; Folder for your scripts
+│   └── handler.py &gt; Python file for your core function logic
+└── stack.yml      &gt; Descriptor file for OpenFaaS deployment
+</code></pre></td></tr></table>
+</div>
+</div><p>A version of this is available within the examples folder of the VMware Event Broker Appliance github repository <a href="https://github.com/vmware-samples/vcenter-event-broker-appliance/tree/development/examples/python/echo" target="_blank">here</a>.</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">I have also made a templatized version of this available <a href="https://github.com/pksrc/vebafn/tree/master/python/sm-python-fn" target="_blank">here</a> for you to get started quickly and build on top of this.</div>
+        </div>
+    </div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">git clone git@github.com:pksrc/vebafn.git vebafncd vebafn/python/sm-python-fn
+</code></pre></td></tr></table>
+</div>
+</div><p>Now that you have this folder cloned, let’s get started..</p>
+<figure class="imageright"><a class="lightgallery" href="https://miro.medium.com/max/1350/1*t1VlZ58bC8uUHIFNX16wvg.png" title="https://miro.medium.com/max/1350/1*t1VlZ58bC8uUHIFNX16wvg.png" data-thumbnail="https://miro.medium.com/max/1350/1*t1VlZ58bC8uUHIFNX16wvg.png" data-sub-html="<h2>stack.yml — primary descriptor for our function</h2>">
+        <img
+            class="lazyload img-imageright"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/1350/1*t1VlZ58bC8uUHIFNX16wvg.png"
+            data-srcset="https://miro.medium.com/max/1350/1*t1VlZ58bC8uUHIFNX16wvg.png, https://miro.medium.com/max/1350/1*t1VlZ58bC8uUHIFNX16wvg.png 1.5x, https://miro.medium.com/max/1350/1*t1VlZ58bC8uUHIFNX16wvg.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/1350/1*t1VlZ58bC8uUHIFNX16wvg.png" />
+    </a><figcaption class="image-caption">stack.yml — primary descriptor for our function</figcaption>
+    </figure>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">I’ve provided screenshots below due to formatting reasons, all the code is available in the git repository <a href="https://github.com/pksrc/vebafn/tree/master/python/sm-python-fn" target="_blank">here</a></div>
+        </div>
+    </div>
+<p><strong>stack.yml</strong> — this is the primary descriptor file which we are going to use to deploy the function. I made modifications as my environment required. A sample shown below..</p>
+<figure class="imageright"><a class="lightgallery" href="https://miro.medium.com/max/1252/1*1d5sJTmK0RxM8J8w_Gd4Yw.png" title="https://miro.medium.com/max/1252/1*1d5sJTmK0RxM8J8w_Gd4Yw.png" data-thumbnail="https://miro.medium.com/max/1252/1*1d5sJTmK0RxM8J8w_Gd4Yw.png" data-sub-html="<h2>handler.py — parses the event and pretty prints as json to stdout</h2>">
+        <img
+            class="lazyload img-imageright"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/1252/1*1d5sJTmK0RxM8J8w_Gd4Yw.png"
+            data-srcset="https://miro.medium.com/max/1252/1*1d5sJTmK0RxM8J8w_Gd4Yw.png, https://miro.medium.com/max/1252/1*1d5sJTmK0RxM8J8w_Gd4Yw.png 1.5x, https://miro.medium.com/max/1252/1*1d5sJTmK0RxM8J8w_Gd4Yw.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/1252/1*1d5sJTmK0RxM8J8w_Gd4Yw.png" />
+    </a><figcaption class="image-caption">handler.py — parses the event and pretty prints as json to stdout</figcaption>
+    </figure>
+<p><strong>handler.py</strong>— this is the core python file that should have the business logic for my function. This is what it looks like to start with..</p>
+<p><strong>README.md</strong>— this file contains the documentation describing the function purpose as well as steps to deploy the function</p>
+<p>With this minimal code, I proceeded to deploy this code to OpenFaaS on VEBA. You can do this by using the deployment steps provided in the README.md file <a href="https://github.com/pksrc/vebafn/tree/master/python/sm-python-fn" target="_blank">here</a></p>
+<h3 id="here-we-go">Here we go..</h3>
+<p>Once I got comfortable with the deploying this simple function and seeing it execute, i proceeded with making the next iteration of changes and make our API call. These set of changes are available in the VEBA Github examples <a href="https://github.com/vmware-samples/vcenter-event-broker-appliance/tree/development/examples/python" target="_blank">repository</a>.</p>
+<p>A templatized version of this updated function is available <a href="https://github.com/pksrc/vebafn/tree/master/python/md-python-fn" target="_blank">here</a> for you to get started that you can get as shown below</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git clone git@github.com:pksrc/vebafn.git vebafn
+cd vebafn/python/md-python-fn
+├── README.MD
+├── pdconfig.json          &gt; provides any configuration for the fn
+├── handler
+│   ├── handler.py
+│   └── requirements.txt &gt; specify any libraries needed for the fn
+├── stack.yml
+</code></pre></td></tr></table>
+</div>
+</div><p>For my function to trigger a PagerDuty incident, i needed the following for the API call (more details <a href="https://v2.developer.pagerduty.com/docs/send-an-event-events-api-v2" target="_blank">here</a>)</p>
+<div class="details admonition warn open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">API URL — <a href="https://events.pagerduty.com/v2/enqueue">https://events.pagerduty.com/v2/enqueue</a>
+Routing Key — <em>generated in PagerDuty</em>
+Action — “trigger”</div>
+        </div>
+    </div>
+<figure class="imageright"><a class="lightgallery" href="https://miro.medium.com/max/776/1*l6u0P4EmEqYDt-Wm4cJZBQ.png" title="https://miro.medium.com/max/776/1*l6u0P4EmEqYDt-Wm4cJZBQ.png" data-thumbnail="https://miro.medium.com/max/776/1*l6u0P4EmEqYDt-Wm4cJZBQ.png" data-sub-html="<h2>Stack.yml — Passing the config to the Function</h2>">
+        <img
+            class="lazyload img-imageright"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/776/1*l6u0P4EmEqYDt-Wm4cJZBQ.png"
+            data-srcset="https://miro.medium.com/max/776/1*l6u0P4EmEqYDt-Wm4cJZBQ.png, https://miro.medium.com/max/776/1*l6u0P4EmEqYDt-Wm4cJZBQ.png 1.5x, https://miro.medium.com/max/776/1*l6u0P4EmEqYDt-Wm4cJZBQ.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/776/1*l6u0P4EmEqYDt-Wm4cJZBQ.png" />
+    </a><figcaption class="image-caption">Stack.yml — Passing the config to the Function</figcaption>
+    </figure>
+<div class="details admonition warn open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Routing key and Action are specific to the API call for Pagerduty</div>
+        </div>
+    </div>
+<p>While the API URL seems static and the other configurable information can be setup to be passed as a config to my function. This is done by using the <code>secrets</code> keyword within the stack.yml as shown to the left.</p>
+<figure class="imageright"><a class="lightgallery" href="https://miro.medium.com/max/784/1*QULswrrFQMU7ZF-gj6b8dw.png" title="https://miro.medium.com/max/784/1*QULswrrFQMU7ZF-gj6b8dw.png" data-thumbnail="https://miro.medium.com/max/784/1*QULswrrFQMU7ZF-gj6b8dw.png" data-sub-html="<h2>config.json — configuration for the Function</h2>">
+        <img
+            class="lazyload img-imageright"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/784/1*QULswrrFQMU7ZF-gj6b8dw.png"
+            data-srcset="https://miro.medium.com/max/784/1*QULswrrFQMU7ZF-gj6b8dw.png, https://miro.medium.com/max/784/1*QULswrrFQMU7ZF-gj6b8dw.png 1.5x, https://miro.medium.com/max/784/1*QULswrrFQMU7ZF-gj6b8dw.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/784/1*QULswrrFQMU7ZF-gj6b8dw.png" />
+    </a><figcaption class="image-caption">config.json — configuration for the Function</figcaption>
+    </figure>
+<p>The config file is a json (can be any other format) with the details about the routing key and the action for the API and is structured as shown to the left.</p>
+<figure class="imageright"><a class="lightgallery" href="https://miro.medium.com/max/712/1*deHVUWw4Vo7X062EG8eTCA.png" title="https://miro.medium.com/max/712/1*deHVUWw4Vo7X062EG8eTCA.png" data-thumbnail="https://miro.medium.com/max/712/1*deHVUWw4Vo7X062EG8eTCA.png" data-sub-html="<h2>requirements.txt — library required for the Function</h2>">
+        <img
+            class="lazyload img-imageright"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/712/1*deHVUWw4Vo7X062EG8eTCA.png"
+            data-srcset="https://miro.medium.com/max/712/1*deHVUWw4Vo7X062EG8eTCA.png, https://miro.medium.com/max/712/1*deHVUWw4Vo7X062EG8eTCA.png 1.5x, https://miro.medium.com/max/712/1*deHVUWw4Vo7X062EG8eTCA.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/712/1*deHVUWw4Vo7X062EG8eTCA.png" />
+    </a><figcaption class="image-caption">requirements.txt — library required for the Function</figcaption>
+    </figure>
+<p>As we need to make http requests, we need the necessary libraries which can be specified in the <code>requirements.txt</code> file within the handler folder.</p>
+<p>With these files in place, I’m now ready to write my core business logic in the <code>handler.py</code> file using the approach below</p>
+<h3 id="pseudocode">Pseudocode</h3>
+<ol>
+<li>Parse the CloudEvent provided as stdin variable to JSON</li>
+<li>Read the Configuration file - /var/openfaas/secrets/pdconfig</li>
+<li>Validate the above input data as needed and build the API body</li>
+<li>Make the API call to the PagerDuty endpoint</li>
+</ol>
+<h2 id="start-coding">Start Coding</h2>
+<a class="lightgallery" href="https://miro.medium.com/max/1282/1*uMazFUuMR4HX2gsdffTmtw.png" title="https://miro.medium.com/max/1282/1*uMazFUuMR4HX2gsdffTmtw.png" data-thumbnail="https://miro.medium.com/max/1282/1*uMazFUuMR4HX2gsdffTmtw.png">
+        <img
+            class="lazyload img-imageright"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/1282/1*uMazFUuMR4HX2gsdffTmtw.png"
+            data-srcset="https://miro.medium.com/max/1282/1*uMazFUuMR4HX2gsdffTmtw.png, https://miro.medium.com/max/1282/1*uMazFUuMR4HX2gsdffTmtw.png 1.5x, https://miro.medium.com/max/1282/1*uMazFUuMR4HX2gsdffTmtw.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/1282/1*uMazFUuMR4HX2gsdffTmtw.png" width="50%" />
+    </a>
+<h3 id="1-parse-the-cloudevent"><strong>1. Parse the CloudEvent</strong></h3>
+<p>This step was already explored in the earlier steps shown above where we parse the raw text to json with exception handling to catch non-json formats</p>
+<a class="lightgallery" href="https://miro.medium.com/max/1290/1*kw-o148f0K-f1yX1gEha-A.png" title="https://miro.medium.com/max/1290/1*kw-o148f0K-f1yX1gEha-A.png" data-thumbnail="https://miro.medium.com/max/1290/1*kw-o148f0K-f1yX1gEha-A.png">
+        <img
+            class="lazyload img-imageright"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/1290/1*kw-o148f0K-f1yX1gEha-A.png"
+            data-srcset="https://miro.medium.com/max/1290/1*kw-o148f0K-f1yX1gEha-A.png, https://miro.medium.com/max/1290/1*kw-o148f0K-f1yX1gEha-A.png 1.5x, https://miro.medium.com/max/1290/1*kw-o148f0K-f1yX1gEha-A.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/1290/1*kw-o148f0K-f1yX1gEha-A.png" width="50%" />
+    </a>
+<h3 id="2-read-the-configuration-file"><strong>2. Read the Configuration file</strong></h3>
+<p>The config is made available to the function at the location <code>/var/openfaas/secrets/&lt;configname&gt;</code> within your container</p>
+<p>Here we are reading the Config file that is made available to our function under the location. I’m parsing this file and also validating that the file has the config that are required for this function to work successfully.</p>
+<a class="lightgallery" href="https://miro.medium.com/max/1278/1*xf68yICykwwppPO5XITdAQ.png" title="https://miro.medium.com/max/1278/1*xf68yICykwwppPO5XITdAQ.png" data-thumbnail="https://miro.medium.com/max/1278/1*xf68yICykwwppPO5XITdAQ.png">
+        <img
+            class="lazyload img-imageright"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/1278/1*xf68yICykwwppPO5XITdAQ.png"
+            data-srcset="https://miro.medium.com/max/1278/1*xf68yICykwwppPO5XITdAQ.png, https://miro.medium.com/max/1278/1*xf68yICykwwppPO5XITdAQ.png 1.5x, https://miro.medium.com/max/1278/1*xf68yICykwwppPO5XITdAQ.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/1278/1*xf68yICykwwppPO5XITdAQ.png" width="50%" />
+    </a>
+<h3 id="3-validate-event-and-config--build-api-body"><strong>3. Validate Event and Config + Build API Body</strong></h3>
+<p>In this section, we are attempting to build the API body as well as validating if the Event has all the keys that my function needs. If the keys are not available (because the fn gets an different event than what it was coded for), then we handle the exception</p>
+<h3 id="4-make-the-api-call"><strong>4. Make the API call</strong></h3>
+<a class="lightgallery" href="https://miro.medium.com/max/1280/1*NPDmrP5whr5wR-42ipf1Ug.png" title="https://miro.medium.com/max/1280/1*NPDmrP5whr5wR-42ipf1Ug.png" data-thumbnail="https://miro.medium.com/max/1280/1*NPDmrP5whr5wR-42ipf1Ug.png">
+        <img
+            class="lazyload img-imageright"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/1280/1*NPDmrP5whr5wR-42ipf1Ug.png"
+            data-srcset="https://miro.medium.com/max/1280/1*NPDmrP5whr5wR-42ipf1Ug.png, https://miro.medium.com/max/1280/1*NPDmrP5whr5wR-42ipf1Ug.png 1.5x, https://miro.medium.com/max/1280/1*NPDmrP5whr5wR-42ipf1Ug.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/1280/1*NPDmrP5whr5wR-42ipf1Ug.png" width="50%" />
+    </a>
+<p>Finally, we are ready to make the API call with the URL and the body that we have generated. We are also catching any unhandled exceptions that may occur in this process. Don’t forget to close the session.</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">There are a few helper classes which help with the readability of the code that i’ve utilized in this function but not required.</div>
+        </div>
+    </div>
+<h2 id="wrap-up">Wrap Up</h2>
+<p><strong>Thats it!</strong> We now have a FaaS fn ready for testing and deployment. You can utilize the unit tests that I’ve provided in the <code>handler.py</code> or alternatively deploy the function using the <code>README.md</code> file to OpenFaaS hosted on VEBA.</p>
+<p>Let me know if you’ve found this helpful. In the next post, i’ll provide the next iteration of changes that will help our function be more clean, debuggable and robust with the help of some util functions and best practices.</p>
+<p>Happy Eventing!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-12-18&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/6061f623fafff7331df39faf517bd0434b1ce005" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 6061f623fafff7331df39faf517bd0434b1ce005: v1 ready website with Posts from VEBA, Access, WS1 and K8s">
+                                    <i class="fas fa-hashtag fa-fw"></i>6061f62</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share sharebtns">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/first-veba-function/" data-title="Writing your first Serverless Function" data-via="pkblah" data-hashtags="event-driven,cloud-native"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/first-veba-function/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/first-veba-function/" data-title="Writing your first Serverless Function" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/first-veba-function/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/first-veba-function/" data-title="Writing your first Serverless Function" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/event-driven/">event-driven</a>,&nbsp;<a href="/tags/cloud-native/">cloud-native</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/post/serverless-fn-template/" class="next" rel="next" title="Serverless function — Quickstart Templates">Serverless function — Quickstart Templates<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2020</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":80},"comment":{"gitalk":{"admin":["pksrc"],"clientID":"asdasda","clientSecret":"asdasdads","id":"2020-04-23T00:00:00Z","owner":"pksrc","repo":"my-gitalk","title":"Writing your first Serverless Function"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-XXXXXABCD-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXABCD-1" async></script></body>
+</html>

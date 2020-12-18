@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Unified Endpoint Management - Tag - Cloud Tekki</title>
+        <link>https://cloudtekki.com/tags/unified-endpoint-management/</link>
+        <description>Unified Endpoint Management - Tag - Cloud Tekki</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/unified-endpoint-management/" rel="self" type="application/rss+xml" /><item>
+    <title>Unpacking Organization Groups in Workspace ONE UEM</title>
+    <link>https://cloudtekki.com/post/uem-organization-groups/</link>
+    <pubDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/post/uem-organization-groups/</guid>
+    <description><![CDATA[What are Organization Groups in Workspace One UEM?
+What are the best practices with how to set Organization Groups up for our use case?
+Can we insert an OG between OGs? Do we have the right setup?
+These are very common questions on Organization Groups which is a very foundational element within Workspace ONE UEM. Over the several years of working with Workspace ONE UEM (formerly AirWatch), no one has tried to provide a complete picture of what an Organization Group is.]]></description>
+</item></channel>
+</rss>

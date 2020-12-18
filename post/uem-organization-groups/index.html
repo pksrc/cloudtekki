@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Unpacking Organization Groups in Workspace ONE UEM - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to Simplify and Clarify Technology Concepts and Solutions for those that strive to thrive"><meta property="og:title" content="Unpacking Organization Groups in Workspace ONE UEM" />
+<meta property="og:description" content="What are Organization Groups in Workspace One UEM?
+What are the best practices with how to set Organization Groups up for our use case?
+Can we insert an OG between OGs? Do we have the right setup?
+These are very common questions on Organization Groups which is a very foundational element within Workspace ONE UEM. Over the several years of working with Workspace ONE UEM (formerly AirWatch), no one has tried to provide a complete picture of what an Organization Group is." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cloudtekki.com/post/uem-organization-groups/" />
+<meta property="article:published_time" content="2020-11-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-18T15:18:51-08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Unpacking Organization Groups in Workspace ONE UEM"/>
+<meta name="twitter:description" content="What are Organization Groups in Workspace One UEM?
+What are the best practices with how to set Organization Groups up for our use case?
+Can we insert an OG between OGs? Do we have the right setup?
+These are very common questions on Organization Groups which is a very foundational element within Workspace ONE UEM. Over the several years of working with Workspace ONE UEM (formerly AirWatch), no one has tried to provide a complete picture of what an Organization Group is."/>
+<meta name="application-name" content="Cloud Tekki">
+<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/logo/cloud-tekki-fav.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/uem-organization-groups/" /><link rel="prev" href="https://cloudtekki.com/post/access-apis/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Unpacking Organization Groups in Workspace ONE UEM",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cloudtekki.com\/post\/uem-organization-groups\/"
+        },"genre": "posts","keywords": "Unified Endpoint Management, End User Computing","wordcount":  1241 ,
+        "url": "https:\/\/cloudtekki.com\/post\/uem-organization-groups\/","datePublished": "2020-11-21T00:00:00+00:00","dateModified": "2020-12-18T15:18:51-08:00","publisher": {
+            "@type": "Organization",
+            "name": "Partheeban Kandasamy"},"author": {
+                "@type": "Person",
+                "name": "Partheeban Kandasamy (PK)"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span> Posts 
+                    </a><a class="menu-item" href="/categories/"><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span> Categories 
+                    </a><a class="menu-item" href="/tags/"><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span> Tags 
+                    </a><a class="menu-item" href="/about-pk/"><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span> About 
+                    </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span>Posts</a><a class="menu-item" href="/categories/" title=""><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span>Categories</a><a class="menu-item" href="/tags/" title=""><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span>Tags</a><a class="menu-item" href="/about-pk/" title=""><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="twitter-auto" style="position: relative; margin-top: 1rem; padding-top: 1rem;">
+                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah?ref_src=twsrc%5Etfw">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            </div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Unpacking Organization Groups in Workspace ONE UEM</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/uem/"><i class="far fa-folder fa-fw"></i>UEM</a>&nbsp;<a href="/categories/euc/"><i class="far fa-folder fa-fw"></i>EUC</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/uem-organization-groups/" data-title="Unpacking Organization Groups in Workspace ONE UEM" data-via="pkblah" data-hashtags="Unified Endpoint Management,End User Computing"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/uem-organization-groups/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/uem-organization-groups/" data-title="Unpacking Organization Groups in Workspace ONE UEM" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/uem-organization-groups/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/uem-organization-groups/" data-title="Unpacking Organization Groups in Workspace ONE UEM" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-11-21">2020-11-21</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1241 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-are-they">What are they?</a>
+      <ul>
+        <li><a href="#object-anchor">Object Anchor</a></li>
+        <li><a href="#multi-tenancy">Multi-tenancy</a></li>
+        <li><a href="#configurations">Configurations</a></li>
+        <li><a href="#integrations">Integrations</a></li>
+      </ul>
+    </li>
+    <li><a href="#types-of-organization-groups">Types of Organization Groups</a>
+      <ul>
+        <li><a href="#1-global">1. Global</a></li>
+        <li><a href="#2-customer">2. Customer</a></li>
+        <li><a href="#3-container">3. Container</a></li>
+      </ul>
+    </li>
+    <li><a href="#should-i-create-one">Should I Create One?</a>
+      <ul>
+        <li><a href="#definitely-not">Definitely NOT</a></li>
+        <li><a href="#probably-a-good-idea">Probably a Good Idea</a></li>
+        <li><a href="#you-should">You should</a></li>
+      </ul>
+    </li>
+    <li><a href="#take-away">Take Away</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>What are Organization Groups in Workspace One UEM?</p>
+<p>What are the best practices with how to set Organization Groups up for our use case?</p>
+<p>Can we insert an OG between OGs? Do we have the right setup?</p>
+<p>These are very common questions on Organization Groups which is a very foundational element within Workspace ONE UEM. Over the several years of working with Workspace ONE UEM (formerly AirWatch), no one has tried to provide a complete picture of what an Organization Group is. It is taken for granted and often misused!</p>
+<p>Previously, I&rsquo;ve worked mostly with Enterprise Customers where UEM adoption is very mature, Organization Groups are pretty well laid out and is often already built out. Having recently transitioned to an EUC Architect, I now engage with a wide variety of Customers in different stages of Adoption and have got into many discussions and still get a lot of questions around the Organization Groups. Here is my attempt at bringing clarity on this topic.</p>
+<h2 id="what-are-they">What are they?</h2>
+<p>An Organization Group is a way to organize information and form a structure for management within UEM. It can be considered similar to <code>folders within Operation Systems</code> or <code>Organization Units within Active Directory</code>.</p>
+<p>An Organization Group can have other Organization Groups as its child and Objects are anchored to an OG - Devices are enrolled at/to an OG. User accounts are created at an OG. Smart groups, Profiles, Apps are all created at an OG. I should note that in the past, new capabilities and features for reasons unclear were always made available in the &ldquo;Customer type&rdquo; OG but those are changing now.</p>
+<image src="/img/uem/uem-organization-groups/og.png">
+<p>Here are the things that make up an Organization Group</p>
+<ul>
+<li>An Organization Group is defined by a
+<ul>
+<li><strong>Name</strong> - Arbitrary name of your choice</li>
+<li><strong>GroupId (optional)</strong> - GroupId has to be unique per environment and has to be present if a device is being enrolled in that Organization Group</li>
+<li><strong>Type</strong> - more on this <a href="#types-of-organization-groups">below</a></li>
+<li>Country - If your Location/Organization Groups are based on Geos, then assign this to the right Country</li>
+<li><strong>Locale</strong> - Used to serve the right localized language within the UEM console</li>
+<li><strong>Time Zone</strong> - All the time shown within the UEM console are updated to reflect this timezone (or the timezone based on your user account)</li>
+</ul>
+</li>
+</ul>
+<p>From when the software was called AirWatch to now the Workspace ONE UEM, Organization Groups and Location Groups (behind the scenes) continue to remain one of those foundational design principle for a number of things..</p>
+<h3 id="object-anchor">Object Anchor</h3>
+<ul>
+<li>Users are created at an Organization Group and are allowed to enroll into an Organization Group.</li>
+<li>Devices are enrolled in an Organization Group.</li>
+<li>Originally used for assignments, the UEM has evolved to consolidating towards Smart Groups as the primary choice for assignments. The Smart Groups as wel</li>
+<li>Apps, Profiles, Products, Content are all anchored to the Organization Group</li>
+</ul>
+<h3 id="multi-tenancy">Multi-tenancy</h3>
+<p>It was designed as a solution to enable multi-tenancy within an AirWatch hosted environment.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Global
+├── Parent1
+├── Parent2
+├── Parent3
+├── Parent4
+├── Parent5
+│   ├── Child1
+│   └── Child2
+│       ├── GrandChild1
+│       ├── GrandChild2
+│       ├── GrandChild3
+│       ├── GrandChild4
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Permissions: An Admin at an OG is able to see all configurations and Objects(Devices, Profiles, Apps etc) at that OG and only those OGs that are its child</li>
+<li>Inheritance: A Device enrolled at a OG gets all the configuration that are assigned from its hierarchy above.</li>
+</ul>
+<h3 id="configurations">Configurations</h3>
+<p>Any configuration is created at an Organization Group and can be inherited or overridden at the OGs below. These configurations could span from</p>
+<ul>
+<li>Settings such as Directory Services, Tunnel Configuration, ABM, APNS, Google Integration etc</li>
+<li>Objects such as Profiles, Apps, Products, Content</li>
+</ul>
+<h3 id="integrations">Integrations</h3>
+<p>All integrations from On-Premise components such as UAG and ACC to integrations with other WS1 Components such as Access to Partner products such as <a href="https://www.checkpoint.com/downloads/products/sandblast-mobile-vmware-workspace-one-uem-solution-brief.pdf" target="_blank">CheckPoint</a> or <a href="https://blogs.vmware.com/euc/2020/07/wandera-enriches-workspace-one-trust-network.html" target="_blank">Wandera</a>.</p>
+<h2 id="types-of-organization-groups">Types of Organization Groups</h2>
+<p>There are different types of Organization Groups, namely</p>
+<ul>
+<li>Global</li>
+<li>Customer</li>
+<li>Container</li>
+<li>Partner</li>
+<li>and others (even custom ones)</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">Global
+├── Customer1
+├── Customer2
+├── Container1
+│   ├── Container2
+│   │   ├── Customer3
+│   └── Customer4
+│       ├── Container3
+│       ├── Container4
+</code></pre></td></tr></table>
+</div>
+</div><p>They are generally setup like shown above and out of all the types available, the key ones to note are -</p>
+<h3 id="1-global">1. Global</h3>
+<p>This is the default OG UEM ships with and can be considered the root Organization Group.</p>
+<blockquote>
+<p>The general assumptions are that</p>
+<ul>
+<li>One does not do anything in this OG (outside of a few environment-wide settings - like site urls, CDN, file storage etc.)</li>
+<li>You are always expected to always create a child OG to start configuration.</li>
+</ul>
+</blockquote>
+<h3 id="2-customer">2. Customer</h3>
+<p>This is the Organization Group type that is typically setup for a &ldquo;Customer&rdquo;.</p>
+<blockquote>
+<p>The general assumptions are that</p>
+<ul>
+<li>A Customer OG CANNOT have another Customer OG as its child</li>
+<li>A Customer OG is usually where most integrations and configurations are setup</li>
+<li>A Customer OG is where billing information and license consumptions are usually obtained</li>
+</ul>
+</blockquote>
+<h3 id="3-container">3. Container</h3>
+<p>This is, in my experience, usually every other OG type in UEM.</p>
+<blockquote>
+<p>The general assumptions are that a Container OG can have a Customer OG as its child</p>
+<ul>
+<li>Some Customers insert a Container b/w Global and Customer to give them some buffer for any changes</li>
+<li>Go crazy with this and the other OG types</li>
+</ul>
+</blockquote>
+<h2 id="should-i-create-one">Should I Create One?</h2>
+<p>A good rule of thumb is to be ruthlessly conservative and take a minimalist approach with Organization Groups. DO NOT create one unless they are absolutely needed to solve your use case. Here are some scenarios below for reference -</p>
+<h3 id="definitely-not">Definitely NOT</h3>
+<ul>
+<li><strong>Assignments</strong>: Use Smart Groups instead as they offer more flexibility</li>
+</ul>
+<h3 id="probably-a-good-idea">Probably a Good Idea</h3>
+<ul>
+<li><strong>Device Ownership</strong>: You don&rsquo;t need to create OGs to separate devices by ownership types unless you have some Settings/Configurations (SDK or policies for example) that are different for these device types</li>
+<li><strong>Device Type or Model</strong>: You don&rsquo;t need to unless you have teams segregated by device types (iOS team vs Windows team)</li>
+</ul>
+<h3 id="you-should">You should</h3>
+<ul>
+<li><strong>GEOs or Locations</strong>: Using OGs to mirror your Organization&rsquo;s geographical locations is a good idea as it also enables you to setup Administrators that can manage devices in that GEO</li>
+<li><strong>Agencies or Functions or Departments</strong>: Using OGs to reflect how your Organization is setup by groups is a good idea as they let you setup different policies</li>
+<li><strong>Acquisitions</strong>: Using OGs to migrate devices from M&amp;A type of activities can give you the flexibility to setup policies differently and enabling a phased approach</li>
+</ul>
+<h2 id="take-away">Take Away</h2>
+<p><strong>I could give you a few examples but they would be misleading!</strong> As the software continues to evolve, what was once a great idea for setting up Organization Groups are probably not relevant anymore. They were setup based on the requirements, the design constraints and the capabilities available in the software at that point in time. Organization groups could be adapted a number of different ways and what worked for an Industry or a Customer at a certain point in time might not work for others.</p>
+<p>Hope this gives you an understanding of what Organization Groups are, why they exists and how to use them. The bottom line is to not get too constrained by Organization Groups and conversely don&rsquo;t get carried away with Organization Groups.</p>
+<p>Please provide any feedback that you have by leaving a comment and share this post using the social media icons shown below. That&rsquo;s all folks!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-12-18&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/6061f623fafff7331df39faf517bd0434b1ce005" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 6061f623fafff7331df39faf517bd0434b1ce005: v1 ready website with Posts from VEBA, Access, WS1 and K8s">
+                                    <i class="fas fa-hashtag fa-fw"></i>6061f62</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share sharebtns">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/uem-organization-groups/" data-title="Unpacking Organization Groups in Workspace ONE UEM" data-via="pkblah" data-hashtags="Unified Endpoint Management,End User Computing"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/uem-organization-groups/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/uem-organization-groups/" data-title="Unpacking Organization Groups in Workspace ONE UEM" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/uem-organization-groups/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/uem-organization-groups/" data-title="Unpacking Organization Groups in Workspace ONE UEM" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/unified-endpoint-management/">Unified Endpoint Management</a>,&nbsp;<a href="/tags/end-user-computing/">End User Computing</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/post/access-apis/" class="prev" rel="prev" title="Access: The tale of the hidden APIs"><i class="fas fa-angle-left fa-fw"></i>Access: The tale of the hidden APIs</a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2020</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":80},"comment":{"gitalk":{"admin":["pksrc"],"clientID":"asdasda","clientSecret":"asdasdads","id":"2020-11-21T00:00:00Z","owner":"pksrc","repo":"my-gitalk","title":"Unpacking Organization Groups in Workspace ONE UEM"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-XXXXXABCD-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXABCD-1" async></script></body>
+</html>

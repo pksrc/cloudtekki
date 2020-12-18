@@ -1,56 +1,85 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>All Posts - Cloud Tekki</title>
-        <link>https://cloudtekki.pdotk.com/posts/</link>
+        <link>https://cloudtekki.com/posts/</link>
         <description>All Posts | Cloud Tekki</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (P.K)</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (P.K)</webMaster><lastBuildDate>Wed, 09 Sep 2020 21:14:30 -0700</lastBuildDate><atom:link href="https://cloudtekki.pdotk.com/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>My Sixth Post</title>
-    <link>https://cloudtekki.pdotk.com/post/my-sixth-post/</link>
-    <pubDate>Wed, 09 Sep 2020 21:14:30 -0700</pubDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Unpacking Organization Groups in Workspace ONE UEM</title>
+    <link>https://cloudtekki.com/post/uem-organization-groups/</link>
+    <pubDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://cloudtekki.pdotk.com/post/my-sixth-post/</guid>
-    <description><![CDATA[Obvius et praepes doctis modo vulnere velis Non dura spoliis vasti dat status Tlepolemus Lorem markdownum premeret; erat visa, per rura Ulixis enumerare a facta vocalia iussit est Antigonen. Totoque serisque; domum ait meo latitantia se illuc formosa, incanduit Ismenides in omnia. Eurytidae vulnere et fessis terras.
-Unum Ixione Ciconum, haec erubuisse deduxisse sortes resumere dum; suis, mora! Fronte quaesitique alta feritatis qui neque querno medio omne quibus tarda! Amor causa licet sacris deforme non caerula tantum meditata ora licet retiaque!]]></description>
+    <guid>https://cloudtekki.com/post/uem-organization-groups/</guid>
+    <description><![CDATA[What are Organization Groups in Workspace One UEM?
+What are the best practices with how to set Organization Groups up for our use case?
+Can we insert an OG between OGs? Do we have the right setup?
+These are very common questions on Organization Groups which is a very foundational element within Workspace ONE UEM. Over the several years of working with Workspace ONE UEM (formerly AirWatch), no one has tried to provide a complete picture of what an Organization Group is.]]></description>
 </item><item>
-    <title>My Fifth Post</title>
-    <link>https://cloudtekki.pdotk.com/post/my-fifth-post/</link>
-    <pubDate>Mon, 07 Sep 2020 21:14:30 -0700</pubDate>
+    <title>Access: The tale of the hidden APIs</title>
+    <link>https://cloudtekki.com/post/access-apis/</link>
+    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://cloudtekki.pdotk.com/post/my-fifth-post/</guid>
-    <description><![CDATA[Obvius et praepes doctis modo vulnere velis Non dura spoliis vasti dat status Tlepolemus Lorem markdownum premeret; erat visa, per rura Ulixis enumerare a facta vocalia iussit est Antigonen. Totoque serisque; domum ait meo latitantia se illuc formosa, incanduit Ismenides in omnia. Eurytidae vulnere et fessis terras.
-Unum Ixione Ciconum, haec erubuisse deduxisse sortes resumere dum; suis, mora! Fronte quaesitique alta feritatis qui neque querno medio omne quibus tarda! Amor causa licet sacris deforme non caerula tantum meditata ora licet retiaque!]]></description>
+    <guid>https://cloudtekki.com/post/access-apis/</guid>
+    <description><![CDATA[Evolving Access through APIs Workspace One Access is VMware&rsquo;s Product Line that helps provide seamless single sign on and conditional access for Applications from End User&rsquo;s client devices. It is built using technologies such as
+ SAML (RFC 7522) OAuth (RFC 6749) and Open ID Connect  If you are new to the Product, you can find more details about WorkspaceONE(WS1) Access
+ Product Page - here Documentation - here  In this post, I&rsquo;m going to cover a neat trick that will help you find and build on the APIs that are available with WS1 Access.]]></description>
 </item><item>
-    <title>My Fourth Post</title>
-    <link>https://cloudtekki.pdotk.com/post/my-fourth-post/</link>
-    <pubDate>Sun, 06 Sep 2020 21:14:30 -0700</pubDate>
+    <title>Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico</title>
+    <link>https://cloudtekki.com/post/bootstrap-k8s/</link>
+    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://cloudtekki.pdotk.com/post/my-fourth-post/</guid>
-    <description><![CDATA[Obvius et praepes doctis modo vulnere velis Non dura spoliis vasti dat status Tlepolemus Lorem markdownum premeret; erat visa, per rura Ulixis enumerare a facta vocalia iussit est Antigonen. Totoque serisque; domum ait meo latitantia se illuc formosa, incanduit Ismenides in omnia. Eurytidae vulnere et fessis terras.
-Unum Ixione Ciconum, haec erubuisse deduxisse sortes resumere dum; suis, mora! Fronte quaesitique alta feritatis qui neque querno medio omne quibus tarda! Amor causa licet sacris deforme non caerula tantum meditata ora licet retiaque!]]></description>
+    <guid>https://cloudtekki.com/post/bootstrap-k8s/</guid>
+    <description><![CDATA[This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I&rsquo;m hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native
+Getting Started As a baseline, here are my assumptions about those following along or to my future self]]></description>
 </item><item>
-    <title>My Third Post</title>
-    <link>https://cloudtekki.pdotk.com/post/my-third-post/</link>
-    <pubDate>Sat, 08 Aug 2020 21:14:30 -0700</pubDate>
+    <title>Enabling Self Service for your DataCenter — Part I</title>
+    <link>https://cloudtekki.com/post/self-service-for-your-datacenter/</link>
+    <pubDate>Wed, 07 Oct 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://cloudtekki.pdotk.com/post/my-third-post/</guid>
-    <description><![CDATA[Obvius et praepes doctis modo vulnere velis Non dura spoliis vasti dat status Tlepolemus Lorem markdownum premeret; erat visa, per rura Ulixis enumerare a facta vocalia iussit est Antigonen. Totoque serisque; domum ait meo latitantia se illuc formosa, incanduit Ismenides in omnia. Eurytidae vulnere et fessis terras.
-Unum Ixione Ciconum, haec erubuisse deduxisse sortes resumere dum; suis, mora! Fronte quaesitique alta feritatis qui neque querno medio omne quibus tarda! Amor causa licet sacris deforme non caerula tantum meditata ora licet retiaque!]]></description>
+    <guid>https://cloudtekki.com/post/self-service-for-your-datacenter/</guid>
+    <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/self-service-for-your-datacenter-part-i   It doesn’t have to be Business vs IT anymore! Either sides’ needs while well-intentioned may seem to be at conflict with each other..
+Business aims to innovate and promote new capabilities for their consumers with the goal of improving services delivered or user experience to retain existing users or acquire new users.
+IT as true partners to the Business want to provide the right platform and infrastructure but need to ensure that they guaranteeing the right security guidance, conformance to standards and best practices.]]></description>
 </item><item>
-    <title>My Second Post</title>
-    <link>https://cloudtekki.pdotk.com/post/my-second-post/</link>
-    <pubDate>Fri, 07 Aug 2020 21:14:30 -0700</pubDate>
+    <title>Publicly trusted TLS for VMware Eventing Platform</title>
+    <link>https://cloudtekki.com/post/trusted-tls-for-veba/</link>
+    <pubDate>Thu, 11 Jun 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://cloudtekki.pdotk.com/post/my-second-post/</guid>
-    <description><![CDATA[Obvius et praepes doctis modo vulnere velis Non dura spoliis vasti dat status Tlepolemus Lorem markdownum premeret; erat visa, per rura Ulixis enumerare a facta vocalia iussit est Antigonen. Totoque serisque; domum ait meo latitantia se illuc formosa, incanduit Ismenides in omnia. Eurytidae vulnere et fessis terras.
-Unum Ixione Ciconum, haec erubuisse deduxisse sortes resumere dum; suis, mora! Fronte quaesitique alta feritatis qui neque querno medio omne quibus tarda! Amor causa licet sacris deforme non caerula tantum meditata ora licet retiaque!]]></description>
+    <guid>https://cloudtekki.com/post/trusted-tls-for-veba/</guid>
+    <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/publicly-trusted-tls-for-vmware-eventing-platform   Vmware Event Broker Appliance (VEBA) continues to gain momentum and as Enterprise Customers start adopting the Appliance, we continue to broach Enterprise Features such as gauranteeing High Availability or the ability to upload/bootstrap the appliance with Internal CA signed or Public TLS certificates. While I had previously covered in part how the default self-signed TLS cert that is bound to OpenFaaS gateway can be updated through our documentation below, In this short post, I wanted to provide an end to end overview of obtaining a public certificate and binding it to the Ingress Gateway.]]></description>
 </item><item>
-    <title>My First Post</title>
-    <link>https://cloudtekki.pdotk.com/post/my-first-post/</link>
-    <pubDate>Tue, 06 Aug 2019 21:14:30 -0700</pubDate>
+    <title>A Function for all REST APIs</title>
+    <link>https://cloudtekki.com/post/rest-api-fn/</link>
+    <pubDate>Thu, 07 May 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://cloudtekki.pdotk.com/post/my-first-post/</guid>
-    <description><![CDATA[Obvius et praepes doctis modo vulnere velis Non dura spoliis vasti dat status Tlepolemus Lorem markdownum premeret; erat visa, per rura Ulixis enumerare a facta vocalia iussit est Antigonen. Totoque serisque; domum ait meo latitantia se illuc formosa, incanduit Ismenides in omnia. Eurytidae vulnere et fessis terras.
-Unum Ixione Ciconum, haec erubuisse deduxisse sortes resumere dum; suis, mora! Fronte quaesitique alta feritatis qui neque querno medio omne quibus tarda! Amor causa licet sacris deforme non caerula tantum meditata ora licet retiaque!]]></description>
+    <guid>https://cloudtekki.com/post/rest-api-fn/</guid>
+    <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/a-function-for-all-rest-apis   and…vCenter integration with Slack, PagerDuty, ServiceNow, Zendesk, JIRA, ServiceDesk is now possible with VMware Event Broker Appliance (VEBA)!
+Incident Management Systems — ✅
+ If you don’t see how the title and the introduction are connected, read on! Let me explain how I wrote one function that makes seemingly all 3rd party system integration easy and possible!]]></description>
+</item><item>
+    <title>Integrating vCenter with PagerDuty</title>
+    <link>https://cloudtekki.com/post/integrating-vcenter-with-pagerduty/</link>
+    <pubDate>Thu, 30 Apr 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/post/integrating-vcenter-with-pagerduty/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="https://miro.medium.com/max/3040/1*I37x-vfp3ry3Y4O3f_Q-Kg.png" referrerpolicy="no-referrer">
+            </div>-- Info  This post was originally published in Medium - pkblah.medium.com/integrating-vcenter-with-pagerduty   Uptime and Reliability is more important now than ever during these times when Technology and Infrastructure is enabling us fight a global pandemic with work from home policies. It is no wonder that eyes lit up when you say PagerDuty and vCenter integration!
+I’m going to explore how you enable this integration to automatically trigger a PagerDuty incident the minute vCenter detects something bad happens to your infrastructure!]]></description>
+</item><item>
+    <title>Serverless function — Quickstart Templates</title>
+    <link>https://cloudtekki.com/post/serverless-fn-template/</link>
+    <pubDate>Wed, 29 Apr 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/post/serverless-fn-template/</guid>
+    <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/serverless-function-templates   You have probably have seen my other article that helps you get started writing your very first event-driven function using VMware Event Broker Appliance (VEBA) for your vCenter infrastructure. I highlight the steps taken to write my first serverless function and provide templates to help you get started quickly!
+ Writing your first Serverless Function — here]]></description>
+</item><item>
+    <title>Writing your first Serverless Function</title>
+    <link>https://cloudtekki.com/post/first-veba-function/</link>
+    <pubDate>Thu, 23 Apr 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/post/first-veba-function/</guid>
+    <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/writing-your-first-serverless-function   A function is a unit of execution in the Serverless world that does one thing and one thing really well. With the current product VMware Event Broker Appliance (VEBA) that i’m managing, we aim to provide a simple solution that provides a way to execute your functions driven by vCenter events. This is a significant capability that exposes a plethora of integrations and allows seamless automation opportunities for a VMware SDDC customer.]]></description>
 </item></channel>
 </rss>

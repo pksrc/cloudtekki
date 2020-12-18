@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Ubuntu - Tag - Cloud Tekki</title>
+        <link>https://cloudtekki.com/tags/ubuntu/</link>
+        <description>Ubuntu - Tag - Cloud Tekki</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/ubuntu/" rel="self" type="application/rss+xml" /><item>
+    <title>Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico</title>
+    <link>https://cloudtekki.com/post/bootstrap-k8s/</link>
+    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/post/bootstrap-k8s/</guid>
+    <description><![CDATA[This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I&rsquo;m hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native
+Getting Started As a baseline, here are my assumptions about those following along or to my future self]]></description>
+</item></channel>
+</rss>

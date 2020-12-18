@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>APIs - Tag - Cloud Tekki</title>
+        <link>https://cloudtekki.com/tags/apis/</link>
+        <description>APIs - Tag - Cloud Tekki</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/apis/" rel="self" type="application/rss+xml" /><item>
+    <title>Access: The tale of the hidden APIs</title>
+    <link>https://cloudtekki.com/post/access-apis/</link>
+    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/post/access-apis/</guid>
+    <description><![CDATA[Evolving Access through APIs Workspace One Access is VMware&rsquo;s Product Line that helps provide seamless single sign on and conditional access for Applications from End User&rsquo;s client devices. It is built using technologies such as
+ SAML (RFC 7522) OAuth (RFC 6749) and Open ID Connect  If you are new to the Product, you can find more details about WorkspaceONE(WS1) Access
+ Product Page - here Documentation - here  In this post, I&rsquo;m going to cover a neat trick that will help you find and build on the APIs that are available with WS1 Access.]]></description>
+</item></channel>
+</rss>

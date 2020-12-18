@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Access: The tale of the hidden APIs - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to Simplify and Clarify Technology Concepts and Solutions for those that strive to thrive"><meta property="og:title" content="Access: The tale of the hidden APIs" />
+<meta property="og:description" content="Evolving Access through APIs Workspace One Access is VMware&rsquo;s Product Line that helps provide seamless single sign on and conditional access for Applications from End User&rsquo;s client devices. It is built using technologies such as
+ SAML (RFC 7522) OAuth (RFC 6749) and Open ID Connect  If you are new to the Product, you can find more details about WorkspaceONE(WS1) Access
+ Product Page - here Documentation - here  In this post, I&rsquo;m going to cover a neat trick that will help you find and build on the APIs that are available with WS1 Access." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cloudtekki.com/post/access-apis/" />
+<meta property="article:published_time" content="2020-10-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-18T15:18:51-08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Access: The tale of the hidden APIs"/>
+<meta name="twitter:description" content="Evolving Access through APIs Workspace One Access is VMware&rsquo;s Product Line that helps provide seamless single sign on and conditional access for Applications from End User&rsquo;s client devices. It is built using technologies such as
+ SAML (RFC 7522) OAuth (RFC 6749) and Open ID Connect  If you are new to the Product, you can find more details about WorkspaceONE(WS1) Access
+ Product Page - here Documentation - here  In this post, I&rsquo;m going to cover a neat trick that will help you find and build on the APIs that are available with WS1 Access."/>
+<meta name="application-name" content="Cloud Tekki">
+<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/logo/cloud-tekki-fav.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/access-apis/" /><link rel="prev" href="https://cloudtekki.com/post/bootstrap-k8s/" /><link rel="next" href="https://cloudtekki.com/post/uem-organization-groups/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Access: The tale of the hidden APIs",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cloudtekki.com\/post\/access-apis\/"
+        },"genre": "posts","keywords": "Access, APIs, Postman, Developer Tools","wordcount":  1082 ,
+        "url": "https:\/\/cloudtekki.com\/post\/access-apis\/","datePublished": "2020-10-24T00:00:00+00:00","dateModified": "2020-12-18T15:18:51-08:00","publisher": {
+            "@type": "Organization",
+            "name": "Partheeban Kandasamy"},"author": {
+                "@type": "Person",
+                "name": "Partheeban Kandasamy (PK)"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span> Posts 
+                    </a><a class="menu-item" href="/categories/"><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span> Categories 
+                    </a><a class="menu-item" href="/tags/"><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span> Tags 
+                    </a><a class="menu-item" href="/about-pk/"><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span> About 
+                    </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span>Posts</a><a class="menu-item" href="/categories/" title=""><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span>Categories</a><a class="menu-item" href="/tags/" title=""><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span>Tags</a><a class="menu-item" href="/about-pk/" title=""><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="twitter-auto" style="position: relative; margin-top: 1rem; padding-top: 1rem;">
+                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah?ref_src=twsrc%5Etfw">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            </div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Access: The tale of the hidden APIs</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/access/"><i class="far fa-folder fa-fw"></i>ACCESS</a>&nbsp;<a href="/categories/euc/"><i class="far fa-folder fa-fw"></i>EUC</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/access-apis/" data-title="Access: The tale of the hidden APIs" data-via="pkblah" data-hashtags="Access,APIs,Postman,Developer Tools"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/access-apis/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/access-apis/" data-title="Access: The tale of the hidden APIs" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/access-apis/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/access-apis/" data-title="Access: The tale of the hidden APIs" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-24">2020-10-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1082 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#first-where-are-the-supported-apis">First, where are the supported APIs?</a></li>
+    <li><a href="#what-if-you-need-more">What if you need more?</a></li>
+    <li><a href="#developer-tools-the-trick-to-finding-the-right-api">Developer Tools: The trick to finding the right API</a></li>
+    <li><a href="#postman-putting-it-into-action">Postman: Putting it into Action</a>
+      <ul>
+        <li><a href="#how-do-you-authenticate">How do you Authenticate?</a></li>
+      </ul>
+    </li>
+    <li><a href="#access-postman-collection">Access Postman Collection</a></li>
+    <li><a href="#examples">Examples</a>
+      <ul>
+        <li><a href="#1-identity-manager-migration-tool-flinghttpsflingsvmwarecomidentity-manager-migration-backup-tool">1: <a href="https://flings.vmware.com/identity-manager-migration-backup-tool">Identity Manager Migration Tool Fling</a></a></li>
+        <li><a href="#2-ws1-scim-adapterhttpsflingsvmwarecomworkspace-one-uem-scim-adapter">2: <a href="https://flings.vmware.com/workspace-one-uem-scim-adapter">WS1 SCIM Adapter</a></a></li>
+      </ul>
+    </li>
+    <li><a href="#wrap-up">Wrap up</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="evolving-access-through-apis">Evolving Access through APIs</h1>
+<p>Workspace One Access is VMware&rsquo;s Product Line that helps provide seamless single sign on and conditional access for Applications from End User&rsquo;s client devices. It is built using technologies such as</p>
+<ul>
+<li>SAML (<a href="https://tools.ietf.org/html/rfc7522" target="_blank">RFC 7522</a>)</li>
+<li>OAuth (<a href="https://tools.ietf.org/html/rfc6749" target="_blank">RFC 6749</a>) and</li>
+<li><a href="https://openid.net/connect/" target="_blank">Open ID Connect</a></li>
+</ul>
+<p>If you are new to the Product, you can find more details about WorkspaceONE(WS1) Access</p>
+<ul>
+<li>Product Page - <a href="https://www.vmware.com/products/workspace-one/access.html" target="_blank">here</a></li>
+<li>Documentation - <a href="https://docs.vmware.com/en/VMware-Workspace-ONE-Access/index.html" target="_blank">here</a></li>
+</ul>
+<p>In this post, I&rsquo;m going to cover a neat trick that will help you find and build on the APIs that are available with WS1 Access.</p>
+<h2 id="first-where-are-the-supported-apis">First, where are the supported APIs?</h2>
+<figure class="imageleft"><a class="lightgallery" href="/img/euc/access-apis/vidm-api.png" title="/img/euc/access-apis/vidm-api.png" data-thumbnail="/img/euc/access-apis/vidm-api.png" data-sub-html="<h2>API Categories for WS1 Access</h2>">
+        <img
+            class="lazyload img-imageleft"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-apis/vidm-api.png"
+            data-srcset="/img/euc/access-apis/vidm-api.png, /img/euc/access-apis/vidm-api.png 1.5x, /img/euc/access-apis/vidm-api.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-apis/vidm-api.png" height="150px" />
+    </a><figcaption class="image-caption">API Categories for WS1 Access</figcaption>
+    </figure>
+<p>As a general pointer, All APIs and developer related content for VMware are available in <a href="https://code.vmware.com" target="_blank">code.vmware.com</a> with API documentations and code samples for VMware Products. Another newer resource is <a href="https://developer.vmware.com/" target="_blank">developer.vmware.com</a> (in beta as of 10/2020) which is a slick new developer documentation landing page for all VMware products.</p>
+<p>All the supported APIs for WS1 Access can be found <a href="https://code.vmware.com/apis/57/idm" target="_blank">code.vmware.com/idm</a> as shown below</p>
+<p>Additionally, there are also some samples with WS1 APIs on <a href="https://code.vmware.com/samples?categories=Sample&amp;keywords=&amp;tags=Identity%20Manager&amp;groups=&amp;filters=&amp;sort=dateDesc&amp;page=" target="_blank">code.vmware.com</a> and one such examples is <a href="https://code.vmware.com/samples/7419/okta-to-vmwaccess?h=Identity%20Manager#code" target="_blank">this one</a> which assists with migrating Apps from Okta to WS1 Access</p>
+<h2 id="what-if-you-need-more">What if you need more?</h2>
+<p>Well, why would you need more? One very obvious reason is bulk operations - I&rsquo;ve come across multiple requests that seek to do a bulk operations on Access such as</p>
+<ol>
+<li>Exporting multiple Apps</li>
+<li>Importing multiple Apps</li>
+<li>App assignment</li>
+</ol>
+<p>As of writing this post, these capabilities are not built into the WS1 Access UI and not available through the documented and supported APIs.</p>
+<br/>
+<div class="details admonition warning open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-exclamation-triangle fa-fw"></i>Disclaimer<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">As a word of precaution, this is definitely for those advanced users who find that Access severely lacks capabilities permitting bulk action. The blog covers undocumented APIs meaning they are not supported</div>
+        </div>
+    </div>
+<h2 id="developer-tools-the-trick-to-finding-the-right-api">Developer Tools: The trick to finding the right API</h2>
+<p>The trick to finding these APIs is to use the Developer Tools built into Chrome or any Modern Browser. The Developer Tools is a multi-faceted tool and the one that we want provides a <code>Fiddler</code> like functionality allowing us to see all the HTTP requests and responses that are being processed by the browser. This <a href="https://balsamiq.com/support/faqs/browserconsole/" target="_blank">article</a> provides all the ways to get to the Developer Console on all the major Browsers. Once you have the Network Pane open on your browser, you&rsquo;ll also want to enable the Persist logs checkbox which will persist all the requests and responses between any redirects.</p>
+<figure><a class="lightgallery" href="/img/euc/access-apis/api-persist-logs.png" title="/img/euc/access-apis/api-persist-logs.png" data-thumbnail="/img/euc/access-apis/api-persist-logs.png" data-sub-html="<h2>Developer Tools - Persist logs</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-apis/api-persist-logs.png"
+            data-srcset="/img/euc/access-apis/api-persist-logs.png, /img/euc/access-apis/api-persist-logs.png 1.5x, /img/euc/access-apis/api-persist-logs.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-apis/api-persist-logs.png" />
+    </a><figcaption class="image-caption">Developer Tools - Persist logs</figcaption>
+    </figure>
+<p>On the Browser tab with Developer Tools launched, navigate to WS1 Access and perform the action that you are looking an API for (PRO TIP: you may want to clear the logs before you do this). The action that you performed should result in an HTTP request as shown below with the requests and the responses as shown the images below. This is the undocumented API that we are looking for.</p>
+<figure><a class="lightgallery" href="/img/euc/access-apis/api-request.png" title="/img/euc/access-apis/api-request.png" data-thumbnail="/img/euc/access-apis/api-request.png" data-sub-html="<h2>Access Search API - Request</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-apis/api-request.png"
+            data-srcset="/img/euc/access-apis/api-request.png, /img/euc/access-apis/api-request.png 1.5x, /img/euc/access-apis/api-request.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-apis/api-request.png" />
+    </a><figcaption class="image-caption">Access Search API - Request</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/access-apis/api-response.png" title="/img/euc/access-apis/api-response.png" data-thumbnail="/img/euc/access-apis/api-response.png" data-sub-html="<h2>Access Search API - Response</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-apis/api-response.png"
+            data-srcset="/img/euc/access-apis/api-response.png, /img/euc/access-apis/api-response.png 1.5x, /img/euc/access-apis/api-response.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-apis/api-response.png" />
+    </a><figcaption class="image-caption">Access Search API - Response</figcaption>
+    </figure>
+<h2 id="postman-putting-it-into-action">Postman: Putting it into Action</h2>
+<p>Now that we have out API, it&rsquo;s time to put the API into action. Follow along through the screenshots to build your new API request in <a href="https://www.postman.com/downloads/" target="_blank">Postman</a> which is a great tool and comes in really handy, especially if you are unfamiliar with coding, to make API requests and further automate them (to an extent).</p>
+<p>You can quickly build the request as I&rsquo;ve shown through the screenshots below. You&rsquo;ll need the below (which if you recall can be found in the )</p>
+<ul>
+<li><strong>API request URL</strong></li>
+<li><strong>HTTP method</strong> (POST, GET, PUT, DELETE etc)</li>
+<li><strong>Authentication</strong> (Bearer, Basic etc)</li>
+<li>Request <strong>Headers</strong> (with Access, each API have their own specific Headers for Content-Type and Accept)
+<ul>
+<li><strong>Content-Type</strong> is the type that you are sending in the request</li>
+<li><strong>Accept</strong> is the type that is acceptable in the response</li>
+</ul>
+</li>
+<li>Request <strong>Query Parameters</strong> (key value pairs)</li>
+<li>Request <strong>Body</strong> (in JSON or XML format)</li>
+</ul>
+<p><figure><a class="lightgallery" href="/img/euc/access-apis/postman-params.png" title="/img/euc/access-apis/postman-params.png" data-thumbnail="/img/euc/access-apis/postman-params.png" data-sub-html="<h2>Access Search API in Postman - Query Parameters</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-apis/postman-params.png"
+            data-srcset="/img/euc/access-apis/postman-params.png, /img/euc/access-apis/postman-params.png 1.5x, /img/euc/access-apis/postman-params.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-apis/postman-params.png" />
+    </a><figcaption class="image-caption">Access Search API in Postman - Query Parameters</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/access-apis/postman-auth.png" title="/img/euc/access-apis/postman-auth.png" data-thumbnail="/img/euc/access-apis/postman-auth.png" data-sub-html="<h2>Access Search API in Postman - Authentication</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-apis/postman-auth.png"
+            data-srcset="/img/euc/access-apis/postman-auth.png, /img/euc/access-apis/postman-auth.png 1.5x, /img/euc/access-apis/postman-auth.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-apis/postman-auth.png" />
+    </a><figcaption class="image-caption">Access Search API in Postman - Authentication</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/access-apis/postman-headers.png" title="/img/euc/access-apis/postman-headers.png" data-thumbnail="/img/euc/access-apis/postman-headers.png" data-sub-html="<h2>Access Search API in Postman - Request Headers</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-apis/postman-headers.png"
+            data-srcset="/img/euc/access-apis/postman-headers.png, /img/euc/access-apis/postman-headers.png 1.5x, /img/euc/access-apis/postman-headers.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-apis/postman-headers.png" />
+    </a><figcaption class="image-caption">Access Search API in Postman - Request Headers</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/access-apis/postman-body.png" title="/img/euc/access-apis/postman-body.png" data-thumbnail="/img/euc/access-apis/postman-body.png" data-sub-html="<h2>Access Search API in Postman - Request Body</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-apis/postman-body.png"
+            data-srcset="/img/euc/access-apis/postman-body.png, /img/euc/access-apis/postman-body.png 1.5x, /img/euc/access-apis/postman-body.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-apis/postman-body.png" />
+    </a><figcaption class="image-caption">Access Search API in Postman - Request Body</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/access-apis/postman-tests.png" title="/img/euc/access-apis/postman-tests.png" data-thumbnail="/img/euc/access-apis/postman-tests.png" data-sub-html="<h2>Access Search API in Postman - Testing the Request</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-apis/postman-tests.png"
+            data-srcset="/img/euc/access-apis/postman-tests.png, /img/euc/access-apis/postman-tests.png 1.5x, /img/euc/access-apis/postman-tests.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-apis/postman-tests.png" />
+    </a><figcaption class="image-caption">Access Search API in Postman - Testing the Request</figcaption>
+    </figure></p>
+<h3 id="how-do-you-authenticate">How do you Authenticate?</h3>
+<p>Now, in the UI you logged in and then performed an action. This login action behind the scenes created some cookies and the subsequent requests from the same browser also sent those cookies to tell the server that the request is from an authenticated user. How do we do that in our Postman API request?</p>
+<p>While there are a few ways, I&rsquo;m choosing to do this through the pre-request action which makes sure I&rsquo;ve a valid access token when making the request. This pre-request script is also going to save the access token as a variable that I can reuse. To enable my login without hard coding the value in the script, I&rsquo;ve a few environment variables setup in Postman such as</p>
+<ul>
+<li>vidm_url (the tenant url)</li>
+<li>vidm_un (the admin username)</li>
+<li>vidm_pw (the admin password)</li>
+</ul>
+<figure><a class="lightgallery" href="/img/euc/access-apis/postman-pre-req.png" title="/img/euc/access-apis/postman-pre-req.png" data-thumbnail="/img/euc/access-apis/postman-pre-req.png" data-sub-html="<h2>Access Search API in Postman - Pre-request</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-apis/postman-pre-req.png"
+            data-srcset="/img/euc/access-apis/postman-pre-req.png, /img/euc/access-apis/postman-pre-req.png 1.5x, /img/euc/access-apis/postman-pre-req.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-apis/postman-pre-req.png" />
+    </a><figcaption class="image-caption">Access Search API in Postman - Pre-request</figcaption>
+    </figure>
+<h2 id="access-postman-collection">Access Postman Collection</h2>
+<p>To make it easier for you, I&rsquo;ve made available my postman collection for Access available below.</p>
+<p><strong>10/2020</strong> - <a href="https://www.getpostman.com/collections/c50b7bb22ab87f03bc1a">https://www.getpostman.com/collections/c50b7bb22ab87f03bc1a</a></p>
+<ul>
+<li>Login</li>
+<li>App Management (CRUD)</li>
+<li>Category Management (CRUD)</li>
+<li>App to Category mapping</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<p>Here are a list of examples around Workspace ONe which leverage APIs to build completely new capabilities</p>
+<h3 id="1-identity-manager-migration-tool-flinghttpsflingsvmwarecomidentity-manager-migration-backup-tool">1: <a href="https://flings.vmware.com/identity-manager-migration-backup-tool" target="_blank">Identity Manager Migration Tool Fling</a></h3>
+<p><a href="https://flings.vmware.com/users/chris-halstead" target="_blank">Chris Halstead</a> has built a fling which helps export web apps from one tenant and import them into another or the same tenant. A pretty cool way to help with migration scenarios or to perform quick testing in UAT or DEV environments to mirror your PROD Apps.</p>
+<h3 id="2-ws1-scim-adapterhttpsflingsvmwarecomworkspace-one-uem-scim-adapter">2: <a href="https://flings.vmware.com/workspace-one-uem-scim-adapter" target="_blank">WS1 SCIM Adapter</a></h3>
+<p><a href="https://flings.vmware.com/users/engineer-b094536e-7e99-4e74-8afc-a50f28e39eb4" target="_blank">Joe Rainone</a> and <a href="https://flings.vmware.com/users/engineer-94e36c2e-0327-4ba9-a456-ba244dc9040e" target="_blank">Matt Williams</a> authored the WS1 UEM SCIM Adapter which allows UEM to leverage cloud-based identity resources. Explained in much more detail in this <a href="https://blog.virtualprivateer.com/ws1-uem-scim-adapter/" target="_blank">post at virtualprivateer.com</a></p>
+<h2 id="wrap-up">Wrap up</h2>
+<p>While some of these tools maybe outdated or not relevant, it gives you a great idea of how these APIs can be leveraged and hopefully this post empowers you create more solutions beyond what the product makes available.</p>
+<p>Thanks for reading! Please share and add comments if you&rsquo;ve found this useful!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-12-18&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/6061f623fafff7331df39faf517bd0434b1ce005" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 6061f623fafff7331df39faf517bd0434b1ce005: v1 ready website with Posts from VEBA, Access, WS1 and K8s">
+                                    <i class="fas fa-hashtag fa-fw"></i>6061f62</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share sharebtns">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/access-apis/" data-title="Access: The tale of the hidden APIs" data-via="pkblah" data-hashtags="Access,APIs,Postman,Developer Tools"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/access-apis/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/access-apis/" data-title="Access: The tale of the hidden APIs" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/access-apis/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/access-apis/" data-title="Access: The tale of the hidden APIs" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/access/">Access</a>,&nbsp;<a href="/tags/apis/">APIs</a>,&nbsp;<a href="/tags/postman/">Postman</a>,&nbsp;<a href="/tags/developer-tools/">Developer Tools</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/post/bootstrap-k8s/" class="prev" rel="prev" title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico"><i class="fas fa-angle-left fa-fw"></i>Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico</a>
+            <a href="/post/uem-organization-groups/" class="next" rel="next" title="Unpacking Organization Groups in Workspace ONE UEM">Unpacking Organization Groups in Workspace ONE UEM<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2020</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":80},"comment":{"gitalk":{"admin":["pksrc"],"clientID":"asdasda","clientSecret":"asdasdads","id":"2020-10-24T00:00:00Z","owner":"pksrc","repo":"my-gitalk","title":"Access: The tale of the hidden APIs"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-XXXXXABCD-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXABCD-1" async></script></body>
+</html>

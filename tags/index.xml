@@ -1,22 +1,78 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Tags - Tag - Cloud Tekki</title>
-        <link>https://cloudtekki.pdotk.com/tags/</link>
+        <link>https://cloudtekki.com/tags/</link>
         <description>Tags - Tag - Cloud Tekki</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (P.K)</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (P.K)</webMaster><lastBuildDate>Mon, 07 Sep 2020 21:14:30 -0700</lastBuildDate><atom:link href="https://cloudtekki.pdotk.com/tags/" rel="self" type="application/rss+xml" /><item>
-    <title>Test</title>
-    <link>https://cloudtekki.pdotk.com/tags/test/</link>
-    <pubDate>Mon, 07 Sep 2020 21:14:30 -0700</pubDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>End User Computing</title>
+    <link>https://cloudtekki.com/tags/end-user-computing/</link>
+    <pubDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://cloudtekki.pdotk.com/tags/test/</guid>
+    <guid>https://cloudtekki.com/tags/end-user-computing/</guid>
     <description><![CDATA[]]></description>
 </item><item>
-    <title>Event-Driven</title>
-    <link>https://cloudtekki.pdotk.com/tags/event-driven/</link>
-    <pubDate>Tue, 06 Aug 2019 21:14:30 -0700</pubDate>
+    <title>Unified Endpoint Management</title>
+    <link>https://cloudtekki.com/tags/unified-endpoint-management/</link>
+    <pubDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
-    <guid>https://cloudtekki.pdotk.com/tags/event-driven/</guid>
+    <guid>https://cloudtekki.com/tags/unified-endpoint-management/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Access</title>
+    <link>https://cloudtekki.com/tags/access/</link>
+    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/access/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>APIs</title>
+    <link>https://cloudtekki.com/tags/apis/</link>
+    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/apis/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Automation</title>
+    <link>https://cloudtekki.com/tags/automation/</link>
+    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/automation/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Calico</title>
+    <link>https://cloudtekki.com/tags/calico/</link>
+    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/calico/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Developer Tools</title>
+    <link>https://cloudtekki.com/tags/developer-tools/</link>
+    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/developer-tools/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Kubernetes</title>
+    <link>https://cloudtekki.com/tags/kubernetes/</link>
+    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/kubernetes/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Postman</title>
+    <link>https://cloudtekki.com/tags/postman/</link>
+    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/postman/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Ubuntu</title>
+    <link>https://cloudtekki.com/tags/ubuntu/</link>
+    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/ubuntu/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

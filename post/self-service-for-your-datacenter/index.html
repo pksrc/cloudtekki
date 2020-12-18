@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Enabling Self Service for your DataCenter — Part I - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to Simplify and Clarify Technology Concepts and Solutions for those that strive to thrive"><meta property="og:title" content="Enabling Self Service for your DataCenter — Part I" />
+<meta property="og:description" content="Info  This post was originally published in Medium - pkblah.medium.com/self-service-for-your-datacenter-part-i   It doesn’t have to be Business vs IT anymore! Either sides’ needs while well-intentioned may seem to be at conflict with each other..
+Business aims to innovate and promote new capabilities for their consumers with the goal of improving services delivered or user experience to retain existing users or acquire new users.
+IT as true partners to the Business want to provide the right platform and infrastructure but need to ensure that they guaranteeing the right security guidance, conformance to standards and best practices." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cloudtekki.com/post/self-service-for-your-datacenter/" />
+<meta property="article:published_time" content="2020-10-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-18T15:18:51-08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Enabling Self Service for your DataCenter — Part I"/>
+<meta name="twitter:description" content="Info  This post was originally published in Medium - pkblah.medium.com/self-service-for-your-datacenter-part-i   It doesn’t have to be Business vs IT anymore! Either sides’ needs while well-intentioned may seem to be at conflict with each other..
+Business aims to innovate and promote new capabilities for their consumers with the goal of improving services delivered or user experience to retain existing users or acquire new users.
+IT as true partners to the Business want to provide the right platform and infrastructure but need to ensure that they guaranteeing the right security guidance, conformance to standards and best practices."/>
+<meta name="application-name" content="Cloud Tekki">
+<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/logo/cloud-tekki-fav.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/self-service-for-your-datacenter/" /><link rel="prev" href="https://cloudtekki.com/post/trusted-tls-for-veba/" /><link rel="next" href="https://cloudtekki.com/post/bootstrap-k8s/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Enabling Self Service for your DataCenter — Part I",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cloudtekki.com\/post\/self-service-for-your-datacenter\/"
+        },"genre": "posts","keywords": "event-driven, cloud-native","wordcount":  2395 ,
+        "url": "https:\/\/cloudtekki.com\/post\/self-service-for-your-datacenter\/","datePublished": "2020-10-07T00:00:00+00:00","dateModified": "2020-12-18T15:18:51-08:00","publisher": {
+            "@type": "Organization",
+            "name": "Partheeban Kandasamy"},"author": {
+                "@type": "Person",
+                "name": "Partheeban Kandasamy (PK)"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span> Posts 
+                    </a><a class="menu-item" href="/categories/"><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span> Categories 
+                    </a><a class="menu-item" href="/tags/"><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span> Tags 
+                    </a><a class="menu-item" href="/about-pk/"><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span> About 
+                    </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span>Posts</a><a class="menu-item" href="/categories/" title=""><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span>Categories</a><a class="menu-item" href="/tags/" title=""><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span>Tags</a><a class="menu-item" href="/about-pk/" title=""><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="twitter-auto" style="position: relative; margin-top: 1rem; padding-top: 1rem;">
+                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah?ref_src=twsrc%5Etfw">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            </div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Enabling Self Service for your DataCenter — Part I</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/veba/"><i class="far fa-folder fa-fw"></i>VEBA</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/self-service-for-your-datacenter/" data-title="Enabling Self Service for your DataCenter — Part I" data-via="pkblah" data-hashtags="event-driven,cloud-native"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/self-service-for-your-datacenter/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/self-service-for-your-datacenter/" data-title="Enabling Self Service for your DataCenter — Part I" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/self-service-for-your-datacenter/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/self-service-for-your-datacenter/" data-title="Enabling Self Service for your DataCenter — Part I" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-07">2020-10-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2395 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;12 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#so-what-does-the-self-service-app-do">So, what does the Self-Service app do?</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#the-gateway-function-written-in-python">The Gateway Function (written in python)</a>
+      <ul>
+        <li><a href="#slack-app-setup">Slack App Setup</a></li>
+        <li><a href="#receive-payload-from-slack">Receive payload from Slack</a></li>
+        <li><a href="#verification-and-acknowledgement">Verification and Acknowledgement</a></li>
+        <li><a href="#process-commands">Process Commands</a></li>
+      </ul>
+    </li>
+    <li><a href="#the-vm-lifecycle-functions-written-in-powercli">The VM Lifecycle Functions (written in PowerCLI)</a>
+      <ul>
+        <li><a href="#utility--echo-the-payload-from-the-gateway">Utility — Echo the payload from the Gateway</a></li>
+        <li><a href="#create-a-vm">Create a VM:</a></li>
+        <li><a href="#clone-a-vm-not-covered-in-demo">Clone a VM (not covered in demo)</a></li>
+        <li><a href="#clone-a-vm-from-template">Clone a VM from Template</a></li>
+        <li><a href="#power-cycle-functions">Power Cycle functions</a></li>
+        <li><a href="#remove-a-vm">Remove a VM</a></li>
+        <li><a href="#transform-a-vm-not-covered-in-demo">Transform a VM (not covered in demo)</a></li>
+        <li><a href="#utility--run-a-powercli-command-on-vcenter-_use-caution_">Utility — Run a PowerCLI command on vCenter <em>(use caution)</em></a></li>
+      </ul>
+    </li>
+    <li><a href="#function-deployment">Function Deployment</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">This post was originally published in Medium - <a href="https://medium.com/enabling-self-service-for-your-datacenter-part-i-c550176b6c1c" target="_blank">pkblah.medium.com/self-service-for-your-datacenter-part-i</a></div>
+        </div>
+    </div>
+<p>It doesn’t have to be <strong>Business vs IT</strong> anymore! Either sides’ needs while well-intentioned may seem to be at conflict with each other..</p>
+<p><strong>Business</strong> aims to innovate and promote new capabilities for their consumers with the goal of improving services delivered or user experience to retain existing users or acquire new users.</p>
+<p><strong>IT</strong> as true partners to the Business want to provide the right platform and infrastructure but need to ensure that they guaranteeing the right security guidance, conformance to standards and best practices.</p>
+<p>A key area that often exacerbates this divide is how interaction between Business and IT teams are facilitated. Traditionally and in a majority of existing Enterprises, Ticketing Systems are often the preferred way for Business to engage IT. Once a request is placed, it is then subjected to an elaborate Change Management Approval process before initiating a project requested by Business. Such processes ensure thoroughness but stunts innovation agility.</p>
+<p>Modern Cloud Platforms have challenged that approach by enabling anyone with just a credit card to spin up Servers, Services or Desktops anytime — leading to the rise of Shadow IT. What if we bring these cloud-like capabilities to the SDDC? <a href="https://medium.com/u/d568d91705bd?source=post_page-----c550176b6c1c--------------------------------" target="_blank">F. Gold</a> and I recently delivered a VMworld Session where we built a demo of doing just that!</p>
+<blockquote>
+<p>Arm Yourself with Event-Driven Functions and Reimagine SDDC Capabilities [HCP1404] — <a href="http://bit.ly/pksession" target="_blank">http://bit.ly/pksession</a></p>
+</blockquote>
+<p>The idea stemmed from my work with the <a href="https://vmweventbroker.io/" target="_blank">VMware Event Broker Appliance</a> (VEBA). VMware Event Broker Appliance deployed with <a href="https://www.openfaas.com/" target="_blank">OpenFaaS</a> provides the ability to deploy functions which can be triggered in two different ways —</p>
+<ul>
+<li><strong>Event Driven</strong> — example function that get triggered on an event to make a POST request to an HTTP endpoint is <a href="https://medium.com/@pkblah/a-function-for-all-rest-apis-403b4fdf15e8?source=friends_link&amp;sk=fc845deda60e4d11c022374c4b21ee0a" target="_blank">available here</a> (works with Pagerduty, Slack, ServiceNow, ServiceDesk, Jira etc)</li>
+<li><strong>Command/User Driven</strong> — enabled through the function’s HTTP endpoint as explained in OpenFaaS’s blog <a href="https://www.openfaas.com/blog/stateless-microservices/" target="_blank">here</a></li>
+</ul>
+<p>As <a href="https://vmweventbroker.io/#team-veba" target="_blank">Team #VEBA</a> continues to look for ways to stretch the boundaries around capabilities unlocked through VEBA, I wanted to partner up with <a href="https://medium.com/u/d568d91705bd?source=post_page-----c550176b6c1c--------------------------------" target="_blank">F. Gold</a> to leverage the event-driven capabilities as well as incorporate the command-driven aspect of a deployed function to deliver a true self-service experience for Business Units.</p>
+<h2 id="so-what-does-the-self-service-app-do">So, what does the Self-Service app do?</h2>
+<p>As we started putting our heads together and thinking of a good usecase to explore both the event-driven and command/user driven capabilities, the idea of a Slack bot came to mind along with some auto-remediation of issues.</p>
+<p>Here are the questions that we sought out to answer</p>
+<p>For the <strong>Command/User driven</strong> use case, What if IT enables Business Stakeholders to interact with VMware SDDC through a Slack command to —</p>
+<ul>
+<li><strong>Create a VM</strong> — This can be useful in the early stages of enabling self-service. IT can control the size of the VM spec by possibly starting with their standard VM Spec or maybe even a lower Spec</li>
+<li><strong>Clone a VM</strong> — This can enable horizontal scaling of their Application or troubleshoot configuration issues by cloning their existing VMs</li>
+<li><strong>Clone from a VM Template</strong> — When Business teams standardize on a VM Spec and Template, IT could create a VM Template as specified by Business and validated by security. This template can be cloned by the user for their Application deployment</li>
+<li><strong>Power cycle VMs</strong> — At any given time, there may be a need to power cycle VMs (outside of the OS controls available). These controls can be provided to the user and also giving them the power to utilize resources efficiently</li>
+<li><strong>Delete VM</strong> —IT can offload resposible clean up of SDDC resources by enabling the BU to delete VMs on demand</li>
+</ul>
+<p>For the <strong>event-driven</strong> use case, what if certain crises are handled automatically thus increasing operational efficiency —</p>
+<ul>
+<li><strong>Vertical Scaling a VM</strong> — Not everyone has a clear understanding of what their VM’s spec is going to be. More often than not, to play safe, the request for VM Spec has added buffer and is unreasonably sized. What if when a VM is running low on CPU or Memory resources, a function is triggered to auto increase the VM Spec (by 1 CPU upto a predetermined max value and by 2Gb upto a predetermined max value). This will enable Business teams to start with a low or appropriately sized VM and give the assurance that VMs can scale up to handle any future loads</li>
+<li><strong>Auto Storage DRS</strong> — When a host datastore is running out of space, a function can be triggered to move the VM to a different datastore.</li>
+</ul>
+<p>{{}<youtube iJ39aMVvMR8>}</p>
+<h2 id="architecture">Architecture</h2>
+<p>To make this App a reality, we are going to build three main components</p>
+<p>First, the <strong>Gateway function</strong> called <code>**iaasgw**</code> written in <code>**python**</code>**—** This function is going to recieve the Slack bot command and based on the command, triage to a set of VM Lifecycle functions.</p>
+<blockquote>
+<p>This function was written in Python because of my familiarity with Python.</p>
+</blockquote>
+<p>Second, the <strong>VM Lifecycle functions</strong> written in <code>**PowerCLI**</code>— These functions only respond to the Gateway function and will help perform a specific action on a VM within vCenter. There are also a couple of Utility functions that i’ve used for debugging and to query vCenter.</p>
+<blockquote>
+<p>These functions were first attempted to be implemented in Python but I found the PowerCLI an easy and efficient way to interact with vSphere.</p>
+</blockquote>
+<p>Lastly, the <strong>Event-driven crisis remediation functions</strong> written in <code>Go</code>— These functions will be triggered when an Alarm status changes to<code>red</code>.</p>
+<blockquote>
+<p>These functions were written in Go purely because Frankie,our Go expert, was exploring and implementing these usecases.</p>
+</blockquote>
+<figure><a class="lightgallery" href="https://miro.medium.com/max/3012/1*l2CTz_sUAjRmWugTV_952A.png" title="https://miro.medium.com/max/3012/1*l2CTz_sUAjRmWugTV_952A.png" data-thumbnail="https://miro.medium.com/max/3012/1*l2CTz_sUAjRmWugTV_952A.png" data-sub-html="<h2>Self-Service App Architecture with VEBA (depoyed with OpenFaaS)</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/3012/1*l2CTz_sUAjRmWugTV_952A.png"
+            data-srcset="https://miro.medium.com/max/3012/1*l2CTz_sUAjRmWugTV_952A.png, https://miro.medium.com/max/3012/1*l2CTz_sUAjRmWugTV_952A.png 1.5x, https://miro.medium.com/max/3012/1*l2CTz_sUAjRmWugTV_952A.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/3012/1*l2CTz_sUAjRmWugTV_952A.png" />
+    </a><figcaption class="image-caption">Self-Service App Architecture with VEBA (depoyed with OpenFaaS)</figcaption>
+    </figure>
+<p>Now, let’s look at these components in detail.</p>
+<h2 id="the-gateway-function-written-in-python">The Gateway Function (written in python)</h2>
+<p>Let’s start by creating the Gateway function which is the entry point for Slack Bot.</p>
+<p>You can find the source code for this function on the <a href="https://github.com/pksrc/vebafn/tree/master/vm-self-service-app" target="_blank">pksrc/vebafn</a> repository here — <a href="https://github.com/pksrc/vebafn/tree/master/vm-self-service-app/python/iaasgw" target="_blank">https://github.com/pksrc/vebafn/tree/master/vm-self-service-app/python/iaasgw</a></p>
+<h3 id="slack-app-setup">Slack App Setup</h3>
+<p>Slack bot command setup require a publicly available HTTP endpoint. For security reasons and for most third party integrations, there is most likely a requirement to have a secure endpoint also.</p>
+<a class="lightgallery" href="https://miro.medium.com/max/1100/1*AnUCLWLuimMZdP0PQfQAlA.png" title="https://miro.medium.com/max/1100/1*AnUCLWLuimMZdP0PQfQAlA.png" data-thumbnail="https://miro.medium.com/max/1100/1*AnUCLWLuimMZdP0PQfQAlA.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/1100/1*AnUCLWLuimMZdP0PQfQAlA.png"
+            data-srcset="https://miro.medium.com/max/1100/1*AnUCLWLuimMZdP0PQfQAlA.png, https://miro.medium.com/max/1100/1*AnUCLWLuimMZdP0PQfQAlA.png 1.5x, https://miro.medium.com/max/1100/1*AnUCLWLuimMZdP0PQfQAlA.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/1100/1*AnUCLWLuimMZdP0PQfQAlA.png" />
+    </a>
+<p>For my demo and as previously documented <a href="https://medium.com/@pkblah/publicly-trusted-tls-for-vmware-eventing-platform-6c6f5d0a14fb?source=friends_link&amp;sk=2801b0b75bdc1bddfd1fcc7fa4d28d67" target="_blank">here</a>, I used Let’s Encrypt to get a publicly trusted TLS certificate. I also needed a public IP for which i used NoIP to map the Dynamic IP from my ISP to a DNS.</p>
+<blockquote>
+<p>Publicly trusted TLS for VMware Event Broker — <a href="https://medium.com/@pkblah/publicly-trusted-tls-for-vmware-eventing-platform-6c6f5d0a14fb?source=friends_link&amp;sk=2801b0b75bdc1bddfd1fcc7fa4d28d67" target="_blank">here</a></p>
+<p>Dynamic DNS solution with NoIP — <a href="https://www.noip.com/" target="_blank">here</a></p>
+</blockquote>
+<blockquote>
+<p><em>Pro Tip:</em> If you are setting up a Slackbot with OpenFaaS functions, make sure to use the async-function path for the deployed function. For example if your deployed function URL is <code>[https://pdotk.lab.net/function/veba-echo](https://pdotk.ddns.net/function/veba-echo)</code> use <code>[https://pdotk.lab.net/async-function/veba-echo](https://pdotk.ddns.net/function/veba-echo)</code> as this ensures that an acknowledgement is immediately sent back to Slack and thus giving you the ability to do any processing asynchronously.</p>
+</blockquote>
+<h3 id="receive-payload-from-slack">Receive payload from Slack</h3>
+<p>Once the Bot is setup and deployed to a channel, when a user invokes the Slack slash command <code>/iaas</code>, Slack makes a HTTP request to the <code>Request URL</code> specified during the App setup. The function would receive the following request parameters as explained <a href="https://api.slack.com/interactivity/slash-commands" target="_blank">here</a> and as shown below</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">###  
+# token = &#39;pXxmdXfxxxxxxxxx4mslg&#39;  
+# team_id = &#39;T9DXXXD7Z&#39;  
+# team_domain = &#39;pkslack&#39;  
+# channel_id = &#39;C017763BZGX&#39;  
+# channel_name = &#39;vmworld2020&#39;  
+# user_id = &#39;U9BXXXEQ1&#39;  
+# user_name = &#39;partheeban.kandasamy&#39;  
+# command = &#39;echo&#39;  
+# response_url = &#39;https://hooks.slack.com/commands/T9DiY7&#39;  
+# trigger_id = &#39;1258627504981.319069523.979f734485f07cc27&#39;  
+# text = &#34;createvm&#34;  
+##
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><em>Pro Tip:</em> If you are working on a new integration or even when developing a new VEBA event-driven function and need to check the event payload, deploy any of the echo functions (here is the python <a href="https://github.com/vmware-samples/vcenter-event-broker-appliance/tree/master/examples/python/echo" target="_blank">version</a>) to get a sense for the payload that the function is going to receive.</p>
+</blockquote>
+<h3 id="verification-and-acknowledgement">Verification and Acknowledgement</h3>
+<p>The first couse of action, immediately after recieving the payload from Slack, is to verify the authenticity by following the set of steps descibed in Slack’s documentation <a href="https://api.slack.com/authentication/verifying-requests-from-slack" target="_blank">here</a>. This ensures messages are not tampered during transit or protects against replay attacks.</p>
+<blockquote>
+<p><em>Pro Tip:</em> With OpenFaaS functions, all the HTTP headers are made available within the function (container) as an environment variable prepended with <code>Http_</code> and all the hyphens replaced with underscores. For example <code>X-Slack-Signature</code> in the HTTP request header would be available as an environment variable <code>Http_X_Slack_Signature</code>.</p>
+</blockquote>
+<p>Secondly, to ensure good user experience, we are going to respond back to the user with an acknowledgement. This acknowledgement will be sent to let the user know what command was invoked by making a POST request to the <code>response_url</code> that we got from Slack.</p>
+<h3 id="process-commands">Process Commands</h3>
+<p>Now, all that is left to do is to process the commands. For this, we’ll be triaging by making a HTTP POST request to a set of VM Lifecycle functions that will be deployed in the same OpenFaaS cluster.</p>
+<blockquote>
+<p><em>Pro Tip:</em> These functions will be available through the endpoint <code>http://gateway.openfaas:8080</code> within the kubernetes cluster. For example <code>_https://pdotk.lab.net/function/veba-echo_</code> <em>would be available at</em> <code>_http://gateway.openfaas:8080/function/veba-echo_</code></p>
+</blockquote>
+<p>To ensure security, we’ll be adding a secret key to the Slack payload which will be sent with the POST request to the VM Lifecycle function. This secret will be shared with the VM Lifecycle functions to ensure the request is indeed coming from the Gateway function.</p>
+<p>Based on the command recieved from the user, the right VM function will be invoked as shown below…</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">if(&#39;**echo**&#39;):  
+call [http://gateway.openfaas:8080/async-function/**powercli-echo**](http://gateway.openfaas:8080/async-function/powercli-echo&#39;)  
+with json=slack_payload + shared_keyelif(&#39;**spawn**&#39;):  
+call http://gateway.openfaas:8080/async-function/**powercli-createvm**&#39;  
+with json=slack_payload + shared_keyelif(&#39;**clonetemplate**&#39;):  
+call http://gateway.openfaas:8080/function/**powercli-vmclonetemplate**  
+with json=slack_payload + shared_keyelif(&#39;**clone**&#39;):  
+call http://gateway.openfaas:8080/async-function/**powercli-clonevm**  
+with json=slack_payload + shared_keyelif(&#39;**poweron**&#39;):  
+call [http://gateway.openfaas:8080/async-function/**powercli-poweronvm**](http://gateway.openfaas:8080/async-function/powercli-poweronvm)with json=slack_payload + shared_keyelif(&#39;**poweroff**&#39;):  
+call [http://gateway.openfaas:8080/async-function/**powercli-poweroffvm**](http://gateway.openfaas:8080/async-function/powercli-poweroffvm)  with json=slack_payload + shared_keyelif(&#39;**reboot**&#39;):  
+call http://gateway.openfaas:8080/async-function/**powercli-rebootvm**  
+with json=slack_payload + shared_keyelif(&#39;**nuke**&#39;):  
+call http://gateway.openfaas:8080/async-function/**powercli-deletevm**  
+with json=slack_payload + shared_keyelif(&#39;**transform**&#39;):  
+call http://gateway.openfaas:8080/async-function/**powercli-setvm**  
+with json=slack_payload + shared_keyelif(&#39;**invoke**&#39;):  
+call http://gateway.openfaas:8080/async-function/**powercli-danger**  
+with json=slack_payload + shared_keyelse:  
+#Make a POST request to Slack response URL with an  
+**ERROR** that the command was not found
+</code></pre></td></tr></table>
+</div>
+</div><p>Now, let’s take a look at the VM Lifecycle functions in the next part!</p>
+<h2 id="the-vm-lifecycle-functions-written-in-powercli">The VM Lifecycle Functions (written in PowerCLI)</h2>
+<p>These are the easiest functions of the lot to implement. We have set of functions implemented in PowerCLI that take a specific action within vCenter.</p>
+<p>You can find the source code for this function on the <a href="https://github.com/pksrc/vebafn/tree/master/vm-self-service-app" target="_blank">pksrc/vebafn</a> repository here — <a href="https://github.com/pksrc/vebafn/tree/master/vm-self-service-app/powercli/vmlifecycle" target="_blank">https://github.com/pksrc/vebafn/tree/master/vm-self-service-app/powercli</a></p>
+<p>These are architected to facilitate business logic addition or modification without impacting other VM functions or commands. For example, you could restrict the power cycle actions to be performed on VMs within a certain Host only, or the Create VM commands could be configured to add VMs to a certain host only. The high-level implementation logic for these functions is provided below</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">**Psuedo Code**  
+1. Process function secrets or configs - this function needs the vCenter Credentials2. Process the payload received from the Gateway3. Validate that the request is indeed from the Gateway function before allowing any critical functionality - verify the presence of the shared secret4. Connect to vCenter Server and Perform the intended change such as poweron, poweroff etc.. 
+</code></pre></td></tr></table>
+</div>
+</div><p>Here is the breakdown of all the functions, their functionality and how you can invoke them once they have been deployed.</p>
+<h3 id="utility--echo-the-payload-from-the-gateway">Utility — Echo the payload from the Gateway</h3>
+<p>The echo function helps with troubleshooting by printing to System Out the payload received by the function.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">**command: /iaas echo &lt;type something here&gt;  
+image**: pkbu/powercli-echo
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="create-a-vm">Create a VM:</h3>
+<p>Creates a VM of a certain specification which is configured and hardcoded to be 1 CPU, 128MB Memory and 128MB HDD. This is obviously not a realistic value for most scenarios and will have to be adjusted accordingly.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">**command: /iaas spawn &lt;vmname&gt;  
+image**: pkbu/powercli-createvm
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="clone-a-vm-not-covered-in-demo">Clone a VM (not covered in demo)</h3>
+<p>Creates a clone of a specific VM — I have a “TestVM” in my LAB which will be cloned. In a real world scenario, this could be a clone of a PROD VM to replicate issues or scale out services installed on a VM.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">**command: /iaas clone &lt;vmname&gt;  
+image**: pkbu/powercli-clonevm
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="clone-a-vm-from-template">Clone a VM from Template</h3>
+<p>Creates a clone from a VM Template. Once you have an idea of the VM Spec and the Operating System that is needed, it can be made available as a VM Template which can be cloned at will by the Slack user.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">**command: /iaas clonetemplate &lt;vmname&gt; &lt;templatename&gt;  
+image**: powercli-vmclonetemplate
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="power-cycle-functions">Power Cycle functions</h3>
+<p>A set of useful powercycle functions for a VM. In a real world scenario, it helps users be responsible about managing available resources as well as giving them the ability to powercycle VMs as a troubleshooting step at will.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">**command: /iaas poweron &lt;vmname&gt;  
+image**: [pkbu/powercli-poweronvm](http://gateway.openfaas:8080/async-function/powercli-poweronvm)**command: /iaas poweroff &lt;vmname&gt;  
+image**: pkbu[/powercli-poweroffvm](http://gateway.openfaas:8080/async-function/powercli-poweroffvm)**command: /iaas reset &lt;vmname&gt;  
+image**: pkbu[/powercli-rebootvm](http://gateway.openfaas:8080/async-function/powercli-rebootvm)
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="remove-a-vm">Remove a VM</h3>
+<p>Helps delete the VM from vCenter. Another helpful function that promotes responsible utilization of available resources. In real world, you must use caution and put in gaurd rails to prevent deleting VMs that must not be deleted.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">**command: /iaas nuke &lt;vmname&gt;  
+**- **image**: pkbu[/powercli-deletevm](http://gateway.openfaas:8080/async-function/powercli-deletevm)
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="transform-a-vm-not-covered-in-demo">Transform a VM (not covered in demo)</h3>
+<p>This function helps change the VM hardware spec at will by the Slack user. This wasn’t covered in the VMworld demo as this was handled through an event-driven scenario that will be covered in the Go function writeup.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">**command: /iaas transform &lt;vmname&gt; &lt;templatename&gt;  
+image**: pkbu/[powercli-setvm](http://gateway.openfaas:8080/async-function/powercli-setvm)
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="utility--run-a-powercli-command-on-vcenter-_use-caution_">Utility — Run a PowerCLI command on vCenter <em>(use caution)</em></h3>
+<p>This is a helpful <strong><em>yet dangerous</em></strong> function as it executes a PowerCLI command as-is against a established vCenter connection and the response (if any) is sent back to Slack. I’ve used this to query the status of a VM at any given point in time as shown below.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">**command: /iaas invoke get-vm -Name veba-test-vm| fl Id, Name, PowerState, NumCpu, CoresPerSocket, MemoryMB, VMHost | Out-string  
+image**: pkbu[/powercli-danger](http://gateway.openfaas:8080/async-function/powercli-danger)
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="function-deployment">Function Deployment</h2>
+<p>We’ve provided detailed steps on how to deploy these functions <a href="https://github.com/pksrc/vebafn/tree/master/vm-self-service-app" target="_blank">here</a> in the Readme. You should be able to tweak, deploy these functions and enable VM Self Service in your organization right away!</p>
+<p>We’ve covered a lot in this article and in Part II of this topic <a href="https://medium.com/u/d568d91705bd?source=post_page-----c550176b6c1c--------------------------------" target="_blank">F. Gold</a> will cover the the Event-driven Remediation functions.</p>
+<blockquote>
+<p><a href="https://medium.com/@codeaurix/enabling-self-service-for-your-datacenter-part-ii-943b670d0614" target="_blank">Enabling Self Service for your DataCenter — Part II</a></p>
+</blockquote>
+<p>This required a lot of effort to become a reality! Please let us know (tweet @<a href="https://twitter.com/pkblah" target="_blank">pkblah</a>) how you’ve used this or liked what we’ve made available.</p>
+<p>Happy Eventing!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-12-18&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/6061f623fafff7331df39faf517bd0434b1ce005" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 6061f623fafff7331df39faf517bd0434b1ce005: v1 ready website with Posts from VEBA, Access, WS1 and K8s">
+                                    <i class="fas fa-hashtag fa-fw"></i>6061f62</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share sharebtns">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/self-service-for-your-datacenter/" data-title="Enabling Self Service for your DataCenter — Part I" data-via="pkblah" data-hashtags="event-driven,cloud-native"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/self-service-for-your-datacenter/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/self-service-for-your-datacenter/" data-title="Enabling Self Service for your DataCenter — Part I" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/self-service-for-your-datacenter/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/self-service-for-your-datacenter/" data-title="Enabling Self Service for your DataCenter — Part I" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/event-driven/">event-driven</a>,&nbsp;<a href="/tags/cloud-native/">cloud-native</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/post/trusted-tls-for-veba/" class="prev" rel="prev" title="Publicly trusted TLS for VMware Eventing Platform"><i class="fas fa-angle-left fa-fw"></i>Publicly trusted TLS for VMware Eventing Platform</a>
+            <a href="/post/bootstrap-k8s/" class="next" rel="next" title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico">Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2020</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":80},"comment":{"gitalk":{"admin":["pksrc"],"clientID":"asdasda","clientSecret":"asdasdads","id":"2020-10-07T00:00:00Z","owner":"pksrc","repo":"my-gitalk","title":"Enabling Self Service for your DataCenter — Part I"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-XXXXXABCD-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXABCD-1" async></script></body>
+</html>

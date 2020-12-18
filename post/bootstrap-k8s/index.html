@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to Simplify and Clarify Technology Concepts and Solutions for those that strive to thrive"><meta property="og:title" content="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" />
+<meta property="og:description" content="This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I&rsquo;m hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native
+Getting Started As a baseline, here are my assumptions about those following along or to my future self" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cloudtekki.com/post/bootstrap-k8s/" />
+<meta property="article:published_time" content="2020-10-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-18T15:18:51-08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico"/>
+<meta name="twitter:description" content="This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I&rsquo;m hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native
+Getting Started As a baseline, here are my assumptions about those following along or to my future self"/>
+<meta name="application-name" content="Cloud Tekki">
+<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/logo/cloud-tekki-fav.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/bootstrap-k8s/" /><link rel="prev" href="https://cloudtekki.com/post/self-service-for-your-datacenter/" /><link rel="next" href="https://cloudtekki.com/post/access-apis/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Beginner's Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cloudtekki.com\/post\/bootstrap-k8s\/"
+        },"genre": "posts","keywords": "Kubernetes, Automation, Ubuntu, Calico","wordcount":  1835 ,
+        "url": "https:\/\/cloudtekki.com\/post\/bootstrap-k8s\/","datePublished": "2020-10-24T00:00:00+00:00","dateModified": "2020-12-18T15:18:51-08:00","publisher": {
+            "@type": "Organization",
+            "name": "Partheeban Kandasamy"},"author": {
+                "@type": "Person",
+                "name": "Partheeban Kandasamy (PK)"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span> Posts 
+                    </a><a class="menu-item" href="/categories/"><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span> Categories 
+                    </a><a class="menu-item" href="/tags/"><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span> Tags 
+                    </a><a class="menu-item" href="/about-pk/"><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span> About 
+                    </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span>Posts</a><a class="menu-item" href="/categories/" title=""><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span>Categories</a><a class="menu-item" href="/tags/" title=""><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span>Tags</a><a class="menu-item" href="/about-pk/" title=""><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="twitter-auto" style="position: relative; margin-top: 1rem; padding-top: 1rem;">
+                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah?ref_src=twsrc%5Etfw">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            </div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/kubernetes/"><i class="far fa-folder fa-fw"></i>KUBERNETES</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-via="pkblah" data-hashtags="Kubernetes,Automation,Ubuntu,Calico"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/bootstrap-k8s/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/bootstrap-k8s/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-24">2020-10-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1835 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;9 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#getting-started">Getting Started</a></li>
+    <li><a href="#installing-ubuntu">Installing Ubuntu</a></li>
+    <li><a href="#clone-to-a-vm">Clone to a VM</a></li>
+    <li><a href="#configuring-ubuntu-for-kubernetes">Configuring Ubuntu for Kubernetes</a>
+      <ul>
+        <li><a href="#step-1---disable-swapoff">Step 1 - Disable swapoff</a></li>
+        <li><a href="#step-2---setup-static-ip">Step 2 - Setup Static IP</a></li>
+        <li><a href="#step-3---install-docker">Step 3 - Install Docker</a></li>
+        <li><a href="#step-4---prepping-for-kubernetes">Step 4 - Prepping for Kubernetes</a></li>
+      </ul>
+    </li>
+    <li><a href="#bootstrap-kubernetes---control-plane">Bootstrap Kubernetes - Control Plane</a>
+      <ul>
+        <li><a href="#step-1-getting-the-control-node-ready-aka-master-node">Step 1: Getting the Control Node ready (a.k.a master node)</a></li>
+        <li><a href="#step-2-setup-kubectl-for-the-user-account">Step 2: Setup Kubectl for the user account</a></li>
+        <li><a href="#step-3-setup-pod-networking">Step 3: Setup Pod networking</a></li>
+      </ul>
+    </li>
+    <li><a href="#bootstrap-kubernetes---capacity-nodes">Bootstrap Kubernetes - Capacity Nodes</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I&rsquo;m hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>As a baseline, here are my assumptions about those following along or to my future self</p>
+<ul>
+<li>You already have some (atleast 2) VMs or Physical hosts (any x86 computer) available</li>
+<li>You are able to install some linux distro on those VMs or Physical hosts - For the purpose of this blog, I&rsquo;m going to be using <a href="https://releases.ubuntu.com/20.04/" target="_blank">Ubuntu 20.04</a> and providing steps for that.</li>
+<li>You can setup static IP on these servers after installing the OS. I&rsquo;ll provide the steps for Ubuntu 20.04 here which uses <code>Netplan</code> to configure network</li>
+</ul>
+<h2 id="installing-ubuntu">Installing Ubuntu</h2>
+<p>Installing Ubuntu is pretty straight forward using the ISO. if you want to skip ahead, click <a href="#clone-to-a-vm">here</a></p>
+<p>Download 20.04 live server iso - <a href="https://releases.ubuntu.com/20.04/">https://releases.ubuntu.com/20.04/</a></p>
+<p><strong>Machine Requirements (that i&rsquo;m going to be using)</strong></p>
+<ul>
+<li>CPU: 1 gigahertz or better</li>
+<li>RAM: 2 gigabyte or more</li>
+<li>Disk: 16 gigabytes</li>
+</ul>
+<p><strong>Procedure</strong> (excerpt below and detailed here <a href="https://ubuntu.com/server/docs/install/step-by-step">https://ubuntu.com/server/docs/install/step-by-step</a>)</p>
+<ul>
+<li>Choose your language</li>
+<li>Update the installer (if offered)</li>
+<li>Select your keyboard layout</li>
+<li>Configure networking (the installer attempts to configure wired network interfaces via DHCP which is fine is you are using a VM and are going to create a template)</li>
+<li>Enter a hostname, username and password</li>
+<li>For storage, leave “use an entire disk” checked, and choose a disk to install to, then select “Done” on the configuration screen and confirm the install</li>
+<li>Configure a proxy or custom mirror if you have to in your network</li>
+<li>Select OpenSSH server from the list of packages to be installed</li>
+<li>You will now see log messages as the install is completed</li>
+<li>Select restart when this is complete, and log in using the username and password provided</li>
+</ul>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube-nocookie.com/embed/RIz359xF-8U" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p>Unlike the sped up video above, this install can be a time consuming process to manually attempt on a number of servers (20-30 minutes per install). If you are using VMs, you should consider taking a snapshot and creating a template of your Base Ubuntu VM right after the install. This way when you need more copies in the future or want to start over, you have a clean Ubuntu install readily available.</p>
+<h2 id="clone-to-a-vm">Clone to a VM</h2>
+<p>From the Base Ubuntu template that you have, create two clones one for the master and one for the worker node. If you have gone the route of installing Ubuntu from ISO on two machines without cloning, that works too..</p>
+<ul>
+<li>k8s-m1: will be the control node</li>
+<li>k8s-w1: will be the capacity node</li>
+</ul>
+<p>For Highly Available clusters for Kubernetes using kubeadm, refer to this <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/" target="_blank">kubernetes.io documentation</a></p>
+<h2 id="configuring-ubuntu-for-kubernetes">Configuring Ubuntu for Kubernetes</h2>
+<p>With our two machines now ready, we need to do some configuration that is specific to kubernetes and docker on these servers.</p>
+<blockquote>
+<p>There are not a lot of changes that needs to be done and can be done manually using multi window editing capabilities that iTerm2 offers</p>
+<ul>
+<li>shortcuts cmd-d and cmd-shift-d divide an existing session vertically or horizontally, respectively</li>
+<li>shortcuts cmd-shift-i and cmd-i to edit in multiple pane or go back to editing in a single pane, respectively</li>
+</ul>
+</blockquote>
+<h3 id="step-1---disable-swapoff">Step 1 - Disable swapoff</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#disables swap immediately</span>
+sudo swapoff –a 
+
+<span class="c1">#ensures swap remains disabled after reboot</span>
+sudo sed -i <span class="s1">&#39;/ swap / s/^\(.*\)$/#\1/g&#39;</span> /etc/fstab
+</code></pre></td></tr></table>
+</div>
+</div><p>There is a larger and better thread that conveys why this has to be done (or shouldn&rsquo;t be) and where this falls within the scope of Kubernetes project on the things to get done - <a href="https://github.com/kubernetes/kubernetes/issues/53533">https://github.com/kubernetes/kubernetes/issues/53533</a></p>
+<h3 id="step-2---setup-static-ip">Step 2 - Setup Static IP</h3>
+<p>Ubuntu networking is configured with <a href="https://netplan.io/examples/" target="_blank">Netplan</a>. Succinctly, you want to edit <code>/etc/netplan/01-netcfg.yaml</code> to look like this</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">network:
+  version: <span class="m">2</span>
+  renderer: networkd
+  ethernets:
+    enp0s3:
+     dhcp4: no
+     addresses: <span class="o">[</span>10.10.10.10/24<span class="o">]</span>
+     gateway4: 10.10.10.1
+     nameservers:
+       addresses: <span class="o">[</span>8.8.8.8,8.8.4.4<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Once you have the Netplan config updated as required for your network, go ahead and run</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo netplan apply
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>Here is another article that helps guide you through this change - <a href="https://linuxize.com/post/how-to-configure-static-ip-address-on-ubuntu-20-04/#configuring-static-ip-address-on-ubuntu-server">https://linuxize.com/post/how-to-configure-static-ip-address-on-ubuntu-20-04/#configuring-static-ip-address-on-ubuntu-server</a></p>
+</blockquote>
+<h3 id="step-3---install-docker">Step 3 - Install Docker</h3>
+<p>Next step is to install Docker which Kubernetes will be using as the container runtime.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#install docker</span>
+sudo apt install docker.io -y
+
+<span class="c1">#Add your user to the docker group</span>
+groupadd docker
+sudo usermod -aG docker <span class="nv">$USER</span>
+
+<span class="c1"># enable and start docker</span>
+sudo systemctl <span class="nb">enable</span> docker
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-4---prepping-for-kubernetes">Step 4 - Prepping for Kubernetes</h3>
+<p>The last item remaining to prep our servers is to download the components for Kubernetes and kubeadm as described <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/" target="_blank">here</a> and shown below</p>
+<p><strong>Steps</strong>:</p>
+<ul>
+<li>Add the signing key to verify k8s download</li>
+<li>Add kubernetes repos to the repo list</li>
+<li>Install these on all servers
+<ul>
+<li><strong>Kubeadm</strong> which is going to bootstrap the cluster</li>
+<li><strong>Kubectl</strong> which is the CLI used to manage the cluster and</li>
+<li><strong>Kubelet</strong> which is the component that needs to run on all machines to make kubernetes work</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Install signing keys</span>
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg <span class="p">|</span> sudo apt-key add
+
+<span class="c1"># Adding kubenetes repository for APT</span>
+apt-add-repository <span class="s2">&#34;deb http://apt.kubernetes.io/ kubernetes-xenial main&#34;</span>
+
+<span class="c1"># install k8s components</span>
+cat <span class="s">&lt;&lt;EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+</span><span class="s">deb https://apt.kubernetes.io/ kubernetes-xenial main
+</span><span class="s">EOF</span>
+
+apt-get update
+
+apt-get install kubeadm kubelet kubectl -y
+apt-mark hold kubelet kubeadm kubectl
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="bootstrap-kubernetes---control-plane">Bootstrap Kubernetes - Control Plane</h2>
+<p>All that is left to do now is to get Kubernetes working!</p>
+<h3 id="step-1-getting-the-control-node-ready-aka-master-node">Step 1: Getting the Control Node ready (a.k.a master node)</h3>
+<p>To do that we are going to leverage <code>kubeadm</code> to bootstrap kubernetes using a single command (maybe a couple..). First we want to get our Control node up and running with Kubernetes. This Control Node will run</p>
+<ul>
+<li>API Server (<strong>kube-apiserver</strong>): This is the API gateway (if you will) for all the components to interact with</li>
+<li>Etcd (<strong>etcd</strong>): This is the database (if you will) for all the kubernetes cluster data (from nodes to pods to everything)</li>
+<li>Scheduler (<strong>kube-scheduler</strong>): This is the backend scheduler/job(if you will) that continues to ensures the pods are running and properly distributed to all the nodes</li>
+<li>Controller Manager (<strong>kube-controller-manager</strong>): For every type of object within Kubernetes, there are Controllers available that specialize in managing that object (for example: Node, Replication, Endpoint etc)</li>
+</ul>
+<blockquote>
+<p>This is the noob version of describing kubernetes. If you choose to, you can always learn more at <a href="https://kubernetes.io/docs/concepts/overview/components/">https://kubernetes.io/docs/concepts/overview/components/</a></p>
+</blockquote>
+<p>We start by initializing kubernetes on the Control Node and all the info that we need the pod network CIDR at this point. Ensure that the POD CIDR does not overlap with any of your existing networking IP ranges.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># using the default POD NETWORK CIDR for calico</span>
+sudo kubeadm init --pod-network-cidr<span class="o">=</span>192.168.0.0/16
+</code></pre></td></tr></table>
+</div>
+</div><p>If you have more than one NICs you will need to specify which IP address kubernetes should use for the API address (this is critical since all the other components need to talk to it for proper functionality). If you have it all working properly, you should get something similar to what i have below</p>
+<image src="/img/k8s/bootstrap-k8s/bootstrap.png">
+<h3 id="step-2-setup-kubectl-for-the-user-account">Step 2: Setup Kubectl for the user account</h3>
+<p>Kubeadm will also provide some instructions to setup the user account with the right kube config. Run the following as a regular user:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir -p <span class="nv">$HOME</span>/.kube
+sudo cp -i /etc/kubernetes/admin.conf <span class="nv">$HOME</span>/.kube/config
+sudo chown <span class="k">$(</span>id -u<span class="k">)</span>:<span class="k">$(</span>id -g<span class="k">)</span> <span class="nv">$HOME</span>/.kube/config
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="step-3-setup-pod-networking">Step 3: Setup Pod networking</h3>
+<p>Once you have kubeconfig setup, you should now have kubectl working and be able to deploy a pod network to the cluster. I&rsquo;m going to using <code>calico</code> for the networking and the networking policy.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">curl https://docs.projectcalico.org/manifests/calico-etcd.yaml -o calico.yaml
+</code></pre></td></tr></table>
+</div>
+</div><p>In my case, since I&rsquo;m using <code>etcd</code> for the datastore and also using TLS, i had to update the <code>calico.yaml</code> with the right information (as shown). I had missed/messed up this step and ended up troubleshooting for half a day.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
+</span><span class="w"></span><span class="c"># Source: calico/templates/calico-etcd-secrets.yaml</span><span class="w">
+</span><span class="w"></span><span class="c"># The following contains k8s Secrets for use with a TLS enabled etcd cluster.</span><span class="w">
+</span><span class="w"></span><span class="c"># For information on populating Secrets, see http://kubernetes.io/docs/user-guide/secrets/</span><span class="w">
+</span><span class="w"></span><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
+</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Secret<span class="w">
+</span><span class="w"></span><span class="k">type</span><span class="p">:</span><span class="w"> </span>Opaque<span class="w">
+</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>calico-etcd-secrets<span class="w">
+</span><span class="w">  </span><span class="k">namespace</span><span class="p">:</span><span class="w"> </span>kube-system<span class="w">
+</span><span class="w"></span><span class="k">data</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># Populate the following with etcd TLS configuration if desired, but leave blank if</span><span class="w">
+</span><span class="w">  </span><span class="c"># not using TLS for etcd.</span><span class="w">
+</span><span class="w">  </span><span class="c"># The keys below should be uncommented and the values populated with the base64</span><span class="w">
+</span><span class="w">  </span><span class="c"># encoded contents of each file that would be associated with the TLS data.</span><span class="w">
+</span><span class="w">  </span><span class="c"># Example command for encoding a file contents: cat &lt;file&gt; | base64 -w 0</span><span class="w">
+</span><span class="w">  </span><span class="k">etcd-key</span><span class="p">:</span><span class="w"> </span>&lt;base<span class="w"> </span><span class="m">64</span><span class="w"> </span>encoded<span class="w"> </span>etcd<span class="w"> </span>Key<span class="sd">&gt;
+</span><span class="sd">  etcd-cert: &lt;base 64 encoded etcd Certificate&gt;</span><span class="w">
+</span><span class="w">  </span><span class="k">etcd-ca</span><span class="p">:</span><span class="w"> </span>&lt;base<span class="w"> </span><span class="m">64</span><span class="w"> </span>encoded<span class="w"> </span>etcd<span class="w"> </span>CA&gt;<span class="w">
+</span><span class="w"></span>---<span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>You can get the base 64 encoded values by using the commands provided below. The file locations is well known and can also be obtained by running a kubectl describe command on the etcd pod.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># CA root certificate</span>
+cat /etc/kubernetes/pki/etcd/ca.crt <span class="p">|</span> base64 -w <span class="m">0</span>
+
+<span class="c1"># ETCD private and public key</span>
+sudo cat /etc/kubernetes/pki/etcd/server.key <span class="p">|</span> base64 -w <span class="m">0</span>
+cat /etc/kubernetes/pki/etcd/server.crt <span class="p">|</span> base64 -w <span class="m">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Once you have that updated you are also going to update the <code>calico.yaml</code> to look like the below. The <code>calico-secrets/etcd-xx</code> are created using the base64 encoded information that we updated above.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Source: calico/templates/calico-config.yaml</span><span class="w">
+</span><span class="w"></span><span class="c"># This ConfigMap is used to configure a self-hosted Calico installation.</span><span class="w">
+</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>ConfigMap<span class="w">
+</span><span class="w"></span><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
+</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>calico-config<span class="w">
+</span><span class="w">  </span><span class="k">namespace</span><span class="p">:</span><span class="w"> </span>kube-system<span class="w">
+</span><span class="w"></span><span class="k">data</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># Configure this with the location of your etcd cluster.</span><span class="w">
+</span><span class="w">  </span><span class="k">etcd_endpoints</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://&lt;API IP&gt;:2379&#34;</span><span class="w">
+</span><span class="w">  </span><span class="c"># If you&#39;re using TLS enabled etcd uncomment the following.</span><span class="w">
+</span><span class="w">  </span><span class="c"># You must also populate the Secret below with these files.</span><span class="w">
+</span><span class="w">  </span><span class="k">etcd_ca</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-ca&#34;</span><span class="w">
+</span><span class="w">  </span><span class="k">etcd_cert</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-cert&#34;</span><span class="w">
+</span><span class="w">  </span><span class="k">etcd_key</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-key&#34;</span><span class="w">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>With these edits in place, you should now be good to apply the calico.yaml to your kubernetes cluster.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">kubectl apply -f calico.yaml
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>More information on how to set up calidco can be found here - <a href="https://docs.projectcalico.org/getting-started/kubernetes/self-managed-onprem/onpremises">https://docs.projectcalico.org/getting-started/kubernetes/self-managed-onprem/onpremises</a></p>
+</blockquote>
+<h2 id="bootstrap-kubernetes---capacity-nodes">Bootstrap Kubernetes - Capacity Nodes</h2>
+<p>Once you have the Control Plane Node up and running, we can proceed to get the Capacity Node joined to the Kubernetes Cluster. To do so, you&rsquo;ll need to run the command provided below. If you do this immediately after running the <code>kubeadm init</code> on the Control Plane node, kubeadm will provide the exact command that needs to be run on the Capacity Nodes.</p>
+<p><code>kubeadm join --token &lt;token&gt; &lt;control-plane-host&gt;:&lt;control-plane-port&gt; --discovery-token-ca-cert-hash sha256:&lt;hash&gt;</code></p>
+<p>In the event you need to add more nodes after and if you need to get the token and the CA certificate hash, here is how you can get them</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># list the tokens</span>
+kubeadm token list
+<span class="c1"># create a new token</span>
+kubeadm token create
+
+<span class="c1"># to get the hash</span>
+openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt <span class="p">|</span> openssl rsa -pubin -outform der 2&gt;/dev/null <span class="p">|</span> openssl dgst -sha256 -hex <span class="p">|</span> sed <span class="s1">&#39;s/^.* //&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>After running the <code>kubeadm join</code> command you should get a response like below if your Capacity node was able to join the Kubernetes Controller</p>
+<img src="/img/k8s/bootstrap-k8s/node.png">
+<p>Hope you are successfully able to follow these instructions and get a working Kubernetes cluster with Calico on Ubuntu 20.04 using kubeadm.</p>
+<p>Please provide feedback by leaving a comment and share this post using the social media icons shown below. That&rsquo;s all folks!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-12-18&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/6061f623fafff7331df39faf517bd0434b1ce005" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 6061f623fafff7331df39faf517bd0434b1ce005: v1 ready website with Posts from VEBA, Access, WS1 and K8s">
+                                    <i class="fas fa-hashtag fa-fw"></i>6061f62</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share sharebtns">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-via="pkblah" data-hashtags="Kubernetes,Automation,Ubuntu,Calico"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/bootstrap-k8s/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/bootstrap-k8s/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">Kubernetes</a>,&nbsp;<a href="/tags/automation/">Automation</a>,&nbsp;<a href="/tags/ubuntu/">Ubuntu</a>,&nbsp;<a href="/tags/calico/">Calico</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/post/self-service-for-your-datacenter/" class="prev" rel="prev" title="Enabling Self Service for your DataCenter — Part I"><i class="fas fa-angle-left fa-fw"></i>Enabling Self Service for your DataCenter — Part I</a>
+            <a href="/post/access-apis/" class="next" rel="next" title="Access: The tale of the hidden APIs">Access: The tale of the hidden APIs<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2020</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":80},"comment":{"gitalk":{"admin":["pksrc"],"clientID":"asdasda","clientSecret":"asdasdads","id":"2020-10-24T00:00:00Z","owner":"pksrc","repo":"my-gitalk","title":"Beginner's Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-XXXXXABCD-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXABCD-1" async></script></body>
+</html>

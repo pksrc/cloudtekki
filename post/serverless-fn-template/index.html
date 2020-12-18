@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Serverless function — Quickstart Templates - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to Simplify and Clarify Technology Concepts and Solutions for those that strive to thrive"><meta property="og:title" content="Serverless function — Quickstart Templates" />
+<meta property="og:description" content="Info  This post was originally published in Medium - pkblah.medium.com/serverless-function-templates   You have probably have seen my other article that helps you get started writing your very first event-driven function using VMware Event Broker Appliance (VEBA) for your vCenter infrastructure. I highlight the steps taken to write my first serverless function and provide templates to help you get started quickly!
+ Writing your first Serverless Function — here" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cloudtekki.com/post/serverless-fn-template/" />
+<meta property="article:published_time" content="2020-04-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-12-18T15:18:51-08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Serverless function — Quickstart Templates"/>
+<meta name="twitter:description" content="Info  This post was originally published in Medium - pkblah.medium.com/serverless-function-templates   You have probably have seen my other article that helps you get started writing your very first event-driven function using VMware Event Broker Appliance (VEBA) for your vCenter infrastructure. I highlight the steps taken to write my first serverless function and provide templates to help you get started quickly!
+ Writing your first Serverless Function — here"/>
+<meta name="application-name" content="Cloud Tekki">
+<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/img/logo/cloud-tekki-fav.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/serverless-fn-template/" /><link rel="prev" href="https://cloudtekki.com/post/first-veba-function/" /><link rel="next" href="https://cloudtekki.com/post/integrating-vcenter-with-pagerduty/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Serverless function — Quickstart Templates",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cloudtekki.com\/post\/serverless-fn-template\/"
+        },"genre": "posts","keywords": "event-driven, cloud-native","wordcount":  780 ,
+        "url": "https:\/\/cloudtekki.com\/post\/serverless-fn-template\/","datePublished": "2020-04-29T00:00:00+00:00","dateModified": "2020-12-18T15:18:51-08:00","publisher": {
+            "@type": "Organization",
+            "name": "Partheeban Kandasamy"},"author": {
+                "@type": "Person",
+                "name": "Partheeban Kandasamy (PK)"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span> Posts 
+                    </a><a class="menu-item" href="/categories/"><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span> Categories 
+                    </a><a class="menu-item" href="/tags/"><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span> Tags 
+                    </a><a class="menu-item" href="/about-pk/"><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span> About 
+                    </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span>Posts</a><a class="menu-item" href="/categories/" title=""><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span>Categories</a><a class="menu-item" href="/tags/" title=""><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span>Tags</a><a class="menu-item" href="/about-pk/" title=""><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="twitter-auto" style="position: relative; margin-top: 1rem; padding-top: 1rem;">
+                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah?ref_src=twsrc%5Etfw">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            </div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Serverless function — Quickstart Templates</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/veba/"><i class="far fa-folder fa-fw"></i>VEBA</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/serverless-fn-template/" data-title="Serverless function — Quickstart Templates" data-via="pkblah" data-hashtags="event-driven,cloud-native"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/serverless-fn-template/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/serverless-fn-template/" data-title="Serverless function — Quickstart Templates" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/serverless-fn-template/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/serverless-fn-template/" data-title="Serverless function — Quickstart Templates" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-29">2020-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;780 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#small-function---beginner">Small function - Beginner</a></li>
+    <li><a href="#medium-function---intermediate">Medium function - Intermediate</a></li>
+    <li><a href="#large-function---expert">Large function - Expert</a></li>
+    <li><a href="#see-this-template-in-action">See this template in action!</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>Info<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">This post was originally published in Medium - <a href="https://medium.com/serverless-function-templates-available-2642bb92f58b" target="_blank">pkblah.medium.com/serverless-function-templates</a></div>
+        </div>
+    </div>
+<p>You have probably have seen my other article that helps you get started writing your very first event-driven function using <a href="https://github.com/vmware-samples/vcenter-event-broker-appliance" target="_blank">VMware Event Broker Appliance</a> (VEBA) for your vCenter infrastructure. I highlight the steps taken to write my first serverless function and provide templates to help you get started quickly!</p>
+<blockquote>
+<p><strong>Writing your first Serverless Function</strong> — <a href="https://medium.com/@pkblah/writing-your-first-serverless-function-23508cb4ea11" target="_blank">here</a></p>
+</blockquote>
+<p>I also wanted to build on top of my t-shirt sized templates and provide a template where users can focus on writing their core business logic, be able to test quicker and debug easily!</p>
+<h2 id="small-function---beginner">Small function - Beginner</h2>
+<p><strong>Small</strong> — provides a minimal template to get started from scratch complete with a readymade README.md file</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git clone git@github.com:pksrc/vebafn.git vebafn  
+cd vebafn/python/sm-python-fn
+├── README.md      &gt; A descriptive documentation for your fn  
+├── handler        &gt; Folder for your scripts  
+│   └── handler.py &gt; Python file for your core fn logic  
+└── stack.yml      &gt; Descriptor file for OpenFaaS deployment
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="medium-function---intermediate">Medium function - Intermediate</h2>
+<p><strong>Medium</strong> — <strong>Small</strong> + work with configurations and ready-made handle function; jump right into writing your business logic.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">git clone git@github.com:pksrc/vebafn.git vebafn  
+<span class="nb">cd</span> vebafn/python/md-python-fn
+├── README.MD  
+├── config.json          &gt; provides any configuration <span class="k">for</span> the fn  
+├── handler  
+│   ├── handler.py  
+│   └── requirements.txt &gt; specify any libraries needed <span class="k">for</span> the fn  
+└── stack.yml
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="large-function---expert">Large function - Expert</h2>
+<p><strong>Large — Medium</strong> + improvements :)</p>
+<p>Here are some of the things that I wanted to do</p>
+<p><strong><em>Improvements</em></strong></p>
+<ul>
+<li><em>Move helper functions to another file; only have the necessary lines of code within the handler.py</em></li>
+<li><em>Make the function debuggable without having anyone touch and rebuild the code</em></li>
+<li><em>Make some settings be driven through environment variables</em></li>
+<li><em>Improve unit testing for faster function development</em></li>
+</ul>
+<p>With this in mind, I now have the below structure created and the template is available <a href="https://github.com/pksrc/vebafn/tree/master/python/lg-python-fn" target="_blank">here</a> for you to build on top of.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git clone [git@github.com](mailto:git@github.com):pksrc/vebafn.git vebafn  
+cd vebafn/python/lg-python-fn
+├── README.MD  
+├── config.json            &gt; provides any configuration for the fn  
+├── handler  
+│   ├── __init__.py          
+│   ├── handler.py         &gt; lean &amp; focussed on business logic  
+│   ├── requirements.txt  
+│   └── util.py            &gt; util functions moved here       
+├── stack.yml              &gt; new env variables added here  
+└── test.py                &gt; tests have moved here
+</code></pre></td></tr></table>
+</div>
+</div><p>Let’s explore what this looks like..</p>
+<figure><a class="lightgallery" href="https://miro.medium.com/max/3624/1*uIklg_xHYGrlH2IDpHbM9A.png" title="https://miro.medium.com/max/3624/1*uIklg_xHYGrlH2IDpHbM9A.png" data-thumbnail="https://miro.medium.com/max/3624/1*uIklg_xHYGrlH2IDpHbM9A.png" data-sub-html="<h2>FaaSResponse class</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/3624/1*uIklg_xHYGrlH2IDpHbM9A.png"
+            data-srcset="https://miro.medium.com/max/3624/1*uIklg_xHYGrlH2IDpHbM9A.png, https://miro.medium.com/max/3624/1*uIklg_xHYGrlH2IDpHbM9A.png 1.5x, https://miro.medium.com/max/3624/1*uIklg_xHYGrlH2IDpHbM9A.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/3624/1*uIklg_xHYGrlH2IDpHbM9A.png" />
+    </a><figcaption class="image-caption">FaaSResponse class</figcaption>
+    </figure>
+<p>Our function had a few utility classes that helped sending the responses back to OpenFaaS, this was moved the <code>util.py</code> file to keep our <code>handler.py</code> clean.</p>
+<figure><a class="lightgallery" href="https://miro.medium.com/max/1674/1*8-CJ3W8cZWPxH5iJ8Sgmlw.png" title="https://miro.medium.com/max/1674/1*8-CJ3W8cZWPxH5iJ8Sgmlw.png" data-thumbnail="https://miro.medium.com/max/1674/1*8-CJ3W8cZWPxH5iJ8Sgmlw.png" data-sub-html="<h2>stack.yml for OpenFaaS</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/1674/1*8-CJ3W8cZWPxH5iJ8Sgmlw.png"
+            data-srcset="https://miro.medium.com/max/1674/1*8-CJ3W8cZWPxH5iJ8Sgmlw.png, https://miro.medium.com/max/1674/1*8-CJ3W8cZWPxH5iJ8Sgmlw.png 1.5x, https://miro.medium.com/max/1674/1*8-CJ3W8cZWPxH5iJ8Sgmlw.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/1674/1*8-CJ3W8cZWPxH5iJ8Sgmlw.png" />
+    </a><figcaption class="image-caption">stack.yml for OpenFaaS</figcaption>
+    </figure>
+<p>Logging in functions (with the templates that we are using) to stdout and stderr are both combined by default, this can be changed by setting an environment variable <code>combine_output</code> to false as shown in the <code>stack.yml</code> file.</p>
+<figure><a class="lightgallery" href="https://miro.medium.com/max/1562/1*d-AXjTsNiRSYNhT_lOYDCA.png" title="https://miro.medium.com/max/1562/1*d-AXjTsNiRSYNhT_lOYDCA.png" data-thumbnail="https://miro.medium.com/max/1562/1*d-AXjTsNiRSYNhT_lOYDCA.png" data-sub-html="<h2>WARN if debug is enabled</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/1562/1*d-AXjTsNiRSYNhT_lOYDCA.png"
+            data-srcset="https://miro.medium.com/max/1562/1*d-AXjTsNiRSYNhT_lOYDCA.png, https://miro.medium.com/max/1562/1*d-AXjTsNiRSYNhT_lOYDCA.png 1.5x, https://miro.medium.com/max/1562/1*d-AXjTsNiRSYNhT_lOYDCA.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/1562/1*d-AXjTsNiRSYNhT_lOYDCA.png" />
+    </a><figcaption class="image-caption">WARN if debug is enabled</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="https://miro.medium.com/max/3628/1*VHr70sziW6wTFlwW0hBWYA.png" title="https://miro.medium.com/max/3628/1*VHr70sziW6wTFlwW0hBWYA.png" data-thumbnail="https://miro.medium.com/max/3628/1*VHr70sziW6wTFlwW0hBWYA.png" data-sub-html="<h2>Logger utility class</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/3628/1*VHr70sziW6wTFlwW0hBWYA.png"
+            data-srcset="https://miro.medium.com/max/3628/1*VHr70sziW6wTFlwW0hBWYA.png, https://miro.medium.com/max/3628/1*VHr70sziW6wTFlwW0hBWYA.png 1.5x, https://miro.medium.com/max/3628/1*VHr70sziW6wTFlwW0hBWYA.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/3628/1*VHr70sziW6wTFlwW0hBWYA.png" />
+    </a><figcaption class="image-caption">Logger utility class</figcaption>
+    </figure>
+<p>This allows us to write stderr debug messages while stdout gets sent back to OpenFaaS as the output. The function WARN users that debug is enabled and sensitive information could be logged into the console.</p>
+<p>With this in place, a logger function was added to produce colorized output in the console for readability and enhanced debuggability.</p>
+<figure><a class="lightgallery" href="https://miro.medium.com/max/1370/1*55ySJbrNuekG6lBodb5DAA.png" title="https://miro.medium.com/max/1370/1*55ySJbrNuekG6lBodb5DAA.png" data-thumbnail="https://miro.medium.com/max/1370/1*55ySJbrNuekG6lBodb5DAA.png" data-sub-html="<h2>test.py provided for local testing</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://miro.medium.com/max/1370/1*55ySJbrNuekG6lBodb5DAA.png"
+            data-srcset="https://miro.medium.com/max/1370/1*55ySJbrNuekG6lBodb5DAA.png, https://miro.medium.com/max/1370/1*55ySJbrNuekG6lBodb5DAA.png 1.5x, https://miro.medium.com/max/1370/1*55ySJbrNuekG6lBodb5DAA.png 2x"
+            data-sizes="auto"
+            alt="https://miro.medium.com/max/1370/1*55ySJbrNuekG6lBodb5DAA.png" />
+    </a><figcaption class="image-caption">test.py provided for local testing</figcaption>
+    </figure>
+<p>The <code>util.py</code> is now imported into the <code>handler.py</code> and abstracted away for the function developer who can now focus only on building the core business logic for their usecase!</p>
+<p>I’ve also moved all the test cases to outside of the package and located within the <code>test.py</code> and it’s been improved to run multiple test cases in one go. Make sure to edit this file to update with test cases that are relevant to what you are looking to accomplish.</p>
+<p>These changes certainly helped me write, test and debug my functions faster. While OpenFaaS has an easy process to build, deploy and invoke your function with an OpenFaaS gateway in place, the idea behind these changes and providing a local test script is to speed up the development/testing process by a few hours.</p>
+<h2 id="see-this-template-in-action">See this template in action!</h2>
+<p>I’ve used this template and structure to build a function that can <a href="https://github.com/vmware-samples/vcenter-event-broker-appliance/tree/development/examples/python/invoke-rest-api" target="_blank">make a POST REST API call to any system</a> (think cURL or Postman but for VEBA). This enables our users to deploy a readymade function and only have to provide the right configuration to have it work with various external systems. This function has been tested to work with Slack, Pagerduty and ServiceNow!</p>
+<p>Let me know how these templates help you innovate for your SDDC with VEBA and we can look into making templates in other languages.</p>
+<p>Happy Eventing!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-12-18&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/6061f623fafff7331df39faf517bd0434b1ce005" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 6061f623fafff7331df39faf517bd0434b1ce005: v1 ready website with Posts from VEBA, Access, WS1 and K8s">
+                                    <i class="fas fa-hashtag fa-fw"></i>6061f62</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share sharebtns">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/serverless-fn-template/" data-title="Serverless function — Quickstart Templates" data-via="pkblah" data-hashtags="event-driven,cloud-native"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/serverless-fn-template/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/serverless-fn-template/" data-title="Serverless function — Quickstart Templates" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/serverless-fn-template/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/serverless-fn-template/" data-title="Serverless function — Quickstart Templates" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/event-driven/">event-driven</a>,&nbsp;<a href="/tags/cloud-native/">cloud-native</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/post/first-veba-function/" class="prev" rel="prev" title="Writing your first Serverless Function"><i class="fas fa-angle-left fa-fw"></i>Writing your first Serverless Function</a>
+            <a href="/post/integrating-vcenter-with-pagerduty/" class="next" rel="next" title="Integrating vCenter with PagerDuty">Integrating vCenter with PagerDuty<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2020</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":80},"comment":{"gitalk":{"admin":["pksrc"],"clientID":"asdasda","clientSecret":"asdasdads","id":"2020-04-29T00:00:00Z","owner":"pksrc","repo":"my-gitalk","title":"Serverless function — Quickstart Templates"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-XXXXXABCD-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXABCD-1" async></script></body>
+</html>
