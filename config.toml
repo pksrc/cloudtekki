@@ -367,9 +367,9 @@ theme = "LoveIt"
       enable = true
       owner = "pksrc"
       admin = ['pksrc']
-      repo = "my-gitalk"
-      clientId = "asdasda"
-      clientSecret = "asdasdads"
+      repo = "cloudtekki"
+      clientId = "506810bef519daad2096"
+      clientSecret = "2cd827f835beec6ed9d453fe55aea74d21987b24"
     # Valine comment config (https://github.com/xCss/Valine)
     [params.page.comment.valine]
       enable = false
