@@ -364,7 +364,7 @@ theme = "LoveIt"
       shortname = "P.K"
     # Gitalk comment config (https://github.com/gitalk/gitalk)
     [params.page.comment.gitalk]
-      enable = true
+      enable = false
       owner = "pksrc"
       admin = ['pksrc']
       repo = "cloudtekki"
@@ -400,9 +400,9 @@ theme = "LoveIt"
       enable = false
     # Utterances comment config (https://utteranc.es/)
     [params.page.comment.utterances]
-      enable = false
+      enable = true
       # owner/repo
-      repo = ""
+      repo = "pksrc/cloudtekki"
       issueTerm = "pathname"
       label = ""
       lightTheme = "github-light"
@@ -411,7 +411,7 @@ theme = "LoveIt"
   [params.page.seo]
     # Publisher info
     [params.page.seo.publisher]
-      name = "Partheeban Kandasamy"
+      name = "Cloud Tekki"
       [params.page.seo.publisher.logo]
         url = "logo.png"
         width = 127
@@ -440,7 +440,7 @@ theme = "LoveIt"
   enable = true
   # Google Analytics
   [params.analytics.google]
-    id = "UA-XXXXXABCD-1"
+    id = "G-RYVG6M042F"
     # whether to anonymize IP
     anonymizeIP = true
     # whether to use cookie
