@@ -8,6 +8,8 @@ tags:
 - Automation
 - Ubuntu
 - Calico
+aliases: ["k8s"]
+featured: true
 ---
 
 This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I'm hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native

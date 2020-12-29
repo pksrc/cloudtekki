@@ -17,6 +17,7 @@ theme = "LoveIt"
 # Author config
 [author]
   name = "Partheeban Kandasamy (PK)"
+  short = "PK"
   email = "partheeban.kandasamy@gmail.com"
   link = "/about-pk/"
 
@@ -35,6 +36,17 @@ theme = "LoveIt"
   description = "Cloud Tekki aims to Simplify and Clarify Technology Concepts and Solutions for those that strive to thrive"
   # site keywords
   keywords = ["Partheeban", "Kandasamy", "PK", "Cloud Tekki", "VMware", "CNA", "Cloud-Native", "Tanzu", "vSphere", "VEBA", "Vmware Event Broker Appliance"]
+  
+  # side bar
+  # limit the number of taxonomies links shown on the sidebar of each page by default.
+  numberOfTagsShown = 5 # Applies for all other default & custom taxonomies. e.g categories, brands see https://gohugo.io/content-management/taxonomies#what-is-a-taxonomy
+
+  # Maximum number of recent posts.
+  numberOfRecentPosts = 5
+
+  # Maximum number of featured posts.
+  numberOfFeaturedPosts = 3
+
   # App icon config
   [params.app]
     # optional site title override for the app when added to an iOS home screen or Android launcher
@@ -85,7 +97,7 @@ theme = "LoveIt"
       # URL of avatar shown in home page
       avatarURL = "/img/logo/cloud-tekki.png"
       # title shown in home page
-      title = "Demystifying Technology for those that Strive to Thrive"
+      title = "Demystifying Technology for those that strive to thrive"
       # subtitle shown in home page
       subtitle = 'CLOUD TEKKI® is managed by PK (short for Partheeban Kandasamy) who is currently a Staff Customer Success Architect at VMware. PK, a Technology Generalist aims to explore new ideas and their implementation techniques that make Digital Transformation possible. Topics will be focussed around Cloud, Cloud Native Technologies, Automation Technologies, End User Computing and the synergy between People, Process and Product'
       # whether to use typeit animation for subtitle
@@ -289,6 +301,8 @@ theme = "LoveIt"
     enable = true
     # whether to make the table of the contents automatically collapsed
     auto = false
+    # show twitter feed 
+    twitterfeed = true
   # Code config
   [params.page.code]
     # whether to show the copy button of the code block
