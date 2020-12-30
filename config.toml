@@ -33,7 +33,7 @@ theme = "LoveIt"
   # date format
   dateFormat = "2006-01-02"
   # site description
-  description = "Cloud Tekki aims to Simplify and Clarify Technology Concepts and Solutions for those that strive to thrive"
+  description = "Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive"
   # site keywords
   keywords = ["Partheeban", "Kandasamy", "PK", "Cloud Tekki", "VMware", "CNA", "Cloud-Native", "Tanzu", "vSphere", "VEBA", "Vmware Event Broker Appliance"]
   
