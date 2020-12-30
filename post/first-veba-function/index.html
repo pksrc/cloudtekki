@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Writing your first Serverless Function - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to Simplify and Clarify Technology Concepts and Solutions for those that strive to thrive"><meta property="og:title" content="Writing your first Serverless Function" />
+        <title>Writing your first Serverless Function - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive"><meta property="og:title" content="Writing your first Serverless Function" />
 <meta property="og:description" content="Info  This post was originally published in Medium - pkblah.medium.com/writing-your-first-serverless-function   A function is a unit of execution in the Serverless world that does one thing and one thing really well. With the current product VMware Event Broker Appliance (VEBA) that i’m managing, we aim to provide a simple solution that provides a way to execute your functions driven by vCenter events. This is a significant capability that exposes a plethora of integrations and allows seamless automation opportunities for a VMware SDDC customer." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cloudtekki.com/post/first-veba-function/" />
@@ -114,16 +114,109 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">Contents</h2>
-            <div class="toc-content always-active" id="toc-content-auto"></div>
-            <div class="toc-content always-active" id="twitter-auto" style="position: relative; margin-top: 1rem; padding-top: 1rem;">
-                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah?ref_src=twsrc%5Etfw">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-            </div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Writing your first Serverless Function</h1><div class="post-meta">
+                <div class="container"><article class="page single">
+<aside class="sidebar" id="sidebar">
+  <div id="sidebar-auto">
+    <section class="sidebar_inner" id="SidebarNavigation">
+      <h2 class="mt-4">Featured Posts</h2>
+      <ul>
+        <li>
+          <a href="https://cloudtekki.com/post/uem-organization-groups/" class="nav-link">Unpacking Organization Groups in Workspace ONE UEM</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/access-apis/" class="nav-link">Access: The tale of the hidden APIs</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/bootstrap-k8s/" class="nav-link">Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico</a>
+        </li>
+      </ul>
+
+      <h2 class="mt-4">Recent Posts</h2>
+      <ul class="flex-column">
+        <li>
+          <a href="https://cloudtekki.com/post/looking-back-at-2020/" class="nav-link">2020: Shattering Comfort Zones</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/uem-organization-groups/" class="nav-link">Unpacking Organization Groups in Workspace ONE UEM</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/access-apis/" class="nav-link">Access: The tale of the hidden APIs</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/bootstrap-k8s/" class="nav-link">Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/self-service-for-your-datacenter/" class="nav-link">Enabling Self Service for your DataCenter — Part I</a>
+        </li>
+      </ul>
+        <div>
+          <h2 class="mt-4 taxonomy" id="categories-section">TOP Categories</h2>
+          <nav class="tags_nav">
+            <a href='https://cloudtekki.com/categories/veba/' class="post_tag button button_translucent">
+              VEBA
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/euc/' class="post_tag button button_translucent">
+              EUC
+              <span class="button_tally">2</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/access/' class="post_tag button button_translucent">
+              ACCESS
+              <span class="button_tally">1</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/kubernetes/' class="post_tag button button_translucent">
+              KUBERNETES
+              <span class="button_tally">1</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/uem/' class="post_tag button button_translucent">
+              UEM
+              <span class="button_tally">1</span>
+            </a>
+            
+          </nav>
+        </div>
+        <div>
+          <h2 class="mt-4 taxonomy" id="tags-section">TOP Tags</h2>
+          <nav class="tags_nav">
+            <a href='https://cloudtekki.com/tags/cloud-native/' class="post_tag button button_translucent">
+              CLOUD-NATIVE
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/event-driven/' class="post_tag button button_translucent">
+              EVENT-DRIVEN
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/access/' class="post_tag button button_translucent">
+              ACCESS
+              <span class="button_tally">1</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/apis/' class="post_tag button button_translucent">
+              APIS
+              <span class="button_tally">1</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/author-notes/' class="post_tag button button_translucent">
+              AUTHOR-NOTES
+              <span class="button_tally">1</span>
+            </a>
+            
+          </nav>
+        </div>
+    </section>
+  </div>
+</aside>
+<h1 class="single-title animated flipInX">Writing your first Serverless Function</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/veba/"><i class="far fa-folder fa-fw"></i>VEBA</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/first-veba-function/" data-title="Writing your first Serverless Function" data-via="pkblah" data-hashtags="event-driven,cloud-native"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/first-veba-function/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/first-veba-function/" data-title="Writing your first Serverless Function" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/first-veba-function/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/first-veba-function/" data-title="Writing your first Serverless Function" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
             </div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-23">2020-04-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1388 words&nbsp;
+            <div class="post-meta-line">
+                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/event-driven/">event-driven</a>,&nbsp;<a href="/tags/cloud-native/">cloud-native</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-23">2020-04-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1388 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -433,7 +526,12 @@ Action — “trigger”</div>
 </div>
 <div id="comments"><div id="utterances"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
-            </noscript></div></article></div>
+            </noscript></div></article><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div><h2 class="twitter-title">TWEETS</h2>
+            <div class="twitterfeed" id="twitter-auto" >
+                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            </div></div></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2020</span></div>
         </div>

@@ -5,13 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to Simplify and Clarify Technology Concepts and Solutions for those that strive to thrive"><meta property="og:title" content="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" />
+        <title>Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive"><meta property="og:title" content="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" />
 <meta property="og:description" content="This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I&rsquo;m hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native
 Getting Started As a baseline, here are my assumptions about those following along or to my future self" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cloudtekki.com/post/bootstrap-k8s/" />
 <meta property="article:published_time" content="2020-10-24T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-12-18T15:18:51-08:00" />
+<meta property="article:modified_time" content="2020-12-28T22:22:15-08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico"/>
 <meta name="twitter:description" content="This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I&rsquo;m hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native
@@ -26,8 +26,8 @@ Getting Started As a baseline, here are my assumptions about those following alo
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/cloudtekki.com\/post\/bootstrap-k8s\/"
-        },"genre": "posts","keywords": "Kubernetes, Automation, Ubuntu, Calico","wordcount":  1835 ,
-        "url": "https:\/\/cloudtekki.com\/post\/bootstrap-k8s\/","datePublished": "2020-10-24T00:00:00+00:00","dateModified": "2020-12-18T15:18:51-08:00","publisher": {
+        },"genre": "posts","keywords": "Kubernetes, Automation, Ubuntu, Calico","wordcount":  1841 ,
+        "url": "https:\/\/cloudtekki.com\/post\/bootstrap-k8s\/","datePublished": "2020-10-24T00:00:00+00:00","dateModified": "2020-12-28T22:22:15-08:00","publisher": {
             "@type": "Organization",
             "name": "Cloud Tekki"},"author": {
                 "@type": "Person",
@@ -116,16 +116,109 @@ Getting Started As a baseline, here are my assumptions about those following alo
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">Contents</h2>
-            <div class="toc-content always-active" id="toc-content-auto"></div>
-            <div class="toc-content always-active" id="twitter-auto" style="position: relative; margin-top: 1rem; padding-top: 1rem;">
-                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah?ref_src=twsrc%5Etfw">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-            </div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico</h1><div class="post-meta">
+                <div class="container"><article class="page single">
+<aside class="sidebar" id="sidebar">
+  <div id="sidebar-auto">
+    <section class="sidebar_inner" id="SidebarNavigation">
+      <h2 class="mt-4">Featured Posts</h2>
+      <ul>
+        <li>
+          <a href="https://cloudtekki.com/post/uem-organization-groups/" class="nav-link">Unpacking Organization Groups in Workspace ONE UEM</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/access-apis/" class="nav-link">Access: The tale of the hidden APIs</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/bootstrap-k8s/" class="nav-link">Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico</a>
+        </li>
+      </ul>
+
+      <h2 class="mt-4">Recent Posts</h2>
+      <ul class="flex-column">
+        <li>
+          <a href="https://cloudtekki.com/post/looking-back-at-2020/" class="nav-link">2020: Shattering Comfort Zones</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/uem-organization-groups/" class="nav-link">Unpacking Organization Groups in Workspace ONE UEM</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/access-apis/" class="nav-link">Access: The tale of the hidden APIs</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/bootstrap-k8s/" class="nav-link">Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/self-service-for-your-datacenter/" class="nav-link">Enabling Self Service for your DataCenter — Part I</a>
+        </li>
+      </ul>
+        <div>
+          <h2 class="mt-4 taxonomy" id="categories-section">TOP Categories</h2>
+          <nav class="tags_nav">
+            <a href='https://cloudtekki.com/categories/veba/' class="post_tag button button_translucent">
+              VEBA
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/euc/' class="post_tag button button_translucent">
+              EUC
+              <span class="button_tally">2</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/access/' class="post_tag button button_translucent">
+              ACCESS
+              <span class="button_tally">1</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/kubernetes/' class="post_tag button button_translucent">
+              KUBERNETES
+              <span class="button_tally">1</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/uem/' class="post_tag button button_translucent">
+              UEM
+              <span class="button_tally">1</span>
+            </a>
+            
+          </nav>
+        </div>
+        <div>
+          <h2 class="mt-4 taxonomy" id="tags-section">TOP Tags</h2>
+          <nav class="tags_nav">
+            <a href='https://cloudtekki.com/tags/cloud-native/' class="post_tag button button_translucent">
+              CLOUD-NATIVE
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/event-driven/' class="post_tag button button_translucent">
+              EVENT-DRIVEN
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/access/' class="post_tag button button_translucent">
+              ACCESS
+              <span class="button_tally">1</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/apis/' class="post_tag button button_translucent">
+              APIS
+              <span class="button_tally">1</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/author-notes/' class="post_tag button button_translucent">
+              AUTHOR-NOTES
+              <span class="button_tally">1</span>
+            </a>
+            
+          </nav>
+        </div>
+    </section>
+  </div>
+</aside>
+<h1 class="single-title animated flipInX">Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/kubernetes/"><i class="far fa-folder fa-fw"></i>KUBERNETES</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-via="pkblah" data-hashtags="Kubernetes,Automation,Ubuntu,Calico"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/bootstrap-k8s/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/bootstrap-k8s/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
             </div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-24">2020-10-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1835 words&nbsp;
+            <div class="post-meta-line">
+                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">Kubernetes</a>,&nbsp;<a href="/tags/automation/">Automation</a>,&nbsp;<a href="/tags/ubuntu/">Ubuntu</a>,&nbsp;<a href="/tags/calico/">Calico</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-24">2020-10-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1841 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;9 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -416,26 +509,26 @@ sudo chown <span class="k">$(</span>id -u<span class="k">)</span>:<span class="k
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml">---<span class="w">
+<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nn">---</span><span class="w">
 </span><span class="w"></span><span class="c"># Source: calico/templates/calico-etcd-secrets.yaml</span><span class="w">
 </span><span class="w"></span><span class="c"># The following contains k8s Secrets for use with a TLS enabled etcd cluster.</span><span class="w">
 </span><span class="w"></span><span class="c"># For information on populating Secrets, see http://kubernetes.io/docs/user-guide/secrets/</span><span class="w">
-</span><span class="w"></span><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>Secret<span class="w">
-</span><span class="w"></span><span class="k">type</span><span class="p">:</span><span class="w"> </span>Opaque<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>calico-etcd-secrets<span class="w">
-</span><span class="w">  </span><span class="k">namespace</span><span class="p">:</span><span class="w"> </span>kube-system<span class="w">
-</span><span class="w"></span><span class="k">data</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Secret</span><span class="w">
+</span><span class="w"></span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">Opaque</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">calico-etcd-secrets</span><span class="w">
+</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">kube-system</span><span class="w">
+</span><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="c"># Populate the following with etcd TLS configuration if desired, but leave blank if</span><span class="w">
 </span><span class="w">  </span><span class="c"># not using TLS for etcd.</span><span class="w">
 </span><span class="w">  </span><span class="c"># The keys below should be uncommented and the values populated with the base64</span><span class="w">
 </span><span class="w">  </span><span class="c"># encoded contents of each file that would be associated with the TLS data.</span><span class="w">
 </span><span class="w">  </span><span class="c"># Example command for encoding a file contents: cat &lt;file&gt; | base64 -w 0</span><span class="w">
-</span><span class="w">  </span><span class="k">etcd-key</span><span class="p">:</span><span class="w"> </span>&lt;base<span class="w"> </span><span class="m">64</span><span class="w"> </span>encoded<span class="w"> </span>etcd<span class="w"> </span>Key<span class="sd">&gt;
-</span><span class="sd">  etcd-cert: &lt;base 64 encoded etcd Certificate&gt;</span><span class="w">
-</span><span class="w">  </span><span class="k">etcd-ca</span><span class="p">:</span><span class="w"> </span>&lt;base<span class="w"> </span><span class="m">64</span><span class="w"> </span>encoded<span class="w"> </span>etcd<span class="w"> </span>CA&gt;<span class="w">
-</span><span class="w"></span>---<span class="w">
+</span><span class="w">  </span><span class="nt">etcd-key</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;base 64 encoded etcd Key&gt;</span><span class="w">
+</span><span class="w">  </span><span class="nt">etcd-cert</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;base 64 encoded etcd Certificate&gt;</span><span class="w">
+</span><span class="w">  </span><span class="nt">etcd-ca</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;base 64 encoded etcd CA&gt;</span><span class="w">
+</span><span class="w"></span><span class="nn">---</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>You can get the base 64 encoded values by using the commands provided below. The file locations is well known and can also be obtained by running a kubectl describe command on the etcd pod.</p>
@@ -479,19 +572,19 @@ cat /etc/kubernetes/pki/etcd/server.crt <span class="p">|</span> base64 -w <span
 <td class="lntd">
 <pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Source: calico/templates/calico-config.yaml</span><span class="w">
 </span><span class="w"></span><span class="c"># This ConfigMap is used to configure a self-hosted Calico installation.</span><span class="w">
-</span><span class="w"></span><span class="k">kind</span><span class="p">:</span><span class="w"> </span>ConfigMap<span class="w">
-</span><span class="w"></span><span class="k">apiVersion</span><span class="p">:</span><span class="w"> </span>v1<span class="w">
-</span><span class="w"></span><span class="k">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>calico-config<span class="w">
-</span><span class="w">  </span><span class="k">namespace</span><span class="p">:</span><span class="w"> </span>kube-system<span class="w">
-</span><span class="w"></span><span class="k">data</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ConfigMap</span><span class="w">
+</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">calico-config</span><span class="w">
+</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">kube-system</span><span class="w">
+</span><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="c"># Configure this with the location of your etcd cluster.</span><span class="w">
-</span><span class="w">  </span><span class="k">etcd_endpoints</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://&lt;API IP&gt;:2379&#34;</span><span class="w">
+</span><span class="w">  </span><span class="nt">etcd_endpoints</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://&lt;API IP&gt;:2379&#34;</span><span class="w">
 </span><span class="w">  </span><span class="c"># If you&#39;re using TLS enabled etcd uncomment the following.</span><span class="w">
 </span><span class="w">  </span><span class="c"># You must also populate the Secret below with these files.</span><span class="w">
-</span><span class="w">  </span><span class="k">etcd_ca</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-ca&#34;</span><span class="w">
-</span><span class="w">  </span><span class="k">etcd_cert</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-cert&#34;</span><span class="w">
-</span><span class="w">  </span><span class="k">etcd_key</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-key&#34;</span><span class="w">
+</span><span class="w">  </span><span class="nt">etcd_ca</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-ca&#34;</span><span class="w">
+</span><span class="w">  </span><span class="nt">etcd_cert</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-cert&#34;</span><span class="w">
+</span><span class="w">  </span><span class="nt">etcd_key</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-key&#34;</span><span class="w">
 </span></code></pre></td></tr></table>
 </div>
 </div><p>With these edits in place, you should now be good to apply the calico.yaml to your kubernetes cluster.</p>
@@ -538,8 +631,8 @@ openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt <span class="p">|</span> ope
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2020-12-18&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/6061f623fafff7331df39faf517bd0434b1ce005" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 6061f623fafff7331df39faf517bd0434b1ce005: v1 ready website with Posts from VEBA, Access, WS1 and K8s">
-                                    <i class="fas fa-hashtag fa-fw"></i>6061f62</a></span>
+                <span>Updated on 2020-12-28&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/05bf3e2d0dd100389da1f9418935e86e930531e8" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 05bf3e2d0dd100389da1f9418935e86e930531e8: Added Featured flag to posts">
+                                    <i class="fas fa-hashtag fa-fw"></i>05bf3e2</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -563,7 +656,12 @@ openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt <span class="p">|</span> ope
 </div>
 <div id="comments"><div id="utterances"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
-            </noscript></div></article></div>
+            </noscript></div></article><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div><h2 class="twitter-title">TWEETS</h2>
+            <div class="twitterfeed" id="twitter-auto" >
+                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            </div></div></div>
             </main><footer class="footer">
         <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2020</span></div>
         </div>

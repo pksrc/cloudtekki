@@ -4,7 +4,14 @@
         <link>https://cloudtekki.com/tags/</link>
         <description>Tags - Tag - Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 28 Dec 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Author Notes</title>
+    <link>https://cloudtekki.com/tags/author-notes/</link>
+    <pubDate>Mon, 28 Dec 2020 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/author-notes/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>End User Computing</title>
     <link>https://cloudtekki.com/tags/end-user-computing/</link>
     <pubDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</pubDate>
@@ -66,13 +73,6 @@
     <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://cloudtekki.com/tags/postman/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Ubuntu</title>
-    <link>https://cloudtekki.com/tags/ubuntu/</link>
-    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://cloudtekki.com/tags/ubuntu/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>
