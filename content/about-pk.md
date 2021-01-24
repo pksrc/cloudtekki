@@ -50,7 +50,7 @@ With over 12 years working in the intersection of Technology and People, he brin
 
 ## Career 
 
-Currently, Staff Customer Success Architect for VMware EUC focussed on building the right solutions for everyday problems. 
+Currently, Staff Customer Success Architect for VMware EUC focussed on building the right solutions to everyday problems. 
 
 more details here at [about.pdotk.com](https://about.pdotk.com)
 
