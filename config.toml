@@ -22,7 +22,7 @@ theme = "LoveIt"
   link = "/about-pk/"
 
 [params]
-  # LoveIt theme version
+  # PKIt theme version
   version = "0.2.X"
   # site default theme ("light", "dark", "auto")
   defaultTheme = "auto"
@@ -217,7 +217,20 @@ theme = "LoveIt"
   name = "About"
   title = ""
   weight = 4
+  url = ""
+[[menu.main]]
+  identifier = "about-pk"
+  pre = "<i class='fas fa-user-circle fa-fw author'></i>"
+  post = "<b>Staff CSA @ VMW EUC</b> <br/> vExpert '20 <br/> <b>Passion:</b> Automation, EUC, Cloud, Serverless, k8s, Homelab"
+  parent = "about"
+  title = ""
+  weight = 4
   url = "/about-pk/"
+  name = "Partheeban Kandasamy (PK)"
+
+ # Section (all posts) page config
+[params.stripemenu]
+  # nothing yet
 
  # Section (all posts) page config
 [params.section]
