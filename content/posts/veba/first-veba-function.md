@@ -26,13 +26,13 @@ As the Product Manager, I wanted to take the opportunity to write a function not
 
 **IDE**: VisualStudio Code
 
-**Version Control:**Git
+**Version Control**: Git
 
 **Language** **of choice**: Python (no prior professional experience but have dabbled with it a few times)
 
-**FaaS Platform:** VEBA deployed with [OpenFaaS](https://www.openfaas.com/). Alternatively, you could have OpenFaaS running on Kubernetes w/ VMware Event router container deployed to get the same functionality
+**FaaS Platform**: VEBA deployed with [OpenFaaS](https://www.openfaas.com/). Alternatively, you could have OpenFaaS running on Kubernetes w/ VMware Event router container deployed to get the same functionality
 
-**vCenter:** Required since our functions will be driven by events generated within the SDDC. I have a homelab that i can work with for testing purposes.
+**vCenter**: Required since our functions will be driven by events generated within the SDDC. I have a homelab that i can work with for testing purposes.
 
 ## Function Execution Flow
 

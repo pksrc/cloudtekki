@@ -1,5 +1,5 @@
 ---
-title: "Misadventures turning on Workload Management"
+title: "Misadventures turning on Workload Management with vSphere 7"
 date: 2021-01-31T00:00:00-00:00
 draft: false
 categories: [SDDC]
@@ -8,9 +8,11 @@ tags:
 - Kubernetes
 - ProjectPacific
 - vExpert
+lightgallery: true
+featured: true
 ---
 
-For most folks that have been involved with SDDC for some time, this is going to be a lot of basic and obvious. As a quick disclaimer, I've to add that when i started down this path back in April, 2020 which was around the time vSphere 7.0 was released, I was (and still am) pretty new to the world of Home Lab and SDDC. As someone who has primarily worked on the application/software layer, I have been oblivious to the underlying infrastructure that made it all possible. I wanted to be educated and to learn more about the underpinnings of how Compute, Storage, Network come together to enable and drive modern innovations.
+For most folks that have been involved with SDDC for some time, this is going to be a lot of basic and obvious. As a quick disclaimer, I've to add that when i started down this path back in April, 2020(which was around the time vSphere 7.0 was released), I was (and still am) pretty new to the world of Home Lab and SDDC. As someone who has primarily worked on the application/software layer, I have been oblivious to the underlying infrastructure that made it all possible. I wanted to be educated and to learn more about the underpinnings of how Compute, Storage, Network come together to enable and drive modern innovations.
 
 I was just getting into the Kubernetes space through the [VMware Event Broker Appliance](https://vmweventbroker.io) Fling and was super excited about the whole Cloud Native movement! While there are a lot of easy (:grimacing: thanks to the Cloud Providers, Cluster API, Kind, minikube) or simpler alternatives to get a Kubernetes cluster going, I wanted to go down the vSphere 7 rabbit hole primarily to understand VMware's SDDC stack and its capabilities. So let's checkout my journey... 
 
@@ -57,7 +59,7 @@ As [pre-requisites](https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere
   - The vSphere cluster must use **shared storage** such as vSAN. Shared storage is required for vSphere HA, DRS, and for storing persistent container volumes
   - Deploy NSX-T for container networking
 
-So right away, for someone that is new to managing a SDDC (even in a homelab capacity), Workload Management was difficult to enable. However, I saw this as an opportunity to dive head first into SDDC and have a foundation with vSphere, vSAN and NSX stood-up to have an Enterprise-like foundation where i can then build my other capabilities for EUC. So it has to be a win-win situation, right? 
+So right away, for someone that is new to managing a SDDC (even in a homelab capacity), Workload Management was difficult to enable. However, I saw this as an opportunity to dive headfirst into SDDC and have a foundation with vSphere, vSAN and NSX stood-up to have an Enterprise-like foundation where i can then build my other capabilities for EUC. So it has to be a win-win situation, right? 
 
 <br/>
 
@@ -66,29 +68,31 @@ So right away, for someone that is new to managing a SDDC (even in a homelab cap
 
 There has been a ton of learnings from misconfigurations and unknowns along the way which I'm going to document in this blog in the hopes that it benefits anyone else that is new to this space! 
 
+<br/>
+
 -----
 
 ## Challenge 1: A Shared Storage
-The first challenge that I tried to solve was having a shared Storage for the lab. I was running low on Storage and thus looked into either turn on vSAN or setup NFS on a new server. This took me on a bit of a detour..
+The first challenge that I tried to solve was having a shared Storage for the lab. I looked at either turning on vSAN or setting up NFS on a new server
 
 ### Setting up vSAN
-From acquiring my hardware to getting my homelab primed for vSAN, it took me some time to work my way up to enabling vSAN (major accomplishment in my mind). Since I needed Flash based cache drives I ended up buying 4 100GB drives for cache that would let me enable a 2 node vSAN. This was supposed to be fairly easy but I had challenges with vSAN nodes and the witness modes getting partitioned because I had a flat network where I ended up enabling the witness node traffic on the management network. 
+From acquiring my hardware to getting my homelab primed for vSAN, it took me some time to work my way up to enabling vSAN (major accomplishment in my mind). Since I needed Flash based cache drives I ended up buying 4x 100GB SSD drives for cache that would let me enable a 2 node vSAN. This was supposed to be fairly easy but I had challenges with vSAN nodes and the witness modes getting partitioned. It was due to the flat network I had at the time and was able to resolve it by enabling the witness node traffic on the management network. 
 
 #### Referenced Links
 - https://www.virtuallyghetto.com/2018/04/native-mac-learning-in-vsphere-6-7-removes-the-need-for-promiscuous-mode-for-nested-esxi.html 
 - https://kb.vmware.com/s/article/2150433?lang=en_US 
-- https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vsan-planning.doc/GUID-03204C22-C069-4A18-AD96-26E1E1155D21.html 
+- https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vsan-planning.doc/GUID-03204C22-C069-4A18-AD96-26E1E1155D21.html
 
-I eventually ended up buying a Cisco 2960 Switch where I was able to setup some VLANs and get the traffics isolated properly. 
+I eventually ended up buying a Cisco 2960 Switch where I was able to setup some VLANs and get the traffic isolated properly. 
 
 ### Setting up NFS - [Unraid](Unraid.net)
-Even though I had the vSAN enabled, I didn't have a lot of space that I could work with. So I promptly started to look for a proper Storage solution and ended up choosing Unraid(Thanks to the recommendation from Erick Marshall {{% twitter profile="@erickbm" %}}) for my NFS). Needless to tell I had a bunch of challenges here as well! 
-  - While there are some SuperMicro options for NFS, I was in the zone of buying Dell Servers and ordered a old R510 server with amazing specs - Unfortunately it arrived broken and I had to return it
+Even though I had the vSAN enabled, I didn't have a lot of space that I could work with. So I promptly started to look for a proper Storage solution and ended up choosing Unraid(Thanks to the recommendation from Erick Marshall {{% twitter profile="@erickbm" %}}) for my NFS). Needless to say I had a bunch of challenges here as well! 
+  - While there are some SuperMicro options for NFS, I was in the mode of buying Dell Servers and ordered an old R510 server with amazing specs.Unfortunately it arrived broken and I had to return it
   - I ended up getting another Dell server R720XD which didn't have the right HBA card (Unraid requires that you expose the disks as JBOD) but had 92gb of RAM. 
-  - Rather than buying a proper HBA card, I hacked around by setting up Raid 0 with just 1 drive with `write through` on each volume (going against all the advices on the forums)
+  - Rather than buying a proper HBA card, I hacked around by setting up Raid 0 volumes with 1 drive each (going against all the advices on the forums) and enabled `write through` on each volume
   - I thought I was set but after running some VMs for a couple of days on Unraid, i realized that the VMs were "working" right up until the RAM limit were reached. The 92GB of RAM were being used as cache by Unraid. 
-  - I tried not to spend a lot of money but ended up getting a backplane for my R720XD so i could add 2 SSD drives for cache. I managed to screw up by ordering [SFF backplane](https://www.ebay.com/itm/REAR-FLEX-BAY-2-5-HDD-BACKPLANE-DELL-POWEREDGE-R720XD-2-5-SFF-CHASSIS-0JDG3/171699160322) and not the [LFF model](https://www.ebay.com/itm/REAR-FLEX-BAY-2-5-HDD-BACKPLANE-DELL-POWEREDGE-R720XD-3-5-LFF-CHASSIS-0JDG3/171699153133) I had.. there went my negotiated 10$ bargain on returning the cable for the right ones
-  - I finally installed the cache drives (2x 1TB SSD) and also enabled LACP on the two NICs for peak performance
+  - I tried not to spend a lot of money but ended up getting a backplane for my R720XD so i could add 2 SSD drives for cache. I managed to screw up by ordering [SFF backplane](https://www.ebay.com/itm/REAR-FLEX-BAY-2-5-HDD-BACKPLANE-DELL-POWEREDGE-R720XD-2-5-SFF-CHASSIS-0JDG3/171699160322) and not the [LFF backplane](https://www.ebay.com/itm/REAR-FLEX-BAY-2-5-HDD-BACKPLANE-DELL-POWEREDGE-R720XD-3-5-LFF-CHASSIS-0JDG3/171699153133) I had :sob: ...and there went my negotiated 10$ bargain on returning the cable for the right ones
+  - I finally installed the cache drives (2x 1TB SSD) and also enabled LAG on the two NICs for the peak performance that I could afford
 
 #### Unraid Spec: Dell R720XD
   - CPU: 2x E5-2670 
@@ -97,6 +101,8 @@ Even though I had the vSAN enabled, I didn't have a lot of space that I could wo
     - Model: PERC H710
     - 12x 3.5" 3TB HDD
     -  2x 2.5" 1TB SSD
+
+<br/>
 
 -----
 
@@ -214,13 +220,17 @@ and to my surprise...
 
 {{<image src="https://media.giphy.com/media/lMameLIF8voLu8HxWV/source.gif" caption="Moment to Celebrate">}} 
 
-Hopefully this post serves as a good guide for those that are new and yet want to get started with Workload Management on vSphere! For those wondering, do I need to go through such a difficult setup to take advantage of Kubernetes, the answer is NO! There are several easy methods 
-- Having one of the Clouds spin up a cluster is very quick.
-- You could also use the automated method to [spin up this entire setup](https://www.virtuallyghetto.com/2020/04/deploying-a-minimal-vsphere-with-kubernetes-environment.html ) or 
-- You could also manually provision your cluster by using my [Bootstapping Kubernetes on Ubuntu 20.04 using kubeadm w/ Calico](https://cloudtekki.com/post/bootstrap-k8s/) post
+<br/>
 
-While this may have been a trivial setup for some, I had to go through a steep learning curve! Thanks to the help of the community and their blogs, I was able to quickly pick up where I left off and get to this monumental moment where I have vSphere enabled with Kubernetes! Thanks again to the #vExpert community for all the invisible helping hands! :smile: 
+------ 
+
+Workload Management is a game changer as it enables you to manage Containers and VMs within the same platform! For those that are just looking to work with Kubernetes and wondering if you need to go through this rather elaborate setup to get started, the answer is NO! There are several easy methods 
+- **Just K8s**: Leverage the Cloud Platforms ([Amazon EKS](https://aws.amazon.com/eks/?whats-new-cards.sort-by=item.additionalFields.postDateTime&whats-new-cards.sort-order=desc&eks-blogs.sort-by=item.additionalFields.createdDate&eks-blogs.sort-order=desc), [GKE](https://cloud.google.com/kubernetes-engine), [K8s on Azure](https://azure.microsoft.com/en-us/overview/kubernetes-on-azure/)) to easily spin up a cluster.
+- **Automated vSphere 7 with K8s**: Use William Lam's automated method to [spin up this entire setup](https://www.virtuallyghetto.com/2020/04/deploying-a-minimal-vsphere-with-kubernetes-environment.html ) or 
+- **Just K8s (but manually)**: You could also manually provision your cluster by using my [Bootstrapping Kubernetes on Ubuntu 20.04 using kubeadm w/ Calico](https://cloudtekki.com/post/bootstrap-k8s/) post
+
+Thanks to the help of the community and their blogs, I was able to quickly pick up where I left off and get to this monumental moment where I have vSphere enabled with Kubernetes! Thanks again to the #vExpert community for all the invisible helping hands! :smile: 
 
 > I've tried to reference all the posts that I could recall and if there are any that I've missed that you think could be relevant here, please comment and I'll be happy amend! 
 
-I want to sign off by encouraging everyone to gravitate towards learning new ideas, technologies and concepts! Dive head first into embracing new experiences however uncomfortable or difficult as they are and I'm positive it will not go to waste! :metal:
+While this may have been a trivial setup for some, I had to go through a steep learning curve. Hopefully this post serves as a good guide on what to avoid and look out for as you get started with Workload Management on vSphere! I want to sign off by encouraging everyone to gravitate towards learning new ideas, technologies and concepts! Dive headfirst into embracing new experiences however uncomfortable or difficult as they are and I'm positive it will not go to waste! :metal: 
