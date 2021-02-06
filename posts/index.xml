@@ -4,7 +4,14 @@
         <link>https://cloudtekki.com/posts/</link>
         <description>All Posts | Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 28 Dec 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Misadventures turning on Workload Management with vSphere 7</title>
+    <link>https://cloudtekki.com/post/turning-on-wcp/</link>
+    <pubDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/post/turning-on-wcp/</guid>
+    <description><![CDATA[For most folks that have been involved with SDDC for some time, this is going to be a lot of basic and obvious. As a quick disclaimer, I&rsquo;ve to add that when i started down this path back in April, 2020(which was around the time vSphere 7.0 was released), I was (and still am) pretty new to the world of Home Lab and SDDC. As someone who has primarily worked on the application/software layer, I have been oblivious to the underlying infrastructure that made it all possible.]]></description>
+</item><item>
     <title>2020: Shattering Comfort Zones</title>
     <link>https://cloudtekki.com/post/looking-back-at-2020/</link>
     <pubDate>Mon, 28 Dec 2020 00:00:00 &#43;0000</pubDate>
@@ -82,12 +89,5 @@ I’m going to explore how you enable this integration to automatically trigger 
     <guid>https://cloudtekki.com/post/serverless-fn-template/</guid>
     <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/serverless-function-templates   You have probably have seen my other article that helps you get started writing your very first event-driven function using VMware Event Broker Appliance (VEBA) for your vCenter infrastructure. I highlight the steps taken to write my first serverless function and provide templates to help you get started quickly!
  Writing your first Serverless Function — here]]></description>
-</item><item>
-    <title>Writing your first Serverless Function</title>
-    <link>https://cloudtekki.com/post/first-veba-function/</link>
-    <pubDate>Thu, 23 Apr 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://cloudtekki.com/post/first-veba-function/</guid>
-    <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/writing-your-first-serverless-function   A function is a unit of execution in the Serverless world that does one thing and one thing really well. With the current product VMware Event Broker Appliance (VEBA) that i’m managing, we aim to provide a simple solution that provides a way to execute your functions driven by vCenter events. This is a significant capability that exposes a plethora of integrations and allows seamless automation opportunities for a VMware SDDC customer.]]></description>
 </item></channel>
 </rss>

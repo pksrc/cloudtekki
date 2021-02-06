@@ -2,12 +2,18 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://cloudtekki.com/categories/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/kubernetes/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/post/turning-on-wcp/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/posts/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/projectpacific/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/categories/sddc/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/tanzu/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/vexpert/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/looking-back-at-2020/</loc><lastmod>2020-12-30T12:12:22-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/author-notes/</loc><lastmod>2020-12-30T12:12:22-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/</loc><lastmod>2020-12-30T12:12:22-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/posts/</loc><lastmod>2020-12-30T12:12:22-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/</loc><lastmod>2020-12-30T12:12:22-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/categories/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/end-user-computing/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/categories/euc/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/categories/uem/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
@@ -17,22 +23,21 @@
             <loc>https://cloudtekki.com/tags/access/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/access-apis/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/apis/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/automation/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/post/bootstrap-k8s/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/calico/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/automation/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/post/bootstrap-k8s/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/calico/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/developer-tools/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/categories/kubernetes/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/kubernetes/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/categories/kubernetes/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/postman/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/ubuntu/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/cloud-native/</loc><lastmod>2020-12-18T15:18:51-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/ubuntu/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/cloud-native/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/self-service-for-your-datacenter/</loc><lastmod>2020-12-18T15:18:51-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/event-driven/</loc><lastmod>2020-12-18T15:18:51-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/categories/veba/</loc><lastmod>2020-12-18T15:18:51-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/event-driven/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/categories/veba/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/about-guestauthor/</loc><lastmod>2021-01-24T14:51:31-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/about-pk/</loc><lastmod>2021-01-24T14:51:31-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/trusted-tls-for-veba/</loc><lastmod>2020-12-18T15:18:51-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/rest-api-fn/</loc><lastmod>2020-12-18T15:18:51-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/integrating-vcenter-with-pagerduty/</loc><lastmod>2020-12-18T15:18:51-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/serverless-fn-template/</loc><lastmod>2020-12-18T15:18:51-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/post/first-veba-function/</loc><lastmod>2020-12-18T15:18:51-08:00</lastmod></url></urlset>
+            <loc>https://cloudtekki.com/post/first-veba-function/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url></urlset>

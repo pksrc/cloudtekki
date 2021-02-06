@@ -4,7 +4,35 @@
         <link>https://cloudtekki.com/tags/</link>
         <description>Tags - Tag - Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 28 Dec 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Kubernetes</title>
+    <link>https://cloudtekki.com/tags/kubernetes/</link>
+    <pubDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/kubernetes/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>ProjectPacific</title>
+    <link>https://cloudtekki.com/tags/projectpacific/</link>
+    <pubDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/projectpacific/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Tanzu</title>
+    <link>https://cloudtekki.com/tags/tanzu/</link>
+    <pubDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/tanzu/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>vExpert</title>
+    <link>https://cloudtekki.com/tags/vexpert/</link>
+    <pubDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/vexpert/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Author Notes</title>
     <link>https://cloudtekki.com/tags/author-notes/</link>
     <pubDate>Mon, 28 Dec 2020 00:00:00 &#43;0000</pubDate>
@@ -45,34 +73,6 @@
     <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://cloudtekki.com/tags/automation/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Calico</title>
-    <link>https://cloudtekki.com/tags/calico/</link>
-    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://cloudtekki.com/tags/calico/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Developer Tools</title>
-    <link>https://cloudtekki.com/tags/developer-tools/</link>
-    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://cloudtekki.com/tags/developer-tools/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Kubernetes</title>
-    <link>https://cloudtekki.com/tags/kubernetes/</link>
-    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://cloudtekki.com/tags/kubernetes/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Postman</title>
-    <link>https://cloudtekki.com/tags/postman/</link>
-    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://cloudtekki.com/tags/postman/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

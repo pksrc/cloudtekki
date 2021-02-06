@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Misadventures turning on Workload Management with vSphere 7 - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive"><meta property="og:title" content="Misadventures turning on Workload Management with vSphere 7" />
+<meta property="og:description" content="For most folks that have been involved with SDDC for some time, this is going to be a lot of basic and obvious. As a quick disclaimer, I&rsquo;ve to add that when i started down this path back in April, 2020(which was around the time vSphere 7.0 was released), I was (and still am) pretty new to the world of Home Lab and SDDC. As someone who has primarily worked on the application/software layer, I have been oblivious to the underlying infrastructure that made it all possible." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cloudtekki.com/post/turning-on-wcp/" />
+<meta property="article:published_time" content="2021-01-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-05T19:35:07-08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Misadventures turning on Workload Management with vSphere 7"/>
+<meta name="twitter:description" content="For most folks that have been involved with SDDC for some time, this is going to be a lot of basic and obvious. As a quick disclaimer, I&rsquo;ve to add that when i started down this path back in April, 2020(which was around the time vSphere 7.0 was released), I was (and still am) pretty new to the world of Home Lab and SDDC. As someone who has primarily worked on the application/software layer, I have been oblivious to the underlying infrastructure that made it all possible."/>
+<meta name="application-name" content="Cloud Tekki">
+<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/turning-on-wcp/" /><link rel="prev" href="https://cloudtekki.com/post/looking-back-at-2020/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Misadventures turning on Workload Management with vSphere 7",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cloudtekki.com\/post\/turning-on-wcp\/"
+        },"genre": "posts","keywords": "Tanzu, Kubernetes, ProjectPacific, vExpert","wordcount":  2886 ,
+        "url": "https:\/\/cloudtekki.com\/post\/turning-on-wcp\/","datePublished": "2021-01-31T00:00:00+00:00","dateModified": "2021-02-05T19:35:07-08:00","publisher": {
+            "@type": "Organization",
+            "name": "Cloud Tekki"},"author": {
+                "@type": "Person",
+                "name": "Partheeban Kandasamy (PK)"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+        </div>
+        <div class="menu navbar">
+            <div class="menu-inner nav__links"><li data-expand="Posts" class="nav--link">
+                        <a href="/posts/"><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span> Posts </a>
+                    </li><li data-expand="Categories" class="nav--link">
+                        <a href="/categories/"><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span> Categories </a>
+                    </li><li data-expand="Tags" class="nav--link">
+                        <a href="/tags/"><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span> Tags </a>
+                    </li><li data-expand="About" class="nav--link">
+                        <a href="/"><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span> About </a>
+                    </li><span class="menu-item">|</span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span>Posts</a><a class="menu-item" href="/categories/" title=""><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span>Categories</a><a class="menu-item" href="/tags/" title=""><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span>Tags</a><a class="menu-item" href="/" title=""><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+
+        
+<div class="tip"></div>
+
+<section class="header__expandMenu">
+  <div class="menu__container"><div id="Posts">
+      <div class="sub__menu">
+        <h3 class="title">Featured Posts</h3>
+        <ul class="subMenu__items">
+            <li class="subMenu--item">
+              <i class="fa fa-star icon--production" style="color: gold;" aria-hidden="true"></i>
+              <span class="label__container">
+                <div class="label">
+                  <a href="/post/uem-organization-groups/"> Unpacking Organization Groups in Workspace ONE UEM</a>
+                  <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+                <div class="label--desc">&nbsp;published on <b><time datetime="2020-11-21">2020-11-21</time></b></div>
+              </span>
+            </li>
+            <li class="subMenu--item">
+              <i class="fa fa-star icon--production" style="color: gold;" aria-hidden="true"></i>
+              <span class="label__container">
+                <div class="label">
+                  <a href="/post/access-apis/"> Access: The tale of the hidden APIs</a>
+                  <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+                <div class="label--desc">&nbsp;published on <b><time datetime="2020-10-24">2020-10-24</time></b></div>
+              </span>
+            </li>
+          </ul>
+      </div>
+    </div><div id="Categories">
+      <div class="sub__menu">
+        <h3 class="title">Categories</h3>
+        <ul class="subMenu__items"><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/veba/">VEBA <sup>6</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/euc/">EUC <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/access/">ACCESS <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/kubernetes/">KUBERNETES <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/sddc/">SDDC <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/uem/">UEM <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li></ul>
+      </div>
+    </div><div id="Tags">
+      <div class="sub__menu">
+        <h3 class="title">Tags</h3>
+        <ul class="subMenu__items sec--menu"><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/cloud-native/">cloud-native <sup>6</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/event-driven/">event-driven <sup>6</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/kubernetes/">Kubernetes <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/access/">Access <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/apis/">APIs <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/author-notes/">Author Notes <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/automation/">Automation <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/calico/">Calico <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/developer-tools/">Developer Tools <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/end-user-computing/">End User Computing <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/postman/">Postman <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/projectpacific/">ProjectPacific <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/tanzu/">Tanzu <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/ubuntu/">Ubuntu <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/unified-endpoint-management/">Unified Endpoint Management <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/vexpert/">vExpert <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li></ul>
+          </div>
+          <div class="sub__menu">
+            <h3 class="title">&nbsp</h3>
+          <ul class="subMenu__items sec--menu"></ul>
+      </div>
+    </div>
+    <div id="About">
+      <div class="sub__menu">
+        <h3 class="title">About</h3>
+        <ul class="subMenu__items">
+          
+          <li class="subMenu--item">
+            <i class='fas fa-user-circle fa-fw author'></i>
+            <span class="label__container">
+              <div class="label">
+                <a href="/about-pk/">Partheeban Kandasamy (PK)</a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+              <div class="label--desc">
+                <b>Staff CSA @ VMW EUC</b> <br/> vExpert '20 <br/> <b>Passion:</b> Automation, EUC, Cloud, Serverless, k8s, Homelab
+              </div>
+            </span>
+          </li>
+          
+        </ul>
+      </div>
+    </div></div>
+</section><main class="main">
+                <div class="container"><article class="page single">
+<aside class="sidebar" id="sidebar">
+  <div id="sidebar-auto">
+    <section class="sidebar_inner" id="SidebarNavigation">
+      <h2 class="mt-4">Featured Posts</h2>
+      <ul>
+        <li>
+          <a href="https://cloudtekki.com/post/turning-on-wcp/" class="nav-link">Misadventures turning on Workload Management with vSphere 7</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/uem-organization-groups/" class="nav-link">Unpacking Organization Groups in Workspace ONE UEM</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/access-apis/" class="nav-link">Access: The tale of the hidden APIs</a>
+        </li>
+      </ul>
+
+      <h2 class="mt-4">Recent Posts</h2>
+      <ul class="flex-column">
+        <li>
+          <a href="https://cloudtekki.com/post/turning-on-wcp/" class="nav-link">Misadventures turning on Workload Management with vSphere 7</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/looking-back-at-2020/" class="nav-link">2020: Shattering Comfort Zones</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/uem-organization-groups/" class="nav-link">Unpacking Organization Groups in Workspace ONE UEM</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/access-apis/" class="nav-link">Access: The tale of the hidden APIs</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/bootstrap-k8s/" class="nav-link">Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico</a>
+        </li>
+      </ul>
+        <div>
+          <h2 class="mt-4 taxonomy" id="categories-section">TOP Categories</h2>
+          <nav class="tags_nav">
+            <a href='https://cloudtekki.com/categories/veba/' class="post_tag button button_translucent">
+              VEBA
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/euc/' class="post_tag button button_translucent">
+              EUC
+              <span class="button_tally">2</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/access/' class="post_tag button button_translucent">
+              ACCESS
+              <span class="button_tally">1</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/kubernetes/' class="post_tag button button_translucent">
+              KUBERNETES
+              <span class="button_tally">1</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/sddc/' class="post_tag button button_translucent">
+              SDDC
+              <span class="button_tally">1</span>
+            </a>
+            
+          </nav>
+        </div>
+        <div>
+          <h2 class="mt-4 taxonomy" id="tags-section">TOP Tags</h2>
+          <nav class="tags_nav">
+            <a href='https://cloudtekki.com/tags/cloud-native/' class="post_tag button button_translucent">
+              CLOUD-NATIVE
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/event-driven/' class="post_tag button button_translucent">
+              EVENT-DRIVEN
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/kubernetes/' class="post_tag button button_translucent">
+              KUBERNETES
+              <span class="button_tally">2</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/access/' class="post_tag button button_translucent">
+              ACCESS
+              <span class="button_tally">1</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/apis/' class="post_tag button button_translucent">
+              APIS
+              <span class="button_tally">1</span>
+            </a>
+            
+          </nav>
+        </div>
+    </section>
+  </div>
+</aside>
+<h1 class="single-title animated flipInX">Misadventures turning on Workload Management with vSphere 7</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/sddc/"><i class="far fa-folder fa-fw"></i>SDDC</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/turning-on-wcp/" data-title="Misadventures turning on Workload Management with vSphere 7" data-via="pkblah" data-hashtags="Tanzu,Kubernetes,ProjectPacific,vExpert"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/turning-on-wcp/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/turning-on-wcp/" data-title="Misadventures turning on Workload Management with vSphere 7" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/turning-on-wcp/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/turning-on-wcp/" data-title="Misadventures turning on Workload Management with vSphere 7" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+            <div class="post-meta-line">
+                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/tanzu/">Tanzu</a>,&nbsp;<a href="/tags/kubernetes/">Kubernetes</a>,&nbsp;<a href="/tags/projectpacific/">ProjectPacific</a>,&nbsp;<a href="/tags/vexpert/">vExpert</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-01-31">2021-01-31</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2886 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;14 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#lab-bom">Lab BOM</a>
+      <ul>
+        <li><a href="#hosts">Hosts</a></li>
+        <li><a href="#sddc-setup">SDDC Setup</a></li>
+        <li><a href="#networking">Networking</a></li>
+      </ul>
+    </li>
+    <li><a href="#challenge-1-a-shared-storage">Challenge 1: A Shared Storage</a>
+      <ul>
+        <li><a href="#setting-up-vsan">Setting up vSAN</a>
+          <ul>
+            <li><a href="#referenced-links">Referenced Links</a></li>
+          </ul>
+        </li>
+        <li><a href="#setting-up-nfs---unraidunraidnet">Setting up NFS - <a href="Unraid.net">Unraid</a></a>
+          <ul>
+            <li><a href="#unraid-spec-dell-r720xd">Unraid Spec: Dell R720XD</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#challenge-2-nsx">Challenge 2: NSX</a>
+      <ul>
+        <li><a href="#attempt-1-ubuntu-file-system-corruption">Attempt #1: Ubuntu File System Corruption</a>
+          <ul>
+            <li><a href="#referenced-links-1">Referenced Links</a></li>
+          </ul>
+        </li>
+        <li><a href="#attempt-2-nsx-cleanup-and-reinstall">Attempt #2: NSX Cleanup and Reinstall</a>
+          <ul>
+            <li><a href="#referenced-links-2">Referenced Links</a></li>
+          </ul>
+        </li>
+        <li><a href="#attempt-3-recovering-a-corrupted-file-system">Attempt #3: Recovering a Corrupted File System</a>
+          <ul>
+            <li><a href="#referenced-links-3">Referenced Links</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#challenge-3-wcp">Challenge 3: WCP</a>
+      <ul>
+        <li><a href="#attempt-1-nsx-t-31-not-supported">Attempt 1: NSX-T 3.1 not supported</a></li>
+        <li><a href="#detour-upgrade-hosts-to-u1">Detour: Upgrade Hosts to U1</a>
+          <ul>
+            <li><a href="#referenced-links-4">Referenced Links</a></li>
+          </ul>
+        </li>
+        <li><a href="#detour-upgrade-vcenter-to-70u1">Detour: Upgrade vCenter to 7.0U1</a>
+          <ul>
+            <li><a href="#referenced-links-5">Referenced Links</a></li>
+          </ul>
+        </li>
+        <li><a href="#attempt-2-errors-more-errors">Attempt #2: Errors, More Errors</a>
+          <ul>
+            <li><a href="#referenced-links-6">Referenced Links</a></li>
+          </ul>
+        </li>
+        <li><a href="#attempt-3-cross-check">Attempt #3: Cross Check</a>
+          <ul>
+            <li><a href="#referenced-links-7">Referenced Links</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>For most folks that have been involved with SDDC for some time, this is going to be a lot of basic and obvious. As a quick disclaimer, I&rsquo;ve to add that when i started down this path back in April, 2020(which was around the time vSphere 7.0 was released), I was (and still am) pretty new to the world of Home Lab and SDDC. As someone who has primarily worked on the application/software layer, I have been oblivious to the underlying infrastructure that made it all possible. I wanted to be educated and to learn more about the underpinnings of how Compute, Storage, Network come together to enable and drive modern innovations.</p>
+<p>I was just getting into the Kubernetes space through the <a href="https://vmweventbroker.io" target="_blank">VMware Event Broker Appliance</a> Fling and was super excited about the whole Cloud Native movement! While there are a lot of easy (😬 thanks to the Cloud Providers, Cluster API, Kind, minikube) or simpler alternatives to get a Kubernetes cluster going, I wanted to go down the vSphere 7 rabbit hole primarily to understand VMware&rsquo;s SDDC stack and its capabilities. So let&rsquo;s checkout my journey&hellip;</p>
+<h2 id="lab-bom">Lab BOM</h2>
+<p>Here is my BOM when I started this Journey to turn on the Workload Management in vSphere 7.0 - I spent a lot on Compute and minimally on storage and networking equipments.</p>
+<h3 id="hosts">Hosts</h3>
+<ul>
+<li><strong>2x Dell R620</strong> (unsupported CPU for vSphere 7.0)
+<ul>
+<li>CPU: 2x E5-2630 v2</li>
+<li>Memory: 128GB RAM</li>
+<li>Storage:
+<ul>
+<li>Model: PERC H310 Mini (for monolithic)</li>
+<li>2x 500GB HDD</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>2x Dell R730</strong>
+<ul>
+<li>CPU: 2x E5-2620 v3</li>
+<li>Memory: 128GB RAM</li>
+<li>Storage:
+<ul>
+<li>Model: PERC H730 Mini</li>
+<li>2x 500GB HDD</li>
+<li>2x 100GB SSD</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="sddc-setup">SDDC Setup</h3>
+<ul>
+<li>vCenter 7.0 GA</li>
+<li>Mgmt: ESXi 6.7 on 2x R620</li>
+<li>Compute: ESXi 7.0 GA on 2x R730
+<ul>
+<li>2 node vSAN Cluster enabled (after purchasing a couple of 100GB SSDs)</li>
+</ul>
+</li>
+</ul>
+<h3 id="networking">Networking</h3>
+<ul>
+<li>TP-Link (an old leftover router)
+<ul>
+<li>routes to my ISP through a firewall</li>
+</ul>
+</li>
+<li>Cisco 2960 Switch (mainly for VLANs)
+<ul>
+<li>10.10.10.0/24 - (VLAN 10) Management</li>
+<li>10.10.20.0/24 - (VLAN 20) VM</li>
+<li>10.10.30.0/24 - (VLAN 30) vMotion</li>
+<li>10.10.50.0/24 - (VLAN 50) vSAN</li>
+<li>10.10.60.0/24 - (VLAN 60) NSX Overlay/TEP</li>
+<li>10.10.70.0/24 - (VLAN 70) NSX Uplink</li>
+<li>default route back to TP-Link</li>
+</ul>
+</li>
+</ul>
+<p>As <a href="https://docs.vmware.com/en/VMware-vSphere/7.0/vmware-vsphere-with-tanzu/GUID-EE236215-DA4D-4579-8BEB-A693D1882C77.html" target="_blank">pre-requisites</a>, Kubernetes on vSphere demanded a lot!</p>
+<ul>
+<li>vSphere cluster with at least <strong>3 ESXi hosts</strong>. If you are using vSAN you need a minimum of 4 ESXi hosts</li>
+<li>Configure the vSphere cluster with <strong>high-availability (HA) enabled</strong></li>
+<li>Configure the vSphere cluster with the <strong>Distributed Resource Scheduler (DRS) enabled</strong> - DRS automation must be set to Fully Automated mode</li>
+<li>The vSphere cluster must use <strong>shared storage</strong> such as vSAN. Shared storage is required for vSphere HA, DRS, and for storing persistent container volumes</li>
+<li>Deploy NSX-T for container networking</li>
+</ul>
+<p>So right away, for someone that is new to managing a SDDC (even in a homelab capacity), Workload Management was difficult to enable. However, I saw this as an opportunity to dive headfirst into SDDC and have a foundation with vSphere, vSAN and NSX stood-up to have an Enterprise-like foundation where i can then build my other capabilities for EUC. So it has to be a win-win situation, right?</p>
+<br/>
+<p><strong>and.. 9 months later&hellip;</strong>
+<figure><a class="lightgallery" href="/img/k8s/turning-on-wcp/wcp-success.png" title="/img/k8s/turning-on-wcp/wcp-success.png" data-thumbnail="/img/k8s/turning-on-wcp/wcp-success.png" data-sub-html="<h2>Enabled Workload Management on Feb 2021</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/k8s/turning-on-wcp/wcp-success.png"
+            data-srcset="/img/k8s/turning-on-wcp/wcp-success.png, /img/k8s/turning-on-wcp/wcp-success.png 1.5x, /img/k8s/turning-on-wcp/wcp-success.png 2x"
+            data-sizes="auto"
+            alt="/img/k8s/turning-on-wcp/wcp-success.png" />
+    </a><figcaption class="image-caption">Enabled Workload Management on Feb 2021</figcaption>
+    </figure></p>
+<p>There has been a ton of learnings from misconfigurations and unknowns along the way which I&rsquo;m going to document in this blog in the hopes that it benefits anyone else that is new to this space!</p>
+<br/>
+<hr>
+<h2 id="challenge-1-a-shared-storage">Challenge 1: A Shared Storage</h2>
+<p>The first challenge that I tried to solve was having a shared Storage for the lab. I looked at either turning on vSAN or setting up NFS on a new server</p>
+<h3 id="setting-up-vsan">Setting up vSAN</h3>
+<p>From acquiring my hardware to getting my homelab primed for vSAN, it took me some time to work my way up to enabling vSAN (major accomplishment in my mind). Since I needed Flash based cache drives I ended up buying 4x 100GB SSD drives for cache that would let me enable a 2 node vSAN. This was supposed to be fairly easy but I had challenges with vSAN nodes and the witness modes getting partitioned. It was due to the flat network I had at the time and was able to resolve it by enabling the witness node traffic on the management network.</p>
+<h4 id="referenced-links">Referenced Links</h4>
+<ul>
+<li><a href="https://www.virtuallyghetto.com/2018/04/native-mac-learning-in-vsphere-6-7-removes-the-need-for-promiscuous-mode-for-nested-esxi.html">https://www.virtuallyghetto.com/2018/04/native-mac-learning-in-vsphere-6-7-removes-the-need-for-promiscuous-mode-for-nested-esxi.html</a></li>
+<li><a href="https://kb.vmware.com/s/article/2150433?lang=en_US">https://kb.vmware.com/s/article/2150433?lang=en_US</a></li>
+<li><a href="https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vsan-planning.doc/GUID-03204C22-C069-4A18-AD96-26E1E1155D21.html">https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vsan-planning.doc/GUID-03204C22-C069-4A18-AD96-26E1E1155D21.html</a></li>
+</ul>
+<p>I eventually ended up buying a Cisco 2960 Switch where I was able to setup some VLANs and get the traffic isolated properly.</p>
+<h3 id="setting-up-nfs---unraidunraidnet">Setting up NFS - <a href="Unraid.net">Unraid</a></h3>
+<p>Even though I had the vSAN enabled, I didn&rsquo;t have a lot of space that I could work with. So I promptly started to look for a proper Storage solution and ended up choosing Unraid(Thanks to the recommendation from Erick Marshall <a href="https://twitter.com/@erickbm?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="small" data-related="pkblah" data-show-screen-name="false"  data-show-count="false">Follow</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>) for my NFS). Needless to say I had a bunch of challenges here as well!</p>
+<ul>
+<li>While there are some SuperMicro options for NFS, I was in the mode of buying Dell Servers and ordered an old R510 server with amazing specs.Unfortunately it arrived broken and I had to return it</li>
+<li>I ended up getting another Dell server R720XD which didn&rsquo;t have the right HBA card (Unraid requires that you expose the disks as JBOD) but had 92gb of RAM.</li>
+<li>Rather than buying a proper HBA card, I hacked around by setting up Raid 0 volumes with 1 drive each (going against all the advices on the forums) and enabled <code>write through</code> on each volume</li>
+<li>I thought I was set but after running some VMs for a couple of days on Unraid, i realized that the VMs were &ldquo;working&rdquo; right up until the RAM limit were reached. The 92GB of RAM were being used as cache by Unraid.</li>
+<li>I tried not to spend a lot of money but ended up getting a backplane for my R720XD so i could add 2 SSD drives for cache. I managed to screw up by ordering <a href="https://www.ebay.com/itm/REAR-FLEX-BAY-2-5-HDD-BACKPLANE-DELL-POWEREDGE-R720XD-2-5-SFF-CHASSIS-0JDG3/171699160322" target="_blank">SFF backplane</a> and not the <a href="https://www.ebay.com/itm/REAR-FLEX-BAY-2-5-HDD-BACKPLANE-DELL-POWEREDGE-R720XD-3-5-LFF-CHASSIS-0JDG3/171699153133" target="_blank">LFF backplane</a> I had 😭 &hellip;and there went my negotiated 10$ bargain on returning the cable for the right ones</li>
+<li>I finally installed the cache drives (2x 1TB SSD) and also enabled LAG on the two NICs for the peak performance that I could afford</li>
+</ul>
+<h4 id="unraid-spec-dell-r720xd">Unraid Spec: Dell R720XD</h4>
+<ul>
+<li>CPU: 2x E5-2670</li>
+<li>Memory: 92GB RAM</li>
+<li>Storage:
+<ul>
+<li>Model: PERC H710</li>
+<li>12x 3.5&quot; 3TB HDD</li>
+<li>2x 2.5&quot; 1TB SSD</li>
+</ul>
+</li>
+</ul>
+<br/>
+<hr>
+<h2 id="challenge-2-nsx">Challenge 2: NSX</h2>
+<p>I knew this was going to be a huge hurdle since I had NO experience with NSX, Absolutely NONE! There were two uses for NSX in my lab</p>
+<ol>
+<li>I needed the setup for WCP</li>
+<li>I wanted to leverage NSX load balancers for my EUC setup (UAGs, UEM, Access etc.)</li>
+</ol>
+<h3 id="attempt-1-ubuntu-file-system-corruption">Attempt #1: Ubuntu File System Corruption</h3>
+<p>I was able to setup NSX minimally late last year using Keith Lee&rsquo;s <a href="https://twitter.com/KeithRichardLee?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="small" data-related="pkblah" data-show-screen-name="false"  data-show-count="false">Follow</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> blog and then I had to take a break from Lab for mainstream EUC work. I also had to change my priorities so I could deploy an Load Balancer for the EUC lab. For a brief moment, I went down the path of taking a whole <a href="https://mylearn.vmware.com/mgrReg/courses.cfm?ui=www_edu&amp;a=one&amp;id_subject=92720" target="_blank">NSX-T 3.0 Install, Configure, Manage</a> so I can setup NSX properly. Needless to say but I lost some tempo due to competing priorities and NSX Lab took a backseat in the fall of 2020.</p>
+<p>After the holidays when I looked at my whole setup , I figured I&rsquo;d be better off if I seek some help! I got some assistance from Aaron Ramirez <a href="https://twitter.com/aaronramirez?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="small" data-related="pkblah" data-show-screen-name="false"  data-show-count="false">Follow</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> and we first tried to upgrade NSX-T to 3.0.2 and when the upgrade didn&rsquo;t work from the GUI, we decided to start over with NSX-T 😅.</p>
+<p>This time around, I wanted to leverage my Unraid and decided to install NSX w/ Unraid as the datastore and this was a bad move on my part. I&rsquo;d setup Unraid to use the cache for VMs and had also setup a mover job that would move the files from cache to the HDD overnight. My theory is that the Unraid mover job somehow corrupted the Ubuntu file system. The next day after all the setup was &ldquo;complete&rdquo;, I got a nice <code>index out of sync</code> error all over the NSX Manager UI</p>
+<figure><a class="lightgallery" href="/img/k8s/turning-on-wcp/nsx-index-error.png" title="/img/k8s/turning-on-wcp/nsx-index-error.png" data-thumbnail="/img/k8s/turning-on-wcp/nsx-index-error.png" data-sub-html="<h2>Enabled Workload Management on Feb 2021</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/k8s/turning-on-wcp/nsx-index-error.png"
+            data-srcset="/img/k8s/turning-on-wcp/nsx-index-error.png, /img/k8s/turning-on-wcp/nsx-index-error.png 1.5x, /img/k8s/turning-on-wcp/nsx-index-error.png 2x"
+            data-sizes="auto"
+            alt="/img/k8s/turning-on-wcp/nsx-index-error.png" />
+    </a><figcaption class="image-caption">Enabled Workload Management on Feb 2021</figcaption>
+    </figure>
+<p>I couldn&rsquo;t find anyone that seemed to have faced this issue before and decided to start over&hellip;</p>
+<h4 id="referenced-links-1">Referenced Links</h4>
+<ul>
+<li><a href="http://keithlee.ie/2018/11/20/pks-nsx-t-home-lab-part-7-nsx-t-install/">http://keithlee.ie/2018/11/20/pks-nsx-t-home-lab-part-7-nsx-t-install/</a></li>
+</ul>
+<h3 id="attempt-2-nsx-cleanup-and-reinstall">Attempt #2: NSX Cleanup and Reinstall</h3>
+<p>I went through the reinstall and configured process for NSX, boldly deciding to stick with Unraid! I ended up having the same issues but got worse this time - a login loop upon boot of NSX Manager (without any user interaction)</p>
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">Anyone seen <a href="https://twitter.com/hashtag/NSX?src=hash&amp;ref_src=twsrc%5Etfw">#NSX</a> mgr go crazy like this? this happened after a CLI reboot (which i thought would solve a &quot;timed out while syncing indexes&quot; error). This is a brand new deployment with no VM workloads <a href="https://twitter.com/hashtag/vexpert?src=hash&amp;ref_src=twsrc%5Etfw">#vexpert</a> <a href="https://t.co/5EgHSn4INV">pic.twitter.com/5EgHSn4INV</a></p>&mdash; Partheeban Kandasamy (PK) (@pkblah) <a href="https://twitter.com/pkblah/status/1354501027307773955?ref_src=twsrc%5Etfw">January 27, 2021</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>I decided to start over but only because I was getting impatient and figured I&rsquo;d have more luck reinstalling than having to troubleshoot the Ubuntu file system.</p>
+<h4 id="referenced-links-2">Referenced Links</h4>
+<ul>
+<li><a href="https://kontainers.in/2019/09/03/how-to-cleanup-an-orphaned-esxi-host-that-is-nsx-t-prepared/">https://kontainers.in/2019/09/03/how-to-cleanup-an-orphaned-esxi-host-that-is-nsx-t-prepared/</a></li>
+<li><a href="https://blog.zuthof.nl/2020/01/29/manually-removing-faulty-nsx-t-transport-nodes/">https://blog.zuthof.nl/2020/01/29/manually-removing-faulty-nsx-t-transport-nodes/</a></li>
+</ul>
+<h3 id="attempt-3-recovering-a-corrupted-file-system">Attempt #3: Recovering a Corrupted File System</h3>
+<p>Around this time, NSX-T 3.1 had been released. I had worked with Aaron to also setup AVI load balancer and since <a href="https://docs.vmware.com/en/VMware-NSX-T-Data-Center/3.1/rn/VMware-NSX-T-Data-Center-311-Release-Notes.html#NSX-T3.1.1ReleaseNotes-PMSection-ALB%28AdvancedLoadBalancer%29Integration%28and%29" target="_blank">NSX-T 3.1 had some improvements for AVI LB</a>, we decided to setup NSX-T 3.1. By now, I got wiser and installed the manager on a local datastore and the edge on Unraid (I wasn&rsquo;t going to give up on my NFS easily)</p>
+<p>By 11 PM on a Friday night, I had gotten NSX-T fully configured to cover the pre-requisites for Workload Management. Next morning, the Unraid mover had moved the files from cache to HDD and one of the edge nodes started showing symptoms of disk corruptions. I wasn&rsquo;t able to login to the edge node using my root or admin password. It seemed to have either reverted or gotten corrupted. I was able to find an <a href="https://virtusolve.home.blog/2018/11/22/nsx-manager-appliance-boot-screen-reports-unexpected-inconsistency-run-fsck-manually-dev-sda/" target="_blank">article</a> that helped recover the file system and restore the root password.</p>
+<h4 id="referenced-links-3">Referenced Links</h4>
+<ul>
+<li><a href="https://virtusolve.home.blog/2018/11/22/nsx-manager-appliance-boot-screen-reports-unexpected-inconsistency-run-fsck-manually-dev-sda/">https://virtusolve.home.blog/2018/11/22/nsx-manager-appliance-boot-screen-reports-unexpected-inconsistency-run-fsck-manually-dev-sda/</a></li>
+</ul>
+<br/>
+<hr>
+<h2 id="challenge-3-wcp">Challenge 3: WCP</h2>
+<p>And finally it seemed like I&rsquo;m all set to enabled Workload Management on my Compute cluster!</p>
+<figure><a class="lightgallery" href="/img/k8s/turning-on-wcp/wcp-config.png" title="/img/k8s/turning-on-wcp/wcp-config.png" data-thumbnail="/img/k8s/turning-on-wcp/wcp-config.png" data-sub-html="<h2>Woohoo, let&rsquo;s go!</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/k8s/turning-on-wcp/wcp-config.png"
+            data-srcset="/img/k8s/turning-on-wcp/wcp-config.png, /img/k8s/turning-on-wcp/wcp-config.png 1.5x, /img/k8s/turning-on-wcp/wcp-config.png 2x"
+            data-sizes="auto"
+            alt="/img/k8s/turning-on-wcp/wcp-config.png" />
+    </a><figcaption class="image-caption">Woohoo, let&rsquo;s go!</figcaption>
+    </figure>
+<h3 id="attempt-1-nsx-t-31-not-supported">Attempt 1: NSX-T 3.1 not supported</h3>
+<p>My first attempt at turning on WCP ended real quick as I got the error that NSX 3.1 was not supported. In hindsight, this was obvious because I had an &ldquo;older&rdquo; version of vCenter (7.0GA). I was at peak frustration and started to doubt myself for choosing the latest version of NSX-T&hellip;but I not giving up yet.</p>
+<blockquote class="twitter-tweet" data-dnt="true"><p lang="en" dir="ltr">note to self - do not choose the latest version for your lab <a href="https://twitter.com/hashtag/homelab?src=hash&amp;ref_src=twsrc%5Etfw">#homelab</a></p>&mdash; Partheeban Kandasamy (PK) (@pkblah) <a href="https://twitter.com/pkblah/status/1355226407601758212?ref_src=twsrc%5Etfw">January 29, 2021</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>My options were to either rollback NSX or to upgrade vCenter to the latest version that would support NSX-T 3.1. Needless to say, I was done with NSX Configuration having done it 3 times already!</p>
+<h3 id="detour-upgrade-hosts-to-u1">Detour: Upgrade Hosts to U1</h3>
+<p>vCenter upgrade pre-check showed that I needed to upgrade 6.7 hosts to 6.7U1 and 7.0 hosts to 7.0U1. I was able to easily upgrade my Compute Cluster hosts (Dell R730) from 7.0 to 7.0U1 through the lifecycle manager. There were no VM workload on this cluster yet and that helped speed things up. As I was going to upgrade my Management hosts to 6.7U1, I wanted to see if I could sneak in a 7.0 ESXi upgrade (by bypassing the CPU check). This unfortunately didn&rsquo;t work on the Dell R620 as my storage devices were not getting picked up due to a change introduced in ESXi 7.0 (Deprecation of VMKLinux). I decided to once again leave my management hosts at 6.7 U1 which I was able to upgrade manually.</p>
+<figure><a class="lightgallery" href="/img/k8s/turning-on-wcp/esxi-vmklinux.png" title="/img/k8s/turning-on-wcp/esxi-vmklinux.png" data-thumbnail="/img/k8s/turning-on-wcp/esxi-vmklinux.png" data-sub-html="<h2>Unsupported VMKLinux Driver :(</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/k8s/turning-on-wcp/esxi-vmklinux.png"
+            data-srcset="/img/k8s/turning-on-wcp/esxi-vmklinux.png, /img/k8s/turning-on-wcp/esxi-vmklinux.png 1.5x, /img/k8s/turning-on-wcp/esxi-vmklinux.png 2x"
+            data-sizes="auto"
+            alt="/img/k8s/turning-on-wcp/esxi-vmklinux.png" />
+    </a><figcaption class="image-caption">Unsupported VMKLinux Driver :(</figcaption>
+    </figure>
+<h4 id="referenced-links-4">Referenced Links</h4>
+<ul>
+<li><a href="https://rufus.ie/">https://rufus.ie/</a> - helps create bootable USB drives from ISO</li>
+<li><a href="https://www.virtuallyghetto.com/2020/03/homelab-considerations-for-vsphere-7.html">https://www.virtuallyghetto.com/2020/03/homelab-considerations-for-vsphere-7.html</a></li>
+<li><a href="https://blogs.vmware.com/vsphere/2019/04/what-is-the-impact-of-the-vmklinux-driver-stack-deprecation.html">https://blogs.vmware.com/vsphere/2019/04/what-is-the-impact-of-the-vmklinux-driver-stack-deprecation.html</a></li>
+</ul>
+<h3 id="detour-upgrade-vcenter-to-70u1">Detour: Upgrade vCenter to 7.0U1</h3>
+<p>With my hosts upgraded to the version required for vCenter 7.0 U1, I got busy with my first vCenter upgrade and to go along with the theme of this post, I ran into some issues with the GUI based upgrade. The upgrade through the Admin GUI would just hang at 0% for hours and (like a dummy) because the GUI estimated the finish time to 240 minutes i ended up waiting 4 hours (not once but TWO times!). After some research I ended up downloading the patch ISO and upgrading from CLI which ended up working like a charm!</p>
+<p>Alright! Now with vCenter upgraded to 7.0 U1, we should no longer see NSX issues.. Fingers crossed, let&rsquo;s turn on WCP! As I proceed to turn it on, I had a major facepalm moment when I see that NSX-T is not longer required to enable Workload Management with the <a href="https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-esxi-vcenter-server-7-vsphere-with-tanzu-release-notes.html#new-features-9" target="_blank">October Update for vCenter</a>!</p>
+<figure><a class="lightgallery" href="/img/k8s/turning-on-wcp/vcsa-no-nsx.png" title="/img/k8s/turning-on-wcp/vcsa-no-nsx.png" data-thumbnail="/img/k8s/turning-on-wcp/vcsa-no-nsx.png" data-sub-html="<h2>VCSA 7.0 U1 doesn&rsquo;t require NSX-T</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/k8s/turning-on-wcp/vcsa-no-nsx.png"
+            data-srcset="/img/k8s/turning-on-wcp/vcsa-no-nsx.png, /img/k8s/turning-on-wcp/vcsa-no-nsx.png 1.5x, /img/k8s/turning-on-wcp/vcsa-no-nsx.png 2x"
+            data-sizes="auto"
+            alt="/img/k8s/turning-on-wcp/vcsa-no-nsx.png" />
+    </a><figcaption class="image-caption">VCSA 7.0 U1 doesn&rsquo;t require NSX-T</figcaption>
+    </figure>
+<h4 id="referenced-links-5">Referenced Links</h4>
+<ul>
+<li><a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.upgrade.doc/GUID-5FCA78EC-8637-43A4-8B28-24624E4D5EBA.html">https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.upgrade.doc/GUID-5FCA78EC-8637-43A4-8B28-24624E4D5EBA.html</a></li>
+</ul>
+<h3 id="attempt-2-errors-more-errors">Attempt #2: Errors, More Errors</h3>
+<p>I soldier on with enabling WCP with NSX-T since they provided additional features and I did learn a bunch going through the NSX-T setup! After enabling WCP I get an Error: <code>Error configuring cluster NIC on master VM. This operation is part of API server configuration and will be retried</code>. I couldn&rsquo;t find any good lead on solving this at the time. The error seemed to indicate that the API server was not reachable but I wasn&rsquo;t able to figure out why since the API server IP were on the same subnet as my Management IPs (which I was able to ping).</p>
+<p>NSX Manager on the other hand has alarms that indicated that the NSX Container Plugin (NSXP) was having <a href="https://community.pivotal.io/s/article/pks-1-4-cluster-creation-failure-ncp-node-agent-fails?language=en_US" target="_blank">issues</a></p>
+<figure><a class="lightgallery" href="https://media.giphy.com/media/S9Vq8w92O0l7bZZaQI/source.gif" title="https://media.giphy.com/media/S9Vq8w92O0l7bZZaQI/source.gif" data-thumbnail="https://media.giphy.com/media/S9Vq8w92O0l7bZZaQI/source.gif" data-sub-html="<h2>Come on man!</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://media.giphy.com/media/S9Vq8w92O0l7bZZaQI/source.gif"
+            data-srcset="https://media.giphy.com/media/S9Vq8w92O0l7bZZaQI/source.gif, https://media.giphy.com/media/S9Vq8w92O0l7bZZaQI/source.gif 1.5x, https://media.giphy.com/media/S9Vq8w92O0l7bZZaQI/source.gif 2x"
+            data-sizes="auto"
+            alt="https://media.giphy.com/media/S9Vq8w92O0l7bZZaQI/source.gif" />
+    </a><figcaption class="image-caption">Come on man!</figcaption>
+    </figure>
+<p>I go through the pre-requisites again and now see that the minimum 3 nodes for the Supervisor VM cluster. I tried to get smart by adding a nested ESXi appliance to my cluster until <a href="https://www.linkedin.com/in/kalyan-krishnaswamy-0aa2312/" target="_blank">Kalyan Krishnaswamy</a> sent me this <a href="https://www.viktorious.nl/2020/05/07/vsphere-7-with-kubernetes-2-node-lab-deployment/" target="_blank">article about a 2 node deployment</a> where I see copious references to William Lam&rsquo;s <a href="https://twitter.com/lamw?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="small" data-related="pkblah" data-show-screen-name="false"  data-show-count="false">Follow</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> blog reminding me that there is always an easier way!</p>
+<h4 id="referenced-links-6">Referenced Links</h4>
+<ul>
+<li><a href="https://www.jamesmcleod.xyz/2020/11/06/tanzu-deployment-error/">https://www.jamesmcleod.xyz/2020/11/06/tanzu-deployment-error/</a></li>
+<li><a href="https://davidstamen.com/2020/04/10/part-4-deploying-vsphere-with-kubernetes-enabling-vsphere-with-kubernetes/">https://davidstamen.com/2020/04/10/part-4-deploying-vsphere-with-kubernetes-enabling-vsphere-with-kubernetes/</a></li>
+<li><a href="https://www.viktorious.nl/2020/05/07/vsphere-7-with-kubernetes-2-node-lab-deployment/">https://www.viktorious.nl/2020/05/07/vsphere-7-with-kubernetes-2-node-lab-deployment/</a></li>
+<li><a href="https://www.virtuallyghetto.com/2020/04/deploying-a-minimal-vsphere-with-kubernetes-environment.html">https://www.virtuallyghetto.com/2020/04/deploying-a-minimal-vsphere-with-kubernetes-environment.html</a></li>
+<li><a href="https://community.pivotal.io/s/article/pks-1-4-cluster-creation-failure-ncp-node-agent-fails?language=en_US">https://community.pivotal.io/s/article/pks-1-4-cluster-creation-failure-ncp-node-agent-fails?language=en_US</a></li>
+</ul>
+<h3 id="attempt-3-cross-check">Attempt #3: Cross Check</h3>
+<p>I am now back to my 2 node vSAN setup w/ Witness and configured the <code>/etc/vmware/wcp/wcpsvc.yaml</code> in VCenter to have just 2 Supervisor Control Plane VM. This time even before I turn on WCP, I go through every aspect of my setup and cross checking my setup against all the other setup instructions that I could find!</p>
+<p>As I go through the very detailed <a href="https://docs.pivotal.io/tkgi/1-9/vsphere-index.html" target="_blank">Pivotal Docs</a>, I notice that I overlooked a few things which I promptly addressed</p>
+<ol>
+<li>I had a NSX Management cluster (2 manager nodes) and I didn&rsquo;t <a href="https://docs.pivotal.io/tkgi/1-9/nsxt-3-0-install.html#nsxt30-mgmt-ssl" target="_blank">setup the certificate</a> with the VIP information</li>
+<li>I had not setup my switch/router with static routes to the egress and ingress n/w range from the Management VLAN</li>
+</ol>
+<p>I had also downloaded the logs from my previous WCP attempts and started to analyse them. I googled every error and eventually found this <a href="https://communities.vmware.com/t5/VMware-vSphere-Discussions/vsphere-7-with-kubenetes-alway-authorized-fail/m-p/2295879" target="_blank">community post</a> for the <code>Security Context is missing</code> error which indicated something about having consistent MTUs. While the error I observed in the logs didn&rsquo;t have anything to do with MTU, the theory made sense! Reminding me how bad networking setup can screw everything up! As I go through all my vmkernel and switch settings in vCenter I noticed that I had my physical switch MTUs setup at 1900 (for NSX-T) and left most of the things in vCenter set at the default 1500.</p>
+<p>After having consistent MTUs and fixing the other items described above, I tried enabling WCP.. fingers crossed, bracing for more errors!</p>
+<p>and to my surprise&hellip;</p>
+<figure><a class="lightgallery" href="/img/k8s/turning-on-wcp/wcp-success.png" title="/img/k8s/turning-on-wcp/wcp-success.png" data-thumbnail="/img/k8s/turning-on-wcp/wcp-success.png" data-sub-html="<h2>Enabled Workload Management on Feb 2021</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/k8s/turning-on-wcp/wcp-success.png"
+            data-srcset="/img/k8s/turning-on-wcp/wcp-success.png, /img/k8s/turning-on-wcp/wcp-success.png 1.5x, /img/k8s/turning-on-wcp/wcp-success.png 2x"
+            data-sizes="auto"
+            alt="/img/k8s/turning-on-wcp/wcp-success.png" />
+    </a><figcaption class="image-caption">Enabled Workload Management on Feb 2021</figcaption>
+    </figure>
+<h4 id="referenced-links-7">Referenced Links</h4>
+<ul>
+<li><a href="https://docs.pivotal.io/tkgi/1-9/nsxt-3-0-install.html#nsxt30-mgmt-ssl">https://docs.pivotal.io/tkgi/1-9/nsxt-3-0-install.html#nsxt30-mgmt-ssl</a></li>
+<li><a href="https://communities.vmware.com/t5/VMware-vSphere-Discussions/vsphere-7-with-kubenetes-alway-authorized-fail/m-p/2295879">https://communities.vmware.com/t5/VMware-vSphere-Discussions/vsphere-7-with-kubenetes-alway-authorized-fail/m-p/2295879</a></li>
+</ul>
+<figure><a class="lightgallery" href="https://media.giphy.com/media/lMameLIF8voLu8HxWV/source.gif" title="https://media.giphy.com/media/lMameLIF8voLu8HxWV/source.gif" data-thumbnail="https://media.giphy.com/media/lMameLIF8voLu8HxWV/source.gif" data-sub-html="<h2>Moment to Celebrate</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="https://media.giphy.com/media/lMameLIF8voLu8HxWV/source.gif"
+            data-srcset="https://media.giphy.com/media/lMameLIF8voLu8HxWV/source.gif, https://media.giphy.com/media/lMameLIF8voLu8HxWV/source.gif 1.5x, https://media.giphy.com/media/lMameLIF8voLu8HxWV/source.gif 2x"
+            data-sizes="auto"
+            alt="https://media.giphy.com/media/lMameLIF8voLu8HxWV/source.gif" />
+    </a><figcaption class="image-caption">Moment to Celebrate</figcaption>
+    </figure>
+<br/>
+<hr>
+<p>Workload Management is a game changer as it enables you to manage Containers and VMs within the same platform! For those that are just looking to work with Kubernetes and wondering if you need to go through this rather elaborate setup to get started, the answer is NO! There are several easy methods</p>
+<ul>
+<li><strong>Just K8s</strong>: Leverage the Cloud Platforms (<a href="https://aws.amazon.com/eks/?whats-new-cards.sort-by=item.additionalFields.postDateTime&amp;whats-new-cards.sort-order=desc&amp;eks-blogs.sort-by=item.additionalFields.createdDate&amp;eks-blogs.sort-order=desc" target="_blank">Amazon EKS</a>, <a href="https://cloud.google.com/kubernetes-engine" target="_blank">GKE</a>, <a href="https://azure.microsoft.com/en-us/overview/kubernetes-on-azure/" target="_blank">K8s on Azure</a>) to easily spin up a cluster.</li>
+<li><strong>Automated vSphere 7 with K8s</strong>: Use William Lam&rsquo;s automated method to <a href="https://www.virtuallyghetto.com/2020/04/deploying-a-minimal-vsphere-with-kubernetes-environment.html" target="_blank">spin up this entire setup</a> or</li>
+<li><strong>Just K8s (but manually)</strong>: You could also manually provision your cluster by using my <a href="https://cloudtekki.com/post/bootstrap-k8s/" target="_blank">Bootstrapping Kubernetes on Ubuntu 20.04 using kubeadm w/ Calico</a> post</li>
+</ul>
+<p>Thanks to the help of the community and their blogs, I was able to quickly pick up where I left off and get to this monumental moment where I have vSphere enabled with Kubernetes! Thanks again to the #vExpert community for all the invisible helping hands! 😄</p>
+<blockquote>
+<p>I&rsquo;ve tried to reference all the posts that I could recall and if there are any that I&rsquo;ve missed that you think could be relevant here, please comment and I&rsquo;ll be happy amend!</p>
+</blockquote>
+<p>While this may have been a trivial setup for some, I had to go through a steep learning curve. Hopefully this post serves as a good guide on what to avoid and look out for as you get started with Workload Management on vSphere! I want to sign off by encouraging everyone to gravitate towards learning new ideas, technologies and concepts! Dive headfirst into embracing new experiences however uncomfortable or difficult as they are and I&rsquo;m positive it will not go to waste! 🤘</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-02-05&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/49e4cd45a5e3ccf2e9f1210c6515b647e5097385" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 49e4cd45a5e3ccf2e9f1210c6515b647e5097385: Edits to the Post - Misadventures...">
+                                    <i class="fas fa-hashtag fa-fw"></i>49e4cd4</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share sharebtns">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/turning-on-wcp/" data-title="Misadventures turning on Workload Management with vSphere 7" data-via="pkblah" data-hashtags="Tanzu,Kubernetes,ProjectPacific,vExpert"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/turning-on-wcp/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/turning-on-wcp/" data-title="Misadventures turning on Workload Management with vSphere 7" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/turning-on-wcp/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/turning-on-wcp/" data-title="Misadventures turning on Workload Management with vSphere 7" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/tanzu/">Tanzu</a>,&nbsp;<a href="/tags/kubernetes/">Kubernetes</a>,&nbsp;<a href="/tags/projectpacific/">ProjectPacific</a>,&nbsp;<a href="/tags/vexpert/">vExpert</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/post/looking-back-at-2020/" class="prev" rel="prev" title="2020: Shattering Comfort Zones"><i class="fas fa-angle-left fa-fw"></i>2020: Shattering Comfort Zones</a></div>
+</div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div><h2 class="twitter-title">TWEETS</h2>
+            <div class="twitterfeed" id="twitter-auto" >
+                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            </div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2021</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":80},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"pathname","label":"","lightTheme":"github-light","repo":"pksrc/cloudtekki"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/lib/stripe-menu/menu.js"></script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'G-RYVG6M042F', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-RYVG6M042F" async></script></body>
+</html>
