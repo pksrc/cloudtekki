@@ -4,7 +4,14 @@
         <link>https://cloudtekki.com/posts/</link>
         <description>All Posts | Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 15 Feb 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>2021: What&#39;s in my homelab?</title>
+    <link>https://cloudtekki.com/post/homelab-2021/</link>
+    <pubDate>Mon, 15 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/post/homelab-2021/</guid>
+    <description><![CDATA[I&rsquo;ve talked about why everyone needs a homelab in my medium article but never had the courage to submit my homelab to the community homelab list maintained by William Lam Follow. Mainly because I wasn&rsquo;t sure how my lab would stack up against everyone elses' submission. With my latest post covering my experience enabling Tanzu with vSphere in my homelab, I feel like I&rsquo;ve gone through the checklist of best practices and I&rsquo;m proud of my minimalist(if i can say so myself) homelab setup!]]></description>
+</item><item>
     <title>Misadventures turning on Workload Management with vSphere 7</title>
     <link>https://cloudtekki.com/post/turning-on-wcp/</link>
     <pubDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</pubDate>
@@ -81,13 +88,5 @@ Incident Management Systems — ✅
                 <img src="https://miro.medium.com/max/3040/1*I37x-vfp3ry3Y4O3f_Q-Kg.png" referrerpolicy="no-referrer">
             </div>-- Info  This post was originally published in Medium - pkblah.medium.com/integrating-vcenter-with-pagerduty   Uptime and Reliability is more important now than ever during these times when Technology and Infrastructure is enabling us fight a global pandemic with work from home policies. It is no wonder that eyes lit up when you say PagerDuty and vCenter integration!
 I’m going to explore how you enable this integration to automatically trigger a PagerDuty incident the minute vCenter detects something bad happens to your infrastructure!]]></description>
-</item><item>
-    <title>Serverless function — Quickstart Templates</title>
-    <link>https://cloudtekki.com/post/serverless-fn-template/</link>
-    <pubDate>Wed, 29 Apr 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://cloudtekki.com/post/serverless-fn-template/</guid>
-    <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/serverless-function-templates   You have probably have seen my other article that helps you get started writing your very first event-driven function using VMware Event Broker Appliance (VEBA) for your vCenter infrastructure. I highlight the steps taken to write my first serverless function and provide templates to help you get started quickly!
- Writing your first Serverless Function — here]]></description>
 </item></channel>
 </rss>

@@ -4,7 +4,21 @@
         <link>https://cloudtekki.com/tags/</link>
         <description>Tags - Tag - Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 15 Feb 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>homelab</title>
+    <link>https://cloudtekki.com/tags/homelab/</link>
+    <pubDate>Mon, 15 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/homelab/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>vExpert</title>
+    <link>https://cloudtekki.com/tags/vexpert/</link>
+    <pubDate>Mon, 15 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/tags/vexpert/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Kubernetes</title>
     <link>https://cloudtekki.com/tags/kubernetes/</link>
     <pubDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</pubDate>
@@ -24,13 +38,6 @@
     <pubDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://cloudtekki.com/tags/tanzu/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>vExpert</title>
-    <link>https://cloudtekki.com/tags/vexpert/</link>
-    <pubDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://cloudtekki.com/tags/vexpert/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>Author Notes</title>
@@ -66,13 +73,6 @@
     <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
     <author>Author</author>
     <guid>https://cloudtekki.com/tags/apis/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Automation</title>
-    <link>https://cloudtekki.com/tags/automation/</link>
-    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
-    <guid>https://cloudtekki.com/tags/automation/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

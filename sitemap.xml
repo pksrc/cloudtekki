@@ -2,16 +2,18 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://cloudtekki.com/categories/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/post/homelab-2021/</loc><lastmod>2021-02-17T20:37:45-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/categories/</loc><lastmod>2021-02-17T20:37:45-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/</loc><lastmod>2021-02-17T20:37:45-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/homelab/</loc><lastmod>2021-02-17T20:37:45-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/posts/</loc><lastmod>2021-02-17T20:37:45-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/categories/sddc/</loc><lastmod>2021-02-17T20:37:45-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/</loc><lastmod>2021-02-17T20:37:45-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/vexpert/</loc><lastmod>2021-02-17T20:37:45-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/kubernetes/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/turning-on-wcp/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/posts/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/projectpacific/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/categories/sddc/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/tanzu/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/vexpert/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/looking-back-at-2020/</loc><lastmod>2020-12-30T12:12:22-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/author-notes/</loc><lastmod>2020-12-30T12:12:22-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/end-user-computing/</loc><lastmod>2020-12-28T22:22:15-08:00</lastmod></url><url>

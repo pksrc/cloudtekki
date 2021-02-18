@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>homelab - Tag - Cloud Tekki</title>
+        <link>https://cloudtekki.com/tags/homelab/</link>
+        <description>homelab - Tag - Cloud Tekki</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 15 Feb 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/homelab/" rel="self" type="application/rss+xml" /><item>
+    <title>2021: What&#39;s in my homelab?</title>
+    <link>https://cloudtekki.com/post/homelab-2021/</link>
+    <pubDate>Mon, 15 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>Author</author>
+    <guid>https://cloudtekki.com/post/homelab-2021/</guid>
+    <description><![CDATA[I&rsquo;ve talked about why everyone needs a homelab in my medium article but never had the courage to submit my homelab to the community homelab list maintained by William Lam Follow. Mainly because I wasn&rsquo;t sure how my lab would stack up against everyone elses' submission. With my latest post covering my experience enabling Tanzu with vSphere in my homelab, I feel like I&rsquo;ve gone through the checklist of best practices and I&rsquo;m proud of my minimalist(if i can say so myself) homelab setup!]]></description>
+</item></channel>
+</rss>
