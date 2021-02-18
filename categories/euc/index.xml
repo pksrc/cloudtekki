@@ -8,7 +8,7 @@
     <title>Unpacking Organization Groups in Workspace ONE UEM</title>
     <link>https://cloudtekki.com/post/uem-organization-groups/</link>
     <pubDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/uem-organization-groups/</guid>
     <description><![CDATA[What are Organization Groups in Workspace One UEM?
 What are the best practices with how to set Organization Groups up for our use case?
@@ -18,7 +18,7 @@ These are very common questions on Organization Groups which is a very foundatio
     <title>Access: The tale of the hidden APIs</title>
     <link>https://cloudtekki.com/post/access-apis/</link>
     <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/access-apis/</guid>
     <description><![CDATA[Evolving Access through APIs Workspace One Access is VMware&rsquo;s Product Line that helps provide seamless single sign on and conditional access for Applications from End User&rsquo;s client devices. It is built using technologies such as
  SAML (RFC 7522) OAuth (RFC 6749) and Open ID Connect  If you are new to the Product, you can find more details about WorkspaceONE(WS1) Access

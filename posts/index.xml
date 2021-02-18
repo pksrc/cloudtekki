@@ -8,21 +8,21 @@
     <title>2021: What&#39;s in my homelab?</title>
     <link>https://cloudtekki.com/post/homelab-2021/</link>
     <pubDate>Mon, 15 Feb 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/homelab-2021/</guid>
     <description><![CDATA[I&rsquo;ve talked about why everyone needs a homelab in my medium article but never had the courage to submit my homelab to the community homelab list maintained by William Lam Follow. Mainly because I wasn&rsquo;t sure how my lab would stack up against everyone elses' submission. With my latest post covering my experience enabling Tanzu with vSphere in my homelab, I feel like I&rsquo;ve gone through the checklist of best practices and I&rsquo;m proud of my minimalist(if i can say so myself) homelab setup!]]></description>
 </item><item>
     <title>Misadventures turning on Workload Management with vSphere 7</title>
     <link>https://cloudtekki.com/post/turning-on-wcp/</link>
     <pubDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/turning-on-wcp/</guid>
     <description><![CDATA[For most folks that have been involved with SDDC for some time, this is going to be a lot of basic and obvious. As a quick disclaimer, I&rsquo;ve to add that when i started down this path back in April, 2020(which was around the time vSphere 7.0 was released), I was (and still am) pretty new to the world of Home Lab and SDDC. As someone who has primarily worked on the application/software layer, I have been oblivious to the underlying infrastructure that made it all possible.]]></description>
 </item><item>
     <title>2020: Shattering Comfort Zones</title>
     <link>https://cloudtekki.com/post/looking-back-at-2020/</link>
     <pubDate>Mon, 28 Dec 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/looking-back-at-2020/</guid>
     <description><![CDATA[Reflecting on 2020 Now no matter where you are located geographically or how old you are, I&rsquo;m going to take a wild guess and assume that we can agree how brutal 2020 was. Personally looking back, the year 2020 has been crazy, challenging and definitely packed a punch.. A year with mixed fortunes, 2020 was a year that I&rsquo;ve never imagined in my lifetime.
 Timeline Here is a look at how I experienced 2020&hellip;]]></description>
@@ -30,7 +30,7 @@ Timeline Here is a look at how I experienced 2020&hellip;]]></description>
     <title>Unpacking Organization Groups in Workspace ONE UEM</title>
     <link>https://cloudtekki.com/post/uem-organization-groups/</link>
     <pubDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/uem-organization-groups/</guid>
     <description><![CDATA[What are Organization Groups in Workspace One UEM?
 What are the best practices with how to set Organization Groups up for our use case?
@@ -40,7 +40,7 @@ These are very common questions on Organization Groups which is a very foundatio
     <title>Access: The tale of the hidden APIs</title>
     <link>https://cloudtekki.com/post/access-apis/</link>
     <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/access-apis/</guid>
     <description><![CDATA[Evolving Access through APIs Workspace One Access is VMware&rsquo;s Product Line that helps provide seamless single sign on and conditional access for Applications from End User&rsquo;s client devices. It is built using technologies such as
  SAML (RFC 7522) OAuth (RFC 6749) and Open ID Connect  If you are new to the Product, you can find more details about WorkspaceONE(WS1) Access
@@ -49,7 +49,7 @@ These are very common questions on Organization Groups which is a very foundatio
     <title>Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico</title>
     <link>https://cloudtekki.com/post/bootstrap-k8s/</link>
     <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/bootstrap-k8s/</guid>
     <description><![CDATA[This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I&rsquo;m hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native
 Getting Started As a baseline, here are my assumptions about those following along or to my future self]]></description>
@@ -57,7 +57,7 @@ Getting Started As a baseline, here are my assumptions about those following alo
     <title>Enabling Self Service for your DataCenter — Part I</title>
     <link>https://cloudtekki.com/post/self-service-for-your-datacenter/</link>
     <pubDate>Wed, 07 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/self-service-for-your-datacenter/</guid>
     <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/self-service-for-your-datacenter-part-i   It doesn’t have to be Business vs IT anymore! Either sides’ needs while well-intentioned may seem to be at conflict with each other..
 Business aims to innovate and promote new capabilities for their consumers with the goal of improving services delivered or user experience to retain existing users or acquire new users.
@@ -66,14 +66,14 @@ IT as true partners to the Business want to provide the right platform and infra
     <title>Publicly trusted TLS for VMware Eventing Platform</title>
     <link>https://cloudtekki.com/post/trusted-tls-for-veba/</link>
     <pubDate>Thu, 11 Jun 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/trusted-tls-for-veba/</guid>
     <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/publicly-trusted-tls-for-vmware-eventing-platform   Vmware Event Broker Appliance (VEBA) continues to gain momentum and as Enterprise Customers start adopting the Appliance, we continue to broach Enterprise Features such as gauranteeing High Availability or the ability to upload/bootstrap the appliance with Internal CA signed or Public TLS certificates. While I had previously covered in part how the default self-signed TLS cert that is bound to OpenFaaS gateway can be updated through our documentation below, In this short post, I wanted to provide an end to end overview of obtaining a public certificate and binding it to the Ingress Gateway.]]></description>
 </item><item>
     <title>A Function for all REST APIs</title>
     <link>https://cloudtekki.com/post/rest-api-fn/</link>
     <pubDate>Thu, 07 May 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/rest-api-fn/</guid>
     <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/a-function-for-all-rest-apis   and…vCenter integration with Slack, PagerDuty, ServiceNow, Zendesk, JIRA, ServiceDesk is now possible with VMware Event Broker Appliance (VEBA)!
 Incident Management Systems — ✅
@@ -82,7 +82,7 @@ Incident Management Systems — ✅
     <title>Integrating vCenter with PagerDuty</title>
     <link>https://cloudtekki.com/post/integrating-vcenter-with-pagerduty/</link>
     <pubDate>Thu, 30 Apr 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/integrating-vcenter-with-pagerduty/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="https://miro.medium.com/max/3040/1*I37x-vfp3ry3Y4O3f_Q-Kg.png" referrerpolicy="no-referrer">

@@ -8,7 +8,7 @@
     <title>Access: The tale of the hidden APIs</title>
     <link>https://cloudtekki.com/post/access-apis/</link>
     <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/access-apis/</guid>
     <description><![CDATA[Evolving Access through APIs Workspace One Access is VMware&rsquo;s Product Line that helps provide seamless single sign on and conditional access for Applications from End User&rsquo;s client devices. It is built using technologies such as
  SAML (RFC 7522) OAuth (RFC 6749) and Open ID Connect  If you are new to the Product, you can find more details about WorkspaceONE(WS1) Access

@@ -8,7 +8,7 @@
     <title>Misadventures turning on Workload Management with vSphere 7</title>
     <link>https://cloudtekki.com/post/turning-on-wcp/</link>
     <pubDate>Sun, 31 Jan 2021 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/turning-on-wcp/</guid>
     <description><![CDATA[For most folks that have been involved with SDDC for some time, this is going to be a lot of basic and obvious. As a quick disclaimer, I&rsquo;ve to add that when i started down this path back in April, 2020(which was around the time vSphere 7.0 was released), I was (and still am) pretty new to the world of Home Lab and SDDC. As someone who has primarily worked on the application/software layer, I have been oblivious to the underlying infrastructure that made it all possible.]]></description>
 </item></channel>

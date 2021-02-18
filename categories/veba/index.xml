@@ -8,7 +8,7 @@
     <title>Enabling Self Service for your DataCenter — Part I</title>
     <link>https://cloudtekki.com/post/self-service-for-your-datacenter/</link>
     <pubDate>Wed, 07 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/self-service-for-your-datacenter/</guid>
     <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/self-service-for-your-datacenter-part-i   It doesn’t have to be Business vs IT anymore! Either sides’ needs while well-intentioned may seem to be at conflict with each other..
 Business aims to innovate and promote new capabilities for their consumers with the goal of improving services delivered or user experience to retain existing users or acquire new users.
@@ -17,14 +17,14 @@ IT as true partners to the Business want to provide the right platform and infra
     <title>Publicly trusted TLS for VMware Eventing Platform</title>
     <link>https://cloudtekki.com/post/trusted-tls-for-veba/</link>
     <pubDate>Thu, 11 Jun 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/trusted-tls-for-veba/</guid>
     <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/publicly-trusted-tls-for-vmware-eventing-platform   Vmware Event Broker Appliance (VEBA) continues to gain momentum and as Enterprise Customers start adopting the Appliance, we continue to broach Enterprise Features such as gauranteeing High Availability or the ability to upload/bootstrap the appliance with Internal CA signed or Public TLS certificates. While I had previously covered in part how the default self-signed TLS cert that is bound to OpenFaaS gateway can be updated through our documentation below, In this short post, I wanted to provide an end to end overview of obtaining a public certificate and binding it to the Ingress Gateway.]]></description>
 </item><item>
     <title>A Function for all REST APIs</title>
     <link>https://cloudtekki.com/post/rest-api-fn/</link>
     <pubDate>Thu, 07 May 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/rest-api-fn/</guid>
     <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/a-function-for-all-rest-apis   and…vCenter integration with Slack, PagerDuty, ServiceNow, Zendesk, JIRA, ServiceDesk is now possible with VMware Event Broker Appliance (VEBA)!
 Incident Management Systems — ✅
@@ -33,7 +33,7 @@ Incident Management Systems — ✅
     <title>Integrating vCenter with PagerDuty</title>
     <link>https://cloudtekki.com/post/integrating-vcenter-with-pagerduty/</link>
     <pubDate>Thu, 30 Apr 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/integrating-vcenter-with-pagerduty/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="https://miro.medium.com/max/3040/1*I37x-vfp3ry3Y4O3f_Q-Kg.png" referrerpolicy="no-referrer">
@@ -43,7 +43,7 @@ I’m going to explore how you enable this integration to automatically trigger 
     <title>Serverless function — Quickstart Templates</title>
     <link>https://cloudtekki.com/post/serverless-fn-template/</link>
     <pubDate>Wed, 29 Apr 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/serverless-fn-template/</guid>
     <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/serverless-function-templates   You have probably have seen my other article that helps you get started writing your very first event-driven function using VMware Event Broker Appliance (VEBA) for your vCenter infrastructure. I highlight the steps taken to write my first serverless function and provide templates to help you get started quickly!
  Writing your first Serverless Function — here]]></description>
@@ -51,7 +51,7 @@ I’m going to explore how you enable this integration to automatically trigger 
     <title>Writing your first Serverless Function</title>
     <link>https://cloudtekki.com/post/first-veba-function/</link>
     <pubDate>Thu, 23 Apr 2020 00:00:00 &#43;0000</pubDate>
-    <author>Author</author>
+    <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/first-veba-function/</guid>
     <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/writing-your-first-serverless-function   A function is a unit of execution in the Serverless world that does one thing and one thing really well. With the current product VMware Event Broker Appliance (VEBA) that i’m managing, we aim to provide a simple solution that provides a way to execute your functions driven by vCenter events. This is a significant capability that exposes a plethora of integrations and allows seamless automation opportunities for a VMware SDDC customer.]]></description>
 </item></channel>
