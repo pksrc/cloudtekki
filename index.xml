@@ -4,9 +4,16 @@
         <link>https://cloudtekki.com/</link>
         <description>Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 15 Feb 2021 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 22 Feb 2021 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://cloudtekki.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Automating Windows 10 VM build auto enrolled into UEM using Packer</title>
+    <link>https://cloudtekki.com/post/packer-windows/</link>
+    <pubDate>Mon, 22 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/packer-windows/</guid>
+    <description><![CDATA[In this post, I&rsquo;ll be covering how you can automate the process of automating the build of Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors.]]></description>
+</item><item>
     <title>2021: What&#39;s in my homelab?</title>
     <link>https://cloudtekki.com/post/homelab-2021/</link>
     <pubDate>Mon, 15 Feb 2021 00:00:00 &#43;0000</pubDate>
@@ -80,15 +87,5 @@ IT as true partners to the Business want to provide the right platform and infra
     <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/a-function-for-all-rest-apis   and…vCenter integration with Slack, PagerDuty, ServiceNow, Zendesk, JIRA, ServiceDesk is now possible with VMware Event Broker Appliance (VEBA)!
 Incident Management Systems — ✅
  If you don’t see how the title and the introduction are connected, read on! Let me explain how I wrote one function that makes seemingly all 3rd party system integration easy and possible!]]></description>
-</item><item>
-    <title>Integrating vCenter with PagerDuty</title>
-    <link>https://cloudtekki.com/post/integrating-vcenter-with-pagerduty/</link>
-    <pubDate>Thu, 30 Apr 2020 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/post/integrating-vcenter-with-pagerduty/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="https://miro.medium.com/max/3040/1*I37x-vfp3ry3Y4O3f_Q-Kg.png" referrerpolicy="no-referrer">
-            </div>-- Info  This post was originally published in Medium - pkblah.medium.com/integrating-vcenter-with-pagerduty   Uptime and Reliability is more important now than ever during these times when Technology and Infrastructure is enabling us fight a global pandemic with work from home policies. It is no wonder that eyes lit up when you say PagerDuty and vCenter integration!
-I’m going to explore how you enable this integration to automatically trigger a PagerDuty incident the minute vCenter detects something bad happens to your infrastructure!]]></description>
 </item></channel>
 </rss>

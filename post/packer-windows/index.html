@@ -5,29 +5,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive"><meta property="og:title" content="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" />
-<meta property="og:description" content="This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I&rsquo;m hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native
-Getting Started As a baseline, here are my assumptions about those following along or to my future self" />
+        <title>Automating Windows 10 VM build auto enrolled into UEM using Packer - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive"><meta property="og:title" content="Automating Windows 10 VM build auto enrolled into UEM using Packer" />
+<meta property="og:description" content="In this post, I&rsquo;ll be covering how you can automate the process of automating the build of Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cloudtekki.com/post/bootstrap-k8s/" />
-<meta property="article:published_time" content="2020-10-24T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-05T19:35:07-08:00" />
+<meta property="og:url" content="https://cloudtekki.com/post/packer-windows/" />
+<meta property="article:published_time" content="2021-02-22T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-22T22:19:45-08:00" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico"/>
-<meta name="twitter:description" content="This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I&rsquo;m hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native
-Getting Started As a baseline, here are my assumptions about those following along or to my future self"/>
+<meta name="twitter:title" content="Automating Windows 10 VM build auto enrolled into UEM using Packer"/>
+<meta name="twitter:description" content="In this post, I&rsquo;ll be covering how you can automate the process of automating the build of Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors."/>
 <meta name="application-name" content="Cloud Tekki">
-<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/bootstrap-k8s/" /><link rel="prev" href="https://cloudtekki.com/post/self-service-for-your-datacenter/" /><link rel="next" href="https://cloudtekki.com/post/access-apis/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
+<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/packer-windows/" /><link rel="prev" href="https://cloudtekki.com/post/homelab-2021/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Beginner's Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico",
+        "headline": "Automating Windows 10 VM build auto enrolled into UEM using Packer",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/cloudtekki.com\/post\/bootstrap-k8s\/"
-        },"genre": "posts","keywords": "Kubernetes, Automation, Ubuntu, Calico","wordcount":  1841 ,
-        "url": "https:\/\/cloudtekki.com\/post\/bootstrap-k8s\/","datePublished": "2020-10-24T00:00:00+00:00","dateModified": "2021-02-05T19:35:07-08:00","publisher": {
+            "@id": "https:\/\/cloudtekki.com\/post\/packer-windows\/"
+        },"genre": "posts","keywords": "Automation, Windows, Packer, UEM","wordcount":  1845 ,
+        "url": "https:\/\/cloudtekki.com\/post\/packer-windows\/","datePublished": "2021-02-22T00:00:00+00:00","dateModified": "2021-02-22T22:19:45-08:00","publisher": {
             "@type": "Organization",
             "name": "Cloud Tekki"},"author": {
                 "@type": "Person",
@@ -503,11 +501,11 @@ Getting Started As a baseline, here are my assumptions about those following alo
     </section>
   </div>
 </aside>
-<h1 class="single-title animated flipInX">Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/kubernetes/"><i class="far fa-folder fa-fw"></i>KUBERNETES</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-via="pkblah" data-hashtags="Kubernetes,Automation,Ubuntu,Calico"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/bootstrap-k8s/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/bootstrap-k8s/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+<h1 class="single-title animated flipInX">Automating Windows 10 VM build auto enrolled into UEM using Packer</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/euc/"><i class="far fa-folder fa-fw"></i>EUC</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/packer-windows/" data-title="Automating Windows 10 VM build auto enrolled into UEM using Packer" data-via="pkblah" data-hashtags="Automation,Windows,Packer,UEM"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/packer-windows/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/packer-windows/" data-title="Automating Windows 10 VM build auto enrolled into UEM using Packer" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/packer-windows/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/packer-windows/" data-title="Automating Windows 10 VM build auto enrolled into UEM using Packer" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
             </div>
             <div class="post-meta-line">
-                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">Kubernetes</a>,&nbsp;<a href="/tags/automation/">Automation</a>,&nbsp;<a href="/tags/ubuntu/">Ubuntu</a>,&nbsp;<a href="/tags/calico/">Calico</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-24">2020-10-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1841 words&nbsp;
+                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/automation/">Automation</a>,&nbsp;<a href="/tags/windows/">Windows</a>,&nbsp;<a href="/tags/packer/">Packer</a>,&nbsp;<a href="/tags/uem/">UEM</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-22">2021-02-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1845 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;9 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -516,99 +514,125 @@ Getting Started As a baseline, here are my assumptions about those following alo
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#getting-started">Getting Started</a></li>
-    <li><a href="#installing-ubuntu">Installing Ubuntu</a></li>
-    <li><a href="#clone-to-a-vm">Clone to a VM</a></li>
-    <li><a href="#configuring-ubuntu-for-kubernetes">Configuring Ubuntu for Kubernetes</a>
+    <li><a href="#what-is-packer">What is Packer?</a>
       <ul>
-        <li><a href="#step-1---disable-swapoff">Step 1 - Disable swapoff</a></li>
-        <li><a href="#step-2---setup-static-ip">Step 2 - Setup Static IP</a></li>
-        <li><a href="#step-3---install-docker">Step 3 - Install Docker</a></li>
-        <li><a href="#step-4---prepping-for-kubernetes">Step 4 - Prepping for Kubernetes</a></li>
+        <li><a href="#packer-use-cases">Packer Use Cases</a></li>
       </ul>
     </li>
-    <li><a href="#bootstrap-kubernetes---control-plane">Bootstrap Kubernetes - Control Plane</a>
+    <li><a href="#how-do-i-use-it">How do I use it?</a></li>
+    <li><a href="#getting-started">Getting started</a>
       <ul>
-        <li><a href="#step-1-getting-the-control-node-ready-aka-master-node">Step 1: Getting the Control Node ready (a.k.a master node)</a></li>
-        <li><a href="#step-2-setup-kubectl-for-the-user-account">Step 2: Setup Kubectl for the user account</a></li>
-        <li><a href="#step-3-setup-pod-networking">Step 3: Setup Pod networking</a></li>
+        <li><a href="#macos-installation">macOS Installation</a></li>
       </ul>
     </li>
-    <li><a href="#bootstrap-kubernetes---capacity-nodes">Bootstrap Kubernetes - Capacity Nodes</a></li>
+    <li><a href="#terminologies">Terminologies</a></li>
+    <li><a href="#template-for-windows">Template for Windows</a>
+      <ul>
+        <li><a href="#variables">Variables</a></li>
+        <li><a href="#vsphere-iso-builder">vSphere ISO Builder</a></li>
+        <li><a href="#autounattend-file">AutoUnattend File</a></li>
+      </ul>
+    </li>
+    <li><a href="#starting-the-build">Starting the Build</a>
+      <ul>
+        <li><a href="#build-process">Build process</a></li>
+        <li><a href="#enrollment-into-uem">Enrollment into UEM</a></li>
+      </ul>
+    </li>
+    <li><a href="#wrap-up">Wrap Up</a>
+      <ul>
+        <li><a href="#psupgrading-packer-to-170">PS:Upgrading Packer to 1.7.0</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I&rsquo;m hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native</p>
-<h2 id="getting-started">Getting Started</h2>
-<p>As a baseline, here are my assumptions about those following along or to my future self</p>
+            </div><div class="content" id="content"><p>In this post, I&rsquo;ll be covering how you can automate the process of automating the build of Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors.</p>
+<p>Let&rsquo;s dive into how you can get started with Packer to automate the entire Windows 10 build process along with enrolling into Workspace ONE UEM without a single click&hellip;</p>
+<h2 id="what-is-packer">What is Packer?</h2>
+<p>If you are not familiar with Packer, <a href="https://www.packer.io/" target="_blank">Packer</a> by Hashicorp is a tool that helps automate the images building process for multiple platforms such as AWS, Azure, GCP, VMware(all at the same time, if you choose to). With Packer you can attempt to build a very consistent image every time by automating the steps to build an image through code.</p>
+<h3 id="packer-use-cases">Packer Use Cases</h3>
+<p>Several use cases are highlighted <a href="https://www.packer.io/intro/use-cases" target="_blank">here</a></p>
 <ul>
-<li>You already have some (atleast 2) VMs or Physical hosts (any x86 computer) available</li>
-<li>You are able to install some linux distro on those VMs or Physical hosts - For the purpose of this blog, I&rsquo;m going to be using <a href="https://releases.ubuntu.com/20.04/" target="_blank">Ubuntu 20.04</a> and providing steps for that.</li>
-<li>You can setup static IP on these servers after installing the OS. I&rsquo;ll provide the steps for Ubuntu 20.04 here which uses <code>Netplan</code> to configure network</li>
+<li><a href="https://www.packer.io/intro/use-cases#continuous-delivery" target="_blank">Continuous Delivery</a></li>
+<li><a href="https://www.packer.io/intro/use-cases#dev-prod-parity" target="_blank">Dev/Prod Parity</a></li>
+<li><a href="https://www.packer.io/intro/use-cases#appliance-demo-creation" target="_blank">Appliance/Demo Creation</a></li>
 </ul>
-<h2 id="installing-ubuntu">Installing Ubuntu</h2>
-<p>Installing Ubuntu is pretty straight forward using the ISO. if you want to skip ahead, click <a href="#clone-to-a-vm">here</a></p>
-<p>Download 20.04 live server iso - <a href="https://releases.ubuntu.com/20.04/">https://releases.ubuntu.com/20.04/</a></p>
-<p><strong>Machine Requirements (that i&rsquo;m going to be using)</strong></p>
-<ul>
-<li>CPU: 1 gigahertz or better</li>
-<li>RAM: 2 gigabyte or more</li>
-<li>Disk: 16 gigabytes</li>
-</ul>
-<p><strong>Procedure</strong> (excerpt below and detailed here <a href="https://ubuntu.com/server/docs/install/step-by-step">https://ubuntu.com/server/docs/install/step-by-step</a>)</p>
-<ul>
-<li>Choose your language</li>
-<li>Update the installer (if offered)</li>
-<li>Select your keyboard layout</li>
-<li>Configure networking (the installer attempts to configure wired network interfaces via DHCP which is fine is you are using a VM and are going to create a template)</li>
-<li>Enter a hostname, username and password</li>
-<li>For storage, leave “use an entire disk” checked, and choose a disk to install to, then select “Done” on the configuration screen and confirm the install</li>
-<li>Configure a proxy or custom mirror if you have to in your network</li>
-<li>Select OpenSSH server from the list of packages to be installed</li>
-<li>You will now see log messages as the install is completed</li>
-<li>Select restart when this is complete, and log in using the username and password provided</li>
-</ul>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube-nocookie.com/embed/RIz359xF-8U" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-<p>Unlike the sped up video above, this install can be a time consuming process to manually attempt on a number of servers (20-30 minutes per install). If you are using VMs, you should consider taking a snapshot and creating a template of your Base Ubuntu VM right after the install. This way when you need more copies in the future or want to start over, you have a clean Ubuntu install readily available.</p>
-<h2 id="clone-to-a-vm">Clone to a VM</h2>
-<p>From the Base Ubuntu template that you have, create two clones one for the master and one for the worker node. If you have gone the route of installing Ubuntu from ISO on two machines without cloning, that works too..</p>
-<ul>
-<li>k8s-m1: will be the control node</li>
-<li>k8s-w1: will be the capacity node</li>
-</ul>
-<p>For Highly Available clusters for Kubernetes using kubeadm, refer to this <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/" target="_blank">kubernetes.io documentation</a></p>
-<h2 id="configuring-ubuntu-for-kubernetes">Configuring Ubuntu for Kubernetes</h2>
-<p>With our two machines now ready, we need to do some configuration that is specific to kubernetes and docker on these servers.</p>
-<blockquote>
-<p>There are not a lot of changes that needs to be done and can be done manually using multi window editing capabilities that iTerm2 offers</p>
-<ul>
-<li>shortcuts cmd-d and cmd-shift-d divide an existing session vertically or horizontally, respectively</li>
-<li>shortcuts cmd-shift-i and cmd-i to edit in multiple pane or go back to editing in a single pane, respectively</li>
-</ul>
-</blockquote>
-<h3 id="step-1---disable-swapoff">Step 1 - Disable swapoff</h3>
+<h2 id="how-do-i-use-it">How do I use it?</h2>
+<ol>
+<li>Since I have the need to work with a lot of Windows 10 (in EUC) for Endpoint Management, I use the Packer to build a VM for the version of Windows 10 that I need in under 30 minutes. My homelab has little storage and thus rather than creating templates, I leaned heavily on Packer which helps minimizing the storage used. Once I have the working set of build files for an Operating System + version, i can always replicate the Image (most of the time barring some unexpected OS update behaviors).</li>
+<li>Packer is also used to produce the <a href="vmweventbroker.io">VMware Event Broker Appliance</a> and it was in fact William Lam <a href="https://twitter.com/lamw?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="small" data-related="pkblah" data-show-screen-name="false"  data-show-count="false">Follow</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> who first introduced me to the magic of Packer and how capable it is to build consistent images</li>
+</ol>
+<h2 id="getting-started">Getting started</h2>
+<p>You can get started by installing packer on your operating system as described <a href="https://learn.hashicorp.com/tutorials/packer/getting-started-install" target="_blank">here</a></p>
+<h3 id="macos-installation">macOS Installation</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#disables swap immediately</span>
-sudo swapoff –a 
-
-<span class="c1">#ensures swap remains disabled after reboot</span>
-sudo sed -i <span class="s1">&#39;/ swap / s/^\(.*\)$/#\1/g&#39;</span> /etc/fstab
+<pre class="chroma"><code class="language-sh" data-lang="sh">brew tap hashicorp/tap
+brew install hashicorp/tap/packer
 </code></pre></td></tr></table>
 </div>
-</div><p>There is a larger and better thread that conveys why this has to be done (or shouldn&rsquo;t be) and where this falls within the scope of Kubernetes project on the things to get done - <a href="https://github.com/kubernetes/kubernetes/issues/53533">https://github.com/kubernetes/kubernetes/issues/53533</a></p>
-<h3 id="step-2---setup-static-ip">Step 2 - Setup Static IP</h3>
-<p>Ubuntu networking is configured with <a href="https://netplan.io/examples/" target="_blank">Netplan</a>. Succinctly, you want to edit <code>/etc/netplan/01-netcfg.yaml</code> to look like this</p>
+</div><h2 id="terminologies">Terminologies</h2>
+<p>If you are going to work with Packer, you&rsquo;ll need to know these common terminologies</p>
+<ul>
+<li><strong>Variables</strong>: self explanatory - define any and all your variables here.. these will be used in the following sections</li>
+<li><strong>Builder(s)</strong>: These are platform specific using various APIs to product consistent images across various platforms such as AWS, Azure, GCP, VMware</li>
+<li><strong>Provisioners</strong>: does stuff to configure the image after booting - such as installing packages</li>
+<li><strong>Post Processors</strong>: runs after the image is built - such as exporting the app</li>
+</ul>
+<h2 id="template-for-windows">Template for Windows</h2>
+<p>Let&rsquo;s now go over the details of the Packer template for Windows. You can find the template that I&rsquo;ve used in my github repo - <a href="https://github.com/pksrc/packer">https://github.com/pksrc/packer</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git clone https://github.com/pksrc/packer.git 
+cd packer/win10
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="variables">Variables</h3>
+<p>All the variables that we are going to use are split up into two files for readability</p>
+<ul>
+<li><code>var-appliance.json</code> - has all the information about the Appliance such as name, CPU, disk size etc</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;0.1.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Windows Image&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;vm_name&#34;</span><span class="p">:</span> <span class="s2">&#34;Windows_10&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;numvcpus&#34;</span><span class="p">:</span> <span class="s2">&#34;2&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;memory&#34;</span><span class="p">:</span> <span class="s2">&#34;4096&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;disk_size&#34;</span><span class="p">:</span> <span class="s2">&#34;50720&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;guest_username&#34;</span><span class="p">:</span> <span class="s2">&#34;vmuser&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;guest_password&#34;</span><span class="p">:</span> <span class="s2">&#34;VM@Windows10&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;autounattend&#34;</span><span class="p">:</span> <span class="s2">&#34;./answer/10/Autounattend.xml&#34;</span>
+    <span class="err">....</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>var-builder.json</code> - has all the information about the platform where we are going to build the VM</li>
+</ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -623,68 +647,62 @@ sudo sed -i <span class="s1">&#39;/ swap / s/^\(.*\)$/#\1/g&#39;</span> /etc/fst
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">network:
-  version: <span class="m">2</span>
-  renderer: networkd
-  ethernets:
-    enp0s3:
-     dhcp4: no
-     addresses: <span class="o">[</span>10.10.10.10/24<span class="o">]</span>
-     gateway4: 10.10.10.1
-     nameservers:
-       addresses: <span class="o">[</span>8.8.8.8,8.8.4.4<span class="o">]</span>
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;vcenter_server&#34;</span><span class="p">:</span> <span class="s2">&#34;10.10.X.X&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;vcenter_username&#34;</span><span class="p">:</span> <span class="s2">&#34;administrator@vsphere.local&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;vcenter_password&#34;</span><span class="p">:</span> <span class="s2">&#34;P@ssword&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;VM_folder&#34;</span><span class="p">:</span> <span class="s2">&#34;Templates&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;esx_host&#34;</span><span class="p">:</span> <span class="s2">&#34;CMD/esxi03.lab.pdotk.com&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;resource_pool&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;datastore&#34;</span><span class="p">:</span> <span class="s2">&#34;datastore2-30&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;network&#34;</span><span class="p">:</span> <span class="s2">&#34;dPG-Access&#34;</span> <span class="err">#Connect</span> <span class="err">to</span> <span class="err">the</span> <span class="err">Network</span> <span class="err">with</span> <span class="err">DHCP</span>
+<span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>Once you have the Netplan config updated as required for your network, go ahead and run</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo netplan apply
-</code></pre></td></tr></table>
-</div>
-</div><blockquote>
-<p>Here is another article that helps guide you through this change - <a href="https://linuxize.com/post/how-to-configure-static-ip-address-on-ubuntu-20-04/#configuring-static-ip-address-on-ubuntu-server">https://linuxize.com/post/how-to-configure-static-ip-address-on-ubuntu-20-04/#configuring-static-ip-address-on-ubuntu-server</a></p>
+</div><h3 id="vsphere-iso-builder">vSphere ISO Builder</h3>
+<p>We are going to be using the vSphere 7.0 platform for building our VMs and thus using <code>vsphere-iso</code> which leverages vSphere API (supports vSphere 6.5+).</p>
+<blockquote>
+<p>If you don&rsquo;t have a vCenter and are going to be building directly on your ESXi host(s) you can leverage the <code>vmware-iso</code> which requires some ESXi modification as it needs SSH access and leverages VNC</p>
 </blockquote>
-<h3 id="step-3---install-docker">Step 3 - Install Docker</h3>
-<p>Next step is to install Docker which Kubernetes will be using as the container runtime.</p>
+<p>Let&rsquo;s now walk through all the options specified below</p>
+<ul>
+<li><strong>type</strong>: indicates the builder that we are going to leverage and we are going to be using <code>vsphere-iso</code> (obviously)</li>
+<li><strong>build platform information</strong> - information about which vCenter we are going to connect to, the necessary credentials, what datastore and resource pool are going to be used, is vCenter certificate trusted etc.</li>
+</ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#install docker</span>
-sudo apt install docker.io -y
-
-<span class="c1">#Add your user to the docker group</span>
-groupadd docker
-sudo usermod -aG docker <span class="nv">$USER</span>
-
-<span class="c1"># enable and start docker</span>
-sudo systemctl <span class="nb">enable</span> docker
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;vsphere-iso&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;vcenter_server&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `vcenter_server`}}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;host&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `esx_host`}}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;resource_pool&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `resource_pool`}}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;datastore&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `datastore`}}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;username&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `vcenter_username`}}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;password&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `vcenter_password`}}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;insecure_connection&#34;</span><span class="p">:</span> <span class="s2">&#34;true&#34;</span><span class="p">,</span> 
+    <span class="err">....</span>
+<span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="step-4---prepping-for-kubernetes">Step 4 - Prepping for Kubernetes</h3>
-<p>The last item remaining to prep our servers is to download the components for Kubernetes and kubeadm as described <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/" target="_blank">here</a> and shown below</p>
-<p><strong>Steps</strong>:</p>
-<ul>
-<li>Add the signing key to verify k8s download</li>
-<li>Add kubernetes repos to the repo list</li>
-<li>Install these on all servers
-<ul>
-<li><strong>Kubeadm</strong> which is going to bootstrap the cluster</li>
-<li><strong>Kubectl</strong> which is the CLI used to manage the cluster and</li>
-<li><strong>Kubelet</strong> which is the component that needs to run on all machines to make kubernetes work</li>
-</ul>
+</div><ul>
+<li><strong>ISO</strong>: You&rsquo;ll need to provide two ISOs for the Windows Image to build succesfully
+<ol>
+<li><strong>The bootable Windows 10 ISO</strong> - you can provide both the local downloaded file path and/or the remote URL to download from. A checksum to the file needs to be provided for added security.</li>
+<li>Since <strong>VMware Tools</strong> will also be needed, we&rsquo;ll need to upload the VMware Tools to the datastore and mount it using <code>iso_paths</code> attribute. A word of caution as there are no validations for the presence of files on the datastore. If you don&rsquo;t have the file you could be staring at a black screen on the VM for a long time wondering why the boot screen is not coming up, ask me how I know..</li>
+</ol>
 </li>
 </ul>
 <div class="highlight"><div class="chroma">
@@ -704,76 +722,32 @@ sudo systemctl <span class="nb">enable</span> docker
 </span><span class="lnt">13
 </span><span class="lnt">14
 </span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Install signing keys</span>
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg <span class="p">|</span> sudo apt-key add
-
-<span class="c1"># Adding kubenetes repository for APT</span>
-apt-add-repository <span class="s2">&#34;deb http://apt.kubernetes.io/ kubernetes-xenial main&#34;</span>
-
-<span class="c1"># install k8s components</span>
-cat <span class="s">&lt;&lt;EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
-</span><span class="s">deb https://apt.kubernetes.io/ kubernetes-xenial main
-</span><span class="s">EOF</span>
-
-apt-get update
-
-apt-get install kubeadm kubelet kubectl -y
-apt-mark hold kubelet kubeadm kubectl
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="err">....</span>
+    <span class="nt">&#34;iso_urls&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&#34;{{user `local_iso_path`}}&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;{{user `remote_iso_url`}}&#34;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="nt">&#34;iso_checksum&#34;</span><span class="p">:</span> <span class="s2">&#34;db756063e9efa39c68501f745c2ea9c0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;iso_paths&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&#34;[{{user `datastore`}}] {{user `vmtools_windows`}}&#34;</span>
+    <span class="p">],</span>
+    <span class="err">...or...</span>
+    <span class="nt">&#34;iso_paths&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&#34;[{{user `datastore`}}] {{user `iso_url`}}&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;[{{user `datastore`}}] {{user `vmtools_windows`}}&#34;</span>
+    <span class="p">],</span>
+    <span class="err">....</span>
+<span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="bootstrap-kubernetes---control-plane">Bootstrap Kubernetes - Control Plane</h2>
-<p>All that is left to do now is to get Kubernetes working!</p>
-<h3 id="step-1-getting-the-control-node-ready-aka-master-node">Step 1: Getting the Control Node ready (a.k.a master node)</h3>
-<p>To do that we are going to leverage <code>kubeadm</code> to bootstrap kubernetes using a single command (maybe a couple..). First we want to get our Control node up and running with Kubernetes. This Control Node will run</p>
-<ul>
-<li>API Server (<strong>kube-apiserver</strong>): This is the API gateway (if you will) for all the components to interact with</li>
-<li>Etcd (<strong>etcd</strong>): This is the database (if you will) for all the kubernetes cluster data (from nodes to pods to everything)</li>
-<li>Scheduler (<strong>kube-scheduler</strong>): This is the backend scheduler/job(if you will) that continues to ensures the pods are running and properly distributed to all the nodes</li>
-<li>Controller Manager (<strong>kube-controller-manager</strong>): For every type of object within Kubernetes, there are Controllers available that specialize in managing that object (for example: Node, Replication, Endpoint etc)</li>
+</div><ul>
+<li><strong>VM information</strong> - Name, VM version, Guest OS Type, CPU, RAM, storage and networking information</li>
 </ul>
-<blockquote>
-<p>This is the noob version of describing kubernetes. If you choose to, you can always learn more at <a href="https://kubernetes.io/docs/concepts/overview/components/">https://kubernetes.io/docs/concepts/overview/components/</a></p>
-</blockquote>
-<p>We start by initializing kubernetes on the Control Node and all the info that we need the pod network CIDR at this point. Ensure that the POD CIDR does not overlap with any of your existing networking IP ranges.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># using the default POD NETWORK CIDR for calico</span>
-sudo kubeadm init --pod-network-cidr<span class="o">=</span>192.168.0.0/16
-</code></pre></td></tr></table>
-</div>
-</div><p>If you have more than one NICs you will need to specify which IP address kubernetes should use for the API address (this is critical since all the other components need to talk to it for proper functionality). If you have it all working properly, you should get something similar to what i have below</p>
-<image src="/img/k8s/bootstrap-k8s/bootstrap.png">
-<h3 id="step-2-setup-kubectl-for-the-user-account">Step 2: Setup Kubectl for the user account</h3>
-<p>Kubeadm will also provide some instructions to setup the user account with the right kube config. Run the following as a regular user:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir -p <span class="nv">$HOME</span>/.kube
-sudo cp -i /etc/kubernetes/admin.conf <span class="nv">$HOME</span>/.kube/config
-sudo chown <span class="k">$(</span>id -u<span class="k">)</span>:<span class="k">$(</span>id -g<span class="k">)</span> <span class="nv">$HOME</span>/.kube/config
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="step-3-setup-pod-networking">Step 3: Setup Pod networking</h3>
-<p>Once you have kubeconfig setup, you should now have kubectl working and be able to deploy a pod network to the cluster. I&rsquo;m going to using <code>calico</code> for the networking and the networking policy.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">curl https://docs.projectcalico.org/manifests/calico-etcd.yaml -o calico.yaml
-</code></pre></td></tr></table>
-</div>
-</div><p>In my case, since I&rsquo;m using <code>etcd</code> for the datastore and also using TLS, i had to update the <code>calico.yaml</code> with the right information (as shown). I had missed/messed up this step and ended up troubleshooting for half a day.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -796,50 +770,37 @@ sudo chown <span class="k">$(</span>id -u<span class="k">)</span>:<span class="k
 </span><span class="lnt">18
 </span><span class="lnt">19
 </span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nn">---</span><span class="w">
-</span><span class="w"></span><span class="c"># Source: calico/templates/calico-etcd-secrets.yaml</span><span class="w">
-</span><span class="w"></span><span class="c"># The following contains k8s Secrets for use with a TLS enabled etcd cluster.</span><span class="w">
-</span><span class="w"></span><span class="c"># For information on populating Secrets, see http://kubernetes.io/docs/user-guide/secrets/</span><span class="w">
-</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Secret</span><span class="w">
-</span><span class="w"></span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">Opaque</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">calico-etcd-secrets</span><span class="w">
-</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">kube-system</span><span class="w">
-</span><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="c"># Populate the following with etcd TLS configuration if desired, but leave blank if</span><span class="w">
-</span><span class="w">  </span><span class="c"># not using TLS for etcd.</span><span class="w">
-</span><span class="w">  </span><span class="c"># The keys below should be uncommented and the values populated with the base64</span><span class="w">
-</span><span class="w">  </span><span class="c"># encoded contents of each file that would be associated with the TLS data.</span><span class="w">
-</span><span class="w">  </span><span class="c"># Example command for encoding a file contents: cat &lt;file&gt; | base64 -w 0</span><span class="w">
-</span><span class="w">  </span><span class="nt">etcd-key</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;base 64 encoded etcd Key&gt;</span><span class="w">
-</span><span class="w">  </span><span class="nt">etcd-cert</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;base 64 encoded etcd Certificate&gt;</span><span class="w">
-</span><span class="w">  </span><span class="nt">etcd-ca</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;base 64 encoded etcd CA&gt;</span><span class="w">
-</span><span class="w"></span><span class="nn">---</span><span class="w">
-</span></code></pre></td></tr></table>
-</div>
-</div><p>You can get the base 64 encoded values by using the commands provided below. The file locations is well known and can also be obtained by running a kubectl describe command on the etcd pod.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># CA root certificate</span>
-cat /etc/kubernetes/pki/etcd/ca.crt <span class="p">|</span> base64 -w <span class="m">0</span>
-
-<span class="c1"># ETCD private and public key</span>
-sudo cat /etc/kubernetes/pki/etcd/server.key <span class="p">|</span> base64 -w <span class="m">0</span>
-cat /etc/kubernetes/pki/etcd/server.crt <span class="p">|</span> base64 -w <span class="m">0</span>
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="err">....</span>
+    <span class="nt">&#34;vm_name&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `vm_name`}}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;notes&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `description`}} - {{user `version`}}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;vm_version&#34;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="nt">&#34;guest_os_type&#34;</span><span class="p">:</span> <span class="s2">&#34;windows9_64Guest&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;cpus&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `numvcpus`}}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;ram&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `memory`}}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;disk_controller_type&#34;</span><span class="p">:</span> <span class="s2">&#34;pvscsi&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;storage&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;disk_size&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `disk_size`}}&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;disk_thin_provisioned&#34;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&#34;network_adapters&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&#34;network&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `network`}}&#34;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="err">....</span>
+<span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>Once you have that updated you are also going to update the <code>calico.yaml</code> to look like the below. The <code>calico-secrets/etcd-xx</code> are created using the base64 encoded information that we updated above.</p>
+</div><ul>
+<li><strong>Seed Files</strong>: We can seed some files through the floppy files and these are then leveraged during the <code>autounattend</code> setup</li>
+</ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -857,41 +818,92 @@ cat /etc/kubernetes/pki/etcd/server.crt <span class="p">|</span> base64 -w <span
 </span><span class="lnt">13
 </span><span class="lnt">14
 </span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Source: calico/templates/calico-config.yaml</span><span class="w">
-</span><span class="w"></span><span class="c"># This ConfigMap is used to configure a self-hosted Calico installation.</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ConfigMap</span><span class="w">
-</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">calico-config</span><span class="w">
-</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">kube-system</span><span class="w">
-</span><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="c"># Configure this with the location of your etcd cluster.</span><span class="w">
-</span><span class="w">  </span><span class="nt">etcd_endpoints</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://&lt;API IP&gt;:2379&#34;</span><span class="w">
-</span><span class="w">  </span><span class="c"># If you&#39;re using TLS enabled etcd uncomment the following.</span><span class="w">
-</span><span class="w">  </span><span class="c"># You must also populate the Secret below with these files.</span><span class="w">
-</span><span class="w">  </span><span class="nt">etcd_ca</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-ca&#34;</span><span class="w">
-</span><span class="w">  </span><span class="nt">etcd_cert</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-cert&#34;</span><span class="w">
-</span><span class="w">  </span><span class="nt">etcd_key</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-key&#34;</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="err">....</span>
+    <span class="nt">&#34;floppy_files&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&#34;{{user `autounattend`}}&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;./floppy/WindowsPowershell.lnk&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;./floppy/PinTo10.exe&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;./floppy/vmtools.cmd&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;./scripts/fixnetwork.ps1&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;./scripts/disable-screensaver.ps1&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;./scripts/disable-winrm.ps1&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;./scripts/enable-winrm.ps1&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;./scripts/microsoft-updates.bat&#34;</span><span class="p">,</span>
+        <span class="s2">&#34;./scripts/win-updates.ps1&#34;</span>
+      <span class="p">],</span>
+      <span class="nt">&#34;floppy_img_path&#34;</span><span class="p">:</span> <span class="s2">&#34;[{{user `datastore`}}] VMware-Tools-windows-11.0.0-14549434/floppies/pvscsi-Windows8.flp&#34;</span><span class="p">,</span>
+    <span class="err">....</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
 </div>
-</div><p>With these edits in place, you should now be good to apply the calico.yaml to your kubernetes cluster.</p>
+</div><ul>
+<li><strong>WinRM config</strong> - options configuring the WinRM communication that we need for connecting the the VM after booting - how long should Packer wait for a reboot, how should packer authenticate with the Guest etc.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="err">....</span>
+    <span class="nt">&#34;communicator&#34;</span><span class="p">:</span> <span class="s2">&#34;winrm&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;winrm_timeout&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `winrm_timeout`}}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;winrm_password&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `guest_password`}}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;winrm_username&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `guest_username`}}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;boot_wait&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `restart_timeout`}}&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;shutdown_command&#34;</span><span class="p">:</span> <span class="s2">&#34;shutdown /s /t 10 /f /d p:4:1 /c \&#34;Packer Shutdown\&#34;&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;ip_wait_timeout&#34;</span><span class="p">:</span> <span class="s2">&#34;{{user `ip_wait_timeout`}}&#34;</span><span class="p">,</span>
+    <span class="err">....</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="autounattend-file">AutoUnattend File</h3>
+<p>Every OS has its own method to support an automated build. For the Windows, we want to focus on the <code>autounattend</code> file as described <a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/automate-windows-setup" target="_blank">here</a> and <a href="https://www.packer.io/guides/automatic-operating-system-installs/autounattend_windows" target="_blank">here</a></p>
+<p>It might be hard to cover the <code>Unattend</code> file at length and thus I&rsquo;ve provided the high-level details along with how there are utilized below (excerpt from MSFT <a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/update-windows-settings-and-scripts-create-your-own-answer-file-sxs" target="_blank">documentation</a> where you can easily get lost in the labyrinth of hyperlinks)</p>
+<ul>
+<li>
+<p><strong>windowsPE</strong>: These settings are used by the Windows Setup installation program. We use this to <a href="https://kb.vmware.com/s/article/1010398" target="_blank">install the PVCSCI drive</a> which is our <code>disk_controller_type</code></p>
+</li>
+<li>
+<p><strong>specialize</strong>: You can have multiple blocks of <code>specialize</code></p>
+<ul>
+<li>These settings are triggered both at the beginning of audit mode and at the beginning of OOBE. We use this to setup the disk partitions, language settings, User settings, Product Key etc. You could also setup static IP (which I&rsquo;m not using)</li>
+<li>Use to install VMware Tools on the Guest OS</li>
+<li>Use for Naming the VM</li>
+</ul>
+</li>
+<li>
+<p><strong>oobeSystem</strong>: The suggestion is to use this sparingly however we use this heavily to configure the system after the user completes OOBE.</p>
+</li>
+</ul>
+<p>A good reference to an example Autounattend file and all the helper scripts are available in Stefan Scherer&rsquo;s repo - <a href="https://github.com/StefanScherer/packer-windows">https://github.com/StefanScherer/packer-windows</a> (forked from <a href="https://github.com/joefitzgerald/packer-windows)">https://github.com/joefitzgerald/packer-windows)</a>. This repo provides examples that uses the <code>vmware-iso</code> builder that is being utilized. My repo has a modified version of this to help build succesfully on vSphere - <a href="https://github.com/pksrc/packer">https://github.com/pksrc/packer</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">kubectl apply -f calico.yaml
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git clone https://github.com/pksrc/packer.git 
+cd packer/win10
 </code></pre></td></tr></table>
 </div>
-</div><blockquote>
-<p>More information on how to set up calidco can be found here - <a href="https://docs.projectcalico.org/getting-started/kubernetes/self-managed-onprem/onpremises">https://docs.projectcalico.org/getting-started/kubernetes/self-managed-onprem/onpremises</a></p>
-</blockquote>
-<h2 id="bootstrap-kubernetes---capacity-nodes">Bootstrap Kubernetes - Capacity Nodes</h2>
-<p>Once you have the Control Plane Node up and running, we can proceed to get the Capacity Node joined to the Kubernetes Cluster. To do so, you&rsquo;ll need to run the command provided below. If you do this immediately after running the <code>kubeadm init</code> on the Control Plane node, kubeadm will provide the exact command that needs to be run on the Capacity Nodes.</p>
-<p><code>kubeadm join --token &lt;token&gt; &lt;control-plane-host&gt;:&lt;control-plane-port&gt; --discovery-token-ca-cert-hash sha256:&lt;hash&gt;</code></p>
-<p>In the event you need to add more nodes after and if you need to get the token and the CA certificate hash, here is how you can get them</p>
+</div><h2 id="starting-the-build">Starting the Build</h2>
+<p>Starting the build is easily done with a <code>packer</code> command which should kick off the build process on vCenter using the configuration provided</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -903,45 +915,97 @@ cat /etc/kubernetes/pki/etcd/server.crt <span class="p">|</span> base64 -w <span
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># list the tokens</span>
-kubeadm token list
-<span class="c1"># create a new token</span>
-kubeadm token create
-
-<span class="c1"># to get the hash</span>
-openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt <span class="p">|</span> openssl rsa -pubin -outform der 2&gt;/dev/null <span class="p">|</span> openssl dgst -sha256 -hex <span class="p">|</span> sed <span class="s1">&#39;s/^.* //&#39;</span>
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">packer build \
+    --only=vsphere-iso \ #if there are multiple builders, this builds only the vsphere-iso configuration
+    --var-file=var-builder.json \ 
+    --var-file=var-appliance.json \ 
+    --var iso_url=packer_cache/en_windows_10_business_editions_version_2004_x64_dvd_d06ef8c5.iso \ 
+    --var vm_name=&#34;Windows10_2004&#34; \ 
+    windows_10.json
 </code></pre></td></tr></table>
 </div>
-</div><p>After running the <code>kubeadm join</code> command you should get a response like below if your Capacity node was able to join the Kubernetes Controller</p>
-<img src="/img/k8s/bootstrap-k8s/node.png">
-<p>Hope you are successfully able to follow these instructions and get a working Kubernetes cluster with Calico on Ubuntu 20.04 using kubeadm.</p>
-<p>Please provide feedback by leaving a comment and share this post using the social media icons shown below. That&rsquo;s all folks!</p>
+</div><h3 id="build-process">Build process</h3>
+<p>As a part of the build process,</p>
+<ul>
+<li>the Windows 10 ISO is uploaded to vCenter onto the datastore specified</li>
+<li>the VM is created and booted up from the ISO uploaded</li>
+<li>the VMware Tools is first installed and forces a reboot</li>
+<li>the Windows Setup begins leveraging the autounattend and the supporting script files made available in the floppy drives</li>
+<li>the autounattend process also runs the scripts to help configure some settings on the VM</li>
+<li>the VM is configured to auto logon with a User specified in the AutoUnattend.xml</li>
+<li>Packer is able to acquire the IP once the Windows is configured on the VM</li>
+<li>the provisioning stage now kick in and starts to execute each block - it is here that we attempt to also enroll the VM into UEM</li>
+<li>once the provisiong stage is over, the post processor kicks in - we are just writing a success message here</li>
+</ul>
+<p>The entire process took 30 minutes can be seen in this video(sped up to 5 mins) below -</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube-nocookie.com/embed/pVUVSoi1J2U" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+<h3 id="enrollment-into-uem">Enrollment into UEM</h3>
+<p>Using the Post provisioning step, we tell packer to run the below script which will download the <code>AirwatchAgent.msi</code> and enroll the device into Workspace ONE UEM.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bat" data-lang="bat"><span class="k">if</span> <span class="k">not</span> <span class="k">exist</span> <span class="s2">&#34;C:\tmp\AirWatchAgent.msi&#34;</span> <span class="p">(</span>
+	powershell -Command <span class="s2">&#34;(New-Object System.Net.WebClient).DownloadFile(&#39;https://packages.vmware.com/wsone/AirwatchAgent.msi&#39;, &#39;C:\tmp\AirWatchAgent.msi&#39;)&#34;</span> <span class="p">&lt;</span>NUL
+<span class="p">)</span>
+
+<span class="c1">rem Check if device is already registered with Workspace ONE, if not then proceed with installing Workspace ONE Intelligent Hub</span>
+
+<span class="k">for</span> <span class="k">/f</span> <span class="s2">&#34;delims=&#34;</span> <span class="se">%%</span>i <span class="k">in</span> <span class="p">(</span><span class="s2">&#34;reg query HKLM\SOFTWARE\Microsoft\Provisioning\OMADM\Accounts /s&#34;</span><span class="p">)</span> <span class="k">do</span> <span class="k">set</span> <span class="nv">status</span><span class="p">=</span><span class="se">%%</span>i
+
+<span class="k">if</span> <span class="k">not</span> <span class="k">defined</span> <span class="nv">status</span> <span class="k">goto</span> <span class="nl">INSTALL</span>
+
+<span class="p">:</span><span class="nl">INSTALL</span>
+    <span class="c1">rem Run the Workspace ONE Intelligent Hub Installer to Register Device with Staging Account</span>
+
+    msiexec /i C:\tmp\AirWatchAgent.msi /q ENROLL=Y SERVER=uem.lab.pdotk.com LGName=customerog USERNAME=test@lab.pdotk.com PASSWORD=P@ssw0rd DOWNLOADWSBUNDLE=TRUE /LOG <span class="nv">%temp%</span>\WorkspaceONE.log
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="wrap-up">Wrap Up</h2>
+<p>Hopefully this post helps you get started with packer quickly and with your Windows 10 use cases. I&rsquo;ve shown an example where I was able to auto enroll into UEM and have a fresh image always ready to test within a span of 30 minutes but the possibilities with automation enabled by packer are endless&hellip; Hoping you&rsquo;ll give it a try! 😄</p>
+<h3 id="psupgrading-packer-to-170">PS:Upgrading Packer to 1.7.0</h3>
+<p>I&rsquo;ve been using Packer for 6-9 months now and had finalized my templates mostly. However at the time of posting this, Packer has introduced some changes with v1.7.0 which suggests an template upgrade. I&rsquo;ll be covering these changes in the next blog post.</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-02-05&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/49e4cd45a5e3ccf2e9f1210c6515b647e5097385" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 49e4cd45a5e3ccf2e9f1210c6515b647e5097385: Edits to the Post - Misadventures...">
-                                    <i class="fas fa-hashtag fa-fw"></i>49e4cd4</a></span>
+                <span>Updated on 2021-02-22&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/83db7defae3b3bfd2ca5c77d391ad7a4784e1b79" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 83db7defae3b3bfd2ca5c77d391ad7a4784e1b79: Post: Automating Windows 10 VM build auto enrolled into UEM using Packer">
+                                    <i class="fas fa-hashtag fa-fw"></i>83db7de</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share sharebtns">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-via="pkblah" data-hashtags="Kubernetes,Automation,Ubuntu,Calico"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/bootstrap-k8s/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/bootstrap-k8s/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/packer-windows/" data-title="Automating Windows 10 VM build auto enrolled into UEM using Packer" data-via="pkblah" data-hashtags="Automation,Windows,Packer,UEM"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/packer-windows/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/packer-windows/" data-title="Automating Windows 10 VM build auto enrolled into UEM using Packer" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/packer-windows/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/packer-windows/" data-title="Automating Windows 10 VM build auto enrolled into UEM using Packer" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">Kubernetes</a>,&nbsp;<a href="/tags/automation/">Automation</a>,&nbsp;<a href="/tags/ubuntu/">Ubuntu</a>,&nbsp;<a href="/tags/calico/">Calico</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/automation/">Automation</a>,&nbsp;<a href="/tags/windows/">Windows</a>,&nbsp;<a href="/tags/packer/">Packer</a>,&nbsp;<a href="/tags/uem/">UEM</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/post/self-service-for-your-datacenter/" class="prev" rel="prev" title="Enabling Self Service for your DataCenter — Part I"><i class="fas fa-angle-left fa-fw"></i>Enabling Self Service for your DataCenter — Part I</a>
-            <a href="/post/access-apis/" class="next" rel="next" title="Access: The tale of the hidden APIs">Access: The tale of the hidden APIs<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/post/homelab-2021/" class="prev" rel="prev" title="2021: What&#39;s in my homelab?"><i class="fas fa-angle-left fa-fw"></i>2021: What&#39;s in my homelab?</a></div>
 </div>
 <div id="comments"><div id="utterances"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.

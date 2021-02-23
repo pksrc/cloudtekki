@@ -4,7 +4,14 @@
         <link>https://cloudtekki.com/categories/euc/</link>
         <description>EUC - Category - Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/categories/euc/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 22 Feb 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/categories/euc/" rel="self" type="application/rss+xml" /><item>
+    <title>Automating Windows 10 VM build auto enrolled into UEM using Packer</title>
+    <link>https://cloudtekki.com/post/packer-windows/</link>
+    <pubDate>Mon, 22 Feb 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/packer-windows/</guid>
+    <description><![CDATA[In this post, I&rsquo;ll be covering how you can automate the process of automating the build of Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors.]]></description>
+</item><item>
     <title>Unpacking Organization Groups in Workspace ONE UEM</title>
     <link>https://cloudtekki.com/post/uem-organization-groups/</link>
     <pubDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</pubDate>
