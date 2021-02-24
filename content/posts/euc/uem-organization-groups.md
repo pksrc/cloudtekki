@@ -6,7 +6,6 @@ categories: [UEM, EUC]
 tags:
 - Unified Endpoint Management
 - End User Computing
-featured: true
 ---
 
 What are Organization Groups in Workspace One UEM? 

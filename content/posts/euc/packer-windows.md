@@ -8,9 +8,10 @@ tags:
 - Windows
 - Packer
 - UEM
+featured: true
 ---
 
-In this post, I'll be covering how you can automate the process of automating the build of Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors. 
+In this post, I'll be covering how you can automate the process of building a Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors. 
 
 Let's dive into how you can get started with Packer to automate the entire Windows 10 build process along with enrolling into Workspace ONE UEM without a single click...
 
@@ -24,7 +25,7 @@ Several use cases are highlighted [here](https://www.packer.io/intro/use-cases)
 - [Appliance/Demo Creation](https://www.packer.io/intro/use-cases#appliance-demo-creation)
 
 ## How do I use it? 
-1. Since I have the need to work with a lot of Windows 10 (in EUC) for Endpoint Management, I use the Packer to build a VM for the version of Windows 10 that I need in under 30 minutes. My homelab has little storage and thus rather than creating templates, I leaned heavily on Packer which helps minimizing the storage used. Once I have the working set of build files for an Operating System + version, i can always replicate the Image (most of the time barring some unexpected OS update behaviors).  
+1. Since I have the need to work with a lot of Windows 10 (in EUC) for Endpoint Management, I use the Packer to build a VM for the version of Windows 10 that I need in under 30 minutes. My homelab has little storage and thus rather than creating templates, I leaned heavily on Packer which helps minimizing the storage used. Once I have the working set of build files for an Operating System + version, I can always replicate the Image (most of the time barring some unexpected OS update behaviors).  
 2. Packer is also used to produce the [VMware Event Broker Appliance](vmweventbroker.io) and it was in fact William Lam {{% twitter profile="lamw" %}} who first introduced me to the magic of Packer and how capable it is to build consistent images
 
 ## Getting started
@@ -43,11 +44,11 @@ If you are going to work with Packer, you'll need to know these common terminolo
 - **Variables**: self explanatory - define any and all your variables here.. these will be used in the following sections
 - **Builder(s)**: These are platform specific using various APIs to product consistent images across various platforms such as AWS, Azure, GCP, VMware
 - **Provisioners**: does stuff to configure the image after booting - such as installing packages
-- **Post Processors**: runs after the image is built - such as exporting the app
+- **Post Processors**: runs after the image is built - such as exporting the VM as an OVA
 
 ## Template for Windows
 
-Let's now go over the details of the Packer template for Windows. You can find the template that I've used in my github repo - https://github.com/pksrc/packer 
+Let's go over the details of the Packer template that I've leveraged for the Windows 10 build. You can find the template that I've used in my github repo - https://github.com/pksrc/packer 
 
 ```
 git clone https://github.com/pksrc/packer.git 
@@ -84,7 +85,7 @@ All the variables that we are going to use are split up into two files for reada
     "esx_host": "CMD/esxi03.lab.pdotk.com",
     "resource_pool": "",
     "datastore": "datastore2-30",
-    "network": "dPG-Access" #Connect to the Network with DHCP
+    "network": "dPG-Access" #Connect to the Network with DHCP enabled
 }
 ```
 
@@ -223,7 +224,7 @@ cd packer/win10
 
 ## Starting the Build
 
-Starting the build is easily done with a `packer` command which should kick off the build process on vCenter using the configuration provided
+Starting the build is easily done with the `packer` command which should kick off the build process on vCenter using the configuration provided
 
 ```
 packer build \
@@ -245,7 +246,7 @@ As a part of the build process,
 - the VM is configured to auto logon with a User specified in the AutoUnattend.xml
 - Packer is able to acquire the IP once the Windows is configured on the VM
 - the provisioning stage now kick in and starts to execute each block - it is here that we attempt to also enroll the VM into UEM
-- once the provisiong stage is over, the post processor kicks in - we are just writing a success message here
+- once the provisioning stage is over, the post processor kicks in - I'm only writing a success message here
 
 The entire process took 30 minutes can be seen in this video(sped up to 5 mins) below -  
 {{% youtube pVUVSoi1J2U %}}

@@ -9,7 +9,6 @@ tags:
 - Postman
 - Developer Tools
 lightgallery: true
-featured: true
 ---
 
 # Evolving Access through APIs
