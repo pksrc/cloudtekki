@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Fling: Migration tool for WS1 Access - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive"><meta property="og:title" content="Fling: Migration tool for WS1 Access" />
+<meta property="og:description" content="Migration?&hellip;Migraine?&hellip; When it comes to migration scenarios, the most involved and difficult migration within the EUC lineup (that I can think of) is the WS1 Access tenant migration. It is equivalent to adopting a new IDP solution as you&rsquo;ll have to re-federate all the apps in order to successfully complete a migration.
+And this is case regardless of where you are trying to move from -
+On-Premise to SaaS  As Cloud is picking up steam and as features are developed with a cloud-first mentality, tt makes sense to offload the management of the Access Service to VMware This scenario is also getting more common as Access and Hub Services are FedRAMP certified as of CY Q4 2020  SaaS to SaaS  This is a not very common use case but few situations demand them nonetheless predominantly due to issues arising from high customization entertained early in the product adoption lifecycle Another use case for is populating a UAT or a DEV tenant with Apps from another tenant   Path to Migration First and foremost, a migration is possible as documented in @williamsmt blog which provides a detailed walk through of the entire migration approach." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cloudtekki.com/post/access-migration/" />
+<meta property="article:published_time" content="2021-02-23T23:58:00+00:00" />
+<meta property="article:modified_time" content="2021-02-23T20:26:20-08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Fling: Migration tool for WS1 Access"/>
+<meta name="twitter:description" content="Migration?&hellip;Migraine?&hellip; When it comes to migration scenarios, the most involved and difficult migration within the EUC lineup (that I can think of) is the WS1 Access tenant migration. It is equivalent to adopting a new IDP solution as you&rsquo;ll have to re-federate all the apps in order to successfully complete a migration.
+And this is case regardless of where you are trying to move from -
+On-Premise to SaaS  As Cloud is picking up steam and as features are developed with a cloud-first mentality, tt makes sense to offload the management of the Access Service to VMware This scenario is also getting more common as Access and Hub Services are FedRAMP certified as of CY Q4 2020  SaaS to SaaS  This is a not very common use case but few situations demand them nonetheless predominantly due to issues arising from high customization entertained early in the product adoption lifecycle Another use case for is populating a UAT or a DEV tenant with Apps from another tenant   Path to Migration First and foremost, a migration is possible as documented in @williamsmt blog which provides a detailed walk through of the entire migration approach."/>
+<meta name="application-name" content="Cloud Tekki">
+<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/access-migration/" /><link rel="prev" href="https://cloudtekki.com/post/packer-windows/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Fling: Migration tool for WS1 Access",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cloudtekki.com\/post\/access-migration\/"
+        },"genre": "posts","keywords": "Access, APIs, Migration, Fling","wordcount":  1225 ,
+        "url": "https:\/\/cloudtekki.com\/post\/access-migration\/","datePublished": "2021-02-23T23:58:00+00:00","dateModified": "2021-02-23T20:26:20-08:00","publisher": {
+            "@type": "Organization",
+            "name": "Cloud Tekki"},"author": {
+                "@type": "Person",
+                "name": "Partheeban Kandasamy (PK)"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+        </div>
+        <div class="menu navbar">
+            <div class="menu-inner nav__links"><li data-expand="Posts" class="nav--link">
+                        <a href="/posts/"><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span> Posts </a>
+                    </li><li data-expand="Categories" class="nav--link">
+                        <a href="/categories/"><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span> Categories </a>
+                    </li><li data-expand="Tags" class="nav--link">
+                        <a href="/tags/"><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span> Tags </a>
+                    </li><li data-expand="About" class="nav--link">
+                        <a href="/"><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span> About </a>
+                    </li><span class="menu-item">|</span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span>Posts</a><a class="menu-item" href="/categories/" title=""><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span>Categories</a><a class="menu-item" href="/tags/" title=""><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span>Tags</a><a class="menu-item" href="/" title=""><span class='menuicon'><img src='/img/menu/author.png' class='img'/></span>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+
+        
+<div class="tip"></div>
+
+<section class="header__expandMenu">
+  <div class="menu__container"><div id="Posts">
+      <div class="sub__menu">
+        <h3 class="title">Featured Posts</h3>
+        <ul class="subMenu__items">
+            <li class="subMenu--item">
+              <i class="fa fa-star icon--production" style="color: gold;" aria-hidden="true"></i>
+              <span class="label__container">
+                <div class="label">
+                  <a href="/post/packer-windows/"> Automating Windows 10 VM build auto enrolled into UEM using Packer</a>
+                  <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+                <div class="label--desc">&nbsp;published on <b><time datetime="2021-02-22">2021-02-22</time></b></div>
+              </span>
+            </li>
+            <li class="subMenu--item">
+              <i class="fa fa-star icon--production" style="color: gold;" aria-hidden="true"></i>
+              <span class="label__container">
+                <div class="label">
+                  <a href="/post/turning-on-wcp/"> Misadventures turning on Workload Management with vSphere 7</a>
+                  <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+                <div class="label--desc">&nbsp;published on <b><time datetime="2021-01-31">2021-01-31</time></b></div>
+              </span>
+            </li>
+          </ul>
+      </div>
+    </div><div id="Categories">
+      <div class="sub__menu">
+        <h3 class="title">Categories</h3>
+        <ul class="subMenu__items"><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/veba/">VEBA <sup>6</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/euc/">EUC <sup>4</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/access/">ACCESS <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/sddc/">SDDC <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/kubernetes/">KUBERNETES <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/uem/">UEM <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li></ul>
+      </div>
+    </div><div id="Tags">
+      <div class="sub__menu">
+        <h3 class="title">Tags</h3>
+        <ul class="subMenu__items sec--menu"><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/cloud-native/">cloud-native <sup>6</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/event-driven/">event-driven <sup>6</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/access/">Access <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/apis/">APIs <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/automation/">Automation <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/kubernetes/">Kubernetes <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/vexpert/">vExpert <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/author-notes/">Author Notes <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/calico/">Calico <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/developer-tools/">Developer Tools <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/end-user-computing/">End User Computing <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/fling/">Fling <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/homelab/">homelab <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/migration/">Migration <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/packer/">Packer <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/postman/">Postman <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li></ul>
+          </div>
+          <div class="sub__menu">
+            <h3 class="title">&nbsp</h3>
+          <ul class="subMenu__items sec--menu"><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/projectpacific/">ProjectPacific <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/tanzu/">Tanzu <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/ubuntu/">Ubuntu <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/uem/">UEM <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/unified-endpoint-management/">Unified Endpoint Management <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/windows/">Windows <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li></ul>
+      </div>
+    </div>
+    <div id="About">
+      <div class="sub__menu">
+        <h3 class="title">About</h3>
+        <ul class="subMenu__items">
+          
+          <li class="subMenu--item">
+            <i class='fas fa-user-circle fa-fw author'></i>
+            <span class="label__container">
+              <div class="label">
+                <a href="/about-pk/">Partheeban Kandasamy (PK)</a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+              <div class="label--desc">
+                <b>Staff CSA @ VMW EUC</b> <br/> vExpert '20 <br/> <b>Passion:</b> Automation, EUC, Cloud, Serverless, k8s, Homelab
+              </div>
+            </span>
+          </li>
+          
+        </ul>
+      </div>
+    </div></div>
+</section><main class="main">
+                <div class="container"><article class="page single">
+<aside class="sidebar" id="sidebar">
+  <div id="sidebar-auto">
+    <section class="sidebar_inner" id="SidebarNavigation">
+      <h2 class="mt-4">Featured Posts</h2>
+      <ul>
+        <li>
+          <a href="https://cloudtekki.com/post/access-migration/" class="nav-link">Fling: Migration tool for WS1 Access</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/packer-windows/" class="nav-link">Automating Windows 10 VM build auto enrolled into UEM using Packer</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/turning-on-wcp/" class="nav-link">Misadventures turning on Workload Management with vSphere 7</a>
+        </li>
+      </ul>
+
+      <h2 class="mt-4">Recent Posts</h2>
+      <ul class="flex-column">
+        <li>
+          <a href="https://cloudtekki.com/post/access-migration/" class="nav-link">Fling: Migration tool for WS1 Access</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/packer-windows/" class="nav-link">Automating Windows 10 VM build auto enrolled into UEM using Packer</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/homelab-2021/" class="nav-link">2021: What&#39;s in my homelab?</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/turning-on-wcp/" class="nav-link">Misadventures turning on Workload Management with vSphere 7</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/looking-back-at-2020/" class="nav-link">2020: Shattering Comfort Zones</a>
+        </li>
+      </ul>
+        <div>
+          <h2 class="mt-4 taxonomy" id="categories-section">TOP Categories</h2>
+          <nav class="tags_nav">
+            <a href='https://cloudtekki.com/categories/veba/' class="post_tag button button_translucent">
+              VEBA
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/euc/' class="post_tag button button_translucent">
+              EUC
+              <span class="button_tally">4</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/access/' class="post_tag button button_translucent">
+              ACCESS
+              <span class="button_tally">2</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/sddc/' class="post_tag button button_translucent">
+              SDDC
+              <span class="button_tally">2</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/kubernetes/' class="post_tag button button_translucent">
+              KUBERNETES
+              <span class="button_tally">1</span>
+            </a>
+            
+          </nav>
+        </div>
+        <div>
+          <h2 class="mt-4 taxonomy" id="tags-section">TOP Tags</h2>
+          <nav class="tags_nav">
+            <a href='https://cloudtekki.com/tags/cloud-native/' class="post_tag button button_translucent">
+              CLOUD-NATIVE
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/event-driven/' class="post_tag button button_translucent">
+              EVENT-DRIVEN
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/access/' class="post_tag button button_translucent">
+              ACCESS
+              <span class="button_tally">2</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/apis/' class="post_tag button button_translucent">
+              APIS
+              <span class="button_tally">2</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/automation/' class="post_tag button button_translucent">
+              AUTOMATION
+              <span class="button_tally">2</span>
+            </a>
+            
+          </nav>
+        </div>
+    </section>
+  </div>
+</aside>
+<h1 class="single-title animated flipInX">Fling: Migration tool for WS1 Access</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/access/"><i class="far fa-folder fa-fw"></i>ACCESS</a>&nbsp;<a href="/categories/euc/"><i class="far fa-folder fa-fw"></i>EUC</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/access-migration/" data-title="Fling: Migration tool for WS1 Access" data-via="pkblah" data-hashtags="Access,APIs,Migration,Fling"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/access-migration/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/access-migration/" data-title="Fling: Migration tool for WS1 Access" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/access-migration/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/access-migration/" data-title="Fling: Migration tool for WS1 Access" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+            <div class="post-meta-line">
+                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/access/">Access</a>,&nbsp;<a href="/tags/apis/">APIs</a>,&nbsp;<a href="/tags/migration/">Migration</a>,&nbsp;<a href="/tags/fling/">Fling</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-23">2021-02-23</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1225 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#migrationmigraine">Migration?&hellip;Migraine?&hellip;</a>
+      <ul>
+        <li><a href="#on-premise-to-saas"><strong>On-Premise to SaaS</strong></a></li>
+        <li><a href="#saas-to-saas"><strong>SaaS to SaaS</strong></a></li>
+      </ul>
+    </li>
+    <li><a href="#path-to-migration">Path to Migration</a></li>
+    <li><a href="#migrating-federated-apps">Migrating Federated Apps</a></li>
+    <li><a href="#ws1-access-migration-fling">WS1 Access Migration Fling</a></li>
+    <li><a href="#how-can-you-use-it">How can you use it?</a>
+      <ul>
+        <li><a href="#login">Login</a></li>
+        <li><a href="#get-categories-and-apps">Get Categories and Apps</a></li>
+        <li><a href="#migrate-categories">Migrate Categories</a></li>
+        <li><a href="#export-apps">Export Apps</a></li>
+        <li><a href="#import-apps">Import Apps</a>
+          <ul>
+            <li><a href="#migrate-web-links">Migrate Web Links</a></li>
+            <li><a href="#migrate-federated-apps-saml20-wsfed-saml10">Migrate Federated Apps (SAML2.0, WSFED, SAML1.0)</a></li>
+            <li><a href="#copy-the-app-category-mapping">Copy the App-Category mapping</a></li>
+          </ul>
+        </li>
+        <li><a href="#video-walkthrough">Video Walkthrough</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="migrationmigraine">Migration?&hellip;Migraine?&hellip;</h2>
+<p>When it comes to migration scenarios, the most involved and difficult migration within the EUC lineup (that I can think of) is the WS1 Access tenant migration. It is equivalent to adopting a new IDP solution as you&rsquo;ll have to re-federate all the apps in order to successfully complete a migration.</p>
+<p>And this is case regardless of where you are trying to move from -</p>
+<h3 id="on-premise-to-saas"><strong>On-Premise to SaaS</strong></h3>
+<ul>
+<li>As Cloud is picking up steam and as features are developed with a cloud-first mentality, tt makes sense to offload the management of the Access Service to VMware</li>
+<li>This scenario is also getting more common as Access and Hub Services are FedRAMP certified as of CY Q4 2020</li>
+</ul>
+<h3 id="saas-to-saas"><strong>SaaS to SaaS</strong></h3>
+<ul>
+<li>This is a not very common use case but few situations demand them nonetheless predominantly due to issues arising from high customization entertained early in the product adoption lifecycle</li>
+<li>Another use case for is populating a UAT or a DEV tenant with Apps from another tenant</li>
+</ul>
+<hr>
+<h2 id="path-to-migration">Path to Migration</h2>
+<p>First and foremost, a migration is possible as documented in <a href="https://blog.virtualprivateer.com/workspace-one-cloud-migration/" target="_blank">@williamsmt blog</a> which provides a detailed walk through of the entire migration approach. Where this process becomes painstakingly long is also highlighted here</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw"></i>Excerpt from VirtualPrivateer<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Perform steps 5-10 for each web application that should be created to mirror app availability in the existing WS1 Access on-premises environment. For those who are migrating in one phase, you can use my colleague Chris Halstead’s Fling for automating the majority of this process.</div>
+        </div>
+    </div>
+<figure><a class="lightgallery" href="/img/euc/access-migration/fling-chris.png" title="/img/euc/access-migration/fling-chris.png" data-thumbnail="/img/euc/access-migration/fling-chris.png" data-sub-html="<h2>Access Migration Tool - Logo</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-migration/fling-chris.png"
+            data-srcset="/img/euc/access-migration/fling-chris.png, /img/euc/access-migration/fling-chris.png 1.5x, /img/euc/access-migration/fling-chris.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-migration/fling-chris.png" />
+    </a><figcaption class="image-caption">Access Migration Tool - Logo</figcaption>
+    </figure>
+<p>As I looked deeper into Chris Halstead&rsquo;s Migration/Backup Fling <a href="https://twitter.com/chrisdhalstead?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="small" data-related="pkblah" data-show-screen-name="false"  data-show-count="false">Follow</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>, I noticed it could be used for two main use cases</p>
+<ul>
+<li>it is an excellent resource for backing up and restoring applications into a single Access tenant</li>
+<li>for a pure migration scenarios, it could also be leveraged to achieve the migration of WebLinks.</li>
+</ul>
+<p>However, when it comes to Federated Apps, the Fling falls short as it automated exporting and importing of the apps. To automate and ease the migration of Federated Apps, the Fling needed to acquire the launch url of the Federated App from the source tenant along with other meta-data (image for example) to create a web link in the destination tenant.</p>
+<hr>
+<h2 id="migrating-federated-apps">Migrating Federated Apps</h2>
+<p>So, is there a better way to migrate Apps that are directly federated with Access?</p>
+<p>Yes, here are some options</p>
+<ul>
+<li>If you don&rsquo;t have a lot of Apps federated with Access, the &ldquo;get it done&rdquo; approach is to take some downtime and re-federate all the apps to the new tenant.</li>
+<li>If you have a lot of apps however, it is going to be painstaking to setup some time with your App owners to re-federate all the apps at the same time&hellip;and this is where the fling comes in handy</li>
+</ul>
+<hr>
+<h2 id="ws1-access-migration-fling">WS1 Access Migration Fling</h2>
+<p>I wrote a C# Windows Application (released as a Fling) which is inspired from and provides the missing feature on Chris Halstead&rsquo;s Fling for the federated apps.</p>
+<p>Fling URL - <a href="https://flings.vmware.com/workspace-one-access-migration-tool">https://flings.vmware.com/workspace-one-access-migration-tool</a></p>
+<figure><a class="lightgallery" href="/img/euc/access-migration/app-logo-color.png" title="/img/euc/access-migration/app-logo-color.png" data-thumbnail="/img/euc/access-migration/app-logo-color.png" data-sub-html="<h2>Access Migration Tool - Logo</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-migration/app-logo-color.png"
+            data-srcset="/img/euc/access-migration/app-logo-color.png, /img/euc/access-migration/app-logo-color.png 1.5x, /img/euc/access-migration/app-logo-color.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-migration/app-logo-color.png" />
+    </a><figcaption class="image-caption">Access Migration Tool - Logo</figcaption>
+    </figure>
+<hr>
+<h2 id="how-can-you-use-it">How can you use it?</h2>
+<p>First, download the App from flings.vmware.com. The fling is a C# Windows Forms app app which you can extract into a folder to then run the application.</p>
+<p>As you launch, you&rsquo;ll see two sections - to the left is the section for source tenant and to the right will be the section for destination tenant. The goal is to move or copy objects from the source to destination.</p>
+<figure><a class="lightgallery" href="/img/euc/access-migration/app-launch.png" title="/img/euc/access-migration/app-launch.png" data-thumbnail="/img/euc/access-migration/app-launch.png" data-sub-html="<h2>Access Migration Tool - First Launch</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-migration/app-launch.png"
+            data-srcset="/img/euc/access-migration/app-launch.png, /img/euc/access-migration/app-launch.png 1.5x, /img/euc/access-migration/app-launch.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-migration/app-launch.png" />
+    </a><figcaption class="image-caption">Access Migration Tool - First Launch</figcaption>
+    </figure>
+<blockquote>
+<p>Remember this is a fling and I&rsquo;ve prioritized utility over experience.</p>
+</blockquote>
+<h3 id="login">Login</h3>
+<ul>
+<li>Provide the https url for your tenant - for example - <code>https://access.lab.com</code></li>
+<li>Provide the credentials for your tenant - this should be the local system domain account with administration privileges</li>
+<li>Clicking on Login with the proper credentials should log you in</li>
+</ul>
+<h3 id="get-categories-and-apps">Get Categories and Apps</h3>
+<ul>
+<li>Upon logging in, the <code>Get Apps</code> and <code>Get Categories</code> features are &ldquo;unlocked&rdquo;</li>
+<li>Clicking on <code>Get Categories</code> for the tenant that you are logged in, will fetch all the Categories on that tenant. The categories will be listed in the dropdown right next to the <code>Get Categories</code> button</li>
+<li>Choosing the type of App (SAML, Weblink etc) and Clicking on <code>Get Apps</code> for the tenant that you are logged in, will fetch all the corresponding type of App on that tenant. The Apps will be listed in the table at the bottom of the App.</li>
+</ul>
+<figure><a class="lightgallery" href="/img/euc/access-migration/app-view.png" title="/img/euc/access-migration/app-view.png" data-thumbnail="/img/euc/access-migration/app-view.png" data-sub-html="<h2>Access Migration Tool - Viewing Categories and Apps</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-migration/app-view.png"
+            data-srcset="/img/euc/access-migration/app-view.png, /img/euc/access-migration/app-view.png 1.5x, /img/euc/access-migration/app-view.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-migration/app-view.png" />
+    </a><figcaption class="image-caption">Access Migration Tool - Viewing Categories and Apps</figcaption>
+    </figure>
+<h3 id="migrate-categories">Migrate Categories</h3>
+<p>To facilitate a smooth migration for apps and to retain all the category to app mapping, you&rsquo;ll want to copy the Categories from the source tenant to the destination tenant.</p>
+<ul>
+<li>To Migrate Categories, please login to the destination tenant as well</li>
+<li>Once you&rsquo;ve logged in to the destination tenant, the <code>Copy Categories</code> button will be activated</li>
+<li>Click the <code>Copy Categories</code> to migrate all the categories from the source to the destination tenant</li>
+</ul>
+<blockquote>
+<p>Categories are unique by name and in case of conflicts only the unique ones are created in the new tenant (<em>not sure about how upper vs lower case is handled</em>)</p>
+</blockquote>
+<h3 id="export-apps">Export Apps</h3>
+<ul>
+<li>Once you are able to view the Apps from the source tenant, the option to <code>Export Apps</code> are also enabled. This action will prompt you to choose a folder to export the App metadata.</li>
+<li>Upon choosing the Folder location, the apps that were selected will be exported as zip files (one zip per app)</li>
+<li>The Apps are exported into appropriate folders that represent their categories (Web App, SAML2.0, WSFED, SAML1.0)</li>
+<li>Exporting the Apps will further enable the <code>Copy Web Apps</code>, <code>Link SAML2.0 Apps</code>, <code>Link WSFed Apps</code>, <code>Link SAML1.0 Apps</code> and <code>Copy App to Category Assignment</code> actions that can be performed on the destination tenant</li>
+</ul>
+<figure><a class="lightgallery" href="/img/euc/access-migration/app-export.png" title="/img/euc/access-migration/app-export.png" data-thumbnail="/img/euc/access-migration/app-export.png" data-sub-html="<h2>Access Migration Tool - Exporting Apps</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/access-migration/app-export.png"
+            data-srcset="/img/euc/access-migration/app-export.png, /img/euc/access-migration/app-export.png 1.5x, /img/euc/access-migration/app-export.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/access-migration/app-export.png" />
+    </a><figcaption class="image-caption">Access Migration Tool - Exporting Apps</figcaption>
+    </figure>
+<h3 id="import-apps">Import Apps</h3>
+<p>This is the crux of this whole Fling which enables you to migrate Apps to the destination Access tenant</p>
+<h4 id="migrate-web-links">Migrate Web Links</h4>
+<ul>
+<li>Clicking on <code>Copy Web Apps</code> will prompt for the folder path that you can choose to import the apps from.</li>
+<li>The Fling will try to find a web apps folder and import the apps into the destination tenant</li>
+</ul>
+<h4 id="migrate-federated-apps-saml20-wsfed-saml10">Migrate Federated Apps (SAML2.0, WSFED, SAML1.0)</h4>
+<ul>
+<li>Clicking on <code>Link SAML2.0 Apps</code>, <code>Link WSFed Apps</code>, <code>Link SAML1.0 Apps</code> will prompt for the folder path that you can choose to import the apps from.</li>
+<li>The Fling will try to find apps from the appropriate folder and import them into the destination tenant</li>
+</ul>
+<h4 id="copy-the-app-category-mapping">Copy the App-Category mapping</h4>
+<blockquote>
+<p>PRE-REQs - All the categories must be present in the destination directory</p>
+</blockquote>
+<ul>
+<li>Clicking on <code>Copy App to Category Assignment</code> will attempt to match the app categorization in the source tenant to the destination tenant</li>
+</ul>
+<h3 id="video-walkthrough">Video Walkthrough</h3>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube-nocookie.com/embed/QdIEDM93c-M" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+<p>I&rsquo;ve built a lot of tools but this is a monumental occasion as this is my first Fling (that was born out of a Customer&rsquo;s need to migrate Access tenant) that I&rsquo;ve authored and released to the public. Please go try it out and let me know how you like it! Shout out to everyone that supported by testing, providing test tenants and by sharing their feedback. Hoping you&rsquo;ll take advantage of the WS1 Access Migration Tool for any of the use cases that I&rsquo;ve highlighted above!</p>
+<p>Happy Migrating!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-02-23&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/a3c42650af9b34989cba4c02c1d7c01a12c1a805" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) a3c42650af9b34989cba4c02c1d7c01a12c1a805: Post - Fling: Migration tool for WS1 Access">
+                                    <i class="fas fa-hashtag fa-fw"></i>a3c4265</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share sharebtns">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/access-migration/" data-title="Fling: Migration tool for WS1 Access" data-via="pkblah" data-hashtags="Access,APIs,Migration,Fling"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/access-migration/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/access-migration/" data-title="Fling: Migration tool for WS1 Access" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/access-migration/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/access-migration/" data-title="Fling: Migration tool for WS1 Access" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/access/">Access</a>,&nbsp;<a href="/tags/apis/">APIs</a>,&nbsp;<a href="/tags/migration/">Migration</a>,&nbsp;<a href="/tags/fling/">Fling</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/post/packer-windows/" class="prev" rel="prev" title="Automating Windows 10 VM build auto enrolled into UEM using Packer"><i class="fas fa-angle-left fa-fw"></i>Automating Windows 10 VM build auto enrolled into UEM using Packer</a></div>
+</div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div><h2 class="twitter-title">TWEETS</h2>
+            <div class="twitterfeed" id="twitter-auto" >
+                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            </div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2021</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":80},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"pathname","label":"","lightTheme":"github-light","repo":"pksrc/cloudtekki"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/lib/stripe-menu/menu.js"></script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'G-RYVG6M042F', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-RYVG6M042F" async></script></body>
+</html>

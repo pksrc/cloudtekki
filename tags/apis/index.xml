@@ -4,7 +4,16 @@
         <link>https://cloudtekki.com/tags/apis/</link>
         <description>APIs - Tag - Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/apis/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Tue, 23 Feb 2021 23:58:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/apis/" rel="self" type="application/rss+xml" /><item>
+    <title>Fling: Migration tool for WS1 Access</title>
+    <link>https://cloudtekki.com/post/access-migration/</link>
+    <pubDate>Tue, 23 Feb 2021 23:58:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/access-migration/</guid>
+    <description><![CDATA[Migration?&hellip;Migraine?&hellip; When it comes to migration scenarios, the most involved and difficult migration within the EUC lineup (that I can think of) is the WS1 Access tenant migration. It is equivalent to adopting a new IDP solution as you&rsquo;ll have to re-federate all the apps in order to successfully complete a migration.
+And this is case regardless of where you are trying to move from -
+On-Premise to SaaS  As Cloud is picking up steam and as features are developed with a cloud-first mentality, tt makes sense to offload the management of the Access Service to VMware This scenario is also getting more common as Access and Hub Services are FedRAMP certified as of CY Q4 2020  SaaS to SaaS  This is a not very common use case but few situations demand them nonetheless predominantly due to issues arising from high customization entertained early in the product adoption lifecycle Another use case for is populating a UAT or a DEV tenant with Apps from another tenant   Path to Migration First and foremost, a migration is possible as documented in @williamsmt blog which provides a detailed walk through of the entire migration approach.]]></description>
+</item><item>
     <title>Access: The tale of the hidden APIs</title>
     <link>https://cloudtekki.com/post/access-apis/</link>
     <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>

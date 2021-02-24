@@ -6,16 +6,16 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Automating Windows 10 VM build auto enrolled into UEM using Packer - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive"><meta property="og:title" content="Automating Windows 10 VM build auto enrolled into UEM using Packer" />
-<meta property="og:description" content="In this post, I&rsquo;ll be covering how you can automate the process of automating the build of Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors." />
+<meta property="og:description" content="In this post, I&rsquo;ll be covering how you can automate the process of building a Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cloudtekki.com/post/packer-windows/" />
 <meta property="article:published_time" content="2021-02-22T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-22T22:19:45-08:00" />
+<meta property="article:modified_time" content="2021-02-23T20:26:20-08:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Automating Windows 10 VM build auto enrolled into UEM using Packer"/>
-<meta name="twitter:description" content="In this post, I&rsquo;ll be covering how you can automate the process of automating the build of Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors."/>
+<meta name="twitter:description" content="In this post, I&rsquo;ll be covering how you can automate the process of building a Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors."/>
 <meta name="application-name" content="Cloud Tekki">
-<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/packer-windows/" /><link rel="prev" href="https://cloudtekki.com/post/homelab-2021/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
+<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/packer-windows/" /><link rel="prev" href="https://cloudtekki.com/post/homelab-2021/" /><link rel="next" href="https://cloudtekki.com/post/access-migration/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -24,8 +24,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/cloudtekki.com\/post\/packer-windows\/"
-        },"genre": "posts","keywords": "Automation, Windows, Packer, UEM","wordcount":  1845 ,
-        "url": "https:\/\/cloudtekki.com\/post\/packer-windows\/","datePublished": "2021-02-22T00:00:00+00:00","dateModified": "2021-02-22T22:19:45-08:00","publisher": {
+        },"genre": "posts","keywords": "Automation, Windows, Packer, UEM","wordcount":  1851 ,
+        "url": "https:\/\/cloudtekki.com\/post\/packer-windows\/","datePublished": "2021-02-22T00:00:00+00:00","dateModified": "2021-02-23T20:26:20-08:00","publisher": {
             "@type": "Organization",
             "name": "Cloud Tekki"},"author": {
                 "@type": "Person",
@@ -130,30 +130,20 @@
               <i class="fa fa-star icon--production" style="color: gold;" aria-hidden="true"></i>
               <span class="label__container">
                 <div class="label">
+                  <a href="/post/access-migration/"> Fling: Migration tool for WS1 Access</a>
+                  <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+                <div class="label--desc">&nbsp;published on <b><time datetime="2021-02-23">2021-02-23</time></b></div>
+              </span>
+            </li>
+            <li class="subMenu--item">
+              <i class="fa fa-star icon--production" style="color: gold;" aria-hidden="true"></i>
+              <span class="label__container">
+                <div class="label">
                   <a href="/post/turning-on-wcp/"> Misadventures turning on Workload Management with vSphere 7</a>
                   <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </div>
                 <div class="label--desc">&nbsp;published on <b><time datetime="2021-01-31">2021-01-31</time></b></div>
-              </span>
-            </li>
-            <li class="subMenu--item">
-              <i class="fa fa-star icon--production" style="color: gold;" aria-hidden="true"></i>
-              <span class="label__container">
-                <div class="label">
-                  <a href="/post/uem-organization-groups/"> Unpacking Organization Groups in Workspace ONE UEM</a>
-                  <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </div>
-                <div class="label--desc">&nbsp;published on <b><time datetime="2020-11-21">2020-11-21</time></b></div>
-              </span>
-            </li>
-            <li class="subMenu--item">
-              <i class="fa fa-star icon--production" style="color: gold;" aria-hidden="true"></i>
-              <span class="label__container">
-                <div class="label">
-                  <a href="/post/access-apis/"> Access: The tale of the hidden APIs</a>
-                  <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                </div>
-                <div class="label--desc">&nbsp;published on <b><time datetime="2020-10-24">2020-10-24</time></b></div>
               </span>
             </li>
           </ul>
@@ -173,7 +163,15 @@
             <img src="/img/menu/folder-open-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
-                <a href="/categories/euc/">EUC <sup>3</sup></a>
+                <a href="/categories/euc/">EUC <sup>4</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/access/">ACCESS <sup>2</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -182,14 +180,6 @@
             <span class="label__container">
               <div class="label">
                 <a href="/categories/sddc/">SDDC <sup>2</sup></a>
-                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </span>
-          </li><li class="subMenu--item item--one">
-            <img src="/img/menu/folder-open-solid.svg" class="icon">
-            <span class="label__container">
-              <div class="label">
-                <a href="/categories/access/">ACCESS <sup>1</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -234,6 +224,22 @@
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
+                <a href="/tags/access/">Access <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/apis/">APIs <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
                 <a href="/tags/automation/">Automation <sup>2</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
@@ -251,22 +257,6 @@
             <span class="label__container">
               <div class="label">
                 <a href="/tags/vexpert/">vExpert <sup>2</sup></a>
-                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </span>
-          </li><li class="subMenu--item item--one">
-            <img src="/img/menu/tags-solid.svg" class="icon">
-            <span class="label__container">
-              <div class="label">
-                <a href="/tags/access/">Access <sup>1</sup></a>
-                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </span>
-          </li><li class="subMenu--item item--one">
-            <img src="/img/menu/tags-solid.svg" class="icon">
-            <span class="label__container">
-              <div class="label">
-                <a href="/tags/apis/">APIs <sup>1</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -306,7 +296,23 @@
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
+                <a href="/tags/fling/">Fling <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
                 <a href="/tags/homelab/">homelab <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/migration/">Migration <sup>1</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -326,7 +332,11 @@
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
-          </li><li class="subMenu--item item--one">
+          </li></ul>
+          </div>
+          <div class="sub__menu">
+            <h3 class="title">&nbsp</h3>
+          <ul class="subMenu__items sec--menu"><li class="subMenu--item item--one">
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
@@ -342,11 +352,7 @@
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
-          </li></ul>
-          </div>
-          <div class="sub__menu">
-            <h3 class="title">&nbsp</h3>
-          <ul class="subMenu__items sec--menu"><li class="subMenu--item item--one">
+          </li><li class="subMenu--item item--one">
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
@@ -410,18 +416,21 @@
       <h2 class="mt-4">Featured Posts</h2>
       <ul>
         <li>
+          <a href="https://cloudtekki.com/post/access-migration/" class="nav-link">Fling: Migration tool for WS1 Access</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/packer-windows/" class="nav-link">Automating Windows 10 VM build auto enrolled into UEM using Packer</a>
+        </li>
+        <li>
           <a href="https://cloudtekki.com/post/turning-on-wcp/" class="nav-link">Misadventures turning on Workload Management with vSphere 7</a>
-        </li>
-        <li>
-          <a href="https://cloudtekki.com/post/uem-organization-groups/" class="nav-link">Unpacking Organization Groups in Workspace ONE UEM</a>
-        </li>
-        <li>
-          <a href="https://cloudtekki.com/post/access-apis/" class="nav-link">Access: The tale of the hidden APIs</a>
         </li>
       </ul>
 
       <h2 class="mt-4">Recent Posts</h2>
       <ul class="flex-column">
+        <li>
+          <a href="https://cloudtekki.com/post/access-migration/" class="nav-link">Fling: Migration tool for WS1 Access</a>
+        </li>
         <li>
           <a href="https://cloudtekki.com/post/packer-windows/" class="nav-link">Automating Windows 10 VM build auto enrolled into UEM using Packer</a>
         </li>
@@ -434,9 +443,6 @@
         <li>
           <a href="https://cloudtekki.com/post/looking-back-at-2020/" class="nav-link">2020: Shattering Comfort Zones</a>
         </li>
-        <li>
-          <a href="https://cloudtekki.com/post/uem-organization-groups/" class="nav-link">Unpacking Organization Groups in Workspace ONE UEM</a>
-        </li>
       </ul>
         <div>
           <h2 class="mt-4 taxonomy" id="categories-section">TOP Categories</h2>
@@ -448,17 +454,17 @@
             
             <a href='https://cloudtekki.com/categories/euc/' class="post_tag button button_translucent">
               EUC
-              <span class="button_tally">3</span>
+              <span class="button_tally">4</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/access/' class="post_tag button button_translucent">
+              ACCESS
+              <span class="button_tally">2</span>
             </a>
             
             <a href='https://cloudtekki.com/categories/sddc/' class="post_tag button button_translucent">
               SDDC
               <span class="button_tally">2</span>
-            </a>
-            
-            <a href='https://cloudtekki.com/categories/access/' class="post_tag button button_translucent">
-              ACCESS
-              <span class="button_tally">1</span>
             </a>
             
             <a href='https://cloudtekki.com/categories/kubernetes/' class="post_tag button button_translucent">
@@ -481,18 +487,18 @@
               <span class="button_tally">6</span>
             </a>
             
+            <a href='https://cloudtekki.com/tags/access/' class="post_tag button button_translucent">
+              ACCESS
+              <span class="button_tally">2</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/apis/' class="post_tag button button_translucent">
+              APIS
+              <span class="button_tally">2</span>
+            </a>
+            
             <a href='https://cloudtekki.com/tags/automation/' class="post_tag button button_translucent">
               AUTOMATION
-              <span class="button_tally">2</span>
-            </a>
-            
-            <a href='https://cloudtekki.com/tags/kubernetes/' class="post_tag button button_translucent">
-              KUBERNETES
-              <span class="button_tally">2</span>
-            </a>
-            
-            <a href='https://cloudtekki.com/tags/vexpert/' class="post_tag button button_translucent">
-              VEXPERT
               <span class="button_tally">2</span>
             </a>
             
@@ -505,7 +511,7 @@
             <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/euc/"><i class="far fa-folder fa-fw"></i>EUC</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/packer-windows/" data-title="Automating Windows 10 VM build auto enrolled into UEM using Packer" data-via="pkblah" data-hashtags="Automation,Windows,Packer,UEM"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/packer-windows/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/packer-windows/" data-title="Automating Windows 10 VM build auto enrolled into UEM using Packer" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/packer-windows/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/packer-windows/" data-title="Automating Windows 10 VM build auto enrolled into UEM using Packer" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
             </div>
             <div class="post-meta-line">
-                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/automation/">Automation</a>,&nbsp;<a href="/tags/windows/">Windows</a>,&nbsp;<a href="/tags/packer/">Packer</a>,&nbsp;<a href="/tags/uem/">UEM</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-22">2021-02-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1845 words&nbsp;
+                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/automation/">Automation</a>,&nbsp;<a href="/tags/windows/">Windows</a>,&nbsp;<a href="/tags/packer/">Packer</a>,&nbsp;<a href="/tags/uem/">UEM</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-02-22">2021-02-22</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1851 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;9 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -546,7 +552,7 @@
     </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>In this post, I&rsquo;ll be covering how you can automate the process of automating the build of Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors.</p>
+            </div><div class="content" id="content"><p>In this post, I&rsquo;ll be covering how you can automate the process of building a Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors.</p>
 <p>Let&rsquo;s dive into how you can get started with Packer to automate the entire Windows 10 build process along with enrolling into Workspace ONE UEM without a single click&hellip;</p>
 <h2 id="what-is-packer">What is Packer?</h2>
 <p>If you are not familiar with Packer, <a href="https://www.packer.io/" target="_blank">Packer</a> by Hashicorp is a tool that helps automate the images building process for multiple platforms such as AWS, Azure, GCP, VMware(all at the same time, if you choose to). With Packer you can attempt to build a very consistent image every time by automating the steps to build an image through code.</p>
@@ -559,7 +565,7 @@
 </ul>
 <h2 id="how-do-i-use-it">How do I use it?</h2>
 <ol>
-<li>Since I have the need to work with a lot of Windows 10 (in EUC) for Endpoint Management, I use the Packer to build a VM for the version of Windows 10 that I need in under 30 minutes. My homelab has little storage and thus rather than creating templates, I leaned heavily on Packer which helps minimizing the storage used. Once I have the working set of build files for an Operating System + version, i can always replicate the Image (most of the time barring some unexpected OS update behaviors).</li>
+<li>Since I have the need to work with a lot of Windows 10 (in EUC) for Endpoint Management, I use the Packer to build a VM for the version of Windows 10 that I need in under 30 minutes. My homelab has little storage and thus rather than creating templates, I leaned heavily on Packer which helps minimizing the storage used. Once I have the working set of build files for an Operating System + version, I can always replicate the Image (most of the time barring some unexpected OS update behaviors).</li>
 <li>Packer is also used to produce the <a href="vmweventbroker.io">VMware Event Broker Appliance</a> and it was in fact William Lam <a href="https://twitter.com/lamw?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="small" data-related="pkblah" data-show-screen-name="false"  data-show-count="false">Follow</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> who first introduced me to the magic of Packer and how capable it is to build consistent images</li>
 </ol>
 <h2 id="getting-started">Getting started</h2>
@@ -581,10 +587,10 @@ brew install hashicorp/tap/packer
 <li><strong>Variables</strong>: self explanatory - define any and all your variables here.. these will be used in the following sections</li>
 <li><strong>Builder(s)</strong>: These are platform specific using various APIs to product consistent images across various platforms such as AWS, Azure, GCP, VMware</li>
 <li><strong>Provisioners</strong>: does stuff to configure the image after booting - such as installing packages</li>
-<li><strong>Post Processors</strong>: runs after the image is built - such as exporting the app</li>
+<li><strong>Post Processors</strong>: runs after the image is built - such as exporting the VM as an OVA</li>
 </ul>
 <h2 id="template-for-windows">Template for Windows</h2>
-<p>Let&rsquo;s now go over the details of the Packer template for Windows. You can find the template that I&rsquo;ve used in my github repo - <a href="https://github.com/pksrc/packer">https://github.com/pksrc/packer</a></p>
+<p>Let&rsquo;s go over the details of the Packer template that I&rsquo;ve leveraged for the Windows 10 build. You can find the template that I&rsquo;ve used in my github repo - <a href="https://github.com/pksrc/packer">https://github.com/pksrc/packer</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -655,7 +661,7 @@ cd packer/win10
     <span class="nt">&#34;esx_host&#34;</span><span class="p">:</span> <span class="s2">&#34;CMD/esxi03.lab.pdotk.com&#34;</span><span class="p">,</span>
     <span class="nt">&#34;resource_pool&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
     <span class="nt">&#34;datastore&#34;</span><span class="p">:</span> <span class="s2">&#34;datastore2-30&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;network&#34;</span><span class="p">:</span> <span class="s2">&#34;dPG-Access&#34;</span> <span class="err">#Connect</span> <span class="err">to</span> <span class="err">the</span> <span class="err">Network</span> <span class="err">with</span> <span class="err">DHCP</span>
+    <span class="nt">&#34;network&#34;</span><span class="p">:</span> <span class="s2">&#34;dPG-Access&#34;</span> <span class="err">#Connect</span> <span class="err">to</span> <span class="err">the</span> <span class="err">Network</span> <span class="err">with</span> <span class="err">DHCP</span> <span class="err">enabled</span>
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
@@ -903,7 +909,7 @@ cd packer/win10
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="starting-the-build">Starting the Build</h2>
-<p>Starting the build is easily done with a <code>packer</code> command which should kick off the build process on vCenter using the configuration provided</p>
+<p>Starting the build is easily done with the <code>packer</code> command which should kick off the build process on vCenter using the configuration provided</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -935,7 +941,7 @@ cd packer/win10
 <li>the VM is configured to auto logon with a User specified in the AutoUnattend.xml</li>
 <li>Packer is able to acquire the IP once the Windows is configured on the VM</li>
 <li>the provisioning stage now kick in and starts to execute each block - it is here that we attempt to also enroll the VM into UEM</li>
-<li>once the provisiong stage is over, the post processor kicks in - we are just writing a success message here</li>
+<li>once the provisioning stage is over, the post processor kicks in - I&rsquo;m only writing a success message here</li>
 </ul>
 <p>The entire process took 30 minutes can be seen in this video(sped up to 5 mins) below -</p>
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -985,8 +991,8 @@ cd packer/win10
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-02-22&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/83db7defae3b3bfd2ca5c77d391ad7a4784e1b79" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 83db7defae3b3bfd2ca5c77d391ad7a4784e1b79: Post: Automating Windows 10 VM build auto enrolled into UEM using Packer">
-                                    <i class="fas fa-hashtag fa-fw"></i>83db7de</a></span>
+                <span>Updated on 2021-02-23&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/a3c42650af9b34989cba4c02c1d7c01a12c1a805" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) a3c42650af9b34989cba4c02c1d7c01a12c1a805: Post - Fling: Migration tool for WS1 Access">
+                                    <i class="fas fa-hashtag fa-fw"></i>a3c4265</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
@@ -1005,7 +1011,8 @@ cd packer/win10
         </section>
     </div>
 
-    <div class="post-nav"><a href="/post/homelab-2021/" class="prev" rel="prev" title="2021: What&#39;s in my homelab?"><i class="fas fa-angle-left fa-fw"></i>2021: What&#39;s in my homelab?</a></div>
+    <div class="post-nav"><a href="/post/homelab-2021/" class="prev" rel="prev" title="2021: What&#39;s in my homelab?"><i class="fas fa-angle-left fa-fw"></i>2021: What&#39;s in my homelab?</a>
+            <a href="/post/access-migration/" class="next" rel="next" title="Fling: Migration tool for WS1 Access">Fling: Migration tool for WS1 Access<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="utterances"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.

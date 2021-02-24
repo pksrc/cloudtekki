@@ -10,6 +10,6 @@
     <pubDate>Mon, 22 Feb 2021 00:00:00 &#43;0000</pubDate>
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/packer-windows/</guid>
-    <description><![CDATA[In this post, I&rsquo;ll be covering how you can automate the process of automating the build of Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors.]]></description>
+    <description><![CDATA[In this post, I&rsquo;ll be covering how you can automate the process of building a Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors.]]></description>
 </item></channel>
 </rss>

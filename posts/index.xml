@@ -4,13 +4,22 @@
         <link>https://cloudtekki.com/posts/</link>
         <description>All Posts | Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 22 Feb 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Tue, 23 Feb 2021 23:58:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Fling: Migration tool for WS1 Access</title>
+    <link>https://cloudtekki.com/post/access-migration/</link>
+    <pubDate>Tue, 23 Feb 2021 23:58:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/access-migration/</guid>
+    <description><![CDATA[Migration?&hellip;Migraine?&hellip; When it comes to migration scenarios, the most involved and difficult migration within the EUC lineup (that I can think of) is the WS1 Access tenant migration. It is equivalent to adopting a new IDP solution as you&rsquo;ll have to re-federate all the apps in order to successfully complete a migration.
+And this is case regardless of where you are trying to move from -
+On-Premise to SaaS  As Cloud is picking up steam and as features are developed with a cloud-first mentality, tt makes sense to offload the management of the Access Service to VMware This scenario is also getting more common as Access and Hub Services are FedRAMP certified as of CY Q4 2020  SaaS to SaaS  This is a not very common use case but few situations demand them nonetheless predominantly due to issues arising from high customization entertained early in the product adoption lifecycle Another use case for is populating a UAT or a DEV tenant with Apps from another tenant   Path to Migration First and foremost, a migration is possible as documented in @williamsmt blog which provides a detailed walk through of the entire migration approach.]]></description>
+</item><item>
     <title>Automating Windows 10 VM build auto enrolled into UEM using Packer</title>
     <link>https://cloudtekki.com/post/packer-windows/</link>
     <pubDate>Mon, 22 Feb 2021 00:00:00 &#43;0000</pubDate>
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/packer-windows/</guid>
-    <description><![CDATA[In this post, I&rsquo;ll be covering how you can automate the process of automating the build of Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors.]]></description>
+    <description><![CDATA[In this post, I&rsquo;ll be covering how you can automate the process of building a Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors.]]></description>
 </item><item>
     <title>2021: What&#39;s in my homelab?</title>
     <link>https://cloudtekki.com/post/homelab-2021/</link>
@@ -76,14 +85,5 @@ IT as true partners to the Business want to provide the right platform and infra
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/trusted-tls-for-veba/</guid>
     <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/publicly-trusted-tls-for-vmware-eventing-platform   Vmware Event Broker Appliance (VEBA) continues to gain momentum and as Enterprise Customers start adopting the Appliance, we continue to broach Enterprise Features such as gauranteeing High Availability or the ability to upload/bootstrap the appliance with Internal CA signed or Public TLS certificates. While I had previously covered in part how the default self-signed TLS cert that is bound to OpenFaaS gateway can be updated through our documentation below, In this short post, I wanted to provide an end to end overview of obtaining a public certificate and binding it to the Ingress Gateway.]]></description>
-</item><item>
-    <title>A Function for all REST APIs</title>
-    <link>https://cloudtekki.com/post/rest-api-fn/</link>
-    <pubDate>Thu, 07 May 2020 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/post/rest-api-fn/</guid>
-    <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/a-function-for-all-rest-apis   and…vCenter integration with Slack, PagerDuty, ServiceNow, Zendesk, JIRA, ServiceDesk is now possible with VMware Event Broker Appliance (VEBA)!
-Incident Management Systems — ✅
- If you don’t see how the title and the introduction are connected, read on! Let me explain how I wrote one function that makes seemingly all 3rd party system integration easy and possible!]]></description>
 </item></channel>
 </rss>
