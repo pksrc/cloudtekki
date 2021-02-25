@@ -212,7 +212,7 @@ theme = "LoveIt"
   weight = 2
 [[menu.main]]
   identifier = "about"
-  pre = "<span class='menuicon'><img src='/img/menu/author.png' class='img'/></span>"
+  pre = "<span class='menuicon'><img src='/img/menu/author-circle.svg' class='transparent svg'/></span>"
   post = ""
   name = "About"
   title = ""
