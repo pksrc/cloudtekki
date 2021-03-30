@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>TWO CENTS - Category - Cloud Tekki</title>
+        <link>https://cloudtekki.com/categories/two-cents/</link>
+        <description>TWO CENTS - Category - Cloud Tekki</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/categories/two-cents/" rel="self" type="application/rss+xml" /><item>
+    <title>The Art of Influence and Persuasion</title>
+    <link>https://cloudtekki.com/post/art-of-influence/</link>
+    <pubDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/art-of-influence/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/misc/influence/influence.png" referrerpolicy="no-referrer">
+            </div>Recently I had the opportunity to lead a Project where I had to define a scalable process (repeatable by nature) that streamlines a customer's product adoption experience for a particular use case. When adopting a product or a solution to any use case, a Customer would typically work with multiple teams. The journey starts from a Customer evaluating a new product and all the way to installing and managing the product.]]></description>
+</item></channel>
+</rss>

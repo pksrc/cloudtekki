@@ -4,7 +4,14 @@
         <link>https://cloudtekki.com/tags/</link>
         <description>Tags - Tag - Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Tue, 23 Feb 2021 23:58:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>People</title>
+    <link>https://cloudtekki.com/tags/people/</link>
+    <pubDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/tags/people/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Access</title>
     <link>https://cloudtekki.com/tags/access/</link>
     <pubDate>Tue, 23 Feb 2021 23:58:00 &#43;0000</pubDate>
@@ -66,13 +73,6 @@
     <pubDate>Mon, 15 Feb 2021 00:00:00 &#43;0000</pubDate>
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/tags/homelab/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>vExpert</title>
-    <link>https://cloudtekki.com/tags/vexpert/</link>
-    <pubDate>Mon, 15 Feb 2021 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/tags/vexpert/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

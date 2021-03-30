@@ -4,9 +4,18 @@
         <link>https://cloudtekki.com/</link>
         <description>Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Tue, 23 Feb 2021 23:58:00 &#43;0000</lastBuildDate>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://cloudtekki.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>The Art of Influence and Persuasion</title>
+    <link>https://cloudtekki.com/post/art-of-influence/</link>
+    <pubDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/art-of-influence/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/misc/influence/influence.png" referrerpolicy="no-referrer">
+            </div>Recently I had the opportunity to lead a Project where I had to define a scalable process (repeatable by nature) that streamlines a customer's product adoption experience for a particular use case. When adopting a product or a solution to any use case, a Customer would typically work with multiple teams. The journey starts from a Customer evaluating a new product and all the way to installing and managing the product.]]></description>
+</item><item>
     <title>Fling: Migration tool for WS1 Access</title>
     <link>https://cloudtekki.com/post/access-migration/</link>
     <pubDate>Tue, 23 Feb 2021 23:58:00 &#43;0000</pubDate>
@@ -80,12 +89,5 @@ Getting Started As a baseline, here are my assumptions about those following alo
     <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/self-service-for-your-datacenter-part-i   It doesn’t have to be Business vs IT anymore! Either sides’ needs while well-intentioned may seem to be at conflict with each other..
 Business aims to innovate and promote new capabilities for their consumers with the goal of improving services delivered or user experience to retain existing users or acquire new users.
 IT as true partners to the Business want to provide the right platform and infrastructure but need to ensure that they guaranteeing the right security guidance, conformance to standards and best practices.]]></description>
-</item><item>
-    <title>Publicly trusted TLS for VMware Eventing Platform</title>
-    <link>https://cloudtekki.com/post/trusted-tls-for-veba/</link>
-    <pubDate>Thu, 11 Jun 2020 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/post/trusted-tls-for-veba/</guid>
-    <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/publicly-trusted-tls-for-vmware-eventing-platform   Vmware Event Broker Appliance (VEBA) continues to gain momentum and as Enterprise Customers start adopting the Appliance, we continue to broach Enterprise Features such as gauranteeing High Availability or the ability to upload/bootstrap the appliance with Internal CA signed or Public TLS certificates. While I had previously covered in part how the default self-signed TLS cert that is bound to OpenFaaS gateway can be updated through our documentation below, In this short post, I wanted to provide an end to end overview of obtaining a public certificate and binding it to the Ingress Gateway.]]></description>
 </item></channel>
 </rss>
