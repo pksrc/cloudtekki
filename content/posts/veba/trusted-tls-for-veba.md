@@ -20,7 +20,7 @@ This post was originally published in Medium - [pkblah.medium.com/publicly-trust
 
 ## Let’s Encrypt
 
-I’m going to be using  [**Let’s Encrypt**](https://letsencrypt.org/) which is a f**ree, automated, open, non-profit Certificate Authority** that provides digital certificates to improve internet security by lowering the barrier to entry for obtaining and binding certificates. Here’s a quick view of their rise in under 3 years —
+I’m going to be using  [**Let’s Encrypt**](https://letsencrypt.org/) which is a **free, automated, open, non-profit Certificate Authority** that provides digital certificates to improve internet security by lowering the barrier to entry for obtaining and binding certificates. Here’s a quick view of their rise in under 3 years —
 
 {{<image src="https://miro.medium.com/max/1788/1*dY4UkRL-4gUIhsAneLHpvw.png" caption="https://letsencrypt.org/stats/">}}
 

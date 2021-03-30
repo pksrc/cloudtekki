@@ -16,7 +16,7 @@ This post was originally published in Medium - [pkblah.medium.com/writing-your-f
 
 A function is a unit of execution in the Serverless world that does one thing and one thing really well. With the current product [VMware Event Broker Appliance](https://github.com/vmware-samples/vcenter-event-broker-appliance) (VEBA) that i’m managing, we aim to provide a simple solution that provides a way to execute your functions driven by vCenter events. This is a significant capability that exposes a plethora of integrations and allows seamless automation opportunities for a VMware SDDC customer.
 
-As the Product Manager, I wanted to take the opportunity to write a function not only to contribute and help the team but also as an effective way to understand one of our persona that we are targetting — developers and especially the ones that are new to programming. This exercise of building a function gave me several insights as well as enabled me to learn more about our product and the underlying tech capabilities and constraints. Here is my account of my experience and learnings!
+As the Product Manager, I wanted to take the opportunity to write a function not only to contribute and help the team but also as an effective way to understand one of our persona that we are targeting — developers and especially the ones that are new to programming. This exercise of building a function gave me several insights as well as enabled me to learn more about our product and the underlying tech capabilities and constraints. Here is my account of my experience and learnings!
 
 {{<image src="https://miro.medium.com/max/1920/0*mUvkWiBfhKiV55L9" width="25%" class="imageright" >}}
 
