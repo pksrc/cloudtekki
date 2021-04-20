@@ -9,7 +9,7 @@ tags:
 - Migration
 - Fling
 lightgallery: true
-featured: true
+featured: false
 ---
 
 ## Migration?...Migraine?...
