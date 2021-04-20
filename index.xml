@@ -4,9 +4,17 @@
         <link>https://cloudtekki.com/</link>
         <description>Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Wed, 14 Apr 2021 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://cloudtekki.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Update 1: Migration tool for WS1 Access</title>
+    <link>https://cloudtekki.com/post/access-migration-u1/</link>
+    <pubDate>Wed, 14 Apr 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/access-migration-u1/</guid>
+    <description><![CDATA[This is a quick post covering an exciting update to the Workspace ONE Access Migration Tool. If you are interested in learning more about the tool, please check out these resources -
+ Why was this Migration tool built? How can you use it? Download the Migration tool  Access Migration Tool - Logo" Access Migration Tool - Logo  As a quick recap, the fling allows easy migration of Apps (excluding virtual apps) from one WS1 Access tenant to another (both on-prem to SaaS as well as SaaS to SaaS) by preserving the user experience as much as possible while reducing the migration effort by automating these major tasks -]]></description>
+</item><item>
     <title>The Art of Influence and Persuasion</title>
     <link>https://cloudtekki.com/post/art-of-influence/</link>
     <pubDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</pubDate>
@@ -80,14 +88,5 @@ These are very common questions on Organization Groups which is a very foundatio
     <guid>https://cloudtekki.com/post/bootstrap-k8s/</guid>
     <description><![CDATA[This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I&rsquo;m hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native
 Getting Started As a baseline, here are my assumptions about those following along or to my future self]]></description>
-</item><item>
-    <title>Enabling Self Service for your DataCenter — Part I</title>
-    <link>https://cloudtekki.com/post/self-service-for-your-datacenter/</link>
-    <pubDate>Wed, 07 Oct 2020 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/post/self-service-for-your-datacenter/</guid>
-    <description><![CDATA[Info  This post was originally published in Medium - pkblah.medium.com/self-service-for-your-datacenter-part-i   It doesn’t have to be Business vs IT anymore! Either sides’ needs while well-intentioned may seem to be at conflict with each other..
-Business aims to innovate and promote new capabilities for their consumers with the goal of improving services delivered or user experience to retain existing users or acquire new users.
-IT as true partners to the Business want to provide the right platform and infrastructure but need to ensure that they guaranteeing the right security guidance, conformance to standards and best practices.]]></description>
 </item></channel>
 </rss>

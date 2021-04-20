@@ -4,7 +4,15 @@
         <link>https://cloudtekki.com/tags/apis/</link>
         <description>APIs - Tag - Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Tue, 23 Feb 2021 23:58:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/apis/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Wed, 14 Apr 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/apis/" rel="self" type="application/rss+xml" /><item>
+    <title>Update 1: Migration tool for WS1 Access</title>
+    <link>https://cloudtekki.com/post/access-migration-u1/</link>
+    <pubDate>Wed, 14 Apr 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/access-migration-u1/</guid>
+    <description><![CDATA[This is a quick post covering an exciting update to the Workspace ONE Access Migration Tool. If you are interested in learning more about the tool, please check out these resources -
+ Why was this Migration tool built? How can you use it? Download the Migration tool  Access Migration Tool - Logo" Access Migration Tool - Logo  As a quick recap, the fling allows easy migration of Apps (excluding virtual apps) from one WS1 Access tenant to another (both on-prem to SaaS as well as SaaS to SaaS) by preserving the user experience as much as possible while reducing the migration effort by automating these major tasks -]]></description>
+</item><item>
     <title>Fling: Migration tool for WS1 Access</title>
     <link>https://cloudtekki.com/post/access-migration/</link>
     <pubDate>Tue, 23 Feb 2021 23:58:00 &#43;0000</pubDate>
