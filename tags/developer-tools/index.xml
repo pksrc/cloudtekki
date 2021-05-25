@@ -4,7 +4,15 @@
         <link>https://cloudtekki.com/tags/developer-tools/</link>
         <description>Developer Tools - Tag - Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/developer-tools/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 24 May 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/developer-tools/" rel="self" type="application/rss+xml" /><item>
+    <title>Creating a Custom Connector in WS1 Intelligence</title>
+    <link>https://cloudtekki.com/post/intel-custom-connector/</link>
+    <pubDate>Mon, 24 May 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/intel-custom-connector/</guid>
+    <description><![CDATA[What is Workspace ONE Intelligence? Workspace ONE Intelligence is the mainstream data analytics product within the Workspace ONE product suite. It allows you to tap into a wide array of data sources (from UEM, SDK enabled apps, Access and others) to get unique Insights &amp; Automation capabilities over your End User Computing landscape!
+Features  Unified Visibility: Workspace ONE Intelligence aggregates and correlates device, application and user data together in one place to deliver a complete view of the entire digital workspace environment.]]></description>
+</item><item>
     <title>Access: The tale of the hidden APIs</title>
     <link>https://cloudtekki.com/post/access-apis/</link>
     <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>

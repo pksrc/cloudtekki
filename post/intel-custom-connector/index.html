@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Creating a Custom Connector in WS1 Intelligence - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive"><meta property="og:title" content="Creating a Custom Connector in WS1 Intelligence" />
+<meta property="og:description" content="What is Workspace ONE Intelligence? Workspace ONE Intelligence is the mainstream data analytics product within the Workspace ONE product suite. It allows you to tap into a wide array of data sources (from UEM, SDK enabled apps, Access and others) to get unique Insights &amp; Automation capabilities over your End User Computing landscape!
+Features  Unified Visibility: Workspace ONE Intelligence aggregates and correlates device, application and user data together in one place to deliver a complete view of the entire digital workspace environment." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cloudtekki.com/post/intel-custom-connector/" />
+<meta property="article:published_time" content="2021-05-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-05-24T21:38:51-07:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Creating a Custom Connector in WS1 Intelligence"/>
+<meta name="twitter:description" content="What is Workspace ONE Intelligence? Workspace ONE Intelligence is the mainstream data analytics product within the Workspace ONE product suite. It allows you to tap into a wide array of data sources (from UEM, SDK enabled apps, Access and others) to get unique Insights &amp; Automation capabilities over your End User Computing landscape!
+Features  Unified Visibility: Workspace ONE Intelligence aggregates and correlates device, application and user data together in one place to deliver a complete view of the entire digital workspace environment."/>
+<meta name="application-name" content="Cloud Tekki">
+<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/intel-custom-connector/" /><link rel="prev" href="https://cloudtekki.com/post/hub-templates/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Creating a Custom Connector in WS1 Intelligence",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cloudtekki.com\/post\/intel-custom-connector\/"
+        },"genre": "posts","keywords": "Intelligence, APIs, Postman, Developer Tools","wordcount":  1347 ,
+        "url": "https:\/\/cloudtekki.com\/post\/intel-custom-connector\/","datePublished": "2021-05-24T00:00:00+00:00","dateModified": "2021-05-24T21:38:51-07:00","publisher": {
+            "@type": "Organization",
+            "name": "Cloud Tekki"},"author": {
+                "@type": "Person",
+                "name": "Partheeban Kandasamy (PK)"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+        </div>
+        <div class="menu navbar">
+            <div class="menu-inner nav__links"><li data-expand="Posts" class="nav--link">
+                        <a href="/posts/"><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span> Posts </a>
+                    </li><li data-expand="Categories" class="nav--link">
+                        <a href="/categories/"><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span> Categories </a>
+                    </li><li data-expand="Tags" class="nav--link">
+                        <a href="/tags/"><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span> Tags </a>
+                    </li><li data-expand="About" class="nav--link">
+                        <a href="/"><span class='menuicon'><img src='/img/menu/author-circle.svg' class='transparent svg'/></span> About </a>
+                    </li><span class="menu-item">|</span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span>Posts</a><a class="menu-item" href="/categories/" title=""><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span>Categories</a><a class="menu-item" href="/tags/" title=""><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span>Tags</a><a class="menu-item" href="/" title=""><span class='menuicon'><img src='/img/menu/author-circle.svg' class='transparent svg'/></span>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+
+        
+<div class="tip"></div>
+
+<section class="header__expandMenu">
+  <div class="menu__container"><div id="Posts">
+      <div class="sub__menu">
+        <h3 class="title">Featured Posts</h3>
+        <ul class="subMenu__items">
+            <li class="subMenu--item">
+              <i class="fa fa-star icon--production" style="color: gold;" aria-hidden="true"></i>
+              <span class="label__container">
+                <div class="label">
+                  <a href="/post/access-migration-u1/"> Update 1: Migration tool for WS1 Access</a>
+                  <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+                <div class="label--desc">&nbsp;published on <b><time datetime="2021-04-14">2021-04-14</time></b></div>
+              </span>
+            </li>
+            <li class="subMenu--item">
+              <i class="fa fa-star icon--production" style="color: gold;" aria-hidden="true"></i>
+              <span class="label__container">
+                <div class="label">
+                  <a href="/post/packer-windows/"> Automating Windows 10 VM build auto enrolled into UEM using Packer</a>
+                  <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+                <div class="label--desc">&nbsp;published on <b><time datetime="2021-02-22">2021-02-22</time></b></div>
+              </span>
+            </li>
+            <li class="subMenu--item">
+              <i class="fa fa-star icon--production" style="color: gold;" aria-hidden="true"></i>
+              <span class="label__container">
+                <div class="label">
+                  <a href="/post/turning-on-wcp/"> Misadventures turning on Workload Management with vSphere 7</a>
+                  <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+                <div class="label--desc">&nbsp;published on <b><time datetime="2021-01-31">2021-01-31</time></b></div>
+              </span>
+            </li>
+          </ul>
+      </div>
+    </div><div id="Categories">
+      <div class="sub__menu">
+        <h3 class="title">Categories</h3>
+        <ul class="subMenu__items"><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/euc/">EUC <sup>7</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/veba/">VEBA <sup>6</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/access/">ACCESS <sup>4</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/sddc/">SDDC <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/kubernetes/">KUBERNETES <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/two-cents/">TWO CENTS <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/uem/">UEM <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li></ul>
+      </div>
+    </div><div id="Tags">
+      <div class="sub__menu">
+        <h3 class="title">Tags</h3>
+        <ul class="subMenu__items sec--menu"><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/cloud-native/">cloud-native <sup>6</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/event-driven/">event-driven <sup>6</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/access/">Access <sup>4</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/apis/">APIs <sup>4</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/automation/">Automation <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/developer-tools/">Developer Tools <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/fling/">Fling <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/kubernetes/">Kubernetes <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/migration/">Migration <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/postman/">Postman <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/vexpert/">vExpert <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/author-notes/">Author Notes <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/calico/">Calico <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/end-user-computing/">End User Computing <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/homelab/">homelab <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/hub-services/">Hub Services <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li></ul>
+          </div>
+          <div class="sub__menu">
+            <h3 class="title">&nbsp</h3>
+          <ul class="subMenu__items sec--menu"><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/intelligence/">Intelligence <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/packer/">Packer <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/people/">People <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/projectpacific/">ProjectPacific <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/tanzu/">Tanzu <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/templates/">Templates <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/ubuntu/">Ubuntu <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/uem/">UEM <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/unified-endpoint-management/">Unified Endpoint Management <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/windows/">Windows <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/workspace-one/">Workspace ONE <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li></ul>
+      </div>
+    </div>
+    <div id="About">
+      <div class="sub__menu">
+        <h3 class="title">About</h3>
+        <ul class="subMenu__items">
+          
+          <li class="subMenu--item">
+            <i class='fas fa-user-circle fa-fw author'></i>
+            <span class="label__container">
+              <div class="label">
+                <a href="/about-pk/">Partheeban Kandasamy (PK)</a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+              <div class="label--desc">
+                <b>Staff CSA @ VMW EUC</b> <br/> vExpert '20 <br/> <b>Passion:</b> Automation, EUC, Cloud, Serverless, k8s, Homelab
+              </div>
+            </span>
+          </li>
+          
+        </ul>
+      </div>
+    </div></div>
+</section><main class="main">
+                <div class="container"><article class="page single">
+<aside class="sidebar" id="sidebar">
+  <div id="sidebar-auto">
+    <section class="sidebar_inner" id="SidebarNavigation">
+      <h2 class="mt-4">Featured Posts</h2>
+      <ul>
+        <li>
+          <a href="https://cloudtekki.com/post/access-migration-u1/" class="nav-link">Update 1: Migration tool for WS1 Access</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/packer-windows/" class="nav-link">Automating Windows 10 VM build auto enrolled into UEM using Packer</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/turning-on-wcp/" class="nav-link">Misadventures turning on Workload Management with vSphere 7</a>
+        </li>
+      </ul>
+
+      <h2 class="mt-4">Recent Posts</h2>
+      <ul class="flex-column">
+        <li>
+          <a href="https://cloudtekki.com/post/intel-custom-connector/" class="nav-link">Creating a Custom Connector in WS1 Intelligence</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/hub-templates/" class="nav-link">An Intro to Workspace ONE Hub Templates</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/access-migration-u1/" class="nav-link">Update 1: Migration tool for WS1 Access</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/art-of-influence/" class="nav-link">The Art of Influence and Persuasion</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/access-migration/" class="nav-link">Fling: Migration tool for WS1 Access</a>
+        </li>
+      </ul>
+        <div>
+          <h2 class="mt-4 taxonomy" id="categories-section">TOP Categories</h2>
+          <nav class="tags_nav">
+            <a href='https://cloudtekki.com/categories/euc/' class="post_tag button button_translucent">
+              EUC
+              <span class="button_tally">7</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/veba/' class="post_tag button button_translucent">
+              VEBA
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/access/' class="post_tag button button_translucent">
+              ACCESS
+              <span class="button_tally">4</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/sddc/' class="post_tag button button_translucent">
+              SDDC
+              <span class="button_tally">2</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/kubernetes/' class="post_tag button button_translucent">
+              KUBERNETES
+              <span class="button_tally">1</span>
+            </a>
+            
+          </nav>
+        </div>
+        <div>
+          <h2 class="mt-4 taxonomy" id="tags-section">TOP Tags</h2>
+          <nav class="tags_nav">
+            <a href='https://cloudtekki.com/tags/cloud-native/' class="post_tag button button_translucent">
+              CLOUD-NATIVE
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/event-driven/' class="post_tag button button_translucent">
+              EVENT-DRIVEN
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/access/' class="post_tag button button_translucent">
+              ACCESS
+              <span class="button_tally">4</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/apis/' class="post_tag button button_translucent">
+              APIS
+              <span class="button_tally">4</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/automation/' class="post_tag button button_translucent">
+              AUTOMATION
+              <span class="button_tally">2</span>
+            </a>
+            
+          </nav>
+        </div>
+    </section>
+  </div>
+</aside>
+<h1 class="single-title animated flipInX">Creating a Custom Connector in WS1 Intelligence</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/access/"><i class="far fa-folder fa-fw"></i>ACCESS</a>&nbsp;<a href="/categories/euc/"><i class="far fa-folder fa-fw"></i>EUC</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/intel-custom-connector/" data-title="Creating a Custom Connector in WS1 Intelligence" data-via="pkblah" data-hashtags="Intelligence,APIs,Postman,Developer Tools"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/intel-custom-connector/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/intel-custom-connector/" data-title="Creating a Custom Connector in WS1 Intelligence" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/intel-custom-connector/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/intel-custom-connector/" data-title="Creating a Custom Connector in WS1 Intelligence" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+            <div class="post-meta-line">
+                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/intelligence/">Intelligence</a>,&nbsp;<a href="/tags/apis/">APIs</a>,&nbsp;<a href="/tags/postman/">Postman</a>,&nbsp;<a href="/tags/developer-tools/">Developer Tools</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-05-24">2021-05-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1347 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-workspace-one-intelligence">What is Workspace ONE Intelligence?</a>
+      <ul>
+        <li><a href="#featureshttpswwwvmwarecomproductsworkspace-oneintelligencehtmlanalytics-rootjcr_contentcolumn_container_656"><a href="https://www.vmware.com/products/workspace-one/intelligence.html#analytics-rootjcr_contentcolumn_container_656">Features</a></a></li>
+      </ul>
+    </li>
+    <li><a href="#creating-custom-connectors">Creating Custom Connectors</a>
+      <ul>
+        <li><a href="#pre-requisites-setup-target-system-for-api-access">Pre-requisites: Setup Target System for API Access</a></li>
+        <li><a href="#step-1-postman-collection">Step 1: Postman Collection</a></li>
+        <li><a href="#step-2-create-the-custom-connector">Step 2: Create the Custom Connector</a></li>
+        <li><a href="#step-3-create-the-workflow">Step 3: Create the workflow</a></li>
+        <li><a href="#step-4-troubleshooting">Step 4: Troubleshooting</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="what-is-workspace-one-intelligence">What is Workspace ONE Intelligence?</h2>
+<p><a href="https://www.vmware.com/products/workspace-one/intelligence.html" target="_blank">Workspace ONE Intelligence</a> is the mainstream data analytics product within the Workspace ONE product suite. It allows you to tap into a wide array of data sources (from UEM, SDK enabled apps, Access and others) to get unique Insights &amp; Automation capabilities over your End User Computing landscape!</p>
+<h3 id="featureshttpswwwvmwarecomproductsworkspace-oneintelligencehtmlanalytics-rootjcr_contentcolumn_container_656"><a href="https://www.vmware.com/products/workspace-one/intelligence.html#analytics-rootjcr_contentcolumn_container_656" target="_blank">Features</a></h3>
+<ul>
+<li><strong>Unified Visibility</strong>: Workspace ONE Intelligence aggregates and correlates device, application and user data together in one place to deliver a complete view of the entire digital workspace environment.</li>
+<li><strong>Digital Employee Experience Management</strong>: Track digital workspace KPIs impacting employee experience, proactively identify issues, perform root cause analysis, and quickly remediate across Windows 10, macOS, iOS and Android. Increase employee engagement and productivity</li>
+<li><strong>Rich Visualization</strong>: Keep an eye on the data that matters to you most with preset dashboards that can be customized to meet your unique needs. Visualize the evolution of your environment’s security posture, app deployments, device management, app experience and engagement, and patch rollout.</li>
+<li><strong>Automation Engine</strong>: Automate processes by defining rules that take actions based on a rich set of parameters. The Workspace ONE Intelligence automation engine integrates with threat feeds, such as CVEs and our Trust Network security partners, to help make data-driven decisions.</li>
+<li><strong>App Analytics</strong>: Measure app adoption and engagement across your environment and quickly discover app usage and ROI. Help business owners make data-driven decisions on app deployment and migration.</li>
+<li><strong>Risk Analytics</strong>: By aggregating device, app and user behavior data from multiple internal and external sources and leveraging machine learning models, Workspace ONE Intelligence calculates a user risk score and enables conditional access based on device context, login risk and user behavior.</li>
+</ul>
+<p>Source: <a href="https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/workspace-one/vmware-workspace-one-intelligence-datasheet.pdf" target="_blank">Workspace ONE Intelligence Datasheet</a></p>
+<p>The feature that I&rsquo;m excited about (and one I&rsquo;m very interested in) is the automation and integration capabilities that come with WS1 Intelligence! It allows you and your organization to be agile and react to changes within your End User computing landscape by building automation capabilities limited by only your imagination (and of course REST API availability 😄 )!</p>
+<p>While WS1 Intelligence comes with a bunch of in-built connectors, the power of Intelligence Automation is unlocked when you start exploring its ability to provide Custom Connectors and thereby allowing you to integrate with almost any system that provides a RESTful API for Integration.</p>
+<h2 id="creating-custom-connectors">Creating Custom Connectors</h2>
+<p><strong>NOTE:</strong> In this blog post, I&rsquo;m taking a new approach where I&rsquo;m going to be mostly explain through screenshots (click on the image for a close look and browse through the images).</p>
+<p>Let&rsquo;s look at the steps to create a Custom Connector.</p>
+<h3 id="pre-requisites-setup-target-system-for-api-access">Pre-requisites: Setup Target System for API Access</h3>
+<p>For this example, we are going to be using UEM APIs to rename a device - not quite the ground breaking integration but my goal here is to help provide a walk through of creating a Custom Connector so you are able to do it easily yourself!</p>
+<p>In order to set up UEM for integration, we are going to be creating a new OAUTH 2.0 client (alternatively, you can also use the usual method of making API calls using the <code>aw-tenant-code</code>).</p>
+<p>Follow the steps as shown in the screenshots below.</p>
+<p><figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_31.png" title="/img/euc/intel-custom-connector/intlconn_31.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_31.png" data-sub-html="<h2>API Access - Create an Oauth 2.0 client in UEM</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_31.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_31.png, /img/euc/intel-custom-connector/intlconn_31.png 1.5x, /img/euc/intel-custom-connector/intlconn_31.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_31.png" />
+    </a><figcaption class="image-caption">API Access - Create an Oauth 2.0 client in UEM</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_30.png" title="/img/euc/intel-custom-connector/intlconn_30.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_30.png" data-sub-html="<h2>API Access - Create an Oauth 2.0 client in UEM</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_30.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_30.png, /img/euc/intel-custom-connector/intlconn_30.png 1.5x, /img/euc/intel-custom-connector/intlconn_30.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_30.png" />
+    </a><figcaption class="image-caption">API Access - Create an Oauth 2.0 client in UEM</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_29.png" title="/img/euc/intel-custom-connector/intlconn_29.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_29.png" data-sub-html="<h2>API Access - Register an Oauth 2.0 client in UEM</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_29.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_29.png, /img/euc/intel-custom-connector/intlconn_29.png 1.5x, /img/euc/intel-custom-connector/intlconn_29.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_29.png" />
+    </a><figcaption class="image-caption">API Access - Register an Oauth 2.0 client in UEM</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_28.png" title="/img/euc/intel-custom-connector/intlconn_28.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_28.png" data-sub-html="<h2>API Access - Save Client ID and Secret</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_28.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_28.png, /img/euc/intel-custom-connector/intlconn_28.png 1.5x, /img/euc/intel-custom-connector/intlconn_28.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_28.png" />
+    </a><figcaption class="image-caption">API Access - Save Client ID and Secret</figcaption>
+    </figure></p>
+<h3 id="step-1-postman-collection">Step 1: Postman Collection</h3>
+<p>Once you have your target system setup for API access, you want to setup the API in <a href="https://www.postman.com/product/api-client/" target="_blank">Postman</a>. This serves two purposes as it not only ensures that your API setup works with a standard and well-known API client but also will be used by Intelligence as Custom Connectors require a Postman Collection to be imported</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw"></i>UEM OAUTH Token Service<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">If you are using the OAuth client with UEM, please ensure that you are using the right UEM Token Services listed here - <a href="https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/services/UEM_ConsoleBasics/GUID-BF20C949-5065-4DCF-889D-1E0151016B5A.html#datacenter-and-token-urls-for-oauth-20-support-2">https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/services/UEM_ConsoleBasics/GUID-BF20C949-5065-4DCF-889D-1E0151016B5A.html#datacenter-and-token-urls-for-oauth-20-support-2</a></div>
+        </div>
+    </div>
+<p>Follow the steps as shown in the screenshots below.</p>
+<p><figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_27.png" title="/img/euc/intel-custom-connector/intlconn_27.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_27.png" data-sub-html="<h2>Postman - Create a new Collection</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_27.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_27.png, /img/euc/intel-custom-connector/intlconn_27.png 1.5x, /img/euc/intel-custom-connector/intlconn_27.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_27.png" />
+    </a><figcaption class="image-caption">Postman - Create a new Collection</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_26.png" title="/img/euc/intel-custom-connector/intlconn_26.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_26.png" data-sub-html="<h2>Postman - Add the API request to the Collection</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_26.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_26.png, /img/euc/intel-custom-connector/intlconn_26.png 1.5x, /img/euc/intel-custom-connector/intlconn_26.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_26.png" />
+    </a><figcaption class="image-caption">Postman - Add the API request to the Collection</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_25.png" title="/img/euc/intel-custom-connector/intlconn_25.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_25.png" data-sub-html="<h2>Postman - PUT API request example - Parameters</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_25.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_25.png, /img/euc/intel-custom-connector/intlconn_25.png 1.5x, /img/euc/intel-custom-connector/intlconn_25.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_25.png" />
+    </a><figcaption class="image-caption">Postman - PUT API request example - Parameters</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_24.png" title="/img/euc/intel-custom-connector/intlconn_24.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_24.png" data-sub-html="<h2>Postman - PUT API request example - Body</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_24.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_24.png, /img/euc/intel-custom-connector/intlconn_24.png 1.5x, /img/euc/intel-custom-connector/intlconn_24.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_24.png" />
+    </a><figcaption class="image-caption">Postman - PUT API request example - Body</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_23.png" title="/img/euc/intel-custom-connector/intlconn_23.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_23.png" data-sub-html="<h2>Postman - PUT API request example - Authorization</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_23.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_23.png, /img/euc/intel-custom-connector/intlconn_23.png 1.5x, /img/euc/intel-custom-connector/intlconn_23.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_23.png" />
+    </a><figcaption class="image-caption">Postman - PUT API request example - Authorization</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_22.png" title="/img/euc/intel-custom-connector/intlconn_22.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_22.png" data-sub-html="<h2>Postman - PUT API request example - Test the API</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_22.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_22.png, /img/euc/intel-custom-connector/intlconn_22.png 1.5x, /img/euc/intel-custom-connector/intlconn_22.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_22.png" />
+    </a><figcaption class="image-caption">Postman - PUT API request example - Test the API</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_21.png" title="/img/euc/intel-custom-connector/intlconn_21.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_21.png" data-sub-html="<h2>Postman - PUT API request example - Save Response as Example</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_21.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_21.png, /img/euc/intel-custom-connector/intlconn_21.png 1.5x, /img/euc/intel-custom-connector/intlconn_21.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_21.png" />
+    </a><figcaption class="image-caption">Postman - PUT API request example - Save Response as Example</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_20.png" title="/img/euc/intel-custom-connector/intlconn_20.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_20.png" data-sub-html="<h2>Postman - PUT API request example - Export the Collection</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_20.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_20.png, /img/euc/intel-custom-connector/intlconn_20.png 1.5x, /img/euc/intel-custom-connector/intlconn_20.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_20.png" />
+    </a><figcaption class="image-caption">Postman - PUT API request example - Export the Collection</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_19.png" title="/img/euc/intel-custom-connector/intlconn_19.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_19.png" data-sub-html="<h2>Postman - PUT API request example - Export as Collection v2.1</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_19.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_19.png, /img/euc/intel-custom-connector/intlconn_19.png 1.5x, /img/euc/intel-custom-connector/intlconn_19.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_19.png" />
+    </a><figcaption class="image-caption">Postman - PUT API request example - Export as Collection v2.1</figcaption>
+    </figure></p>
+<h3 id="step-2-create-the-custom-connector">Step 2: Create the Custom Connector</h3>
+<p>Once you&rsquo;ve completed your testing with Postman and verified functionality, it&rsquo;s time to create your Custom Connector in Intelligence. The attributes required should be familiar to how you have your Postman request setup.</p>
+<p>After you have the Custom Connector to your target system, you can start importing your API requests from the Postman Collection. These will be imported as Actions into Intelligence which can then use in your Workflows</p>
+<p>Follow the steps as shown in the screenshots below.</p>
+<p><figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_18.png" title="/img/euc/intel-custom-connector/intlconn_18.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_18.png" data-sub-html="<h2>Intelligence - Custom Connector</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_18.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_18.png, /img/euc/intel-custom-connector/intlconn_18.png 1.5x, /img/euc/intel-custom-connector/intlconn_18.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_18.png" />
+    </a><figcaption class="image-caption">Intelligence - Custom Connector</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_17.png" title="/img/euc/intel-custom-connector/intlconn_17.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_17.png" data-sub-html="<h2>Intelligence - Custom Connector - Add</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_17.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_17.png, /img/euc/intel-custom-connector/intlconn_17.png 1.5x, /img/euc/intel-custom-connector/intlconn_17.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_17.png" />
+    </a><figcaption class="image-caption">Intelligence - Custom Connector - Add</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_16.png" title="/img/euc/intel-custom-connector/intlconn_16.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_16.png" data-sub-html="<h2>Intelligence - Custom Connector - Configure UEM connection parameters</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_16.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_16.png, /img/euc/intel-custom-connector/intlconn_16.png 1.5x, /img/euc/intel-custom-connector/intlconn_16.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_16.png" />
+    </a><figcaption class="image-caption">Intelligence - Custom Connector - Configure UEM connection parameters</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_15.png" title="/img/euc/intel-custom-connector/intlconn_15.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_15.png" data-sub-html="<h2>Intelligence - Custom Connector - Import Actions a.k.a your Postman Collection</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_15.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_15.png, /img/euc/intel-custom-connector/intlconn_15.png 1.5x, /img/euc/intel-custom-connector/intlconn_15.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_15.png" />
+    </a><figcaption class="image-caption">Intelligence - Custom Connector - Import Actions a.k.a your Postman Collection</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_14.png" title="/img/euc/intel-custom-connector/intlconn_14.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_14.png" data-sub-html="<h2>Intelligence - Custom Connector - Imported Actions</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_14.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_14.png, /img/euc/intel-custom-connector/intlconn_14.png 1.5x, /img/euc/intel-custom-connector/intlconn_14.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_14.png" />
+    </a><figcaption class="image-caption">Intelligence - Custom Connector - Imported Actions</figcaption>
+    </figure></p>
+<h3 id="step-3-create-the-workflow">Step 3: Create the workflow</h3>
+<p>Workflows help define the logic that will make the integration magic happen. You&rsquo;ll start by deciding when to trigger the workflow. Make sure to set it to manual when you are testing your workflows and then change to alternate methods. You&rsquo;ll then proceed to setup your workflow by choosing your filters to target a section of the data and then choose the Action that you want to be performed.</p>
+<p><figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_13.png" title="/img/euc/intel-custom-connector/intlconn_13.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_13.png" data-sub-html="<h2>Intelligence - Add Workflow</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_13.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_13.png, /img/euc/intel-custom-connector/intlconn_13.png 1.5x, /img/euc/intel-custom-connector/intlconn_13.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_13.png" />
+    </a><figcaption class="image-caption">Intelligence - Add Workflow</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_12.png" title="/img/euc/intel-custom-connector/intlconn_12.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_12.png" data-sub-html="<h2>Intelligence - Add Workflow - Custom Connector</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_12.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_12.png, /img/euc/intel-custom-connector/intlconn_12.png 1.5x, /img/euc/intel-custom-connector/intlconn_12.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_12.png" />
+    </a><figcaption class="image-caption">Intelligence - Add Workflow - Custom Connector</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_11.png" title="/img/euc/intel-custom-connector/intlconn_11.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_11.png" data-sub-html="<h2>Intelligence - Add Workflow - Choose input Data</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_11.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_11.png, /img/euc/intel-custom-connector/intlconn_11.png 1.5x, /img/euc/intel-custom-connector/intlconn_11.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_11.png" />
+    </a><figcaption class="image-caption">Intelligence - Add Workflow - Choose input Data</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_10.png" title="/img/euc/intel-custom-connector/intlconn_10.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_10.png" data-sub-html="<h2>Intelligence - Add Workflow - Trigger - choose manual (when testing)</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_10.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_10.png, /img/euc/intel-custom-connector/intlconn_10.png 1.5x, /img/euc/intel-custom-connector/intlconn_10.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_10.png" />
+    </a><figcaption class="image-caption">Intelligence - Add Workflow - Trigger - choose manual (when testing)</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_9.png" title="/img/euc/intel-custom-connector/intlconn_9.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_9.png" data-sub-html="<h2>Intelligence - Add Workflow - Setup your Filter</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_9.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_9.png, /img/euc/intel-custom-connector/intlconn_9.png 1.5x, /img/euc/intel-custom-connector/intlconn_9.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_9.png" />
+    </a><figcaption class="image-caption">Intelligence - Add Workflow - Setup your Filter</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_8.png" title="/img/euc/intel-custom-connector/intlconn_8.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_8.png" data-sub-html="<h2>Intelligence - Add Workflow - Filter example</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_8.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_8.png, /img/euc/intel-custom-connector/intlconn_8.png 1.5x, /img/euc/intel-custom-connector/intlconn_8.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_8.png" />
+    </a><figcaption class="image-caption">Intelligence - Add Workflow - Filter example</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_7.png" title="/img/euc/intel-custom-connector/intlconn_7.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_7.png" data-sub-html="<h2>Intelligence - Add Workflow - Action</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_7.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_7.png, /img/euc/intel-custom-connector/intlconn_7.png 1.5x, /img/euc/intel-custom-connector/intlconn_7.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_7.png" />
+    </a><figcaption class="image-caption">Intelligence - Add Workflow - Action</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_6.png" title="/img/euc/intel-custom-connector/intlconn_6.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_6.png" data-sub-html="<h2>Intelligence - Add Workflow - Action example</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_6.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_6.png, /img/euc/intel-custom-connector/intlconn_6.png 1.5x, /img/euc/intel-custom-connector/intlconn_6.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_6.png" />
+    </a><figcaption class="image-caption">Intelligence - Add Workflow - Action example</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_5.png" title="/img/euc/intel-custom-connector/intlconn_5.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_5.png" data-sub-html="<h2>Intelligence - Add Workflow - Created Successfully</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_5.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_5.png, /img/euc/intel-custom-connector/intlconn_5.png 1.5x, /img/euc/intel-custom-connector/intlconn_5.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_5.png" />
+    </a><figcaption class="image-caption">Intelligence - Add Workflow - Created Successfully</figcaption>
+    </figure></p>
+<h3 id="step-4-troubleshooting">Step 4: Troubleshooting</h3>
+<p>Now that you have your workflow setup, there are a number of ways to know what your automation is doing from the Workflow UI.
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_4.png" title="/img/euc/intel-custom-connector/intlconn_4.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_4.png" data-sub-html="<h2>Intelligence - Workflow - Available Actions</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_4.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_4.png, /img/euc/intel-custom-connector/intlconn_4.png 1.5x, /img/euc/intel-custom-connector/intlconn_4.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_4.png" />
+    </a><figcaption class="image-caption">Intelligence - Workflow - Available Actions</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_3.png" title="/img/euc/intel-custom-connector/intlconn_3.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_3.png" data-sub-html="<h2>Intelligence - Workflow - Potential Impact</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_3.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_3.png, /img/euc/intel-custom-connector/intlconn_3.png 1.5x, /img/euc/intel-custom-connector/intlconn_3.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_3.png" />
+    </a><figcaption class="image-caption">Intelligence - Workflow - Potential Impact</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_2.png" title="/img/euc/intel-custom-connector/intlconn_2.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_2.png" data-sub-html="<h2>Intelligence - Workflow - Activity</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_2.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_2.png, /img/euc/intel-custom-connector/intlconn_2.png 1.5x, /img/euc/intel-custom-connector/intlconn_2.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_2.png" />
+    </a><figcaption class="image-caption">Intelligence - Workflow - Activity</figcaption>
+    </figure></p>
+<p>For additional details, you can choose to add a Dashboard and choose from the Intelligence category to see the Automation Run History data.
+<figure><a class="lightgallery" href="/img/euc/intel-custom-connector/intlconn_1.png" title="/img/euc/intel-custom-connector/intlconn_1.png" data-thumbnail="/img/euc/intel-custom-connector/intlconn_1.png" data-sub-html="<h2>Intelligence Dashboard - Automation Run History</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/intel-custom-connector/intlconn_1.png"
+            data-srcset="/img/euc/intel-custom-connector/intlconn_1.png, /img/euc/intel-custom-connector/intlconn_1.png 1.5x, /img/euc/intel-custom-connector/intlconn_1.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/intel-custom-connector/intlconn_1.png" />
+    </a><figcaption class="image-caption">Intelligence Dashboard - Automation Run History</figcaption>
+    </figure></p>
+<p>I hope this helps you when it comes to setting up Custom Connectors for your Automation use cases. Please let me know if you have any questions or feedback on this post.</p>
+<p>Happy Automating!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-05-24&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/3bd474e7ce7097c82a6188b9cd21d5d11730ca6e" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 3bd474e7ce7097c82a6188b9cd21d5d11730ca6e: Post: Intelligence Custom Connectors">
+                                    <i class="fas fa-hashtag fa-fw"></i>3bd474e</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share sharebtns">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/intel-custom-connector/" data-title="Creating a Custom Connector in WS1 Intelligence" data-via="pkblah" data-hashtags="Intelligence,APIs,Postman,Developer Tools"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/intel-custom-connector/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/intel-custom-connector/" data-title="Creating a Custom Connector in WS1 Intelligence" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/intel-custom-connector/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/intel-custom-connector/" data-title="Creating a Custom Connector in WS1 Intelligence" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/intelligence/">Intelligence</a>,&nbsp;<a href="/tags/apis/">APIs</a>,&nbsp;<a href="/tags/postman/">Postman</a>,&nbsp;<a href="/tags/developer-tools/">Developer Tools</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/post/hub-templates/" class="prev" rel="prev" title="An Intro to Workspace ONE Hub Templates"><i class="fas fa-angle-left fa-fw"></i>An Intro to Workspace ONE Hub Templates</a></div>
+</div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div><h2 class="twitter-title">TWEETS</h2>
+            <div class="twitterfeed" id="twitter-auto" >
+                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            </div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2021</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":80},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"pathname","label":"","lightTheme":"github-light","repo":"pksrc/cloudtekki"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/lib/stripe-menu/menu.js"></script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'G-RYVG6M042F', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-RYVG6M042F" async></script></body>
+</html>
