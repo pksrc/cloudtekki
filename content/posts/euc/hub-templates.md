@@ -1,6 +1,6 @@
 ---
 title: "An Intro to Workspace ONE Hub Templates"
-date: 2021-05-23T00:00:00-00:00
+date: 2021-05-25T00:00:00-00:00
 draft: false
 categories: [EUC]
 author: Nagul Subramanian
@@ -36,6 +36,8 @@ This is just getting started with lot of potential to unlock value to create a w
 
 In the initial release of the Hub Services, most of the features with some exceptions can only be set at the Global level. Customers were not able to provide the customization per group or for a subset of devices to provide an user-centric experience and personalize/tailor content for each personas. So with the introduction of Hub templates, we can deliver that curated experience. As the name suggests, it allows you to create templates with different set of features and/or configurations to then be deployed to UEM smart groups or Access user groups or both. 
 
+With the latest version of Intelligent Hub and Hub services, Hub Templates is available on all platforms - iOS, Android, Mac, and Windows devices and on a Web browser. For more specific guidance around versions of Intelligent Hub and Hub services supporting Hub Templates, please refer [Hub Releases Notes](https://docs.vmware.com/en/VMware-Workspace-ONE/services/rn/VMware-Workspace-ONE-Hub-Services-Release-Notes.html#about).
+
 Let's jump into the setup.. 
 
 ## Setup
@@ -47,7 +49,7 @@ Let's take Knowledge and Remote Worker personas as an example, each of their day
 ### Step 1: Review Global Settings 
 By default, there is a Global setting for each feature. So if any feature needs to be applied Globally, you can configure the Global setting accordingly. If it needs to be enabled only for targeted users or to small group of test users, then leverage Hub Templates and do not enable the Global setting. For example, if you would like to enable "People" for certain personas only, then leave the Global setting disabled. 
 
-So back to our example, for both the Knowledge and the Remote Workers, the branding needs to the same. To achieve that I've adjusted the branding for the "Global" setting as shown in below screenshot. If you have subsidiary companies, you can create multiple versions(as in step 2) and override the branding feature via templates. 
+So back to our example, for both the Knowledge and the Remote Workers, the branding needs to the same. To achieve that I've adjusted the branding for the "Global" setting as shown in below screenshot. If you have subsidiary companies, you can create multiple versions (as in step 2) and override the branding feature via templates. 
 {{<image src="/img/euc/hub-templates/Global.PNG" caption="Global Settings">}}
 
 ### Step 2: Create New Versions 
@@ -79,32 +81,30 @@ In this step, we will be creating templates for each personas with the feature s
 - Remote Worker - here I've set Branding to Global, App Catalog to respective version, and Home to respective version
 {{<image src="/img/euc/hub-templates/template_RW_2.PNG" caption="Template Remote Worker">}}
 
-### Step 4: Assign the Template 
+### Step 4: Assign the Template gs
 The last step is to assign the template. As previously noted, you can assign the template to either smart groups or Access user group or both based on the setup you have and the experience you would like to provide
 {{<image src="/img/euc/hub-templates/Assign_2.PNG" caption="Assignment">}}
 
-{{< admonition type=note title="Note" open=true >}}
-- UEM smart groups assignment - enables experience on iOS, Android, macOS and Windows platforms 
-- Access user group assignment - enables Web experience (require Access integration and Access to set as Auth) 
+{{< admonition type=note title="Things to watch out for with assignments - from VMware docs" open=true >}}
+- When the authentication mode is set to Workspace ONE UEM and Workspace ONE Access are not integrated, you can assign UEM smart groups. The Intelligent Hub experience on web browsers is not available.
+- When the authentication mode is set to Workspace ONE Access and Workspace ONE Access and Workspace ONE UEM are integrated, you can assign UEM smart groups and Workspace ONE Access user groups. If you assign smart groups to a template, the template
+definition is available in the Intelligent Hub app for iOS, Android, Mac, and Windows devices. Assign Workspace ONE Access user groups to the template to provide the same experience
+on web browsers. Assigning user groups with smart groups to a template provides a consistent experience for users across iOS, Android, Mac, and Windows devices and on a web browser.
+- When Workspace ONE Access is not integrated with Workspace ONE UEM, you can assign user groups. In this case, the Intelligent Hub experience on iOS, Android, Mac, and Windows Intelligent Hub apps is not available. Only the web browser experience is available.
+
+Source: [How to Add a Hub Template and Assign It to Groups](https://docs.vmware.com/en/VMware-Workspace-ONE/services/intelligent-hub_IDM/GUID-58C04CC7-84DA-42C0-AD7C-9FFCC2026378.html)
+
 {{< /admonition >}}
-
-Note that the priority determines which template will be applied when users or devices are assigned to multiple templates.
-
+Additionally, the priority determines which template will be applied when users or devices are assigned to multiple templates.
 ### Result
 Now let's see how the configurations translates into end users experience. 
 - As a Knowledge Worker, I see the Custom Home tab along with People tab enabled 
-{{<image src="/img/euc/hub-templates/KW_2.PNG" caption="Knowledge Worker Experience">}}
+{{<image src="/img/euc/hub-templates/KW_2.PNG" caption="Knowledge Worker Experience" width="400px">}}
 - As a Remote Worker, I see the Custom Home tab but no access to People tab
-{{<image src="/img/euc/hub-templates/Sales.PNG" caption="Remote Worker Experience">}}
-
-{{< admonition type=note title="Note" open=true >}}
-- In general, iOS fully supports templates today however Android does not. For the latest around Intelligent Hub and UEM compatibility, please refer [Hub Releases Notes](https://docs.vmware.com/en/VMware-Workspace-ONE/services/rn/VMware-Workspace-ONE-Hub-Services-Release-Notes.html#about).   
-{{< /admonition >}}
+{{<image src="/img/euc/hub-templates/Sales.PNG" caption="Remote Worker Experience" width="400px">}}
 
 ## References
 - [Hub Services Documentation](https://docs.vmware.com/en/VMware-Workspace-ONE/services/intelligent-hub_IDM.pdf)
 - [Hub Templates Feature walk-through video](https://techzone.vmware.com/?share=video3022)
 
-
 I hope to be spending some more time on People Search, Experience Workflows, and New Hire Onboarding in the near future and will be documenting them in future blog posts 
-
