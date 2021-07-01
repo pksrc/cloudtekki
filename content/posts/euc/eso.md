@@ -16,7 +16,7 @@ lightgallery: true
 Unified Access Gateway (UAG) is a key component in most VMware End User Computing deployments, including Workspace ONE and Horizon. The UAG hosts various Edge Services like VMware Tunnel, Content Gateway, Secure Email Gateway, Reverse Proxy and Horizon Secure (External) Access. Additionally, the UAG can also provide DMZ Authentication and Identity Bridging. These services play a pivotal role in providing Zero Trust Network Access to corporate resources.
 </p>
 
-Now that we have established the significance of the UAGs, it is imperative that any organization would require metrics from monitoring the UAGs. While there are options to monitor the UAG from an appliance/infrastructure perspective, customers also require metrics at the Edge Service level (Eg: Authenticated VPN Tunnel Sessions etc.) to gain visibility into the connections being authorized into the company network to access resources. Currently, there is no centralized view of metrics consolidated from all UAGs, nor is there a way to visualize trends over a period. __Project ESO – Edge Services Observability__ (released as [VMware Fling](https://flings.vmware.com/edge-services-observability "Project ESO")), is a monitoring solution that polls Edge Services metrics from all UAGs and renders the data as dashboards for visualization. Additionally, administrators have the ability to configure alerts based on conditions to get notified and detect anomalies.
+Now that we have established the significance of the UAGs, it is imperative that any organization would require metrics from monitoring the UAGs. While there are options to monitor the UAG from an appliance/infrastructure perspective, customers also require metrics at the Edge Service level (Eg: Authenticated VPN Tunnel Sessions etc.) to gain visibility into the connections being authorized into the company network to access resources. Currently, there is no centralized view of metrics consolidated from all UAGs across all Edge Services, nor is there a way to visualize trends over a period. __Project ESO – Edge Services Observability__ (released as [VMware Fling](https://flings.vmware.com/edge-services-observability "Project ESO")), is a monitoring solution that polls Edge Services metrics from all UAGs and renders the data as dashboards for visualization. Additionally, administrators have the ability to configure alerts based on conditions to get notified and detect anomalies.
 
 ## Features
 ESO is delivered as a _ready-to-deploy_ virtual appliance, containing the following:
@@ -133,7 +133,11 @@ ESO is delivered as a _ready-to-deploy_ virtual appliance, containing the follow
 	- This dashboard contains widgets for monitoring performance metrics (CPU, Disk, Memory, System, Network) from the ESO Appliance
 	{{<image src="/img/euc/eso/eso_26.png" caption="ESO Appliance Stats">}}
 
+## What Next
+We are evaluating integration options with various tools including serverless functions to orchestrate workflow actions based on ESO telemetry. There is certainly a lot more to come on that front, so stay tuned ...
 
+## Credits
+I'd like to thank [P.K](https://cloudtekki.com/about-pk/) for the opportunity to collaborate on this Fling and for being an amazing mentor throughout this process.
 
 
 
