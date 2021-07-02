@@ -2,25 +2,29 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://cloudtekki.com/tags/access/</loc><lastmod>2021-05-25T20:33:39-04:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/post/hub-templates/</loc><lastmod>2021-05-25T20:33:39-04:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/categories/</loc><lastmod>2021-05-25T20:33:39-04:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/</loc><lastmod>2021-05-25T20:33:39-04:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/categories/euc/</loc><lastmod>2021-05-25T20:33:39-04:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/hub-services/</loc><lastmod>2021-05-25T20:33:39-04:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/posts/</loc><lastmod>2021-05-25T20:33:39-04:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/</loc><lastmod>2021-05-25T20:33:39-04:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/templates/</loc><lastmod>2021-05-25T20:33:39-04:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/workspace-one/</loc><lastmod>2021-05-25T20:33:39-04:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/categories/access/</loc><lastmod>2021-05-24T21:38:51-07:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/apis/</loc><lastmod>2021-05-24T21:38:51-07:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/post/intel-custom-connector/</loc><lastmod>2021-05-24T21:38:51-07:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/developer-tools/</loc><lastmod>2021-05-24T21:38:51-07:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/intelligence/</loc><lastmod>2021-05-24T21:38:51-07:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/postman/</loc><lastmod>2021-05-24T21:38:51-07:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/fling/</loc><lastmod>2021-04-20T07:29:56-07:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/migration/</loc><lastmod>2021-04-20T07:29:56-07:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/post/access-migration-u1/</loc><lastmod>2021-04-20T07:29:56-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/categories/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/day2ops/</loc><lastmod>2021-07-01T20:57:48-04:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/post/eso/</loc><lastmod>2021-07-01T20:57:48-04:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/categories/euc/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/monitoring/</loc><lastmod>2021-07-01T20:57:48-04:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/observability/</loc><lastmod>2021-07-01T20:57:48-04:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/posts/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/access/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/post/hub-templates/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/hubservices/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/templates/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/workspaceone/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/categories/access/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/apis/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/post/intel-custom-connector/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/developertools/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/intelligence/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/postman/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/fling/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/migration/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/post/access-migration-u1/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/people/</loc><lastmod>2021-03-30T11:58:05-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/art-of-influence/</loc><lastmod>2021-03-30T11:58:05-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/categories/two-cents/</loc><lastmod>2021-03-30T11:58:05-07:00</lastmod></url><url>
@@ -28,7 +32,7 @@
             <loc>https://cloudtekki.com/post/packer-windows/</loc><lastmod>2021-02-23T20:26:20-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/automation/</loc><lastmod>2021-02-23T20:26:20-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/packer/</loc><lastmod>2021-02-23T20:26:20-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/uem/</loc><lastmod>2021-02-23T20:26:20-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/uem/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/windows/</loc><lastmod>2021-02-23T20:26:20-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/homelab-2021/</loc><lastmod>2021-02-17T20:37:45-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/homelab/</loc><lastmod>2021-02-17T20:37:45-08:00</lastmod></url><url>
@@ -38,13 +42,13 @@
             <loc>https://cloudtekki.com/post/turning-on-wcp/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/projectpacific/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/tanzu/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/post/looking-back-at-2020/</loc><lastmod>2020-12-30T12:12:22-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/author-notes/</loc><lastmod>2020-12-30T12:12:22-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/end-user-computing/</loc><lastmod>2021-02-23T20:26:20-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/categories/uem/</loc><lastmod>2021-02-23T20:26:20-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/unified-endpoint-management/</loc><lastmod>2021-02-23T20:26:20-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/post/uem-organization-groups/</loc><lastmod>2021-02-23T20:26:20-08:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/post/access-apis/</loc><lastmod>2021-02-23T20:26:20-08:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/post/looking-back-at-2020/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/categories/author-notes/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/authornotes/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/euc/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/categories/uem/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/post/uem-organization-groups/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/post/access-apis/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/bootstrap-k8s/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/calico/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>
             <loc>https://cloudtekki.com/categories/kubernetes/</loc><lastmod>2021-02-05T19:35:07-08:00</lastmod></url><url>

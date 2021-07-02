@@ -1,0 +1,25 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>DeveloperTools - Tag - Cloud Tekki</title>
+        <link>https://cloudtekki.com/tags/developertools/</link>
+        <description>DeveloperTools - Tag - Cloud Tekki</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 24 May 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/developertools/" rel="self" type="application/rss+xml" /><item>
+    <title>Creating a Custom Connector in WS1 Intelligence</title>
+    <link>https://cloudtekki.com/post/intel-custom-connector/</link>
+    <pubDate>Mon, 24 May 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/intel-custom-connector/</guid>
+    <description><![CDATA[What is Workspace ONE Intelligence? Workspace ONE Intelligence is the mainstream data analytics product within the Workspace ONE product suite. It allows you to tap into a wide array of data sources (from UEM, SDK enabled apps, Access and others) to get unique Insights &amp; Automation capabilities over your End User Computing landscape!
+Features  Unified Visibility: Workspace ONE Intelligence aggregates and correlates device, application and user data together in one place to deliver a complete view of the entire digital workspace environment.]]></description>
+</item><item>
+    <title>Access: The tale of the hidden APIs</title>
+    <link>https://cloudtekki.com/post/access-apis/</link>
+    <pubDate>Sat, 24 Oct 2020 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/access-apis/</guid>
+    <description><![CDATA[Evolving Access through APIs Workspace One Access is VMware&rsquo;s Product Line that helps provide seamless single sign on and conditional access for Applications from End User&rsquo;s client devices. It is built using technologies such as
+ SAML (RFC 7522) OAuth (RFC 6749) and Open ID Connect  If you are new to the Product, you can find more details about WorkspaceONE(WS1) Access
+ Product Page - here Documentation - here  In this post, I&rsquo;m going to cover a neat trick that will help you find and build on the APIs that are available with WS1 Access.]]></description>
+</item></channel>
+</rss>

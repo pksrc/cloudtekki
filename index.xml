@@ -4,9 +4,16 @@
         <link>https://cloudtekki.com/</link>
         <description>Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Tue, 25 May 2021 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Thu, 01 Jul 2021 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://cloudtekki.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Edge Services Observability for Unified Access Gateway</title>
+    <link>https://cloudtekki.com/post/eso/</link>
+    <pubDate>Thu, 01 Jul 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/eso/</guid>
+    <description><![CDATA[Edge Services Observability" Edge Services Observability  Unified Access Gateway (UAG) is a key component in most VMware End User Computing deployments, including Workspace ONE and Horizon. The UAG hosts various Edge Services like VMware Tunnel, Content Gateway, Secure Email Gateway, Reverse Proxy and Horizon Secure (External) Access. Additionally, the UAG can also provide DMZ Authentication and Identity Bridging. These services play a pivotal role in providing Zero Trust Network Access to corporate resources.]]></description>
+</item><item>
     <title>An Intro to Workspace ONE Hub Templates</title>
     <link>https://cloudtekki.com/post/hub-templates/</link>
     <pubDate>Tue, 25 May 2021 00:00:00 &#43;0000</pubDate>
@@ -76,15 +83,5 @@ On-Premise to SaaS  As Cloud is picking up steam and as features are developed w
     <guid>https://cloudtekki.com/post/looking-back-at-2020/</guid>
     <description><![CDATA[Reflecting on 2020 Now no matter where you are located geographically or how old you are, I&rsquo;m going to take a wild guess and assume that we can agree how brutal 2020 was. Personally looking back, the year 2020 has been crazy, challenging and definitely packed a punch.. A year with mixed fortunes, 2020 was a year that I&rsquo;ve never imagined in my lifetime.
 Timeline Here is a look at how I experienced 2020&hellip;]]></description>
-</item><item>
-    <title>Unpacking Organization Groups in Workspace ONE UEM</title>
-    <link>https://cloudtekki.com/post/uem-organization-groups/</link>
-    <pubDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/post/uem-organization-groups/</guid>
-    <description><![CDATA[What are Organization Groups in Workspace One UEM?
-What are the best practices with how to set Organization Groups up for our use case?
-Can we insert an OG between OGs? Do we have the right setup?
-These are very common questions on Organization Groups which is a very foundational element within Workspace ONE UEM. Over the several years of working with Workspace ONE UEM (formerly AirWatch), no one has tried to provide a complete picture of what an Organization Group is.]]></description>
 </item></channel>
 </rss>

@@ -11,5 +11,15 @@
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/packer-windows/</guid>
     <description><![CDATA[In this post, I&rsquo;ll be covering how you can automate the process of building a Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors.]]></description>
+</item><item>
+    <title>Unpacking Organization Groups in Workspace ONE UEM</title>
+    <link>https://cloudtekki.com/post/uem-organization-groups/</link>
+    <pubDate>Sat, 21 Nov 2020 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/uem-organization-groups/</guid>
+    <description><![CDATA[What are Organization Groups in Workspace One UEM?
+What are the best practices with how to set Organization Groups up for our use case?
+Can we insert an OG between OGs? Do we have the right setup?
+These are very common questions on Organization Groups which is a very foundational element within Workspace ONE UEM. Over the several years of working with Workspace ONE UEM (formerly AirWatch), no one has tried to provide a complete picture of what an Organization Group is.]]></description>
 </item></channel>
 </rss>

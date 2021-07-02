@@ -4,7 +4,14 @@
         <link>https://cloudtekki.com/categories/euc/</link>
         <description>EUC - Category - Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Tue, 25 May 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/categories/euc/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Thu, 01 Jul 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/categories/euc/" rel="self" type="application/rss+xml" /><item>
+    <title>Edge Services Observability for Unified Access Gateway</title>
+    <link>https://cloudtekki.com/post/eso/</link>
+    <pubDate>Thu, 01 Jul 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/eso/</guid>
+    <description><![CDATA[Edge Services Observability" Edge Services Observability  Unified Access Gateway (UAG) is a key component in most VMware End User Computing deployments, including Workspace ONE and Horizon. The UAG hosts various Edge Services like VMware Tunnel, Content Gateway, Secure Email Gateway, Reverse Proxy and Horizon Secure (External) Access. Additionally, the UAG can also provide DMZ Authentication and Identity Bridging. These services play a pivotal role in providing Zero Trust Network Access to corporate resources.]]></description>
+</item><item>
     <title>An Intro to Workspace ONE Hub Templates</title>
     <link>https://cloudtekki.com/post/hub-templates/</link>
     <pubDate>Tue, 25 May 2021 00:00:00 &#43;0000</pubDate>
