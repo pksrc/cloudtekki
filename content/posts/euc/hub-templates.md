@@ -7,9 +7,9 @@ author: Nagul Subramanian
 authorlink: https://www.linkedin.com/in/nagulsubramanian 
 tags:
 - Access
-- Hub Services
+- HubServices
 - Templates 
-- Workspace ONE
+- WorkspaceONE
 lightgallery: true
 ---
 

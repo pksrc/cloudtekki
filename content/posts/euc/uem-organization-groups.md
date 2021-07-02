@@ -4,8 +4,8 @@ date: 2020-11-21T00:00:00-00:00
 draft: false
 categories: [UEM, EUC]
 tags:
-- Unified Endpoint Management
-- End User Computing
+- UEM
+- EUC
 ---
 
 What are Organization Groups in Workspace One UEM? 

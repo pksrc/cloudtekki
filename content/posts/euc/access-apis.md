@@ -7,7 +7,7 @@ tags:
 - Access
 - APIs
 - Postman
-- Developer Tools
+- DeveloperTools
 lightgallery: true
 ---
 

@@ -7,7 +7,7 @@ tags:
 - Intelligence
 - APIs
 - Postman
-- Developer Tools
+- DeveloperTools
 lightgallery: true
 ---
 

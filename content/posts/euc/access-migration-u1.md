@@ -9,7 +9,7 @@ tags:
 - Migration
 - Fling
 lightgallery: true
-featured: true
+featured: false
 ---
 
 This is a quick post covering an exciting update to the Workspace ONE Access Migration Tool. If you are interested in learning more about the tool, please check out these resources - 
