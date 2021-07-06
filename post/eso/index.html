@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cloudtekki.com/post/eso/" />
 <meta property="article:published_time" content="2021-07-01T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-07-01T20:57:48-04:00" />
+<meta property="article:modified_time" content="2021-07-05T21:38:19-04:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Edge Services Observability for Unified Access Gateway"/>
 <meta name="twitter:description" content="Edge Services Observability&#34; Edge Services Observability  Unified Access Gateway (UAG) is a key component in most VMware End User Computing deployments, including Workspace ONE and Horizon. The UAG hosts various Edge Services like VMware Tunnel, Content Gateway, Secure Email Gateway, Reverse Proxy and Horizon Secure (External) Access. Additionally, the UAG can also provide DMZ Authentication and Identity Bridging. These services play a pivotal role in providing Zero Trust Network Access to corporate resources."/>
@@ -24,8 +24,8 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/cloudtekki.com\/post\/eso\/"
-        },"genre": "posts","keywords": "Observability, Monitoring, Day2Ops","wordcount":  1382 ,
-        "url": "https:\/\/cloudtekki.com\/post\/eso\/","datePublished": "2021-07-01T00:00:00+00:00","dateModified": "2021-07-01T20:57:48-04:00","publisher": {
+        },"genre": "posts","keywords": "Observability, Monitoring, Day2Ops","wordcount":  1647 ,
+        "url": "https:\/\/cloudtekki.com\/post\/eso\/","datePublished": "2021-07-01T00:00:00+00:00","dateModified": "2021-07-05T21:38:19-04:00","publisher": {
             "@type": "Organization",
             "name": "Cloud Tekki"},"author": {
                 "@type": "Person",
@@ -580,8 +580,8 @@
             <div class="post-meta-line"><span class="post-author"><a href="https://www.linkedin.com/in/arunbalajig/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Arun Balaji Giridharan</a></span>&nbsp;<span class="post-category">included in <a href="/categories/euc/"><i class="far fa-folder fa-fw"></i>EUC</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/eso/" data-title="Edge Services Observability for Unified Access Gateway" data-via="pkblah" data-hashtags="Observability,Monitoring,Day2Ops"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/eso/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/eso/" data-title="Edge Services Observability for Unified Access Gateway" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/eso/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/eso/" data-title="Edge Services Observability for Unified Access Gateway" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
             </div>
             <div class="post-meta-line">
-                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/observability/">Observability</a>,&nbsp;<a href="/tags/monitoring/">Monitoring</a>,&nbsp;<a href="/tags/day2ops/">Day2Ops</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-01">2021-07-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1382 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
+                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/observability/">Observability</a>,&nbsp;<a href="/tags/monitoring/">Monitoring</a>,&nbsp;<a href="/tags/day2ops/">Day2Ops</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-07-01">2021-07-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1647 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;8 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -620,15 +620,10 @@ Unified Access Gateway (UAG) is a key component in most VMware End User Computin
 <p>ESO is delivered as a <em>ready-to-deploy</em> virtual appliance, containing the following:</p>
 <ol>
 <li>Web based Admin Portal for configuring the list of the UAGs that need to be monitored</li>
-<li>Curated Dashboards with customizable widgets for visualizing metrics polled from UAGs for
-<ul>
-<li>VMware Tunnel</li>
-<li>VMware Horizon</li>
-</ul>
-</li>
+<li>Dashboards for visualizing metrics from all configured Edge Services in the UAG</li>
 </ol>
 <blockquote>
-<p><strong>Bonus:</strong> Also included is a dashboard to monitor performance of the ESO appliance itself</p>
+<p><strong>Bonus:</strong> Sample Dashboards included for VMware Tunnel, VMware Horizon and ESO Appliance metrics</p>
 </blockquote>
 <ol start="3">
 <li>Ability to setup alerts based on configurable triggers</li>
@@ -680,6 +675,11 @@ Unified Access Gateway (UAG) is a key component in most VMware End User Computin
             alt="/img/euc/eso/eso_7.png" />
     </a><figcaption class="image-caption">ESO Admin Portal Login</figcaption>
     </figure></li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Using IP Address (in lieu of FQDN) to access the Admin Portal on a web browser will result in an error due to certificate validation failure when attempting to login. This is because the certificates are generated for Hostname.Domain combination provided during appliance deployment. Please use FQDN to access Admin Portal on web browser. Hosts file entry should work if unable to register in DNS</p>
+</blockquote>
+<ol start="2">
 <li>Log in with the password configured during the deployment of the appliance (Username is “admin”)</li>
 <li>The “Home Page” provides an overview and links to configure UAG list and access Dashboards
 <figure><a class="lightgallery" href="/img/euc/eso/eso_39.png" title="/img/euc/eso/eso_39.png" data-thumbnail="/img/euc/eso/eso_39.png" data-sub-html="<h2>ESO Admin Portal Home Page</h2>">
@@ -747,7 +747,7 @@ Unified Access Gateway (UAG) is a key component in most VMware End User Computin
             alt="/img/euc/eso/eso_38.png" />
     </a><figcaption class="image-caption">ESO Dashboards - Login Page</figcaption>
     </figure></li>
-<li>You are now viewing the “VMware Tunnel Dashboard”
+<li>You are now viewing a sample dashboard for VMware Tunnel metrics
 <figure><a class="lightgallery" href="/img/euc/eso/eso_9.png" title="/img/euc/eso/eso_9.png" data-thumbnail="/img/euc/eso/eso_9.png" data-sub-html="<h2>VMware Tunnel Dashboard</h2>">
         <img
             class="lazyload"
@@ -779,7 +779,8 @@ Unified Access Gateway (UAG) is a key component in most VMware End User Computin
 </li>
 </ul>
 </li>
-<li>To view Horizon Dashboard, navigate to Dashboards menu on the left pane, and select &ldquo;Manage&rdquo;</li>
+<li>There is also a sample dashboard available for VMware Horizon metrics</li>
+<li>To access the VMware Horizon sample dashboard, navigate to Dashboards menu on the left pane, and select &ldquo;Manage&rdquo;</li>
 <li>Now select &ldquo;Horizon Dashboard&rdquo;
 <figure><a class="lightgallery" href="/img/euc/eso/eso_27.png" title="/img/euc/eso/eso_27.png" data-thumbnail="/img/euc/eso/eso_27.png" data-sub-html="<h2>VMware Horizon Dashboard</h2>">
         <img
@@ -873,17 +874,20 @@ Unified Access Gateway (UAG) is a key component in most VMware End User Computin
 </ol>
 <h3 id="dashboards">Dashboards</h3>
 <ol>
-<li>How frequently is the ESO polling the UAGS for metrics?
+<li>
+<p>How frequently is the ESO polling the UAGS for metrics?</p>
 <ul>
 <li>ESO polls the configured list of UAGS every 1 minute for metrics</li>
 </ul>
 </li>
-<li>What is the data retention period in ESO for the metrics polled from UAGs?
+<li>
+<p>What is the data retention period in ESO for the metrics polled from UAGs?</p>
 <ul>
 <li>Currently, metrics are stored for 30 days</li>
 </ul>
 </li>
-<li>How to configure additional metrics as widgets?
+<li>
+<p>How to configure additional metrics as widgets?</p>
 <ul>
 <li>From the Dashboards page, click on &ldquo;Add Panel&rdquo;
 <figure><a class="lightgallery" href="/img/euc/eso/eso_32.png" title="/img/euc/eso/eso_32.png" data-thumbnail="/img/euc/eso/eso_32.png" data-sub-html="<h2>Dashboards - Add Panel</h2>">
@@ -914,7 +918,60 @@ Unified Access Gateway (UAG) is a key component in most VMware End User Computin
 <li>Click on &lsquo;Apply&rsquo; on the top right section of the page</li>
 </ul>
 </li>
-<li>How to monitor the performance of ESO Appliance itself?
+<li>
+<p>What should you do when you see &ldquo;No Data&rdquo; in a panel (widget) on one of the sample dashboards?
+<figure><a class="lightgallery" href="/img/euc/eso/eso_44.png" title="/img/euc/eso/eso_44.png" data-thumbnail="/img/euc/eso/eso_44.png" data-sub-html="<h2>Dashboards Panel - No Data</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/eso/eso_44.png"
+            data-srcset="/img/euc/eso/eso_44.png, /img/euc/eso/eso_44.png 1.5x, /img/euc/eso/eso_44.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/eso/eso_44.png" />
+    </a><figcaption class="image-caption">Dashboards Panel - No Data</figcaption>
+    </figure></p>
+<ul>
+<li>The sample dashbaords are built based on metrics query polled from UAG version 20.9. It is possible that the configured metric is available under a different name in the UAG version used in your environment</li>
+<li>In such a case, the administrator has the option to edit the panel to reconfigure the query to use the updated metric (as applicable)</li>
+<li>To edit the panel, right-click the panel title and select &ldquo;Edit&rdquo;
+<figure><a class="lightgallery" href="/img/euc/eso/eso_49.png" title="/img/euc/eso/eso_49.png" data-thumbnail="/img/euc/eso/eso_49.png" data-sub-html="<h2>Dashboards - Edit Panel</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/eso/eso_49.png"
+            data-srcset="/img/euc/eso/eso_49.png, /img/euc/eso/eso_49.png 1.5x, /img/euc/eso/eso_49.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/eso/eso_49.png" />
+    </a><figcaption class="image-caption">Dashboards - Edit Panel</figcaption>
+    </figure></li>
+<li>Navigate to the &ldquo;Query&rdquo; tab on the bottom of the page</li>
+<li>The &ldquo;Metrics&rdquo; dropdown lists all the metrics available from the configured UAGs to be used in the Dashboard
+<figure><a class="lightgallery" href="/img/euc/eso/eso_45.png" title="/img/euc/eso/eso_45.png" data-thumbnail="/img/euc/eso/eso_45.png" data-sub-html="<h2>Dashboards - Edit Panel - Metrics Query</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/eso/eso_45.png"
+            data-srcset="/img/euc/eso/eso_45.png, /img/euc/eso/eso_45.png 1.5x, /img/euc/eso/eso_45.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/eso/eso_45.png" />
+    </a><figcaption class="image-caption">Dashboards - Edit Panel - Metrics Query</figcaption>
+    </figure></li>
+<li>Update the query by selecting the required metric from the &ldquo;Metrics&rdquo; dropdown
+<figure><a class="lightgallery" href="/img/euc/eso/eso_46.png" title="/img/euc/eso/eso_46.png" data-thumbnail="/img/euc/eso/eso_46.png" data-sub-html="<h2>Dashboards - Edit Panel - Update Query</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/eso/eso_46.png"
+            data-srcset="/img/euc/eso/eso_46.png, /img/euc/eso/eso_46.png 1.5x, /img/euc/eso/eso_46.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/eso/eso_46.png" />
+    </a><figcaption class="image-caption">Dashboards - Edit Panel - Update Query</figcaption>
+    </figure></li>
+<li>Click on &lsquo;Apply&rsquo; on the top right section of the page</li>
+</ul>
+</li>
+<li>
+<p>How to monitor the performance of ESO Appliance itself?</p>
 <ul>
 <li>From the Dashboards menu, select &ldquo;Manage&rdquo;</li>
 <li>Select the &ldquo;ESO Appliance Stats&rdquo; dashboard
@@ -950,8 +1007,8 @@ Unified Access Gateway (UAG) is a key component in most VMware End User Computin
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-07-01&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/50248eb9ac6ebfb4ea8a27af5a1a65f5a4a25731" target="_blank" title="commit by abcloud(6013147&#43;arunscloud@users.noreply.github.com) 50248eb9ac6ebfb4ea8a27af5a1a65f5a4a25731: POST - ESO release  (#8)">
-                                    <i class="fas fa-hashtag fa-fw"></i>50248eb</a></span>
+                <span>Updated on 2021-07-05&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/9c84b61fb0b633952bfcba2eba436fdfe50e4540" target="_blank" title="commit by abcloud(6013147&#43;arunscloud@users.noreply.github.com) 9c84b61fb0b633952bfcba2eba436fdfe50e4540: Updated Features section to clarify Dashboards could be built for all configured Edge Services (#9)">
+                                    <i class="fas fa-hashtag fa-fw"></i>9c84b61</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>
