@@ -9,7 +9,6 @@ tags:
 - ProjectPacific
 - vExpert
 lightgallery: true
-featured: true
 ---
 
 For most folks that have been involved with SDDC for some time, this is going to be a lot of basic and obvious. As a quick disclaimer, I've to add that when i started down this path back in April, 2020(which was around the time vSphere 7.0 was released), I was (and still am) pretty new to the world of Home Lab and SDDC. As someone who has primarily worked on the application/software layer, I have been oblivious to the underlying infrastructure that made it all possible. I wanted to be educated and to learn more about the underpinnings of how Compute, Storage, Network come together to enable and drive modern innovations.
