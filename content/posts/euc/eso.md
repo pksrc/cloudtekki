@@ -21,10 +21,8 @@ Now that we have established the significance of the UAGs, it is imperative that
 ## Features
 ESO is delivered as a _ready-to-deploy_ virtual appliance, containing the following:
  1. Web based Admin Portal for configuring the list of the UAGs that need to be monitored
- 2. Curated Dashboards with customizable widgets for visualizing metrics polled from UAGs for
-	- VMware Tunnel
-	- VMware Horizon
-> **Bonus:** Also included is a dashboard to monitor performance of the ESO appliance itself
+ 2. Dashboards for visualizing metrics from all configured Edge Services in the UAG
+> **Bonus:** Sample Dashboards included for VMware Tunnel, VMware Horizon and ESO Appliance metrics
  3. Ability to setup alerts based on configurable triggers
 
 ## Deployment
@@ -42,6 +40,8 @@ ESO is delivered as a _ready-to-deploy_ virtual appliance, containing the follow
 ## Configuration
  1. Once the appliance is deployed and powered on, launch a web browser to access Admin Portal by navigating to the FQDN (over HTTPS) of the appliance
 	{{<image src="/img/euc/eso/eso_7.png" caption="ESO Admin Portal Login">}}
+> **Note:** Using IP Address (in lieu of FQDN) to access the Admin Portal on a web browser will result in an error due to certificate validation failure when attempting to login. This is because the certificates are generated for Hostname.Domain combination provided during appliance deployment. Please use FQDN to access Admin Portal on web browser. Hosts file entry should work if unable to register in DNS
+	 
  2. Log in with the password configured during the deployment of the appliance (Username is “admin”)
  3. The “Home Page” provides an overview and links to configure UAG list and access Dashboards
 	{{<image src="/img/euc/eso/eso_39.png" caption="ESO Admin Portal Home Page">}}
@@ -61,7 +61,7 @@ ESO is delivered as a _ready-to-deploy_ virtual appliance, containing the follow
 	{{<image src="/img/euc/eso/eso_37.png" caption="ESO Admin Portal - Manage UAGS Page">}}
  9. Login with the password configured during the deployment of the appliance (Username is “admin”)
  	{{<image src="/img/euc/eso/eso_38.png" caption="ESO Dashboards - Login Page">}}	
- 10. You are now viewing the “VMware Tunnel Dashboard”
+ 10. You are now viewing a sample dashboard for VMware Tunnel metrics
 	 {{<image src="/img/euc/eso/eso_9.png" caption="VMware Tunnel Dashboard">}}
 > 	 **Dashboard** is a collection of widgets <br>
 	 &bull;  Every widget is called a __Panel__ <br>
@@ -71,7 +71,8 @@ ESO is delivered as a _ready-to-deploy_ virtual appliance, containing the follow
 	   - UAG Appliance CPU, Memory performance metrics
 	 - VMware Tunnel Metrics
 	   - VMware Tunnel Session and Connection Metrics
- 12. To view Horizon Dashboard, navigate to Dashboards menu on the left pane, and select "Manage"
+ 12. There is also a sample dashboard available for VMware Horizon metrics
+ 13. To access the VMware Horizon sample dashboard, navigate to Dashboards menu on the left pane, and select "Manage"
  13. Now select "Horizon Dashboard"
 	 {{<image src="/img/euc/eso/eso_27.png" caption="VMware Horizon Dashboard">}}
  14. The Horizon Dashboard is split into two rows
@@ -126,7 +127,20 @@ ESO is delivered as a _ready-to-deploy_ virtual appliance, containing the follow
 	- Select the desired metric from the list
 	- Provide a title to the Panel, adjust the Visualization settings on the right pane as required
 	- Click on 'Apply' on the top right section of the page
-4. How to monitor the performance of ESO Appliance itself?
+4. What should you do when you see "No Data" in a panel (widget) on one of the sample dashboards?
+	{{<image src="/img/euc/eso/eso_44.png" caption="Dashboards Panel - No Data">}}
+	- The sample dashbaords are built based on metrics query polled from UAG version 20.9. It is possible that the configured metric is available under a different name in the UAG version used in your environment
+	- In such a case, the administrator has the option to edit the panel to reconfigure the query to use the updated metric (as applicable)
+	- To edit the panel, right-click the panel title and select "Edit"
+	{{<image src="/img/euc/eso/eso_49.png" caption="Dashboards - Edit Panel">}}
+	- Navigate to the "Query" tab on the bottom of the page
+	- The "Metrics" dropdown lists all the metrics available from the configured UAGs to be used in the Dashboard
+	{{<image src="/img/euc/eso/eso_45.png" caption="Dashboards - Edit Panel - Metrics Query">}}
+	- Update the query by selecting the required metric from the "Metrics" dropdown
+	{{<image src="/img/euc/eso/eso_46.png" caption="Dashboards - Edit Panel - Update Query">}}
+	- Click on 'Apply' on the top right section of the page
+
+5. How to monitor the performance of ESO Appliance itself?
 	- From the Dashboards menu, select "Manage" 
 	- Select the "ESO Appliance Stats" dashboard
 	{{<image src="/img/euc/eso/eso_21.png" caption="ESO Appliance Stats">}}
