@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gettingstarteds on Cloud Tekki</title>
+    <link>https://cloudtekki.com/gettingstarted/</link>
+    <description>Recent content in Gettingstarteds on Cloud Tekki</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
+    <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster>
+    <lastBuildDate>Thu, 01 Oct 2020 00:00:00 +0200</lastBuildDate><atom:link href="https://cloudtekki.com/gettingstarted/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Guest Blogging: Getting Started on macOS</title>
+      <link>https://cloudtekki.com/gettingstarted/hugo-mac/</link>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 +0200</pubDate>
+      <author>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</author>
+      <guid>https://cloudtekki.com/gettingstarted/hugo-mac/</guid>
+      <description>CLOUD TEKKI® has always aimed to be the place to memorialize new learnings! As someone constantly jumping from one topic to another frequently, I often had to re-learning or researching topics all over again. I planned on documented my learnings so that any complex topic that I explore will live on as a content for everyone as well as myself to consume on the internet. Another core mission for CLOUD TEKKI® was that it would serve as a brand to inspire and enable others by demystifying technology concepts.</description>
+    </item>
+    
+    <item>
+      <title>Guest Blogging: Getting Started on Windows</title>
+      <link>https://cloudtekki.com/gettingstarted/hugo-windows/</link>
+      <pubDate>Thu, 01 Oct 2020 00:00:00 +0200</pubDate>
+      <author>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</author>
+      <guid>https://cloudtekki.com/gettingstarted/hugo-windows/</guid>
+      <description>CLOUD TEKKI® has always aimed to be the place to memorialize new learnings! As someone constantly jumping from one topic to another frequently, I often had to re-learning or researching topics all over again. I planned on documented my learnings so that any complex topic that I explore will live on as a content for everyone as well as myself to consume on the internet. Another core mission for CLOUD TEKKI® was that it would serve as a brand to inspire and enable others by demystifying technology concepts.</description>
+    </item>
+    
+  </channel>
+</rss>
