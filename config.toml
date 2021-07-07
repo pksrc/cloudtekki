@@ -105,7 +105,9 @@ theme = "LoveIt"
       # whether to show social links
       social = true
       # disclaimer (HTML format is supported)
-      disclaimer = "All opinions are my own. Content will evolve. Please remember to link and credit"
+      disclaimer = "DISCLAIMER: All opinions are Author's own. Content will evolve. Please remember to link and credit"
+      # guest posts enabled
+      guest = "Contributions from fellow Technologists are welcome. Quick start guide for [Windows](/gettingstarted/hugo-windows/) or [macOS](/gettingstarted/hugo-mac/)"
     # Home page posts
     [params.home.posts]
       enable = true

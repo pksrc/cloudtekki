@@ -178,7 +178,7 @@ Download the OVA file from [VMware Flings Site](https://flings.vmware.com/edge-s
 - This dashboard contains widgets for monitoring performance metrics (CPU, Disk, Memory, System, Network) from the ESO Appliance
 {{<image src="/img/euc/eso/eso_26.png" caption="ESO Appliance Stats">}}
 
-## What's Next
+## What Next?
 We are evaluating 
 - alerting and integration options with various tools including serverless functions to orchestrate workflow actions based on ESO telemetry
 - adding more metrics to be available in the dashboards (only numerical values are supported today)

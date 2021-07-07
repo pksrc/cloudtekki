@@ -42,11 +42,13 @@ With over 12 years working in the intersection of Technology and People, he brin
 
 ## Recent Accomplishments
 
+- WS1 Office Hours Video - [Expanding WS1 Intelligent Hub w/ Hub Services](https://www.youtube.com/watch?v=VAe2sc3XObI)
+- vExpert [2020, 2021](https://vexpert.vmware.com/directory/6554)
+- VCP - DWS [2021](https://www.credly.com/users/partheeban-kandasamy.50147f41/badges)
 - VMworld 2020 - [Arm yourself with Event Driven Functions](https://www.vmworld.com/en/video-library/video-landing.html?sessionid=15863800295950014HrA)
 - Built the website for VMware Event Driven Automation - [website](https://vmweventbroker.io)
 - Code contribution towards VMware Event Driven Automation - [github](https://github.com/vmware-samples/vcenter-event-broker-appliance/commits?author=pksrc)
-- vExpert [2020](https://vexpert.vmware.com/directory/6554)
-- VCP - DWS [2019](https://www.youracclaim.com/badges/aaebc3f5-ad45-4639-859a-734b1e9d8393)
+- VCP - DWS [2019](https://www.credly.com/users/partheeban-kandasamy.50147f41/badges)
 
 ## Career 
 
