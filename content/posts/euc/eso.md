@@ -158,7 +158,7 @@ Download the OVA file from [VMware Flings Site](https://flings.vmware.com/edge-s
 
 **What should you do when you see "No Data" in a panel (widget) on one of the sample dashboards?**
 {{<image src="/img/euc/eso/eso_44.png" caption="Dashboards Panel - No Data">}}
-- The sample dashboards are built based on metrics query polled from UAG version 20.9. It is possible that the configured metric is available under a different name in the UAG version used in your environment
+- The sample dashboards are built based on metrics query polled from UAG version 20.12. It is possible that the configured metric is available under a different name in the UAG version used in your environment
 - In such a case, the administrator has the option to edit the panel to reconfigure the query to use the updated metric (as applicable)
 - To edit the panel, right-click the panel title and select "Edit"
 {{<image src="/img/euc/eso/eso_49.png" caption="Dashboards - Edit Panel">}}

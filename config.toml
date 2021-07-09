@@ -223,7 +223,7 @@ theme = "LoveIt"
 [[menu.main]]
   identifier = "about-pk"
   pre = "<i class='fas fa-user-circle fa-fw author'></i>"
-  post = "<b>Staff CSA @ VMW EUC</b> <br/> vExpert '20 <br/> <b>Passion:</b> Automation, EUC, Cloud, Serverless, k8s, Homelab"
+  post = "<b>Staff CSA @ VMW EUC</b> <br/> vExpert '20, '21 <br/> <b>Passion:</b> Automation, EUC, Cloud, Serverless, k8s, Homelab"
   parent = "about"
   title = ""
   weight = 4
