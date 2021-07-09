@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Tunnel - Tag - Cloud Tekki</title>
+        <link>https://cloudtekki.com/tags/tunnel/</link>
+        <description>Tunnel - Tag - Cloud Tekki</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Tue, 06 Jul 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/tunnel/" rel="self" type="application/rss+xml" /><item>
+    <title>Securing Outlook from Unmanaged Devices with Tunnel</title>
+    <link>https://cloudtekki.com/post/tunnel-o365-conditional-access/</link>
+    <pubDate>Tue, 06 Jul 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/tunnel-o365-conditional-access/</guid>
+    <description><![CDATA[Howdy! I&rsquo;m Kevin Ten Eyck, a Staff EUC Customer Success Architect at VMware. I&rsquo;ve been with VMware for 4 years and greatly enjoy all things EUC! Coming from a background in Mobility and VDI, I love finding new challenges to be solved. Would love to hear your feedback or alternate ideas on how you&rsquo;ve solved similar problems!
+What problem does this solve? This blog post is targeted at Workspace ONE UEM administrators who are being asked to prevent unmanaged devices from accessing Office 365 applications.]]></description>
+</item></channel>
+</rss>

@@ -4,7 +4,35 @@
         <link>https://cloudtekki.com/tags/</link>
         <description>Tags - Tag - Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Thu, 01 Jul 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Tue, 06 Jul 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>ConditionalAccess</title>
+    <link>https://cloudtekki.com/tags/conditionalaccess/</link>
+    <pubDate>Tue, 06 Jul 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/tags/conditionalaccess/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Office365</title>
+    <link>https://cloudtekki.com/tags/office365/</link>
+    <pubDate>Tue, 06 Jul 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/tags/office365/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>Tunnel</title>
+    <link>https://cloudtekki.com/tags/tunnel/</link>
+    <pubDate>Tue, 06 Jul 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/tags/tunnel/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
+    <title>WorkspaceONE</title>
+    <link>https://cloudtekki.com/tags/workspaceone/</link>
+    <pubDate>Tue, 06 Jul 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/tags/workspaceone/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>Day2Ops</title>
     <link>https://cloudtekki.com/tags/day2ops/</link>
     <pubDate>Thu, 01 Jul 2021 00:00:00 &#43;0000</pubDate>
@@ -45,34 +73,6 @@
     <pubDate>Tue, 25 May 2021 00:00:00 &#43;0000</pubDate>
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/tags/templates/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>WorkspaceONE</title>
-    <link>https://cloudtekki.com/tags/workspaceone/</link>
-    <pubDate>Tue, 25 May 2021 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/tags/workspaceone/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>APIs</title>
-    <link>https://cloudtekki.com/tags/apis/</link>
-    <pubDate>Mon, 24 May 2021 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/tags/apis/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>DeveloperTools</title>
-    <link>https://cloudtekki.com/tags/developertools/</link>
-    <pubDate>Mon, 24 May 2021 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/tags/developertools/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Intelligence</title>
-    <link>https://cloudtekki.com/tags/intelligence/</link>
-    <pubDate>Mon, 24 May 2021 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/tags/intelligence/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

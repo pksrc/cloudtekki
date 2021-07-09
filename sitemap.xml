@@ -2,20 +2,24 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://cloudtekki.com/categories/</loc><lastmod>2021-07-08T22:26:47-07:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/</loc><lastmod>2021-07-08T22:26:47-07:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/categories/</loc><lastmod>2021-07-09T13:47:29-05:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/</loc><lastmod>2021-07-09T13:47:29-05:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/conditionalaccess/</loc><lastmod>2021-07-09T13:47:29-05:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/categories/euc/</loc><lastmod>2021-07-09T13:47:29-05:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/office365/</loc><lastmod>2021-07-09T13:47:29-05:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/posts/</loc><lastmod>2021-07-09T13:47:29-05:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/post/tunnel-o365-conditional-access/</loc><lastmod>2021-07-09T13:47:29-05:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/</loc><lastmod>2021-07-09T13:47:29-05:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/tunnel/</loc><lastmod>2021-07-09T13:47:29-05:00</lastmod></url><url>
+            <loc>https://cloudtekki.com/tags/workspaceone/</loc><lastmod>2021-07-09T13:47:29-05:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/day2ops/</loc><lastmod>2021-07-08T22:26:47-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/eso/</loc><lastmod>2021-07-08T22:26:47-07:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/categories/euc/</loc><lastmod>2021-07-08T22:26:47-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/monitoring/</loc><lastmod>2021-07-08T22:26:47-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/observability/</loc><lastmod>2021-07-08T22:26:47-07:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/posts/</loc><lastmod>2021-07-08T22:26:47-07:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/</loc><lastmod>2021-07-08T22:26:47-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/access/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/hub-templates/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/hubservices/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/templates/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
-            <loc>https://cloudtekki.com/tags/workspaceone/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/categories/access/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/tags/apis/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
             <loc>https://cloudtekki.com/post/intel-custom-connector/</loc><lastmod>2021-07-01T18:01:46-07:00</lastmod></url><url>
