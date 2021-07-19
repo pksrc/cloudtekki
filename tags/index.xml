@@ -4,7 +4,14 @@
         <link>https://cloudtekki.com/tags/</link>
         <description>Tags - Tag - Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Tue, 06 Jul 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 19 Jul 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>AuthorNotes</title>
+    <link>https://cloudtekki.com/tags/authornotes/</link>
+    <pubDate>Mon, 19 Jul 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/tags/authornotes/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>ConditionalAccess</title>
     <link>https://cloudtekki.com/tags/conditionalaccess/</link>
     <pubDate>Tue, 06 Jul 2021 00:00:00 &#43;0000</pubDate>
@@ -66,13 +73,6 @@
     <pubDate>Tue, 25 May 2021 00:00:00 &#43;0000</pubDate>
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/tags/hubservices/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>Templates</title>
-    <link>https://cloudtekki.com/tags/templates/</link>
-    <pubDate>Tue, 25 May 2021 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/tags/templates/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

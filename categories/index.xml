@@ -4,7 +4,14 @@
         <link>https://cloudtekki.com/categories/</link>
         <description>Categories - Category - Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Tue, 06 Jul 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 19 Jul 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>AUTHOR NOTES</title>
+    <link>https://cloudtekki.com/categories/author-notes/</link>
+    <pubDate>Mon, 19 Jul 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/categories/author-notes/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>EUC</title>
     <link>https://cloudtekki.com/categories/euc/</link>
     <pubDate>Tue, 06 Jul 2021 00:00:00 &#43;0000</pubDate>
@@ -31,13 +38,6 @@
     <pubDate>Mon, 15 Feb 2021 00:00:00 &#43;0000</pubDate>
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/categories/sddc/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>AUTHOR NOTES</title>
-    <link>https://cloudtekki.com/categories/author-notes/</link>
-    <pubDate>Mon, 28 Dec 2020 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/categories/author-notes/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>UEM</title>
