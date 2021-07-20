@@ -35,7 +35,7 @@ draft: false
 
 ## Who is P.K?
 
-P.K short for Partheeban Kandasamy is a Staff Customer Success Architect. P.K started his career as a Java Web Developer and after completing his Masters in Information Systems spent several years at VMware as a Technical Advocate to several high profile Customers. 
+P.K short for Partheeban Kandasamy is a Senior Product Manager w/ VMware EUC. P.K started his career as a Java Web Developer and after completing his Masters in Information Systems spent several years at VMware as a Technical Advocate to several high profile Customers. 
 
 With over 12 years working in the intersection of Technology and People, he brings an unique combination of technical prowess, emotional intelligence and user empathy to solve difficult problems
 
@@ -52,9 +52,9 @@ With over 12 years working in the intersection of Technology and People, he brin
 
 ## Career 
 
-Currently, Staff Customer Success Architect for VMware EUC focussed on building the right solutions to everyday problems. 
+Currently, Senior Product Manager for VMware EUC focussed on building the right solutions to everyday problems. 
 
-more details here at [about.pdotk.com](https://about.pdotk.com)
+more details here at [about pk](https://linkedin.com/in/pky)
 
 
 
