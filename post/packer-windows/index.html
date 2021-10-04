@@ -10,7 +10,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cloudtekki.com/post/packer-windows/" />
 <meta property="article:published_time" content="2021-02-22T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-23T20:26:20-08:00" />
+<meta property="article:modified_time" content="2021-10-03T21:26:42-07:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Automating Windows 10 VM build auto enrolled into UEM using Packer"/>
 <meta name="twitter:description" content="In this post, I&rsquo;ll be covering how you can automate the process of building a Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors."/>
@@ -25,7 +25,7 @@
             "@type": "WebPage",
             "@id": "https:\/\/cloudtekki.com\/post\/packer-windows\/"
         },"genre": "posts","keywords": "Automation, Windows, Packer, UEM","wordcount":  1851 ,
-        "url": "https:\/\/cloudtekki.com\/post\/packer-windows\/","datePublished": "2021-02-22T00:00:00+00:00","dateModified": "2021-02-23T20:26:20-08:00","publisher": {
+        "url": "https:\/\/cloudtekki.com\/post\/packer-windows\/","datePublished": "2021-02-22T00:00:00+00:00","dateModified": "2021-10-03T21:26:42-07:00","publisher": {
             "@type": "Organization",
             "name": "Cloud Tekki"},"author": {
                 "@type": "Person",
@@ -130,6 +130,16 @@
               <i class="fa fa-star icon--production" style="color: gold;" aria-hidden="true"></i>
               <span class="label__container">
                 <div class="label">
+                  <a href="/post/registered-mode/"> Registered mode w/ a focus on Windows 10</a>
+                  <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+                <div class="label--desc">&nbsp;published on <b><time datetime="2021-10-03">2021-10-03</time></b></div>
+              </span>
+            </li>
+            <li class="subMenu--item">
+              <i class="fa fa-star icon--production" style="color: gold;" aria-hidden="true"></i>
+              <span class="label__container">
+                <div class="label">
                   <a href="/post/eso/"> Edge Services Observability for Unified Access Gateway</a>
                   <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                 </div>
@@ -145,7 +155,7 @@
             <img src="/img/menu/folder-open-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
-                <a href="/categories/euc/">EUC <sup>9</sup></a>
+                <a href="/categories/euc/">EUC <sup>10</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -434,6 +444,14 @@
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
+                <a href="/tags/registeredmode/">RegisteredMode <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
                 <a href="/tags/tanzu/">Tanzu <sup>1</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
@@ -454,14 +472,6 @@
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
-          </li><li class="subMenu--item item--one">
-            <img src="/img/menu/tags-solid.svg" class="icon">
-            <span class="label__container">
-              <div class="label">
-                <a href="/tags/ubuntu/">Ubuntu <sup>1</sup></a>
-                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </span>
           </li></ul>
           </div>
           <div class="sub__menu">
@@ -470,7 +480,23 @@
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
+                <a href="/tags/ubuntu/">Ubuntu <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
                 <a href="/tags/windows/">Windows <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/windows10/">Windows10 <sup>1</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -506,15 +532,18 @@
       <h2 class="mt-4">Featured Posts</h2>
       <ul>
         <li>
-          <a href="https://cloudtekki.com/post/eso/" class="nav-link">Edge Services Observability for Unified Access Gateway</a>
+          <a href="https://cloudtekki.com/post/registered-mode/" class="nav-link">Registered mode w/ a focus on Windows 10</a>
         </li>
         <li>
-          <a href="https://cloudtekki.com/post/packer-windows/" class="nav-link">Automating Windows 10 VM build auto enrolled into UEM using Packer</a>
+          <a href="https://cloudtekki.com/post/eso/" class="nav-link">Edge Services Observability for Unified Access Gateway</a>
         </li>
       </ul>
 
       <h2 class="mt-4">Recent Posts</h2>
       <ul class="flex-column">
+        <li>
+          <a href="https://cloudtekki.com/post/registered-mode/" class="nav-link">Registered mode w/ a focus on Windows 10</a>
+        </li>
         <li>
           <a href="https://cloudtekki.com/post/the-flip-side/" class="nav-link">Welcome to the Flip Side</a>
         </li>
@@ -527,16 +556,13 @@
         <li>
           <a href="https://cloudtekki.com/post/hub-templates/" class="nav-link">An Intro to Workspace ONE Hub Templates</a>
         </li>
-        <li>
-          <a href="https://cloudtekki.com/post/intel-custom-connector/" class="nav-link">Creating a Custom Connector in WS1 Intelligence</a>
-        </li>
       </ul>
         <div>
           <h2 class="mt-4 taxonomy" id="categories-section">TOP Categories</h2>
           <nav class="tags_nav">
             <a href='https://cloudtekki.com/categories/euc/' class="post_tag button button_translucent">
               EUC
-              <span class="button_tally">9</span>
+              <span class="button_tally">10</span>
             </a>
             
             <a href='https://cloudtekki.com/categories/veba/' class="post_tag button button_translucent">
@@ -1078,8 +1104,8 @@ cd packer/win10
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2021-02-23&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/5d2e78e19539024466ab43eacc8a3c0ba10564a4" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 5d2e78e19539024466ab43eacc8a3c0ba10564a4: Post - Fling: Migration tool for WS1 Access">
-                                    <i class="fas fa-hashtag fa-fw"></i>5d2e78e</a></span>
+                <span>Updated on 2021-10-03&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/38b782a496ad522313022455e0faab90a281fe76" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 38b782a496ad522313022455e0faab90a281fe76: Post: Registered Mode on Windows">
+                                    <i class="fas fa-hashtag fa-fw"></i>38b782a</a></span>
             </div>
             <div class="post-info-license"></div>
         </div>

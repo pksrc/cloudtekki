@@ -1,0 +1,17 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Windows10 - Tag - Cloud Tekki</title>
+        <link>https://cloudtekki.com/tags/windows10/</link>
+        <description>Windows10 - Tag - Cloud Tekki</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sun, 03 Oct 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/windows10/" rel="self" type="application/rss+xml" /><item>
+    <title>Registered mode w/ a focus on Windows 10</title>
+    <link>https://cloudtekki.com/post/registered-mode/</link>
+    <pubDate>Sun, 03 Oct 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/registered-mode/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/euc/registered-mode/hero.png" referrerpolicy="no-referrer">
+            </div>Registered mode is a capability in UEM that allows IT to deliver a secure way for Employees to access corporate data using Workspace ONE without having to manage their devices. While the core philosophy behind Registered mode is the same across different platforms, the problem it addresses on various platforms are slightly different. Understanding its origin will shed some light into how you can effectively utilize this capability and provide seamless access to your Employees Evolution of Registered Mode As a technologist that&rsquo;s been following and absorbing all the progress that&rsquo;s been happening this space, I wanted to start this post by covering the evolution of Registered Mode with Workspace ONE over the last 4-5 years.]]></description>
+</item></channel>
+</rss>

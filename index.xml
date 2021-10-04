@@ -4,9 +4,18 @@
         <link>https://cloudtekki.com/</link>
         <description>Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 19 Jul 2021 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sun, 03 Oct 2021 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://cloudtekki.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Registered mode w/ a focus on Windows 10</title>
+    <link>https://cloudtekki.com/post/registered-mode/</link>
+    <pubDate>Sun, 03 Oct 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/registered-mode/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/euc/registered-mode/hero.png" referrerpolicy="no-referrer">
+            </div>Registered mode is a capability in UEM that allows IT to deliver a secure way for Employees to access corporate data using Workspace ONE without having to manage their devices. While the core philosophy behind Registered mode is the same across different platforms, the problem it addresses on various platforms are slightly different. Understanding its origin will shed some light into how you can effectively utilize this capability and provide seamless access to your Employees Evolution of Registered Mode As a technologist that&rsquo;s been following and absorbing all the progress that&rsquo;s been happening this space, I wanted to start this post by covering the evolution of Registered Mode with Workspace ONE over the last 4-5 years.]]></description>
+</item><item>
     <title>Welcome to the Flip Side</title>
     <link>https://cloudtekki.com/post/the-flip-side/</link>
     <pubDate>Mon, 19 Jul 2021 00:00:00 &#43;0000</pubDate>
@@ -78,12 +87,5 @@ On-Premise to SaaS  As Cloud is picking up steam and as features are developed w
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/packer-windows/</guid>
     <description><![CDATA[In this post, I&rsquo;ll be covering how you can automate the process of building a Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors.]]></description>
-</item><item>
-    <title>2021: What&#39;s in my homelab?</title>
-    <link>https://cloudtekki.com/post/homelab-2021/</link>
-    <pubDate>Mon, 15 Feb 2021 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/post/homelab-2021/</guid>
-    <description><![CDATA[I&rsquo;ve talked about why everyone needs a homelab in my medium article but never had the courage to submit my homelab to the community homelab list maintained by William Lam Follow. Mainly because I wasn&rsquo;t sure how my lab would stack up against everyone elses' submission. With my latest post covering my experience enabling Tanzu with vSphere in my homelab, I feel like I&rsquo;ve gone through the checklist of best practices and I&rsquo;m proud of my minimalist(if i can say so myself) homelab setup!]]></description>
 </item></channel>
 </rss>

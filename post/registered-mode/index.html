@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Registered mode w/ a focus on Windows 10 - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive"><meta property="og:title" content="Registered mode w/ a focus on Windows 10" />
+<meta property="og:description" content="Registered mode is a capability in UEM that allows IT to deliver a secure way for Employees to access corporate data using Workspace ONE without having to manage their devices. While the core philosophy behind Registered mode is the same across different platforms, the problem it addresses on various platforms are slightly different. Understanding its origin will shed some light into how you can effectively utilize this capability and provide seamless access to your Employees Evolution of Registered Mode As a technologist that&rsquo;s been following and absorbing all the progress that&rsquo;s been happening this space, I wanted to start this post by covering the evolution of Registered Mode with Workspace ONE over the last 4-5 years." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cloudtekki.com/post/registered-mode/" />
+<meta property="article:published_time" content="2021-10-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-10-03T21:26:42-07:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Registered mode w/ a focus on Windows 10"/>
+<meta name="twitter:description" content="Registered mode is a capability in UEM that allows IT to deliver a secure way for Employees to access corporate data using Workspace ONE without having to manage their devices. While the core philosophy behind Registered mode is the same across different platforms, the problem it addresses on various platforms are slightly different. Understanding its origin will shed some light into how you can effectively utilize this capability and provide seamless access to your Employees Evolution of Registered Mode As a technologist that&rsquo;s been following and absorbing all the progress that&rsquo;s been happening this space, I wanted to start this post by covering the evolution of Registered Mode with Workspace ONE over the last 4-5 years."/>
+<meta name="application-name" content="Cloud Tekki">
+<meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/registered-mode/" /><link rel="prev" href="https://cloudtekki.com/post/the-flip-side/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Registered mode w/ a focus on Windows 10",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/cloudtekki.com\/post\/registered-mode\/"
+        },"genre": "posts","keywords": "Windows10, RegisteredMode","wordcount":  1355 ,
+        "url": "https:\/\/cloudtekki.com\/post\/registered-mode\/","datePublished": "2021-10-03T00:00:00+00:00","dateModified": "2021-10-03T21:26:42-07:00","publisher": {
+            "@type": "Organization",
+            "name": "Cloud Tekki"},"author": {
+                "@type": "Person",
+                "name": "Partheeban Kandasamy (PK)"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+        </div>
+        <div class="menu navbar">
+            <div class="menu-inner nav__links"><li data-expand="Posts" class="nav--link">
+                        <a href="/posts/"><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span> Posts </a>
+                    </li><li data-expand="Categories" class="nav--link">
+                        <a href="/categories/"><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span> Categories </a>
+                    </li><li data-expand="Tags" class="nav--link">
+                        <a href="/tags/"><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span> Tags </a>
+                    </li><li data-expand="About" class="nav--link">
+                        <a href="/"><span class='menuicon'><img src='/img/menu/author-circle.svg' class='transparent svg'/></span> About </a>
+                    </li><span class="menu-item">|</span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Cloud Tekki"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/img/logo/cloud-tekki-logo.png"
+        data-srcset="/img/logo/cloud-tekki-logo.png, /img/logo/cloud-tekki-logo.png 1.5x, /img/logo/cloud-tekki-logo.png 2x"
+        data-sizes="auto"
+        alt="/img/logo/cloud-tekki-logo.png"
+        title="/img/logo/cloud-tekki-logo.png" /></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Enter keyword to search" id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title=""><span class='menuicon'><img src='/img/menu/newspaper-solid.svg' class='transparent svg'/></span>Posts</a><a class="menu-item" href="/categories/" title=""><span class='menuicon'><img src='/img/menu/folder-open-solid.svg' class='transparent svg'/></span>Categories</a><a class="menu-item" href="/tags/" title=""><span class='menuicon'><img src='/img/menu/tags-solid.svg' class='transparent svg'/></span>Tags</a><a class="menu-item" href="/" title=""><span class='menuicon'><img src='/img/menu/author-circle.svg' class='transparent svg'/></span>About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+
+        
+<div class="tip"></div>
+
+<section class="header__expandMenu">
+  <div class="menu__container"><div id="Posts">
+      <div class="sub__menu">
+        <h3 class="title">Featured Posts</h3>
+        <ul class="subMenu__items">
+            <li class="subMenu--item">
+              <i class="fa fa-star icon--production" style="color: gold;" aria-hidden="true"></i>
+              <span class="label__container">
+                <div class="label">
+                  <a href="/post/eso/"> Edge Services Observability for Unified Access Gateway</a>
+                  <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+                <div class="label--desc">&nbsp;published on <b><time datetime="2021-07-01">2021-07-01</time></b></div>
+              </span>
+            </li>
+          </ul>
+      </div>
+    </div><div id="Categories">
+      <div class="sub__menu">
+        <h3 class="title">Categories</h3>
+        <ul class="subMenu__items"><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/euc/">EUC <sup>10</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/veba/">VEBA <sup>6</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/access/">ACCESS <sup>4</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/author-notes/">AUTHOR NOTES <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/sddc/">SDDC <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/kubernetes/">KUBERNETES <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/two-cents/">TWO CENTS <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/folder-open-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/categories/uem/">UEM <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li></ul>
+      </div>
+    </div><div id="Tags">
+      <div class="sub__menu">
+        <h3 class="title">Tags</h3>
+        <ul class="subMenu__items sec--menu"><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/cloud-native/">cloud-native <sup>6</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/event-driven/">event-driven <sup>6</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/access/">Access <sup>4</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/apis/">APIs <sup>4</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/authornotes/">AuthorNotes <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/automation/">Automation <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/developertools/">DeveloperTools <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/fling/">Fling <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/kubernetes/">Kubernetes <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/migration/">Migration <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/postman/">Postman <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/uem/">UEM <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/vexpert/">vExpert <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/workspaceone/">WorkspaceONE <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/calico/">Calico <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/conditionalaccess/">ConditionalAccess <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li></ul>
+          </div>
+          <div class="sub__menu">
+            <h3 class="title">&nbsp</h3>
+          <ul class="subMenu__items sec--menu"><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/day2ops/">Day2Ops <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/euc/">EUC <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/homelab/">homelab <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/hubservices/">HubServices <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/intelligence/">Intelligence <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/monitoring/">Monitoring <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/observability/">Observability <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/office365/">Office365 <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/packer/">Packer <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/people/">People <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/projectpacific/">ProjectPacific <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/registeredmode/">RegisteredMode <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/tanzu/">Tanzu <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/templates/">Templates <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/tunnel/">Tunnel <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li></ul>
+          </div>
+          <div class="sub__menu">
+            <h3 class="title">&nbsp</h3>
+          <ul class="subMenu__items sec--menu"><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/ubuntu/">Ubuntu <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/windows/">Windows <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/windows10/">Windows10 <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li></ul>
+      </div>
+    </div>
+    <div id="About">
+      <div class="sub__menu">
+        <h3 class="title">About</h3>
+        <ul class="subMenu__items">
+          
+          <li class="subMenu--item">
+            <i class='fas fa-user-circle fa-fw author'></i>
+            <span class="label__container">
+              <div class="label">
+                <a href="/about-pk/">Partheeban Kandasamy (PK)</a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+              <div class="label--desc">
+                <b>Sr. Product Manager @ VMW EUC</b> <br/> vExpert '20, '21 <br/> <b>Passion:</b> Automation, EUC, Cloud, Serverless, k8s, Homelab
+              </div>
+            </span>
+          </li>
+          
+        </ul>
+      </div>
+    </div></div>
+</section><main class="main">
+                <div class="container"><article class="page single">
+<aside class="sidebar" id="sidebar">
+  <div id="sidebar-auto">
+    <section class="sidebar_inner" id="SidebarNavigation">
+      <h2 class="mt-4">Featured Posts</h2>
+      <ul>
+        <li>
+          <a href="https://cloudtekki.com/post/registered-mode/" class="nav-link">Registered mode w/ a focus on Windows 10</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/eso/" class="nav-link">Edge Services Observability for Unified Access Gateway</a>
+        </li>
+      </ul>
+
+      <h2 class="mt-4">Recent Posts</h2>
+      <ul class="flex-column">
+        <li>
+          <a href="https://cloudtekki.com/post/registered-mode/" class="nav-link">Registered mode w/ a focus on Windows 10</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/the-flip-side/" class="nav-link">Welcome to the Flip Side</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/tunnel-o365-conditional-access/" class="nav-link">Securing Outlook from Unmanaged Devices with Tunnel</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/eso/" class="nav-link">Edge Services Observability for Unified Access Gateway</a>
+        </li>
+        <li>
+          <a href="https://cloudtekki.com/post/hub-templates/" class="nav-link">An Intro to Workspace ONE Hub Templates</a>
+        </li>
+      </ul>
+        <div>
+          <h2 class="mt-4 taxonomy" id="categories-section">TOP Categories</h2>
+          <nav class="tags_nav">
+            <a href='https://cloudtekki.com/categories/euc/' class="post_tag button button_translucent">
+              EUC
+              <span class="button_tally">10</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/veba/' class="post_tag button button_translucent">
+              VEBA
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/access/' class="post_tag button button_translucent">
+              ACCESS
+              <span class="button_tally">4</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/author-notes/' class="post_tag button button_translucent">
+              AUTHOR-NOTES
+              <span class="button_tally">2</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/categories/sddc/' class="post_tag button button_translucent">
+              SDDC
+              <span class="button_tally">2</span>
+            </a>
+            
+          </nav>
+        </div>
+        <div>
+          <h2 class="mt-4 taxonomy" id="tags-section">TOP Tags</h2>
+          <nav class="tags_nav">
+            <a href='https://cloudtekki.com/tags/cloud-native/' class="post_tag button button_translucent">
+              CLOUD-NATIVE
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/event-driven/' class="post_tag button button_translucent">
+              EVENT-DRIVEN
+              <span class="button_tally">6</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/access/' class="post_tag button button_translucent">
+              ACCESS
+              <span class="button_tally">4</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/apis/' class="post_tag button button_translucent">
+              APIS
+              <span class="button_tally">4</span>
+            </a>
+            
+            <a href='https://cloudtekki.com/tags/authornotes/' class="post_tag button button_translucent">
+              AUTHORNOTES
+              <span class="button_tally">2</span>
+            </a>
+            
+          </nav>
+        </div>
+    </section>
+  </div>
+</aside>
+<h1 class="single-title animated flipInX">Registered mode w/ a focus on Windows 10</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/euc/"><i class="far fa-folder fa-fw"></i>EUC</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/registered-mode/" data-title="Registered mode w/ a focus on Windows 10" data-hashtags="Windows10,RegisteredMode"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/registered-mode/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/registered-mode/" data-title="Registered mode w/ a focus on Windows 10" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/registered-mode/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/registered-mode/" data-title="Registered mode w/ a focus on Windows 10" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+            <div class="post-meta-line">
+                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/windows10/">Windows10</a>,&nbsp;<a href="/tags/registeredmode/">RegisteredMode</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2021-10-03">2021-10-03</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1355 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/img/euc/registered-mode/hero.png"
+        data-srcset="/img/euc/registered-mode/hero.png, /img/euc/registered-mode/hero.png 1.5x, /img/euc/registered-mode/hero.png 2x"
+        data-sizes="auto"
+        alt="/img/euc/registered-mode/hero.png"
+        title="/img/euc/registered-mode/hero.png" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#evolution-of-registered-mode">Evolution of Registered Mode</a>
+      <ul>
+        <li><a href="#ios">iOS</a></li>
+        <li><a href="#android">Android</a></li>
+        <li><a href="#windows">Windows</a></li>
+      </ul>
+    </li>
+    <li><a href="#registered-mode-on-windows">Registered Mode on Windows</a>
+      <ul>
+        <li><a href="#what-is-not-available">What is not available?</a></li>
+        <li><a href="#what-is-available">What is available?</a></li>
+      </ul>
+    </li>
+    <li><a href="#enabling-registered-mode-in-ws1-uem">Enabling Registered Mode in WS1 UEM</a></li>
+    <li><a href="#end-user-enrollment-into-registered-mode">End User Enrollment into Registered Mode</a></li>
+    <li><a href="#management-option-in-uem">Management Option in UEM</a></li>
+    <li><a href="#end-user-experience">End User Experience</a></li>
+    <li><a href="#remote-management-admin-experience">Remote Management Admin Experience</a></li>
+    <li><a href="#remote-management-end-user-experience">Remote Management End User Experience</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p class="cap">
+Registered mode is a capability in UEM that allows IT to deliver a secure way for Employees to access corporate data using Workspace ONE without having to manage their devices. While the core philosophy behind Registered mode is the same across different platforms, the problem it addresses on various platforms are slightly different. Understanding its origin will shed some light into how you can effectively utilize this capability and provide seamless access to your Employees
+</p>
+<h2 id="evolution-of-registered-mode">Evolution of Registered Mode</h2>
+<p>As a technologist that&rsquo;s been following and absorbing all the progress that&rsquo;s been happening this space, I wanted to start this post by covering the evolution of Registered Mode with Workspace ONE over the last 4-5 years.</p>
+<h3 id="ios">iOS</h3>
+<p>Registered Mode was first introduced on iOS. If you have enrolled an iOS device, a consumer privacy focussed platform, you know that you feel like you are signing your life away when you go through the Device Enrollment process. Apple&rsquo;s enrollment language created a lot of privacy concerns amongst the users and in one instance, I&rsquo;ve witness a technically savvy UEM Administrator refusing to enroll his own BYO device while understanding fully well that no personal information is collected on their particular tenants. Data that can be collected by UEM is provided <a href="https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/2011/WS1EX/GUID-AWT-AWEX-PRIVACY.html?hWord=N4IghgNiBcIAoCcCWA3MBjAniAvkA" target="_blank">here</a></p>
+<p>VMware looked to address this through a few different ways</p>
+<ol>
+<li><a href="https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/2011/UEM_Managing_Devices/GUID-AWT-PRIVACYNOTICE.html" target="_blank">Privacy Notice</a> - This aims to inform Users  about the data that is being collected by UEM (this could vary from one device to another for the same Employee based on device ownership)</li>
+<li><a href="https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/2008/iOS_Platform/GUID-AWT-APPSWSFORIOS.html" target="_blank">Airwatch Container</a> (<a href="https://kb.vmware.com/s/article/84089" target="_blank">now unavailable for download</a>)- The original MAM only container aimed to provide Mobile Application Management (MAM) only capability. A layer of Application based security was available through the SDK.</li>
+<li>Workspace ONE App (<a href="https://kb.vmware.com/s/article/80208" target="_blank">now EOSL</a>)- This was the next evolution to the AirWatch Container and intended to provided a MAM only layer of management which meant that Users could get access to Corporate Resources in a limited way. Additionally, this helps you deliver a Unified App Catalog - Native Apps from UEM, Federated Web Apps from Access and Virtual Apps from Horizon/Citrix</li>
+</ol>
+<p>The best approach yet is consolidating all the experience through the Intelligent Hub App to build the <strong>Registered Mode on iOS</strong>. If configured by the Admin, an Employee would authenticate to the Intelligent Hub App to see what they are entitled to get and have access to. Employees could step up their device to Management if your Corporate deemed it necessary for subset of Apps.</p>
+<h3 id="android">Android</h3>
+<p>On Android, the story becomes slightly different&hellip;</p>
+<p>The Android ecosystem has normalized around the Android Enterprise solution set that was introduced by Google in an attempt to unify the management story on a segmented Android landscape. When it comes to delivering a BYO experience on Android devices you could do so using the Work Profile or COPE within the Android Enterprise framework. The <strong>BYO experience</strong> however is <strong>NOT an option in China</strong> due to the Great Firewall of China which blocks Google&rsquo;s endpoints which are required to create the appropriate managed google accounts to deliver the Android Enterprise capabilities there.</p>
+<blockquote>
+<p>NOTE: For Corporate Owned devices, there is an option to deliver Android Experience using the <a href="https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/2011/Android_Platform/GUID-AWT-AFWDEVICEMODES.html#work-managed-device-without-google-play-services-2" target="_blank">Work Managed Device Without Google Play Services</a> option</p>
+</blockquote>
+<p>This limitation and the need to deliver access to corporate data on Mobile to Users in China brought about the Registered Mode on Android. With Registered Mode, IT can provide a way for Users to get access to Email (through Boxer), File Access (through Content Locker), Secure Browsing of Internal resources (through Web) and all the capabilities shipped with the WS1 Intelligent Hub with Hub Services.</p>
+<p>A couple of nuances to stay aware of</p>
+<ul>
+<li>Given the lack of access to the Google Play Store in China, Users can get their Workspace ONE Apps from <a href="getwsone.com">getwsone.com</a> (more details <a href="https://kb.vmware.com/s/article/75197" target="_blank">here</a>)</li>
+<li>If you are using Access as for AuthN for Mobile devices or All devices for Users, there isn&rsquo;t a way to provide a conditional access policy that can be applied for Registered devices selectively.</li>
+</ul>
+<h3 id="windows">Windows</h3>
+<p>The next domino to fall is obviously Windows for very different reasons. If you think about it, there are not a lot of BYO use cases around a Windows device. Most Employees today that need a Windows PC gets a laptop which is going to be the primary device to get work done. What then drove the need for an Registered mode on Windows? The <a href="https://blogs.vmware.com/euc/2019/11/workspace-one-microsoft-endpoint-manager.html" target="_blank">answer</a> remains the same but the scope changes slightly - &ldquo;Deliver WS1 capabilities on a <strong>Corporate Owned device</strong> (not BYO devices) where the device might be managed by another UEM software&rdquo;.</p>
+<blockquote>
+<p>NOTE: Registered Mode on Windows is not available for BYO devices (some capabilities may work but not supported)</p>
+</blockquote>
+<h2 id="registered-mode-on-windows">Registered Mode on Windows</h2>
+<p>With that in mind, let&rsquo;s explore the capabilities that Workspace ONE Registered mode on Windows 10 provide.. Outside of a brief mention to the capabilities in <a href="https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/2011/Windows_Desktop_Device_Management/GUID-036EFAD5-03F5-44D1-926E-F3F45754B9F5.html" target="_blank">VMware docs</a> information about Registered mode for Workspace ONE is limited.</p>
+<h3 id="what-is-not-available">What is not available?</h3>
+<p>This is easy so let&rsquo;s get this out of the way first - There are no native MDM capability through Workspace ONE with the registered mode - no apps, no profiles, no compliance.</p>
+<h3 id="what-is-available">What is available?</h3>
+<p>Here are the capabilities of Registered Mode on Windows that have been validated to be working</p>
+<ul>
+<li>Enrollment into <strong>Registered Mode</strong></li>
+<li>Secure Access to corporate resources within Internal Network through <strong>Workspace ONE Tunnel</strong>
+<ul>
+<li>NOTE: Tunnel VPN profile needs to be configured and this Profile installation worked on a Registered Mode device (Solution is architected to deliver certificate without OMADM)</li>
+<li>NOTE: Workspace ONE Tunnel app will be deployed using the Management software on the device</li>
+</ul>
+</li>
+<li>Deliver Remote Assistance for troubleshooting using <strong>Workspace ONE Assist</strong>
+<ul>
+<li>NOTE: Workspace ONE Assist app will be deployed using the Management software on the device</li>
+</ul>
+</li>
+<li>Digital Employee Experience Management (<strong>DEEM</strong>)
+<ul>
+<li>NOTE: Device Ownership needs to be set to Corporate Owned</li>
+</ul>
+</li>
+<li>Employee Experience through <strong>Hub Services</strong></li>
+<li>Ability to gather data about the device using <strong>Sensors</strong>
+<ul>
+<li>NOTE: Sensors in System context will work and those in User context doesn’t work. Also, Device Ownership needs to be set to Corp Owned</li>
+</ul>
+</li>
+<li>Ability to configure devices using <strong>Baselines</strong></li>
+</ul>
+<h2 id="enabling-registered-mode-in-ws1-uem">Enabling Registered Mode in WS1 UEM</h2>
+<blockquote>
+<p><em>Explained through screenshots. Click through the pictures for a better experience</em></p>
+</blockquote>
+<p><figure><a class="lightgallery" href="/img/euc/registered-mode/admin.png" title="/img/euc/registered-mode/admin.png" data-thumbnail="/img/euc/registered-mode/admin.png" data-sub-html="<h2>Setting up Registered Mode for Windows</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/admin.png"
+            data-srcset="/img/euc/registered-mode/admin.png, /img/euc/registered-mode/admin.png 1.5x, /img/euc/registered-mode/admin.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/admin.png" />
+    </a><figcaption class="image-caption">Setting up Registered Mode for Windows</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/admin_1.png" title="/img/euc/registered-mode/admin_1.png" data-thumbnail="/img/euc/registered-mode/admin_1.png" data-sub-html="<h2>Setting up the Tunnel Profile for Windows</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/admin_1.png"
+            data-srcset="/img/euc/registered-mode/admin_1.png, /img/euc/registered-mode/admin_1.png 1.5x, /img/euc/registered-mode/admin_1.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/admin_1.png" />
+    </a><figcaption class="image-caption">Setting up the Tunnel Profile for Windows</figcaption>
+    </figure></p>
+<h2 id="end-user-enrollment-into-registered-mode">End User Enrollment into Registered Mode</h2>
+<blockquote>
+<p><em>Explained through screenshots. Click through the pictures for a better experience</em></p>
+</blockquote>
+<p><figure><a class="lightgallery" href="/img/euc/registered-mode/enroll_5.png" title="/img/euc/registered-mode/enroll_5.png" data-thumbnail="/img/euc/registered-mode/enroll_5.png" data-sub-html="<h2>Enter Email or Server Address</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/enroll_5.png"
+            data-srcset="/img/euc/registered-mode/enroll_5.png, /img/euc/registered-mode/enroll_5.png 1.5x, /img/euc/registered-mode/enroll_5.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/enroll_5.png" />
+    </a><figcaption class="image-caption">Enter Email or Server Address</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/enroll_4.png" title="/img/euc/registered-mode/enroll_4.png" data-thumbnail="/img/euc/registered-mode/enroll_4.png" data-sub-html="<h2>Enter Username and Password</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/enroll_4.png"
+            data-srcset="/img/euc/registered-mode/enroll_4.png, /img/euc/registered-mode/enroll_4.png 1.5x, /img/euc/registered-mode/enroll_4.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/enroll_4.png" />
+    </a><figcaption class="image-caption">Enter Username and Password</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/enroll_3.png" title="/img/euc/registered-mode/enroll_3.png" data-thumbnail="/img/euc/registered-mode/enroll_3.png" data-sub-html="<h2>Choose Ownership - Remember this must be set to Corporate Owned for DEEM and Sensors</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/enroll_3.png"
+            data-srcset="/img/euc/registered-mode/enroll_3.png, /img/euc/registered-mode/enroll_3.png 1.5x, /img/euc/registered-mode/enroll_3.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/enroll_3.png" />
+    </a><figcaption class="image-caption">Choose Ownership - Remember this must be set to Corporate Owned for DEEM and Sensors</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/enroll_2.png" title="/img/euc/registered-mode/enroll_2.png" data-thumbnail="/img/euc/registered-mode/enroll_2.png" data-sub-html="<h2>Data Collection Prompt</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/enroll_2.png"
+            data-srcset="/img/euc/registered-mode/enroll_2.png, /img/euc/registered-mode/enroll_2.png 1.5x, /img/euc/registered-mode/enroll_2.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/enroll_2.png" />
+    </a><figcaption class="image-caption">Data Collection Prompt</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/enroll_1.png" title="/img/euc/registered-mode/enroll_1.png" data-thumbnail="/img/euc/registered-mode/enroll_1.png" data-sub-html="<h2>Successfully Enrolled!</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/enroll_1.png"
+            data-srcset="/img/euc/registered-mode/enroll_1.png, /img/euc/registered-mode/enroll_1.png 1.5x, /img/euc/registered-mode/enroll_1.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/enroll_1.png" />
+    </a><figcaption class="image-caption">Successfully Enrolled!</figcaption>
+    </figure></p>
+<h2 id="management-option-in-uem">Management Option in UEM</h2>
+<blockquote>
+<p><em>Explained through screenshots. Click through the pictures for a better experience</em></p>
+</blockquote>
+<p><figure><a class="lightgallery" href="/img/euc/registered-mode/manage_3.png" title="/img/euc/registered-mode/manage_3.png" data-thumbnail="/img/euc/registered-mode/manage_3.png" data-sub-html="<h2>Management Options for Administrator</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/manage_3.png"
+            data-srcset="/img/euc/registered-mode/manage_3.png, /img/euc/registered-mode/manage_3.png 1.5x, /img/euc/registered-mode/manage_3.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/manage_3.png" />
+    </a><figcaption class="image-caption">Management Options for Administrator</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/manage_2.png" title="/img/euc/registered-mode/manage_2.png" data-thumbnail="/img/euc/registered-mode/manage_2.png" data-sub-html="<h2>A look at Baselines and More Options</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/manage_2.png"
+            data-srcset="/img/euc/registered-mode/manage_2.png, /img/euc/registered-mode/manage_2.png 1.5x, /img/euc/registered-mode/manage_2.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/manage_2.png" />
+    </a><figcaption class="image-caption">A look at Baselines and More Options</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/manage_1.png" title="/img/euc/registered-mode/manage_1.png" data-thumbnail="/img/euc/registered-mode/manage_1.png" data-sub-html="<h2>Management of Profiles (Tunnel Only)</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/manage_1.png"
+            data-srcset="/img/euc/registered-mode/manage_1.png, /img/euc/registered-mode/manage_1.png 1.5x, /img/euc/registered-mode/manage_1.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/manage_1.png" />
+    </a><figcaption class="image-caption">Management of Profiles (Tunnel Only)</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/manage.png" title="/img/euc/registered-mode/manage.png" data-thumbnail="/img/euc/registered-mode/manage.png" data-sub-html="<h2>Options for Remote Management</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/manage.png"
+            data-srcset="/img/euc/registered-mode/manage.png, /img/euc/registered-mode/manage.png 1.5x, /img/euc/registered-mode/manage.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/manage.png" />
+    </a><figcaption class="image-caption">Options for Remote Management</figcaption>
+    </figure></p>
+<h2 id="end-user-experience">End User Experience</h2>
+<blockquote>
+<p><em>Explained through screenshots. Click through the pictures for a better experience</em></p>
+</blockquote>
+<p><figure><a class="lightgallery" href="/img/euc/registered-mode/enduser_5.png" title="/img/euc/registered-mode/enduser_5.png" data-thumbnail="/img/euc/registered-mode/enduser_5.png" data-sub-html="<h2>Hub Experience - Favorites</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/enduser_5.png"
+            data-srcset="/img/euc/registered-mode/enduser_5.png, /img/euc/registered-mode/enduser_5.png 1.5x, /img/euc/registered-mode/enduser_5.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/enduser_5.png" />
+    </a><figcaption class="image-caption">Hub Experience - Favorites</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/enduser_4.png" title="/img/euc/registered-mode/enduser_4.png" data-thumbnail="/img/euc/registered-mode/enduser_4.png" data-sub-html="<h2>Hub Experience - People Search</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/enduser_4.png"
+            data-srcset="/img/euc/registered-mode/enduser_4.png, /img/euc/registered-mode/enduser_4.png 1.5x, /img/euc/registered-mode/enduser_4.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/enduser_4.png" />
+    </a><figcaption class="image-caption">Hub Experience - People Search</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/enduser_3.png" title="/img/euc/registered-mode/enduser_3.png" data-thumbnail="/img/euc/registered-mode/enduser_3.png" data-sub-html="<h2>Hub Experience - Support tab</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/enduser_3.png"
+            data-srcset="/img/euc/registered-mode/enduser_3.png, /img/euc/registered-mode/enduser_3.png 1.5x, /img/euc/registered-mode/enduser_3.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/enduser_3.png" />
+    </a><figcaption class="image-caption">Hub Experience - Support tab</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/enduser_1.png" title="/img/euc/registered-mode/enduser_1.png" data-thumbnail="/img/euc/registered-mode/enduser_1.png" data-sub-html="<h2>Tunnel Connected on Device as configured for DTR</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/enduser_1.png"
+            data-srcset="/img/euc/registered-mode/enduser_1.png, /img/euc/registered-mode/enduser_1.png 1.5x, /img/euc/registered-mode/enduser_1.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/enduser_1.png" />
+    </a><figcaption class="image-caption">Tunnel Connected on Device as configured for DTR</figcaption>
+    </figure></p>
+<h2 id="remote-management-admin-experience">Remote Management Admin Experience</h2>
+<blockquote>
+<p><em>Explained through screenshots. Click through the pictures for a better experience</em></p>
+</blockquote>
+<p><figure><a class="lightgallery" href="/img/euc/registered-mode/rm_admin_5.png" title="/img/euc/registered-mode/rm_admin_5.png" data-thumbnail="/img/euc/registered-mode/rm_admin_5.png" data-sub-html="<h2>Remote Management Options for Administrator</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/rm_admin_5.png"
+            data-srcset="/img/euc/registered-mode/rm_admin_5.png, /img/euc/registered-mode/rm_admin_5.png 1.5x, /img/euc/registered-mode/rm_admin_5.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/rm_admin_5.png" />
+    </a><figcaption class="image-caption">Remote Management Options for Administrator</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/rm_admin_4.png" title="/img/euc/registered-mode/rm_admin_4.png" data-thumbnail="/img/euc/registered-mode/rm_admin_4.png" data-sub-html="<h2>Initiating a Remote Screen Share</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/rm_admin_4.png"
+            data-srcset="/img/euc/registered-mode/rm_admin_4.png, /img/euc/registered-mode/rm_admin_4.png 1.5x, /img/euc/registered-mode/rm_admin_4.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/rm_admin_4.png" />
+    </a><figcaption class="image-caption">Initiating a Remote Screen Share</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/rm_admin_3.png" title="/img/euc/registered-mode/rm_admin_3.png" data-thumbnail="/img/euc/registered-mode/rm_admin_3.png" data-sub-html="<h2>Connecting to a Device</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/rm_admin_3.png"
+            data-srcset="/img/euc/registered-mode/rm_admin_3.png, /img/euc/registered-mode/rm_admin_3.png 1.5x, /img/euc/registered-mode/rm_admin_3.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/rm_admin_3.png" />
+    </a><figcaption class="image-caption">Connecting to a Device</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/rm_admin_2.png" title="/img/euc/registered-mode/rm_admin_2.png" data-thumbnail="/img/euc/registered-mode/rm_admin_2.png" data-sub-html="<h2>Attend Mode PIN for Remote Screen Share</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/rm_admin_2.png"
+            data-srcset="/img/euc/registered-mode/rm_admin_2.png, /img/euc/registered-mode/rm_admin_2.png 1.5x, /img/euc/registered-mode/rm_admin_2.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/rm_admin_2.png" />
+    </a><figcaption class="image-caption">Attend Mode PIN for Remote Screen Share</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/rm_admin_1.png" title="/img/euc/registered-mode/rm_admin_1.png" data-thumbnail="/img/euc/registered-mode/rm_admin_1.png" data-sub-html="<h2>Remote Management Screen Share Admin Experience</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/rm_admin_1.png"
+            data-srcset="/img/euc/registered-mode/rm_admin_1.png, /img/euc/registered-mode/rm_admin_1.png 1.5x, /img/euc/registered-mode/rm_admin_1.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/rm_admin_1.png" />
+    </a><figcaption class="image-caption">Remote Management Screen Share Admin Experience</figcaption>
+    </figure></p>
+<h2 id="remote-management-end-user-experience">Remote Management End User Experience</h2>
+<blockquote>
+<p><em>Explained through screenshots. Click through the pictures for a better experience</em></p>
+</blockquote>
+<p><figure><a class="lightgallery" href="/img/euc/registered-mode/rm_enduser_2.png" title="/img/euc/registered-mode/rm_enduser_2.png" data-thumbnail="/img/euc/registered-mode/rm_enduser_2.png" data-sub-html="<h2>Remote Management PIN prompt</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/rm_enduser_2.png"
+            data-srcset="/img/euc/registered-mode/rm_enduser_2.png, /img/euc/registered-mode/rm_enduser_2.png 1.5x, /img/euc/registered-mode/rm_enduser_2.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/rm_enduser_2.png" />
+    </a><figcaption class="image-caption">Remote Management PIN prompt</figcaption>
+    </figure>
+<figure><a class="lightgallery" href="/img/euc/registered-mode/rm_enduser_1.png" title="/img/euc/registered-mode/rm_enduser_1.png" data-thumbnail="/img/euc/registered-mode/rm_enduser_1.png" data-sub-html="<h2>Remote Management Screen Share User Experience</h2>">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/img/euc/registered-mode/rm_enduser_1.png"
+            data-srcset="/img/euc/registered-mode/rm_enduser_1.png, /img/euc/registered-mode/rm_enduser_1.png 1.5x, /img/euc/registered-mode/rm_enduser_1.png 2x"
+            data-sizes="auto"
+            alt="/img/euc/registered-mode/rm_enduser_1.png" />
+    </a><figcaption class="image-caption">Remote Management Screen Share User Experience</figcaption>
+    </figure></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2021-10-03&nbsp;<a class="git-hash" href="https://github.com/pksrc/commit/38b782a496ad522313022455e0faab90a281fe76" target="_blank" title="commit by pksrc(partheeban.kandasamy@gmail.com) 38b782a496ad522313022455e0faab90a281fe76: Post: Registered Mode on Windows">
+                                    <i class="fas fa-hashtag fa-fw"></i>38b782a</a></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share sharebtns">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/registered-mode/" data-title="Registered mode w/ a focus on Windows 10" data-hashtags="Windows10,RegisteredMode"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/registered-mode/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/registered-mode/" data-title="Registered mode w/ a focus on Windows 10" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/registered-mode/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/registered-mode/" data-title="Registered mode w/ a focus on Windows 10" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/windows10/">Windows10</a>,&nbsp;<a href="/tags/registeredmode/">RegisteredMode</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/post/the-flip-side/" class="prev" rel="prev" title="Welcome to the Flip Side"><i class="fas fa-angle-left fa-fw"></i>Welcome to the Flip Side</a></div>
+</div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div><h2 class="twitter-title">TWEETS</h2>
+            <div class="twitterfeed" id="twitter-auto" >
+                <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/">Tweets by </a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+            </div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2021</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.37.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.8/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.2.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery.js@1.2.0/dist/js/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-thumbnail.js@1.2.0/dist/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lg-zoom.js@1.2.0/dist/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.4.0/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":80},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"pathname","label":"","lightTheme":"github-light","repo":"pksrc/cloudtekki"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/lib/stripe-menu/menu.js"></script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'G-RYVG6M042F', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=G-RYVG6M042F" async></script></body>
+</html>
