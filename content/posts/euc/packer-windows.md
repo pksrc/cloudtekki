@@ -8,7 +8,7 @@ tags:
 - Windows
 - Packer
 - UEM
-featured: true
+featured: false
 ---
 
 In this post, I'll be covering how you can automate the process of building a Windows 10 images on your Lab. As a part of my daily job working with Workspace ONE Unified Endpoint Management, I work with a lot of Modern Management use cases and this requires testing various use cases on various versions of Windows 10. To always start with a clean image, I use Packer to build and enroll the device for me into my lab UEM tenant thus speeding up the process and reducing the probability for errors. 
