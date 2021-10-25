@@ -117,7 +117,7 @@ theme = "LoveIt"
   [params.social]
     GitHub = ""
     Linkedin = ""
-    Twitter = ""
+    Twitter = "pkblah"
     # Instagram = "xxxx"
     # Facebook = "xxxx"
     # Telegram = "xxxx"
@@ -326,7 +326,7 @@ theme = "LoveIt"
     maxShownLines = 80
   # KaTeX mathematical formulas config (KaTeX https://katex.org/)
   [params.page.math]
-    enable = false
+    enable = true
     # default block delimiter is $$ ... $$ and \\[ ... \\]
     blockLeftDelimiter = ""
     blockRightDelimiter = ""
