@@ -4,7 +4,14 @@
         <link>https://cloudtekki.com/categories/</link>
         <description>Categories - Category - Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sun, 03 Oct 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/categories/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sun, 10 Oct 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/categories/" rel="self" type="application/rss+xml" /><item>
+    <title>TWO CENTS</title>
+    <link>https://cloudtekki.com/categories/two-cents/</link>
+    <pubDate>Sun, 10 Oct 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/categories/two-cents/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>EUC</title>
     <link>https://cloudtekki.com/categories/euc/</link>
     <pubDate>Sun, 03 Oct 2021 00:00:00 &#43;0000</pubDate>
@@ -24,13 +31,6 @@
     <pubDate>Mon, 24 May 2021 00:00:00 &#43;0000</pubDate>
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/categories/access/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>TWO CENTS</title>
-    <link>https://cloudtekki.com/categories/two-cents/</link>
-    <pubDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/categories/two-cents/</guid>
     <description><![CDATA[]]></description>
 </item><item>
     <title>SDDC</title>
