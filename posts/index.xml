@@ -4,16 +4,31 @@
         <link>https://cloudtekki.com/posts/</link>
         <description>All Posts | Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sun, 10 Oct 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Chapter 5: Summing up My Field Experiences</title>
-    <link>https://cloudtekki.com/post/time-cx/</link>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sat, 06 Nov 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Being a Trusted Advisor</title>
+    <link>https://cloudtekki.com/post/trusted-advisor/</link>
+    <pubDate>Sat, 06 Nov 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/trusted-advisor/</guid>
+    <description><![CDATA[I&rsquo;ve spent close to a decade working with Customers and this blog post aims to summarize my most valuable learnings from working closely with Customers in the hopes that it will help others with their Customer Relationship Management!
+My entire customer experience can be summed up as - &ldquo;Working with the top tier Customers who need strategic, tactical and technical guidance on utilizing VMware Products effectively and achieving their Business Objectives!]]></description>
+</item><item>
+    <title>The Top 5 IT Team Challenges</title>
+    <link>https://cloudtekki.com/post/it-team-challenges/</link>
+    <pubDate>Sat, 06 Nov 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/it-team-challenges/</guid>
+    <description><![CDATA[I&rsquo;ve spent close to a decade working with Customers and this blog post aims to summarize my most valuable learnings from working closely with Customers in the hopes that it will help others with their Customer Relationship Management!
+My time with the Customers gave me a front row seat to various IT teams ranging from those that consider themselves inadequate (⚠️ SPOILER ALERT! ALMOST everyone thinks/knows that they have some issue - organizational silos, lack expertise, lack leadership, lack discipline or lack organization skills.]]></description>
+</item><item>
+    <title>Summing up Chapter 4, My Field Experiences</title>
+    <link>https://cloudtekki.com/post/field-lessons/</link>
     <pubDate>Sun, 10 Oct 2021 00:00:00 &#43;0000</pubDate>
     <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/post/time-cx/</guid>
+    <guid>https://cloudtekki.com/post/field-lessons/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/img/misc/time-cx/stones.jpeg" referrerpolicy="no-referrer">
-            </div>I&rsquo;m in my 3rd month of my Product Management career and as I get comfortable with the role, I&rsquo;ve realized that in this role I feel like I&rsquo;m thriving, adding value and making the most impact! These days, I am excited to get out of bed and I have trouble sleeping because I&rsquo;m already excited about what I can accomplish the next day!
-As I look back at my Journey to be a well rounded Product Manager, I realize that it started when I was a 2 years into my fresh out of college developer role.]]></description>
+            </div>I&rsquo;ve just crossed the 90 day mark on my recent Product Management stint with the Employee Experience team with Workspace ONE. As I get comfortable with the role, I&rsquo;ve come to realize that in this role I feel like I&rsquo;m thriving, adding value and making the most impact! These days, I am excited to get out of bed and I have trouble sleeping because I&rsquo;m already excited about what I can accomplish the next day!]]></description>
 </item><item>
     <title>Registered mode w/ a focus on Windows 10</title>
     <link>https://cloudtekki.com/post/registered-mode/</link>
@@ -70,23 +85,5 @@ Features  Unified Visibility: Workspace ONE Intelligence aggregates and correlat
     <guid>https://cloudtekki.com/post/access-migration-u1/</guid>
     <description><![CDATA[This is a quick post covering an exciting update to the Workspace ONE Access Migration Tool. If you are interested in learning more about the tool, please check out these resources -
  Why was this Migration tool built? How can you use it? Download the Migration tool  Access Migration Tool - Logo" Access Migration Tool - Logo  As a quick recap, the fling allows easy migration of Apps (excluding virtual apps) from one WS1 Access tenant to another (both on-prem to SaaS as well as SaaS to SaaS) by preserving the user experience as much as possible while reducing the migration effort by automating these major tasks -]]></description>
-</item><item>
-    <title>The Art of Influence and Persuasion</title>
-    <link>https://cloudtekki.com/post/art-of-influence/</link>
-    <pubDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/post/art-of-influence/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/misc/influence/influence.png" referrerpolicy="no-referrer">
-            </div>Recently I had the opportunity to lead a Project where I had to define a scalable process (repeatable by nature) that streamlines a customer's product adoption experience for a particular use case. When adopting a product or a solution to any use case, a Customer would typically work with multiple teams. The journey starts from a Customer evaluating a new product and all the way to installing and managing the product.]]></description>
-</item><item>
-    <title>Fling: Migration tool for WS1 Access</title>
-    <link>https://cloudtekki.com/post/access-migration/</link>
-    <pubDate>Tue, 23 Feb 2021 23:58:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/post/access-migration/</guid>
-    <description><![CDATA[Migration?&hellip;Migraine?&hellip; When it comes to migration scenarios, the most involved and difficult migration within the EUC lineup (that I can think of) is the WS1 Access tenant migration. It is equivalent to adopting a new IDP solution as you&rsquo;ll have to re-federate all the apps in order to successfully complete a migration.
-And this is case regardless of where you are trying to move from -
-On-Premise to SaaS  As Cloud is picking up steam and as features are developed with a cloud-first mentality, tt makes sense to offload the management of the Access Service to VMware This scenario is also getting more common as Access and Hub Services are FedRAMP certified as of CY Q4 2020  SaaS to SaaS  This is a not very common use case but few situations demand them nonetheless predominantly due to issues arising from high customization entertained early in the product adoption lifecycle Another use case for is populating a UAT or a DEV tenant with Apps from another tenant   Path to Migration First and foremost, a migration is possible as documented in @williamsmt blog which provides a detailed walk through of the entire migration approach.]]></description>
 </item></channel>
 </rss>
