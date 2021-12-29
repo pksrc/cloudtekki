@@ -4,9 +4,18 @@
         <link>https://cloudtekki.com/</link>
         <description>Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Sat, 06 Nov 2021 00:00:00 &#43;0000</lastBuildDate>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Wed, 29 Dec 2021 00:00:00 &#43;0000</lastBuildDate>
             <atom:link href="https://cloudtekki.com/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>2021: Taking Back The Reins</title>
+    <link>https://cloudtekki.com/post/looking-back-at-2021/</link>
+    <pubDate>Wed, 29 Dec 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/looking-back-at-2021/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/misc/2021/year-2021.jpeg" referrerpolicy="no-referrer">
+            </div>Reflecting on 2021 Don&rsquo;t you also still think that last year was 2019? 😣 2021felt like such a repeat of 2020 that it didn&rsquo;t feel like a different year! For instance, we have still not recovered from the economic effects of the pandemic and are starting to feel its effects mentally and emotionally. International travel is still largely not possible and thus my wife and I are equally homesick as we&rsquo;ve not been back home in almost 5 years and it doesn&rsquo;t look like it is going to change!]]></description>
+</item><item>
     <title>Being a Trusted Advisor</title>
     <link>https://cloudtekki.com/post/trusted-advisor/</link>
     <pubDate>Sat, 06 Nov 2021 00:00:00 &#43;0000</pubDate>
@@ -79,13 +88,5 @@ What problem does this solve? This blog post is targeted at Workspace ONE UEM ad
     <guid>https://cloudtekki.com/post/intel-custom-connector/</guid>
     <description><![CDATA[What is Workspace ONE Intelligence? Workspace ONE Intelligence is the mainstream data analytics product within the Workspace ONE product suite. It allows you to tap into a wide array of data sources (from UEM, SDK enabled apps, Access and others) to get unique Insights &amp; Automation capabilities over your End User Computing landscape!
 Features  Unified Visibility: Workspace ONE Intelligence aggregates and correlates device, application and user data together in one place to deliver a complete view of the entire digital workspace environment.]]></description>
-</item><item>
-    <title>Update 1: Migration tool for WS1 Access</title>
-    <link>https://cloudtekki.com/post/access-migration-u1/</link>
-    <pubDate>Wed, 14 Apr 2021 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/post/access-migration-u1/</guid>
-    <description><![CDATA[This is a quick post covering an exciting update to the Workspace ONE Access Migration Tool. If you are interested in learning more about the tool, please check out these resources -
- Why was this Migration tool built? How can you use it? Download the Migration tool  Access Migration Tool - Logo" Access Migration Tool - Logo  As a quick recap, the fling allows easy migration of Apps (excluding virtual apps) from one WS1 Access tenant to another (both on-prem to SaaS as well as SaaS to SaaS) by preserving the user experience as much as possible while reducing the migration effort by automating these major tasks -]]></description>
 </item></channel>
 </rss>
