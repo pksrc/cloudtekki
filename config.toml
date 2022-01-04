@@ -99,13 +99,15 @@ theme = "LoveIt"
       # title shown in home page
       title = "Demystifying Technology for those that strive to thrive"
       # subtitle shown in home page
-      subtitle = 'CLOUD TEKKI® is managed by PK (short for Partheeban Kandasamy) who is currently a Staff Customer Success Architect at VMware. PK, a Technology Generalist aims to explore new ideas and their implementation techniques that make Digital Transformation possible. Topics will be focussed around Cloud, Cloud Native Technologies, Automation Technologies, End User Computing and the synergy between People, Process and Product'
+      subtitle = 'CLOUD TEKKI® aims to explore new ideas and their implementation techniques that make Digital Transformation possible. Topics will be focussed around Cloud, Cloud Native Technologies, Automation Technologies, End User Computing and the synergy between People, Process and Product'
       # whether to use typeit animation for subtitle
       typeit = false
       # whether to show social links
       social = true
       # disclaimer (HTML format is supported)
-      disclaimer = "All opinions are my own. Content will evolve. Please remember to link and credit"
+      disclaimer = "DISCLAIMER: All opinions are Author's own. Content will evolve. Please remember to link and credit"
+      # guest posts enabled
+      guest = "Contributions from fellow Technologists are welcome. Quick start guide for [Windows](/gettingstarted/hugo-windows/) or [macOS](/gettingstarted/hugo-mac/)"
     # Home page posts
     [params.home.posts]
       enable = true
@@ -113,22 +115,22 @@ theme = "LoveIt"
       paginate = 10
   # Social config in home page
   [params.social]
-    GitHub = "pksrc"
-    Linkedin = "pky"
+    GitHub = ""
+    Linkedin = ""
     Twitter = "pkblah"
     # Instagram = "xxxx"
     # Facebook = "xxxx"
     # Telegram = "xxxx"
-    Medium = "@pkblah"
+    Medium = ""
     # Gitlab = ""
     # Youtubelegacy = "xxxx"
     # Youtubecustom = ""
-    Youtubechannel = "UCxHitYi8Y7tZ8CS_y4OR0uA"
+    Youtubechannel = ""
     # Tumblr = ""
     # Quora = ""
     # Keybase = ""
     # Pinterest = ""
-    Reddit = "pkbu"
+    Reddit = ""
     # Codepen = ""
     # FreeCodeCamp = ""
     # Bitbucket = ""
@@ -174,7 +176,7 @@ theme = "LoveIt"
     # XMPP = ""
     # Matrix = ""
     # Bilibili = ""
-    Email = "partheeban.kandasamy@gmail.com"
+    Email = ""
     RSS = true
 
 [params.css]
@@ -221,7 +223,7 @@ theme = "LoveIt"
 [[menu.main]]
   identifier = "about-pk"
   pre = "<i class='fas fa-user-circle fa-fw author'></i>"
-  post = "<b>Staff CSA @ VMW EUC</b> <br/> vExpert '20 <br/> <b>Passion:</b> Automation, EUC, Cloud, Serverless, k8s, Homelab"
+  post = "<b>Sr. Product Manager @ VMW EUC</b> <br/> vExpert '20, '21 <br/> <b>Passion:</b> Automation, EUC, Cloud, Serverless, k8s, Homelab"
   parent = "about"
   title = ""
   weight = 4
@@ -324,7 +326,7 @@ theme = "LoveIt"
     maxShownLines = 80
   # KaTeX mathematical formulas config (KaTeX https://katex.org/)
   [params.page.math]
-    enable = false
+    enable = true
     # default block delimiter is $$ ... $$ and \\[ ... \\]
     blockLeftDelimiter = ""
     blockRightDelimiter = ""

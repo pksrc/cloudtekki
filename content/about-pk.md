@@ -35,24 +35,26 @@ draft: false
 
 ## Who is P.K?
 
-P.K short for Partheeban Kandasamy is a Staff Customer Success Architect. P.K started his career as a Java Web Developer and after completing his Masters in Information Systems spent several years at VMware as a Technical Advocate to several high profile Customers. 
+P.K short for Partheeban Kandasamy is a Senior Product Manager w/ VMware EUC. P.K started his career as a Java Web Developer and after completing his Masters in Information Systems spent several years at VMware as a Technical Advocate to several high profile Customers. 
 
 With over 12 years working in the intersection of Technology and People, he brings an unique combination of technical prowess, emotional intelligence and user empathy to solve difficult problems
 
 
 ## Recent Accomplishments
 
+- WS1 Office Hours Video - [Expanding WS1 Intelligent Hub w/ Hub Services](https://www.youtube.com/watch?v=VAe2sc3XObI)
+- vExpert [2020, 2021](https://vexpert.vmware.com/directory/6554)
+- VCP - DWS [2021](https://www.credly.com/users/partheeban-kandasamy.50147f41/badges)
 - VMworld 2020 - [Arm yourself with Event Driven Functions](https://www.vmworld.com/en/video-library/video-landing.html?sessionid=15863800295950014HrA)
 - Built the website for VMware Event Driven Automation - [website](https://vmweventbroker.io)
 - Code contribution towards VMware Event Driven Automation - [github](https://github.com/vmware-samples/vcenter-event-broker-appliance/commits?author=pksrc)
-- vExpert [2020](https://vexpert.vmware.com/directory/6554)
-- VCP - DWS [2019](https://www.youracclaim.com/badges/aaebc3f5-ad45-4639-859a-734b1e9d8393)
+- VCP - DWS [2019](https://www.credly.com/users/partheeban-kandasamy.50147f41/badges)
 
 ## Career 
 
-Currently, Staff Customer Success Architect for VMware EUC focussed on building the right solutions to everyday problems. 
+Currently, Senior Product Manager for VMware EUC focussed on building the right solutions to everyday problems. 
 
-more details here at [about.pdotk.com](https://about.pdotk.com)
+more details here at [about pk](https://linkedin.com/in/pky)
 
 
 

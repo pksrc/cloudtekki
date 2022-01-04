@@ -10,6 +10,7 @@ tags:
 - Monitoring
 - Day2Ops
 lightgallery: true
+featured: true
 ---
 {{<image src="/img/euc/eso/eso-round.png" caption="Edge Services Observability">}}
 <p class="cap">
@@ -25,10 +26,13 @@ ESO is delivered as a _ready-to-deploy_ virtual appliance, containing the follow
 > **Bonus:** Sample Dashboards included for VMware Tunnel, VMware Horizon and ESO Appliance metrics
  3. Ability to setup alerts based on configurable triggers
 
+## Download
+
+Download the OVA file from [VMware Flings Site](https://flings.vmware.com/edge-services-observability "VMware Flings")
+
 ## Deployment
- 1. Download the OVA file from [VMware Flings Site](https://flings.vmware.com/edge-services-observability "VMware Flings")
- 2. Use vCenter to “Deploy OVF Template”
- 3. Customize the following properties as required:
+ 1. Use vCenter to “Deploy OVF Template”
+ 2. Customize the following properties as required:
 	- Network Properties
 	- Password for logging into the Appliance Operating System (SSH/ vCenter Console)
 	- Password for accessing Admin Portal and Dashboards Page
@@ -83,72 +87,103 @@ ESO is delivered as a _ready-to-deploy_ virtual appliance, containing the follow
 > **Note:** The sample dashboards provided contain panels (widgets) for visualizing curated metrics from VMware Tunnel and VMware Horizon Edge Services. However, as an administrator you have the option to configure any of the additionally available metrics as widgets for the existing dashboards, as well as build new dashboards for other Edge Services as needed. Please refer to the “Tips & Tricks” section for steps to configure additional metrics in Dashboard as a widget/panel.
  
 ## Tips & Tricks
-### Admin Portal
-1. How to obtain UAG Admin Portal's (served on port 9443) certificate thumbprint?
-	- Install openssl on your Operating System and run
-		- macOS/Linux
-		``` openssl s_client -connect uag_hostname:9443 < /dev/null 2>/dev/null | openssl x509 -fingerprint -noout -in /dev/stdin -sha256 ```
 
-		- Windows <br>
-		``` openssl s_client -connect uag_hostname:9443 | openssl x509 -fingerprint -noout -sha256 ```
-		
-	- Thumbprint Format
-		- A thumbprint is in the format __alg=xx:xx__, where _alg_ can either be the SHA1, SHA256; _xx:xx_ are hexadecimal digits
-		- Eg: SHA256=2C:C4:40:7A:5C:01:7A:66:AE:47:ED:FA:0B:F6:D9:86:AA:EA:25:AE:BD:9F:E4:3F:AC:AC:91:2F:E8:56:14:6
-2. What do the "Polling states" listed on the "Manage UAGS" page indicate?
-	- **INIT**: UAG has been added and waiting for the system to begin querying
-	- **PAUSED**: The UAG was reachable but returned an unexpected http(not 200) response (retry will occur after 30 minutes after last state change)
-	- **ERROR**: Error occurred when reaching the UAG (retry will occur after 30 minutes after last state change)
-	- **CHECK**: A transient state that tells the system to validate the certificate of the UAG
-	- **POLLING**: Successfully querying the UAG and data is being processed
-3. What should you do when you see an "Error" under "Polling State"?
-	{{<image src="/img/euc/eso/eso_34.png" caption="ESO Admin Portal - Error Polling State">}}
-	- Check if the UAG is active - specifically the stats URL at https://uag-hostname:9443/rest/v1/monitor/stats
-	- Ensure that you have provided the correct credentials (password expires every 90 days) and thumbprint for certificate presented by the UAG stats URL
-	- Wait 30 minutes (from the last state change time). Once in Error state, the system will stop reaching out to the UAG for 30 minutes and only after 30 minutes from the last state change will another attempt be made again
-	- If issue persists, check logs at /root/manager/log/exporter.log and file a bug at Project ESO Fling with relevant screenshots and logs
-4. How do you reset password to login to ESO Admin Portal?
-	- SSH into the ESO Virtual Appliance
-	- Run the following command to reset password for ESO Admin Portal
-		``` curl -i -X PATCH -H "Content-Type: application/json" -d '{"username":"admin","password":"enter new password here"}' http://127.0.0.1:5000/api/users ```
+### Admin Portal
+
+#### 1. Obtaining Certificate Thumbprint
+
+**How to obtain UAG Admin Portal's (served on port 9443) certificate thumbprint?**
+- Install openssl on your Operating System and run
+- macOS/Linux
+``` openssl s_client -connect uag_hostname:9443 < /dev/null 2>/dev/null | openssl x509 -fingerprint -noout -in /dev/stdin -sha256 ```
+
+- Windows <br>
+``` openssl s_client -connect uag_hostname:9443 | openssl x509 -fingerprint -noout -sha256 ```
+
+- Thumbprint Format
+- A thumbprint is in the format __alg=xx:xx__, where _alg_ can either be the SHA1, SHA256; _xx:xx_ are hexadecimal digits
+- Eg: SHA256=2C:C4:40:7A:5C:01:7A:66:AE:47:ED:FA:0B:F6:D9:86:AA:EA:25:AE:BD:9F:E4:3F:AC:AC:91:2F:E8:56:14:6
+
+#### 2. Polling States
+
+**What do the "Polling states" listed on the "Manage UAGS" page indicate?**
+- **INIT**: UAG has been added and waiting for the system to begin querying
+- **PAUSED**: The UAG was reachable but returned an unexpected http(not 200) response (retry will occur after 30 minutes after last state change)
+- **ERROR**: Error occurred when reaching the UAG (retry will occur after 30 minutes after last state change)
+- **CHECK**: A transient state that tells the system to validate the certificate of the UAG
+- **POLLING**: Successfully querying the UAG and data is being processed
+
+#### 3. Polling State - ERROR
+
+**What should you do when you see an "Error" under "Polling State"?**
+{{<image src="/img/euc/eso/eso_34.png" caption="ESO Admin Portal - Error Polling State">}}
+- Check if the UAG is active - specifically the stats URL at https://uag-hostname:9443/rest/v1/monitor/stats
+- Ensure that you have provided the correct credentials (password expires every 90 days) and thumbprint for certificate presented by the UAG stats URL
+- Wait 30 minutes (from the last state change time). Once in Error state, the system will stop reaching out to the UAG for 30 minutes and only after 30 minutes from the last state change will another attempt be made again
+- If issue persists, check logs at /root/manager/log/exporter.log and file a bug at Project ESO Fling with relevant screenshots and logs
+
+#### 4. Reset ESO Admin Password
+
+**How do you reset password to login to ESO Admin Portal?**
+- SSH into the ESO Virtual Appliance
+- Run the following command to reset password for ESO Admin Portal
+``` curl -i -X PATCH -H "Content-Type: application/json" -d '{"username":"admin","password":"enter new password here"}' http://127.0.0.1:5000/api/users ```
 
 ### Dashboards
-1. How frequently is the ESO polling the UAGS for metrics?
-	- ESO polls the configured list of UAGS every 1 minute for metrics
-2. What is the data retention period in ESO for the metrics polled from UAGs?
-	- Currently, metrics are stored for 30 days
-3. How to configure additional metrics as widgets?
-	- From the Dashboards page, click on "Add Panel"
-	{{<image src="/img/euc/eso/eso_32.png" caption="Dashboards - Add Panel">}}
-	- Navigate to the "Query" tab on the bottom of the page
-	{{<image src="/img/euc/eso/eso_28.png" caption="Dashboards - Add Panel - New Metrics Query">}}
-	- Click on the dropdown next to "Metrics"
-	- All available metrics polled (as applicable) are listed in the dropdown
-	- Select the desired metric from the list
-	- Provide a title to the Panel, adjust the Visualization settings on the right pane as required
-	- Click on 'Apply' on the top right section of the page
-4. What should you do when you see "No Data" in a panel (widget) on one of the sample dashboards?
-	{{<image src="/img/euc/eso/eso_44.png" caption="Dashboards Panel - No Data">}}
-	- The sample dashbaords are built based on metrics query polled from UAG version 20.9. It is possible that the configured metric is available under a different name in the UAG version used in your environment
-	- In such a case, the administrator has the option to edit the panel to reconfigure the query to use the updated metric (as applicable)
-	- To edit the panel, right-click the panel title and select "Edit"
-	{{<image src="/img/euc/eso/eso_49.png" caption="Dashboards - Edit Panel">}}
-	- Navigate to the "Query" tab on the bottom of the page
-	- The "Metrics" dropdown lists all the metrics available from the configured UAGs to be used in the Dashboard
-	{{<image src="/img/euc/eso/eso_45.png" caption="Dashboards - Edit Panel - Metrics Query">}}
-	- Update the query by selecting the required metric from the "Metrics" dropdown
-	{{<image src="/img/euc/eso/eso_46.png" caption="Dashboards - Edit Panel - Update Query">}}
-	- Click on 'Apply' on the top right section of the page
 
-5. How to monitor the performance of ESO Appliance itself?
-	- From the Dashboards menu, select "Manage" 
-	- Select the "ESO Appliance Stats" dashboard
-	{{<image src="/img/euc/eso/eso_21.png" caption="ESO Appliance Stats">}}
-	- This dashboard contains widgets for monitoring performance metrics (CPU, Disk, Memory, System, Network) from the ESO Appliance
-	{{<image src="/img/euc/eso/eso_26.png" caption="ESO Appliance Stats">}}
+#### 1. Polling Frequency
 
-## What Next
-We are evaluating integration options with various tools including serverless functions to orchestrate workflow actions based on ESO telemetry. There is certainly a lot more to come on that front, so stay tuned ...
+**How frequently is the ESO polling the UAGS for metrics?**
+- ESO polls the configured list of UAGS every 1 minute for metrics
+
+#### 2. Data Retention Period
+
+**What is the data retention period in ESO for the metrics polled from UAGs?**
+- Currently, metrics are stored for 30 days
+
+#### 3. Adding Metrics and Panels
+
+**How to configure additional metrics as widgets?**
+- From the Dashboards page, click on "Add Panel"
+{{<image src="/img/euc/eso/eso_32.png" caption="Dashboards - Add Panel">}}
+- Navigate to the "Query" tab on the bottom of the page
+{{<image src="/img/euc/eso/eso_28.png" caption="Dashboards - Add Panel - New Metrics Query">}}
+- Click on the dropdown next to "Metrics"
+- All available metrics polled (as applicable) are listed in the dropdown
+- Select the desired metric from the list
+- Provide a title to the Panel, adjust the Visualization settings on the right pane as required
+- Click on 'Apply' on the top right section of the page
+
+#### 4. No Data in Panel
+
+**What should you do when you see "No Data" in a panel (widget) on one of the sample dashboards?**
+{{<image src="/img/euc/eso/eso_44.png" caption="Dashboards Panel - No Data">}}
+- The sample dashboards are built based on metrics query polled from UAG version 20.12. It is possible that the configured metric is available under a different name in the UAG version used in your environment
+- In such a case, the administrator has the option to edit the panel to reconfigure the query to use the updated metric (as applicable)
+- To edit the panel, right-click the panel title and select "Edit"
+{{<image src="/img/euc/eso/eso_49.png" caption="Dashboards - Edit Panel">}}
+- Navigate to the "Query" tab on the bottom of the page
+- The "Metrics" dropdown lists all the metrics available from the configured UAGs to be used in the Dashboard
+{{<image src="/img/euc/eso/eso_45.png" caption="Dashboards - Edit Panel - Metrics Query">}}
+- Update the query by selecting the required metric from the "Metrics" dropdown
+{{<image src="/img/euc/eso/eso_46.png" caption="Dashboards - Edit Panel - Update Query">}}
+- Click on 'Apply' on the top right section of the page
+
+#### 5. Monitoring ESO 
+
+**How to monitor the performance of ESO Appliance itself?**
+- From the Dashboards menu, select "Manage" 
+- Select the "ESO Appliance Stats" dashboard
+{{<image src="/img/euc/eso/eso_21.png" caption="ESO Appliance Stats">}}
+- This dashboard contains widgets for monitoring performance metrics (CPU, Disk, Memory, System, Network) from the ESO Appliance
+{{<image src="/img/euc/eso/eso_26.png" caption="ESO Appliance Stats">}}
+
+## What Next?
+We are evaluating 
+- alerting and integration options with various tools including serverless functions to orchestrate workflow actions based on ESO telemetry
+- adding more metrics to be available in the dashboards (only numerical values are supported today)
+
+There is certainly a lot more to come on that front, so stay tuned ...
 
 ## Credits
 I'd like to thank [P.K](https://cloudtekki.com/about-pk/) for the opportunity to collaborate on this Fling and for being an amazing mentor throughout this process.
