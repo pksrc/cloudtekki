@@ -19,25 +19,16 @@
     <pubDate>Sat, 06 Nov 2021 00:00:00 &#43;0000</pubDate>
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/trusted-advisor/</guid>
-    <description><![CDATA[I&rsquo;ve spent close to a decade working with Customers and this blog post aims to summarize my most valuable learnings from working closely with Customers in the hopes that it will help others with their Customer Relationship Management!
-My entire customer experience can be summed up as - &ldquo;Working with the top tier Customers who need strategic, tactical and technical guidance on utilizing VMware Products effectively and achieving their Business Objectives!]]></description>
+    <description><![CDATA[I&rsquo;ve spent a lot of time working closely with Customers and this blog post aims to summarize my most valuable learnings from those interaction in the hopes that it will help others with their Customer Relationship Management!
+My entire customer experience can be summed up as - &ldquo;Working with the top tier Customers who need strategic, tactical and technical guidance on utilizing VMware Products effectively and achieving their Business Objectives!&rdquo;. Over the years I&rsquo;d worked with around 20 of the Fortune 500 Companies and I ensured that I left a lasting impression by providing great Customer Service.]]></description>
 </item><item>
     <title>The Top 5 IT Team Challenges</title>
     <link>https://cloudtekki.com/post/it-team-challenges/</link>
     <pubDate>Sat, 06 Nov 2021 00:00:00 &#43;0000</pubDate>
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/it-team-challenges/</guid>
-    <description><![CDATA[I&rsquo;ve spent close to a decade working with Customers and this blog post aims to summarize my most valuable learnings from working closely with Customers in the hopes that it will help others with their Customer Relationship Management!
+    <description><![CDATA[I&rsquo;ve spent a lot of time working closely with Customers and this blog post aims to summarize my most valuable learnings from those interaction in the hopes that it will help others with their Customer Relationship Management!
 My time with the Customers gave me a front row seat to various IT teams ranging from those that consider themselves inadequate (⚠️ SPOILER ALERT! ALMOST everyone thinks/knows that they have some issue - organizational silos, lack expertise, lack leadership, lack discipline or lack organization skills.]]></description>
-</item><item>
-    <title>Summing up Chapter 4, My Field Experiences</title>
-    <link>https://cloudtekki.com/post/field-lessons/</link>
-    <pubDate>Sun, 10 Oct 2021 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/post/field-lessons/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/misc/time-cx/stones.jpeg" referrerpolicy="no-referrer">
-            </div>I&rsquo;ve just crossed the 90 day mark on my recent Product Management stint with the Employee Experience team with Workspace ONE. As I get comfortable with the role, I&rsquo;ve come to realize that in this role I feel like I&rsquo;m thriving, adding value and making the most impact! These days, I am excited to get out of bed and I have trouble sleeping because I&rsquo;m already excited about what I can accomplish the next day!]]></description>
 </item><item>
     <title>Registered mode w/ a focus on Windows 10</title>
     <link>https://cloudtekki.com/post/registered-mode/</link>
@@ -85,5 +76,14 @@ Features Unified Visibility: Workspace ONE Intelligence aggregates and correlate
     <guid>https://cloudtekki.com/post/access-migration-u1/</guid>
     <description><![CDATA[This is a quick post covering an exciting update to the Workspace ONE Access Migration Tool. If you are interested in learning more about the tool, please check out these resources -
 Why was this Migration tool built? How can you use it? Download the Migration tool Access Migration Tool - Logo As a quick recap, the fling allows easy migration of Apps (excluding virtual apps) from one WS1 Access tenant to another (both on-prem to SaaS as well as SaaS to SaaS) by preserving the user experience as much as possible while reducing the migration effort by automating these major tasks -]]></description>
+</item><item>
+    <title>The Art of Influence and Persuasion</title>
+    <link>https://cloudtekki.com/post/art-of-influence/</link>
+    <pubDate>Sun, 21 Mar 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/art-of-influence/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/img/misc/influence/influence.png" referrerpolicy="no-referrer">
+            </div>Recently I had the opportunity to lead a Project where I had to define a scalable process (repeatable by nature) that streamlines a customer's product adoption experience for a particular use case. When adopting a product or a solution to any use case, a Customer would typically work with multiple teams. The journey starts from a Customer evaluating a new product and all the way to installing and managing the product.]]></description>
 </item></channel>
 </rss>
