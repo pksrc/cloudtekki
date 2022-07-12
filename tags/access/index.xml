@@ -18,7 +18,7 @@
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/access-migration-u1/</guid>
     <description><![CDATA[This is a quick post covering an exciting update to the Workspace ONE Access Migration Tool. If you are interested in learning more about the tool, please check out these resources -
- Why was this Migration tool built? How can you use it? Download the Migration tool  Access Migration Tool - Logo" Access Migration Tool - Logo  As a quick recap, the fling allows easy migration of Apps (excluding virtual apps) from one WS1 Access tenant to another (both on-prem to SaaS as well as SaaS to SaaS) by preserving the user experience as much as possible while reducing the migration effort by automating these major tasks -]]></description>
+Why was this Migration tool built? How can you use it? Download the Migration tool Access Migration Tool - Logo As a quick recap, the fling allows easy migration of Apps (excluding virtual apps) from one WS1 Access tenant to another (both on-prem to SaaS as well as SaaS to SaaS) by preserving the user experience as much as possible while reducing the migration effort by automating these major tasks -]]></description>
 </item><item>
     <title>Fling: Migration tool for WS1 Access</title>
     <link>https://cloudtekki.com/post/access-migration/</link>
@@ -27,7 +27,7 @@
     <guid>https://cloudtekki.com/post/access-migration/</guid>
     <description><![CDATA[Migration?&hellip;Migraine?&hellip; When it comes to migration scenarios, the most involved and difficult migration within the EUC lineup (that I can think of) is the WS1 Access tenant migration. It is equivalent to adopting a new IDP solution as you&rsquo;ll have to re-federate all the apps in order to successfully complete a migration.
 And this is case regardless of where you are trying to move from -
-On-Premise to SaaS  As Cloud is picking up steam and as features are developed with a cloud-first mentality, tt makes sense to offload the management of the Access Service to VMware This scenario is also getting more common as Access and Hub Services are FedRAMP certified as of CY Q4 2020  SaaS to SaaS  This is a not very common use case but few situations demand them nonetheless predominantly due to issues arising from high customization entertained early in the product adoption lifecycle Another use case for is populating a UAT or a DEV tenant with Apps from another tenant   Path to Migration First and foremost, a migration is possible as documented in @williamsmt blog which provides a detailed walk through of the entire migration approach.]]></description>
+On-Premise to SaaS As Cloud is picking up steam and as features are developed with a cloud-first mentality, tt makes sense to offload the management of the Access Service to VMware This scenario is also getting more common as Access and Hub Services are FedRAMP certified as of CY Q4 2020 SaaS to SaaS This is a not very common use case but few situations demand them nonetheless predominantly due to issues arising from high customization entertained early in the product adoption lifecycle Another use case for is populating a UAT or a DEV tenant with Apps from another tenant Path to Migration First and foremost, a migration is possible as documented in @williamsmt blog which provides a detailed walk through of the entire migration approach.]]></description>
 </item><item>
     <title>Access: The tale of the hidden APIs</title>
     <link>https://cloudtekki.com/post/access-apis/</link>
@@ -35,7 +35,7 @@ On-Premise to SaaS  As Cloud is picking up steam and as features are developed w
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/access-apis/</guid>
     <description><![CDATA[Evolving Access through APIs Workspace One Access is VMware&rsquo;s Product Line that helps provide seamless single sign on and conditional access for Applications from End User&rsquo;s client devices. It is built using technologies such as
- SAML (RFC 7522) OAuth (RFC 6749) and Open ID Connect  If you are new to the Product, you can find more details about WorkspaceONE(WS1) Access
- Product Page - here Documentation - here  In this post, I&rsquo;m going to cover a neat trick that will help you find and build on the APIs that are available with WS1 Access.]]></description>
+SAML (RFC 7522) OAuth (RFC 6749) and Open ID Connect If you are new to the Product, you can find more details about WorkspaceONE(WS1) Access
+Product Page - here Documentation - here In this post, I&rsquo;m going to cover a neat trick that will help you find and build on the APIs that are available with WS1 Access.]]></description>
 </item></channel>
 </rss>

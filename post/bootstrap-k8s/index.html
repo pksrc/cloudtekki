@@ -9,9 +9,10 @@
 <meta property="og:description" content="This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I&rsquo;m hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native
 Getting Started As a baseline, here are my assumptions about those following along or to my future self" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cloudtekki.com/post/bootstrap-k8s/" />
+<meta property="og:url" content="https://cloudtekki.com/post/bootstrap-k8s/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-10-24T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-02-05T19:35:07-08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico"/>
 <meta name="twitter:description" content="This is not going to be an eye-opening new post about bootstrapping Kubernetes - a lot of people have done it and several blog posts already exists. I&rsquo;m hoping to capture the information here to serve as an easy documentation for myself and other beginners in the area of Kubernetes and Cloud Native
@@ -26,7 +27,7 @@ Getting Started As a baseline, here are my assumptions about those following alo
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/cloudtekki.com\/post\/bootstrap-k8s\/"
-        },"genre": "posts","keywords": "Kubernetes, Automation, Ubuntu, Calico","wordcount":  1841 ,
+        },"genre": "posts","keywords": "Kubernetes, Automation, Ubuntu, Calico","wordcount":  1890 ,
         "url": "https:\/\/cloudtekki.com\/post\/bootstrap-k8s\/","datePublished": "2020-10-24T00:00:00+00:00","dateModified": "2021-02-05T19:35:07-08:00","publisher": {
             "@type": "Organization",
             "name": "Cloud Tekki"},"author": {
@@ -157,7 +158,7 @@ Getting Started As a baseline, here are my assumptions about those following alo
             <img src="/img/menu/folder-open-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
-                <a href="/categories/euc/">EUC <sup>10</sup></a>
+                <a href="/categories/euc/">EUC <sup>11</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -182,14 +183,6 @@ Getting Started As a baseline, here are my assumptions about those following alo
             <span class="label__container">
               <div class="label">
                 <a href="/categories/two-cents/">TWO CENTS <sup>4</sup></a>
-                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </span>
-          </li><li class="subMenu--item item--one">
-            <img src="/img/menu/folder-open-solid.svg" class="icon">
-            <span class="label__container">
-              <div class="label">
-                <a href="/categories/author-notes/">AUTHOR NOTES <sup>3</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -266,14 +259,6 @@ Getting Started As a baseline, here are my assumptions about those following alo
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
-                <a href="/tags/authornotes/">AuthorNotes <sup>3</sup></a>
-                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </span>
-          </li><li class="subMenu--item item--one">
-            <img src="/img/menu/tags-solid.svg" class="icon">
-            <span class="label__container">
-              <div class="label">
                 <a href="/tags/insight/">Insight <sup>3</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
@@ -291,6 +276,14 @@ Getting Started As a baseline, here are my assumptions about those following alo
             <span class="label__container">
               <div class="label">
                 <a href="/tags/automation/">Automation <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/day2ops/">Day2Ops <sup>2</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -330,11 +323,31 @@ Getting Started As a baseline, here are my assumptions about those following alo
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
-                <a href="/tags/postman/">Postman <sup>2</sup></a>
+                <a href="/tags/monitoring/">Monitoring <sup>2</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
           </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/observability/">Observability <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/postman/">Postman <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li></ul>
+          </div>
+          <div class="sub__menu">
+            <h3 class="title">&nbsp</h3>
+          <ul class="subMenu__items sec--menu"><li class="subMenu--item item--one">
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
@@ -350,11 +363,7 @@ Getting Started As a baseline, here are my assumptions about those following alo
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
-          </li></ul>
-          </div>
-          <div class="sub__menu">
-            <h3 class="title">&nbsp</h3>
-          <ul class="subMenu__items sec--menu"><li class="subMenu--item item--one">
+          </li><li class="subMenu--item item--one">
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
@@ -375,14 +384,6 @@ Getting Started As a baseline, here are my assumptions about those following alo
             <span class="label__container">
               <div class="label">
                 <a href="/tags/conditionalaccess/">ConditionalAccess <sup>1</sup></a>
-                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </span>
-          </li><li class="subMenu--item item--one">
-            <img src="/img/menu/tags-solid.svg" class="icon">
-            <span class="label__container">
-              <div class="label">
-                <a href="/tags/day2ops/">Day2Ops <sup>1</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -422,22 +423,6 @@ Getting Started As a baseline, here are my assumptions about those following alo
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
-                <a href="/tags/monitoring/">Monitoring <sup>1</sup></a>
-                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </span>
-          </li><li class="subMenu--item item--one">
-            <img src="/img/menu/tags-solid.svg" class="icon">
-            <span class="label__container">
-              <div class="label">
-                <a href="/tags/observability/">Observability <sup>1</sup></a>
-                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </span>
-          </li><li class="subMenu--item item--one">
-            <img src="/img/menu/tags-solid.svg" class="icon">
-            <span class="label__container">
-              <div class="label">
                 <a href="/tags/office365/">Office365 <sup>1</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
@@ -463,6 +448,14 @@ Getting Started As a baseline, here are my assumptions about those following alo
             <span class="label__container">
               <div class="label">
                 <a href="/tags/registeredmode/">RegisteredMode <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/serverless/">Serverless <sup>1</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -560,7 +553,7 @@ Getting Started As a baseline, here are my assumptions about those following alo
       <h2 class="mt-4">Recent Posts</h2>
       <ul class="flex-column">
         <li>
-          <a href="https://cloudtekki.com/post/looking-back-at-2021/" class="nav-link">2021: Taking Back The Reins</a>
+          <a href="https://cloudtekki.com/post/eso-2/" class="nav-link">Edge Services Observability - Part 2</a>
         </li>
         <li>
           <a href="https://cloudtekki.com/post/trusted-advisor/" class="nav-link">Being a Trusted Advisor</a>
@@ -580,7 +573,7 @@ Getting Started As a baseline, here are my assumptions about those following alo
           <nav class="tags_nav">
             <a href='https://cloudtekki.com/categories/euc/' class="post_tag button button_translucent">
               EUC
-              <span class="button_tally">10</span>
+              <span class="button_tally">11</span>
             </a>
             
             <a href='https://cloudtekki.com/categories/veba/' class="post_tag button button_translucent">
@@ -598,9 +591,9 @@ Getting Started As a baseline, here are my assumptions about those following alo
               <span class="button_tally">4</span>
             </a>
             
-            <a href='https://cloudtekki.com/categories/author-notes/' class="post_tag button button_translucent">
-              AUTHOR-NOTES
-              <span class="button_tally">3</span>
+            <a href='https://cloudtekki.com/categories/sddc/' class="post_tag button button_translucent">
+              SDDC
+              <span class="button_tally">2</span>
             </a>
             
           </nav>
@@ -642,7 +635,7 @@ Getting Started As a baseline, here are my assumptions about those following alo
             <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/kubernetes/"><i class="far fa-folder fa-fw"></i>KUBERNETES</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-via="pkblah" data-hashtags="Kubernetes,Automation,Ubuntu,Calico"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/bootstrap-k8s/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/bootstrap-k8s/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/bootstrap-k8s/" data-title="Beginner&#39;s Guide: Bootstrapping kubernetes on Ubuntu 20.04 using kubeadm w/ Calico" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
             </div>
             <div class="post-meta-line">
-                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">Kubernetes</a>,&nbsp;<a href="/tags/automation/">Automation</a>,&nbsp;<a href="/tags/ubuntu/">Ubuntu</a>,&nbsp;<a href="/tags/calico/">Calico</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-24">2020-10-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1841 words&nbsp;
+                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/kubernetes/">Kubernetes</a>,&nbsp;<a href="/tags/automation/">Automation</a>,&nbsp;<a href="/tags/ubuntu/">Ubuntu</a>,&nbsp;<a href="/tags/calico/">Calico</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-10-24">2020-10-24</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1890 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;9 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -682,14 +675,14 @@ Getting Started As a baseline, here are my assumptions about those following alo
 </ul>
 <h2 id="installing-ubuntu">Installing Ubuntu</h2>
 <p>Installing Ubuntu is pretty straight forward using the ISO. if you want to skip ahead, click <a href="#clone-to-a-vm">here</a></p>
-<p>Download 20.04 live server iso - <a href="https://releases.ubuntu.com/20.04/">https://releases.ubuntu.com/20.04/</a></p>
+<p>Download 20.04 live server iso - <a href="https://releases.ubuntu.com/20.04/" target="_blank">https://releases.ubuntu.com/20.04/</a></p>
 <p><strong>Machine Requirements (that i&rsquo;m going to be using)</strong></p>
 <ul>
 <li>CPU: 1 gigahertz or better</li>
 <li>RAM: 2 gigabyte or more</li>
 <li>Disk: 16 gigabytes</li>
 </ul>
-<p><strong>Procedure</strong> (excerpt below and detailed here <a href="https://ubuntu.com/server/docs/install/step-by-step">https://ubuntu.com/server/docs/install/step-by-step</a>)</p>
+<p><strong>Procedure</strong> (excerpt below and detailed here <a href="https://ubuntu.com/server/docs/install/step-by-step" target="_blank">https://ubuntu.com/server/docs/install/step-by-step</a>)</p>
 <ul>
 <li>Choose your language</li>
 <li>Update the installer (if offered)</li>
@@ -727,26 +720,26 @@ Getting Started As a baseline, here are my assumptions about those following alo
 <h3 id="step-1---disable-swapoff">Step 1 - Disable swapoff</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#disables swap immediately</span>
-sudo swapoff –a 
-
-<span class="c1">#ensures swap remains disabled after reboot</span>
-sudo sed -i <span class="s1">&#39;/ swap / s/^\(.*\)$/#\1/g&#39;</span> /etc/fstab
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#disables swap immediately</span>
+</span></span><span class="line"><span class="cl">sudo swapoff –a 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#ensures swap remains disabled after reboot</span>
+</span></span><span class="line"><span class="cl">sudo sed -i <span class="s1">&#39;/ swap / s/^\(.*\)$/#\1/g&#39;</span> /etc/fstab
+</span></span></code></pre></td></tr></table>
 </div>
-</div><p>There is a larger and better thread that conveys why this has to be done (or shouldn&rsquo;t be) and where this falls within the scope of Kubernetes project on the things to get done - <a href="https://github.com/kubernetes/kubernetes/issues/53533">https://github.com/kubernetes/kubernetes/issues/53533</a></p>
+</div><p>There is a larger and better thread that conveys why this has to be done (or shouldn&rsquo;t be) and where this falls within the scope of Kubernetes project on the things to get done - <a href="https://github.com/kubernetes/kubernetes/issues/53533" target="_blank">https://github.com/kubernetes/kubernetes/issues/53533</a></p>
 <h3 id="step-2---setup-static-ip">Step 2 - Setup Static IP</h3>
 <p>Ubuntu networking is configured with <a href="https://netplan.io/examples/" target="_blank">Netplan</a>. Succinctly, you want to edit <code>/etc/netplan/01-netcfg.yaml</code> to look like this</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -758,35 +751,35 @@ sudo sed -i <span class="s1">&#39;/ swap / s/^\(.*\)$/#\1/g&#39;</span> /etc/fst
 </span><span class="lnt">10
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">network:
-  version: <span class="m">2</span>
-  renderer: networkd
-  ethernets:
-    enp0s3:
-     dhcp4: no
-     addresses: <span class="o">[</span>10.10.10.10/24<span class="o">]</span>
-     gateway4: 10.10.10.1
-     nameservers:
-       addresses: <span class="o">[</span>8.8.8.8,8.8.4.4<span class="o">]</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">network:
+</span></span><span class="line"><span class="cl">  version: <span class="m">2</span>
+</span></span><span class="line"><span class="cl">  renderer: networkd
+</span></span><span class="line"><span class="cl">  ethernets:
+</span></span><span class="line"><span class="cl">    enp0s3:
+</span></span><span class="line"><span class="cl">     dhcp4: no
+</span></span><span class="line"><span class="cl">     addresses: <span class="o">[</span>10.10.10.10/24<span class="o">]</span>
+</span></span><span class="line"><span class="cl">     gateway4: 10.10.10.1
+</span></span><span class="line"><span class="cl">     nameservers:
+</span></span><span class="line"><span class="cl">       addresses: <span class="o">[</span>8.8.8.8,8.8.4.4<span class="o">]</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Once you have the Netplan config updated as required for your network, go ahead and run</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo netplan apply
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo netplan apply
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>Here is another article that helps guide you through this change - <a href="https://linuxize.com/post/how-to-configure-static-ip-address-on-ubuntu-20-04/#configuring-static-ip-address-on-ubuntu-server">https://linuxize.com/post/how-to-configure-static-ip-address-on-ubuntu-20-04/#configuring-static-ip-address-on-ubuntu-server</a></p>
+<p>Here is another article that helps guide you through this change - <a href="https://linuxize.com/post/how-to-configure-static-ip-address-on-ubuntu-20-04/#configuring-static-ip-address-on-ubuntu-server" target="_blank">https://linuxize.com/post/how-to-configure-static-ip-address-on-ubuntu-20-04/#configuring-static-ip-address-on-ubuntu-server</a></p>
 </blockquote>
 <h3 id="step-3---install-docker">Step 3 - Install Docker</h3>
 <p>Next step is to install Docker which Kubernetes will be using as the container runtime.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -797,16 +790,16 @@ sudo sed -i <span class="s1">&#39;/ swap / s/^\(.*\)$/#\1/g&#39;</span> /etc/fst
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1">#install docker</span>
-sudo apt install docker.io -y
-
-<span class="c1">#Add your user to the docker group</span>
-groupadd docker
-sudo usermod -aG docker <span class="nv">$USER</span>
-
-<span class="c1"># enable and start docker</span>
-sudo systemctl <span class="nb">enable</span> docker
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#install docker</span>
+</span></span><span class="line"><span class="cl">sudo apt install docker.io -y
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#Add your user to the docker group</span>
+</span></span><span class="line"><span class="cl">groupadd docker
+</span></span><span class="line"><span class="cl">sudo usermod -aG docker <span class="nv">$USER</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># enable and start docker</span>
+</span></span><span class="line"><span class="cl">sudo systemctl <span class="nb">enable</span> docker
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="step-4---prepping-for-kubernetes">Step 4 - Prepping for Kubernetes</h3>
 <p>The last item remaining to prep our servers is to download the components for Kubernetes and kubeadm as described <a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/" target="_blank">here</a> and shown below</p>
@@ -824,7 +817,7 @@ sudo systemctl <span class="nb">enable</span> docker
 </ul>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -841,22 +834,22 @@ sudo systemctl <span class="nb">enable</span> docker
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Install signing keys</span>
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg <span class="p">|</span> sudo apt-key add
-
-<span class="c1"># Adding kubenetes repository for APT</span>
-apt-add-repository <span class="s2">&#34;deb http://apt.kubernetes.io/ kubernetes-xenial main&#34;</span>
-
-<span class="c1"># install k8s components</span>
-cat <span class="s">&lt;&lt;EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
-</span><span class="s">deb https://apt.kubernetes.io/ kubernetes-xenial main
-</span><span class="s">EOF</span>
-
-apt-get update
-
-apt-get install kubeadm kubelet kubectl -y
-apt-mark hold kubelet kubeadm kubectl
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install signing keys</span>
+</span></span><span class="line"><span class="cl">curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg <span class="p">|</span> sudo apt-key add
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Adding kubenetes repository for APT</span>
+</span></span><span class="line"><span class="cl">apt-add-repository <span class="s2">&#34;deb http://apt.kubernetes.io/ kubernetes-xenial main&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># install k8s components</span>
+</span></span><span class="line"><span class="cl">cat <span class="s">&lt;&lt;EOF | sudo tee /etc/apt/sources.list.d/kubernetes.list
+</span></span></span><span class="line"><span class="cl"><span class="s">deb https://apt.kubernetes.io/ kubernetes-xenial main
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">apt-get update
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">apt-get install kubeadm kubelet kubectl -y
+</span></span><span class="line"><span class="cl">apt-mark hold kubelet kubeadm kubectl
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="bootstrap-kubernetes---control-plane">Bootstrap Kubernetes - Control Plane</h2>
 <p>All that is left to do now is to get Kubernetes working!</p>
@@ -869,18 +862,18 @@ apt-mark hold kubelet kubeadm kubectl
 <li>Controller Manager (<strong>kube-controller-manager</strong>): For every type of object within Kubernetes, there are Controllers available that specialize in managing that object (for example: Node, Replication, Endpoint etc)</li>
 </ul>
 <blockquote>
-<p>This is the noob version of describing kubernetes. If you choose to, you can always learn more at <a href="https://kubernetes.io/docs/concepts/overview/components/">https://kubernetes.io/docs/concepts/overview/components/</a></p>
+<p>This is the noob version of describing kubernetes. If you choose to, you can always learn more at <a href="https://kubernetes.io/docs/concepts/overview/components/" target="_blank">https://kubernetes.io/docs/concepts/overview/components/</a></p>
 </blockquote>
 <p>We start by initializing kubernetes on the Control Node and all the info that we need the pod network CIDR at this point. Ensure that the POD CIDR does not overlap with any of your existing networking IP ranges.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># using the default POD NETWORK CIDR for calico</span>
-sudo kubeadm init --pod-network-cidr<span class="o">=</span>192.168.0.0/16
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># using the default POD NETWORK CIDR for calico</span>
+</span></span><span class="line"><span class="cl">sudo kubeadm init --pod-network-cidr<span class="o">=</span>192.168.0.0/16
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>If you have more than one NICs you will need to specify which IP address kubernetes should use for the API address (this is critical since all the other components need to talk to it for proper functionality). If you have it all working properly, you should get something similar to what i have below</p>
 <image src="/img/k8s/bootstrap-k8s/bootstrap.png">
@@ -888,30 +881,30 @@ sudo kubeadm init --pod-network-cidr<span class="o">=</span>192.168.0.0/16
 <p>Kubeadm will also provide some instructions to setup the user account with the right kube config. Run the following as a regular user:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">mkdir -p <span class="nv">$HOME</span>/.kube
-sudo cp -i /etc/kubernetes/admin.conf <span class="nv">$HOME</span>/.kube/config
-sudo chown <span class="k">$(</span>id -u<span class="k">)</span>:<span class="k">$(</span>id -g<span class="k">)</span> <span class="nv">$HOME</span>/.kube/config
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir -p <span class="nv">$HOME</span>/.kube
+</span></span><span class="line"><span class="cl">sudo cp -i /etc/kubernetes/admin.conf <span class="nv">$HOME</span>/.kube/config
+</span></span><span class="line"><span class="cl">sudo chown <span class="k">$(</span>id -u<span class="k">)</span>:<span class="k">$(</span>id -g<span class="k">)</span> <span class="nv">$HOME</span>/.kube/config
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="step-3-setup-pod-networking">Step 3: Setup Pod networking</h3>
 <p>Once you have kubeconfig setup, you should now have kubectl working and be able to deploy a pod network to the cluster. I&rsquo;m going to using <code>calico</code> for the networking and the networking policy.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">curl https://docs.projectcalico.org/manifests/calico-etcd.yaml -o calico.yaml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl https://docs.projectcalico.org/manifests/calico-etcd.yaml -o calico.yaml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>In my case, since I&rsquo;m using <code>etcd</code> for the datastore and also using TLS, i had to update the <code>calico.yaml</code> with the right information (as shown). I had missed/messed up this step and ended up troubleshooting for half a day.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -933,32 +926,32 @@ sudo chown <span class="k">$(</span>id -u<span class="k">)</span>:<span class="k
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nn">---</span><span class="w">
-</span><span class="w"></span><span class="c"># Source: calico/templates/calico-etcd-secrets.yaml</span><span class="w">
-</span><span class="w"></span><span class="c"># The following contains k8s Secrets for use with a TLS enabled etcd cluster.</span><span class="w">
-</span><span class="w"></span><span class="c"># For information on populating Secrets, see http://kubernetes.io/docs/user-guide/secrets/</span><span class="w">
-</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Secret</span><span class="w">
-</span><span class="w"></span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">Opaque</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">calico-etcd-secrets</span><span class="w">
-</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">kube-system</span><span class="w">
-</span><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="c"># Populate the following with etcd TLS configuration if desired, but leave blank if</span><span class="w">
-</span><span class="w">  </span><span class="c"># not using TLS for etcd.</span><span class="w">
-</span><span class="w">  </span><span class="c"># The keys below should be uncommented and the values populated with the base64</span><span class="w">
-</span><span class="w">  </span><span class="c"># encoded contents of each file that would be associated with the TLS data.</span><span class="w">
-</span><span class="w">  </span><span class="c"># Example command for encoding a file contents: cat &lt;file&gt; | base64 -w 0</span><span class="w">
-</span><span class="w">  </span><span class="nt">etcd-key</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;base 64 encoded etcd Key&gt;</span><span class="w">
-</span><span class="w">  </span><span class="nt">etcd-cert</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;base 64 encoded etcd Certificate&gt;</span><span class="w">
-</span><span class="w">  </span><span class="nt">etcd-ca</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;base 64 encoded etcd CA&gt;</span><span class="w">
-</span><span class="w"></span><span class="nn">---</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Source: calico/templates/calico-etcd-secrets.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># The following contains k8s Secrets for use with a TLS enabled etcd cluster.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># For information on populating Secrets, see http://kubernetes.io/docs/user-guide/secrets/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Secret</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">Opaque</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">calico-etcd-secrets</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">kube-system</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Populate the following with etcd TLS configuration if desired, but leave blank if</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># not using TLS for etcd.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># The keys below should be uncommented and the values populated with the base64</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># encoded contents of each file that would be associated with the TLS data.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Example command for encoding a file contents: cat &lt;file&gt; | base64 -w 0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">etcd-key</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;base 64 encoded etcd Key&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">etcd-cert</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;base 64 encoded etcd Certificate&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">etcd-ca</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;base 64 encoded etcd CA&gt;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>You can get the base 64 encoded values by using the commands provided below. The file locations is well known and can also be obtained by running a kubectl describe command on the etcd pod.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -966,18 +959,18 @@ sudo chown <span class="k">$(</span>id -u<span class="k">)</span>:<span class="k
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># CA root certificate</span>
-cat /etc/kubernetes/pki/etcd/ca.crt <span class="p">|</span> base64 -w <span class="m">0</span>
-
-<span class="c1"># ETCD private and public key</span>
-sudo cat /etc/kubernetes/pki/etcd/server.key <span class="p">|</span> base64 -w <span class="m">0</span>
-cat /etc/kubernetes/pki/etcd/server.crt <span class="p">|</span> base64 -w <span class="m">0</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># CA root certificate</span>
+</span></span><span class="line"><span class="cl">cat /etc/kubernetes/pki/etcd/ca.crt <span class="p">|</span> base64 -w <span class="m">0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ETCD private and public key</span>
+</span></span><span class="line"><span class="cl">sudo cat /etc/kubernetes/pki/etcd/server.key <span class="p">|</span> base64 -w <span class="m">0</span>
+</span></span><span class="line"><span class="cl">cat /etc/kubernetes/pki/etcd/server.crt <span class="p">|</span> base64 -w <span class="m">0</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Once you have that updated you are also going to update the <code>calico.yaml</code> to look like the below. The <code>calico-secrets/etcd-xx</code> are created using the base64 encoded information that we updated above.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -994,34 +987,34 @@ cat /etc/kubernetes/pki/etcd/server.crt <span class="p">|</span> base64 -w <span
 </span><span class="lnt">15
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Source: calico/templates/calico-config.yaml</span><span class="w">
-</span><span class="w"></span><span class="c"># This ConfigMap is used to configure a self-hosted Calico installation.</span><span class="w">
-</span><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ConfigMap</span><span class="w">
-</span><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
-</span><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">calico-config</span><span class="w">
-</span><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">kube-system</span><span class="w">
-</span><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="c"># Configure this with the location of your etcd cluster.</span><span class="w">
-</span><span class="w">  </span><span class="nt">etcd_endpoints</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://&lt;API IP&gt;:2379&#34;</span><span class="w">
-</span><span class="w">  </span><span class="c"># If you&#39;re using TLS enabled etcd uncomment the following.</span><span class="w">
-</span><span class="w">  </span><span class="c"># You must also populate the Secret below with these files.</span><span class="w">
-</span><span class="w">  </span><span class="nt">etcd_ca</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-ca&#34;</span><span class="w">
-</span><span class="w">  </span><span class="nt">etcd_cert</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-cert&#34;</span><span class="w">
-</span><span class="w">  </span><span class="nt">etcd_key</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-key&#34;</span><span class="w">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Source: calico/templates/calico-config.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># This ConfigMap is used to configure a self-hosted Calico installation.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ConfigMap</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">calico-config</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">kube-system</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Configure this with the location of your etcd cluster.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">etcd_endpoints</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://&lt;API IP&gt;:2379&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># If you&#39;re using TLS enabled etcd uncomment the following.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># You must also populate the Secret below with these files.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">etcd_ca</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-ca&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">etcd_cert</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-cert&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">etcd_key</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/calico-secrets/etcd-key&#34;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>With these edits in place, you should now be good to apply the calico.yaml to your kubernetes cluster.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">kubectl apply -f calico.yaml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl apply -f calico.yaml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>More information on how to set up calidco can be found here - <a href="https://docs.projectcalico.org/getting-started/kubernetes/self-managed-onprem/onpremises">https://docs.projectcalico.org/getting-started/kubernetes/self-managed-onprem/onpremises</a></p>
+<p>More information on how to set up calidco can be found here - <a href="https://docs.projectcalico.org/getting-started/kubernetes/self-managed-onprem/onpremises" target="_blank">https://docs.projectcalico.org/getting-started/kubernetes/self-managed-onprem/onpremises</a></p>
 </blockquote>
 <h2 id="bootstrap-kubernetes---capacity-nodes">Bootstrap Kubernetes - Capacity Nodes</h2>
 <p>Once you have the Control Plane Node up and running, we can proceed to get the Capacity Node joined to the Kubernetes Cluster. To do so, you&rsquo;ll need to run the command provided below. If you do this immediately after running the <code>kubeadm init</code> on the Control Plane node, kubeadm will provide the exact command that needs to be run on the Capacity Nodes.</p>
@@ -1029,7 +1022,7 @@ cat /etc/kubernetes/pki/etcd/server.crt <span class="p">|</span> base64 -w <span
 <p>In the event you need to add more nodes after and if you need to get the token and the CA certificate hash, here is how you can get them</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -1038,14 +1031,14 @@ cat /etc/kubernetes/pki/etcd/server.crt <span class="p">|</span> base64 -w <span
 </span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># list the tokens</span>
-kubeadm token list
-<span class="c1"># create a new token</span>
-kubeadm token create
-
-<span class="c1"># to get the hash</span>
-openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt <span class="p">|</span> openssl rsa -pubin -outform der 2&gt;/dev/null <span class="p">|</span> openssl dgst -sha256 -hex <span class="p">|</span> sed <span class="s1">&#39;s/^.* //&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># list the tokens</span>
+</span></span><span class="line"><span class="cl">kubeadm token list
+</span></span><span class="line"><span class="cl"><span class="c1"># create a new token</span>
+</span></span><span class="line"><span class="cl">kubeadm token create
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># to get the hash</span>
+</span></span><span class="line"><span class="cl">openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt <span class="p">|</span> openssl rsa -pubin -outform der 2&gt;/dev/null <span class="p">|</span> openssl dgst -sha256 -hex <span class="p">|</span> sed <span class="s1">&#39;s/^.* //&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>After running the <code>kubeadm join</code> command you should get a response like below if your Capacity node was able to join the Kubernetes Controller</p>
 <img src="/img/k8s/bootstrap-k8s/node.png">
@@ -1087,7 +1080,7 @@ openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt <span class="p">|</span> ope
                 <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
             </div></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2021</span></div>
+        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2022</span></div>
         </div>
     </footer></div>
 

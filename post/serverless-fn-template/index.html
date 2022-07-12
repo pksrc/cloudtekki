@@ -6,16 +6,19 @@
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Serverless function — Quickstart Templates - Cloud Tekki</title><meta name="Description" content="Cloud Tekki aims to simplify and clarify technology concepts and solutions for those that strive to thrive"><meta property="og:title" content="Serverless function — Quickstart Templates" />
-<meta property="og:description" content="Info  This post was originally published in Medium - pkblah.medium.com/serverless-function-templates   You have probably have seen my other article that helps you get started writing your very first event-driven function using VMware Event Broker Appliance (VEBA) for your vCenter infrastructure. I highlight the steps taken to write my first serverless function and provide templates to help you get started quickly!
- Writing your first Serverless Function — here" />
+<meta property="og:description" content="Info This post was originally published in Medium - pkblah.medium.com/serverless-function-templates You have probably have seen my other article that helps you get started writing your very first event-driven function using VMware Event Broker Appliance (VEBA) for your vCenter infrastructure. I highlight the steps taken to write my first serverless function and provide templates to help you get started quickly!
+Writing your first Serverless Function — here
+I also wanted to build on top of my t-shirt sized templates and provide a template where users can focus on writing their core business logic, be able to test quicker and debug easily!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cloudtekki.com/post/serverless-fn-template/" />
+<meta property="og:url" content="https://cloudtekki.com/post/serverless-fn-template/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-04-29T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-12-18T15:18:51-08:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Serverless function — Quickstart Templates"/>
-<meta name="twitter:description" content="Info  This post was originally published in Medium - pkblah.medium.com/serverless-function-templates   You have probably have seen my other article that helps you get started writing your very first event-driven function using VMware Event Broker Appliance (VEBA) for your vCenter infrastructure. I highlight the steps taken to write my first serverless function and provide templates to help you get started quickly!
- Writing your first Serverless Function — here"/>
+<meta name="twitter:description" content="Info This post was originally published in Medium - pkblah.medium.com/serverless-function-templates You have probably have seen my other article that helps you get started writing your very first event-driven function using VMware Event Broker Appliance (VEBA) for your vCenter infrastructure. I highlight the steps taken to write my first serverless function and provide templates to help you get started quickly!
+Writing your first Serverless Function — here
+I also wanted to build on top of my t-shirt sized templates and provide a template where users can focus on writing their core business logic, be able to test quicker and debug easily!"/>
 <meta name="application-name" content="Cloud Tekki">
 <meta name="apple-mobile-web-app-title" content="Cloud Tekki"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://cloudtekki.com/post/serverless-fn-template/" /><link rel="prev" href="https://cloudtekki.com/post/first-veba-function/" /><link rel="next" href="https://cloudtekki.com/post/integrating-vcenter-with-pagerduty/" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.7.2/animate.min.css"><link rel="stylesheet" href="https://cloudtekki.com/css/ct.css"><meta name="google-site-verification" content="ToBeFilled" /><script type="application/ld+json">
     {
@@ -26,7 +29,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/cloudtekki.com\/post\/serverless-fn-template\/"
-        },"genre": "posts","keywords": "event-driven, cloud-native","wordcount":  780 ,
+        },"genre": "posts","keywords": "event-driven, cloud-native","wordcount":  762 ,
         "url": "https:\/\/cloudtekki.com\/post\/serverless-fn-template\/","datePublished": "2020-04-29T00:00:00+00:00","dateModified": "2020-12-18T15:18:51-08:00","publisher": {
             "@type": "Organization",
             "name": "Cloud Tekki"},"author": {
@@ -157,7 +160,7 @@
             <img src="/img/menu/folder-open-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
-                <a href="/categories/euc/">EUC <sup>10</sup></a>
+                <a href="/categories/euc/">EUC <sup>11</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -182,14 +185,6 @@
             <span class="label__container">
               <div class="label">
                 <a href="/categories/two-cents/">TWO CENTS <sup>4</sup></a>
-                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </span>
-          </li><li class="subMenu--item item--one">
-            <img src="/img/menu/folder-open-solid.svg" class="icon">
-            <span class="label__container">
-              <div class="label">
-                <a href="/categories/author-notes/">AUTHOR NOTES <sup>3</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -266,14 +261,6 @@
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
-                <a href="/tags/authornotes/">AuthorNotes <sup>3</sup></a>
-                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </span>
-          </li><li class="subMenu--item item--one">
-            <img src="/img/menu/tags-solid.svg" class="icon">
-            <span class="label__container">
-              <div class="label">
                 <a href="/tags/insight/">Insight <sup>3</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
@@ -291,6 +278,14 @@
             <span class="label__container">
               <div class="label">
                 <a href="/tags/automation/">Automation <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/day2ops/">Day2Ops <sup>2</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -330,11 +325,31 @@
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
-                <a href="/tags/postman/">Postman <sup>2</sup></a>
+                <a href="/tags/monitoring/">Monitoring <sup>2</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
           </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/observability/">Observability <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/postman/">Postman <sup>2</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li></ul>
+          </div>
+          <div class="sub__menu">
+            <h3 class="title">&nbsp</h3>
+          <ul class="subMenu__items sec--menu"><li class="subMenu--item item--one">
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
@@ -350,11 +365,7 @@
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
-          </li></ul>
-          </div>
-          <div class="sub__menu">
-            <h3 class="title">&nbsp</h3>
-          <ul class="subMenu__items sec--menu"><li class="subMenu--item item--one">
+          </li><li class="subMenu--item item--one">
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
@@ -375,14 +386,6 @@
             <span class="label__container">
               <div class="label">
                 <a href="/tags/conditionalaccess/">ConditionalAccess <sup>1</sup></a>
-                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </span>
-          </li><li class="subMenu--item item--one">
-            <img src="/img/menu/tags-solid.svg" class="icon">
-            <span class="label__container">
-              <div class="label">
-                <a href="/tags/day2ops/">Day2Ops <sup>1</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -422,22 +425,6 @@
             <img src="/img/menu/tags-solid.svg" class="icon">
             <span class="label__container">
               <div class="label">
-                <a href="/tags/monitoring/">Monitoring <sup>1</sup></a>
-                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </span>
-          </li><li class="subMenu--item item--one">
-            <img src="/img/menu/tags-solid.svg" class="icon">
-            <span class="label__container">
-              <div class="label">
-                <a href="/tags/observability/">Observability <sup>1</sup></a>
-                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </div>
-            </span>
-          </li><li class="subMenu--item item--one">
-            <img src="/img/menu/tags-solid.svg" class="icon">
-            <span class="label__container">
-              <div class="label">
                 <a href="/tags/office365/">Office365 <sup>1</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
@@ -463,6 +450,14 @@
             <span class="label__container">
               <div class="label">
                 <a href="/tags/registeredmode/">RegisteredMode <sup>1</sup></a>
+                <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </div>
+            </span>
+          </li><li class="subMenu--item item--one">
+            <img src="/img/menu/tags-solid.svg" class="icon">
+            <span class="label__container">
+              <div class="label">
+                <a href="/tags/serverless/">Serverless <sup>1</sup></a>
                 <svg class="right--arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </div>
             </span>
@@ -560,7 +555,7 @@
       <h2 class="mt-4">Recent Posts</h2>
       <ul class="flex-column">
         <li>
-          <a href="https://cloudtekki.com/post/looking-back-at-2021/" class="nav-link">2021: Taking Back The Reins</a>
+          <a href="https://cloudtekki.com/post/eso-2/" class="nav-link">Edge Services Observability - Part 2</a>
         </li>
         <li>
           <a href="https://cloudtekki.com/post/trusted-advisor/" class="nav-link">Being a Trusted Advisor</a>
@@ -580,7 +575,7 @@
           <nav class="tags_nav">
             <a href='https://cloudtekki.com/categories/euc/' class="post_tag button button_translucent">
               EUC
-              <span class="button_tally">10</span>
+              <span class="button_tally">11</span>
             </a>
             
             <a href='https://cloudtekki.com/categories/veba/' class="post_tag button button_translucent">
@@ -598,9 +593,9 @@
               <span class="button_tally">4</span>
             </a>
             
-            <a href='https://cloudtekki.com/categories/author-notes/' class="post_tag button button_translucent">
-              AUTHOR-NOTES
-              <span class="button_tally">3</span>
+            <a href='https://cloudtekki.com/categories/sddc/' class="post_tag button button_translucent">
+              SDDC
+              <span class="button_tally">2</span>
             </a>
             
           </nav>
@@ -642,7 +637,7 @@
             <div class="post-meta-line"><span class="post-author"><a href="/about-pk/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Partheeban Kandasamy (PK)</a></span>&nbsp;<span class="post-category">included in <a href="/categories/veba/"><i class="far fa-folder fa-fw"></i>VEBA</a></span><span class="sharebtns"><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://cloudtekki.com/post/serverless-fn-template/" data-title="Serverless function — Quickstart Templates" data-via="pkblah" data-hashtags="event-driven,cloud-native"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://cloudtekki.com/post/serverless-fn-template/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://cloudtekki.com/post/serverless-fn-template/" data-title="Serverless function — Quickstart Templates" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="https://cloudtekki.com/post/serverless-fn-template/"><i class="fab fa-reddit fa-fw"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="https://cloudtekki.com/post/serverless-fn-template/" data-title="Serverless function — Quickstart Templates" data-description=""><i class="fab fa-blogger fa-fw"></i></a></span>
             </div>
             <div class="post-meta-line">
-                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/event-driven/">event-driven</a>,&nbsp;<a href="/tags/cloud-native/">cloud-native</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-29">2020-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;780 words&nbsp;
+                <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/event-driven/">event-driven</a>,&nbsp;<a href="/tags/cloud-native/">cloud-native</a></section><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-04-29">2020-04-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;762 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -674,7 +669,7 @@
 <p><strong>Small</strong> — provides a minimal template to get started from scratch complete with a readymade README.md file</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -682,19 +677,19 @@
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">git clone git@github.com:pksrc/vebafn.git vebafn  
-cd vebafn/python/sm-python-fn
-├── README.md      &gt; A descriptive documentation for your fn  
-├── handler        &gt; Folder for your scripts  
-│   └── handler.py &gt; Python file for your core fn logic  
-└── stack.yml      &gt; Descriptor file for OpenFaaS deployment
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git clone git@github.com:pksrc/vebafn.git vebafn  
+</span></span><span class="line"><span class="cl">cd vebafn/python/sm-python-fn
+</span></span><span class="line"><span class="cl">├── README.md      &gt; A descriptive documentation for your fn  
+</span></span><span class="line"><span class="cl">├── handler        &gt; Folder for your scripts  
+</span></span><span class="line"><span class="cl">│   └── handler.py &gt; Python file for your core fn logic  
+</span></span><span class="line"><span class="cl">└── stack.yml      &gt; Descriptor file for OpenFaaS deployment
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="medium-function---intermediate">Medium function - Intermediate</h2>
 <p><strong>Medium</strong> — <strong>Small</strong> + work with configurations and ready-made handle function; jump right into writing your business logic.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span><span class="lnt">3
 </span><span class="lnt">4
@@ -704,15 +699,15 @@ cd vebafn/python/sm-python-fn
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">git clone git@github.com:pksrc/vebafn.git vebafn  
-<span class="nb">cd</span> vebafn/python/md-python-fn
-├── README.MD  
-├── config.json          &gt; provides any configuration <span class="k">for</span> the fn  
-├── handler  
-│   ├── handler.py  
-│   └── requirements.txt &gt; specify any libraries needed <span class="k">for</span> the fn  
-└── stack.yml
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone git@github.com:pksrc/vebafn.git vebafn  
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> vebafn/python/md-python-fn
+</span></span><span class="line"><span class="cl">├── README.MD  
+</span></span><span class="line"><span class="cl">├── config.json          &gt; provides any configuration <span class="k">for</span> the fn  
+</span></span><span class="line"><span class="cl">├── handler  
+</span></span><span class="line"><span class="cl">│   ├── handler.py  
+</span></span><span class="line"><span class="cl">│   └── requirements.txt &gt; specify any libraries needed <span class="k">for</span> the fn  
+</span></span><span class="line"><span class="cl">└── stack.yml
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="large-function---expert">Large function - Expert</h2>
 <p><strong>Large — Medium</strong> + improvements :)</p>
@@ -727,7 +722,7 @@ cd vebafn/python/sm-python-fn
 <p>With this in mind, I now have the below structure created and the template is available <a href="https://github.com/pksrc/vebafn/tree/master/python/lg-python-fn" target="_blank">here</a> for you to build on top of.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
 </span><span class="lnt"> 3
 </span><span class="lnt"> 4
@@ -740,18 +735,18 @@ cd vebafn/python/sm-python-fn
 </span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">git clone [git@github.com](mailto:git@github.com):pksrc/vebafn.git vebafn  
-cd vebafn/python/lg-python-fn
-├── README.MD  
-├── config.json            &gt; provides any configuration for the fn  
-├── handler  
-│   ├── __init__.py          
-│   ├── handler.py         &gt; lean &amp; focussed on business logic  
-│   ├── requirements.txt  
-│   └── util.py            &gt; util functions moved here       
-├── stack.yml              &gt; new env variables added here  
-└── test.py                &gt; tests have moved here
-</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">git clone [git@github.com](mailto:git@github.com):pksrc/vebafn.git vebafn  
+</span></span><span class="line"><span class="cl">cd vebafn/python/lg-python-fn
+</span></span><span class="line"><span class="cl">├── README.MD  
+</span></span><span class="line"><span class="cl">├── config.json            &gt; provides any configuration for the fn  
+</span></span><span class="line"><span class="cl">├── handler  
+</span></span><span class="line"><span class="cl">│   ├── __init__.py          
+</span></span><span class="line"><span class="cl">│   ├── handler.py         &gt; lean &amp; focussed on business logic  
+</span></span><span class="line"><span class="cl">│   ├── requirements.txt  
+</span></span><span class="line"><span class="cl">│   └── util.py            &gt; util functions moved here       
+</span></span><span class="line"><span class="cl">├── stack.yml              &gt; new env variables added here  
+</span></span><span class="line"><span class="cl">└── test.py                &gt; tests have moved here
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Let’s explore what this looks like..</p>
 <figure><a class="lightgallery" href="https://miro.medium.com/max/3624/1*uIklg_xHYGrlH2IDpHbM9A.png" title="https://miro.medium.com/max/3624/1*uIklg_xHYGrlH2IDpHbM9A.png" data-thumbnail="https://miro.medium.com/max/3624/1*uIklg_xHYGrlH2IDpHbM9A.png" data-sub-html="<h2>FaaSResponse class</h2>">
@@ -851,7 +846,7 @@ cd vebafn/python/lg-python-fn
                 <a class="twitter-timeline" data-width="300" data-height="600" data-dnt="true" data-chrome="noborders nofooter noheader" href="https://twitter.com/pkblah">Tweets by pkblah</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
             </div></div></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2021</span></div>
+        <div class="footer-container"><div class="footer-line"><p><a href="/"><img src="/img/logo/cloud-tekki-logo.png" alt="CLOUD TEKKI" style="height:4rem"/></a></p> Powered by Hugo | Github Pages</div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2008 - 2022</span></div>
         </div>
     </footer></div>
 

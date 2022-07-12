@@ -4,15 +4,13 @@
         <link>https://cloudtekki.com/posts/</link>
         <description>All Posts | Cloud Tekki</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
-            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Wed, 29 Dec 2021 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>2021: Taking Back The Reins</title>
-    <link>https://cloudtekki.com/post/looking-back-at-2021/</link>
-    <pubDate>Wed, 29 Dec 2021 00:00:00 &#43;0000</pubDate>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 03 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Edge Services Observability - Part 2</title>
+    <link>https://cloudtekki.com/post/eso-2/</link>
+    <pubDate>Mon, 03 Jan 2022 00:00:00 &#43;0000</pubDate>
     <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/post/looking-back-at-2021/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/img/misc/2021/year-2021.jpeg" referrerpolicy="no-referrer">
-            </div>Reflecting on 2021 Do you also think that last year was 2019 and we are still in an extended 2020? 😣 2021felt like such a repeat of 2020 that it didn&rsquo;t feel like a different year! For instance, we have still not recovered from the economic effects of the pandemic and are starting to feel its effects mentally and emotionally. International travel is still largely not possible and thus my wife and I are equally homesick as we&rsquo;ve not been back home in almost 5 years and it doesn&rsquo;t look like it is going to change!]]></description>
+    <guid>https://cloudtekki.com/post/eso-2/</guid>
+    <description><![CDATA[Edge Services Observability In Part-1 of this Blog Series, we introduced Project ESO - Edge Services Observability (released as VMware Fling). P.K and I would like to thank all those had the opportunity to use ESO and provide feedback to us. We certainly appreciate all the fedback! We also had the opportunity at VMworld 2021 to demonstrate several use-cases made possible with ESO. The session is available in VMworld 2021 On-demand Video Library if you would like to check it out.]]></description>
 </item><item>
     <title>Being a Trusted Advisor</title>
     <link>https://cloudtekki.com/post/trusted-advisor/</link>
@@ -48,15 +46,6 @@ My time with the Customers gave me a front row seat to various IT teams ranging 
                 <img src="/img/euc/registered-mode/hero.png" referrerpolicy="no-referrer">
             </div>Registered mode is a capability in UEM that allows IT to deliver a secure way for Employees to access corporate data using Workspace ONE without having to manage their devices. While the core philosophy behind Registered mode is the same across different platforms, the problem it addresses on various platforms are slightly different. Understanding its origin will shed some light into how you can effectively utilize this capability and provide seamless access to your Employees Evolution of Registered Mode As a technologist that&rsquo;s been following and absorbing all the progress that&rsquo;s been happening this space, I wanted to start this post by covering the evolution of Registered Mode with Workspace ONE over the last 4-5 years.]]></description>
 </item><item>
-    <title>Welcome to the Flip Side</title>
-    <link>https://cloudtekki.com/post/the-flip-side/</link>
-    <pubDate>Mon, 19 Jul 2021 00:00:00 &#43;0000</pubDate>
-    <author>partheeban.kandasamy@gmail.com</author>
-    <guid>https://cloudtekki.com/post/the-flip-side/</guid>
-    <description><![CDATA[Having changed roles (or at least titles) almost once every year (TAM@2014➔SAM@2016➔TSM@2017➔TAM Lead@2018➔CSM@2019➔CSA@2020), I don&rsquo;t usually make a huge deal about role changes but this is a major pivot ending a 7 year long chapter in my career and thus an exception.
-Bitter sweet moment as this minute will mark the end of a 7 year long chapter in my career.
-&mdash; Partheeban Kandasamy (PK) (@pkblah) July 17, 2021  Over the last 7 years, I&rsquo;ve had the incredible opportunity to work with large Enterprises, form great relationships and helped several meet their digital transformation goals.]]></description>
-</item><item>
     <title>Securing Outlook from Unmanaged Devices with Tunnel</title>
     <link>https://cloudtekki.com/post/tunnel-o365-conditional-access/</link>
     <pubDate>Tue, 06 Jul 2021 00:00:00 &#43;0000</pubDate>
@@ -70,7 +59,7 @@ What problem does this solve? This blog post is targeted at Workspace ONE UEM ad
     <pubDate>Thu, 01 Jul 2021 00:00:00 &#43;0000</pubDate>
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/eso/</guid>
-    <description><![CDATA[Edge Services Observability" Edge Services Observability  Unified Access Gateway (UAG) is a key component in most VMware End User Computing deployments, including Workspace ONE and Horizon. The UAG hosts various Edge Services like VMware Tunnel, Content Gateway, Secure Email Gateway, Reverse Proxy and Horizon Secure (External) Access. Additionally, the UAG can also provide DMZ Authentication and Identity Bridging. These services play a pivotal role in providing Zero Trust Network Access to corporate resources.]]></description>
+    <description><![CDATA[Edge Services Observability Unified Access Gateway (UAG) is a key component in most VMware End User Computing deployments, including Workspace ONE and Horizon. The UAG hosts various Edge Services like VMware Tunnel, Content Gateway, Secure Email Gateway, Reverse Proxy and Horizon Secure (External) Access. Additionally, the UAG can also provide DMZ Authentication and Identity Bridging. These services play a pivotal role in providing Zero Trust Network Access to corporate resources.]]></description>
 </item><item>
     <title>An Intro to Workspace ONE Hub Templates</title>
     <link>https://cloudtekki.com/post/hub-templates/</link>
@@ -85,6 +74,14 @@ What problem does this solve? This blog post is targeted at Workspace ONE UEM ad
     <author>partheeban.kandasamy@gmail.com</author>
     <guid>https://cloudtekki.com/post/intel-custom-connector/</guid>
     <description><![CDATA[What is Workspace ONE Intelligence? Workspace ONE Intelligence is the mainstream data analytics product within the Workspace ONE product suite. It allows you to tap into a wide array of data sources (from UEM, SDK enabled apps, Access and others) to get unique Insights &amp; Automation capabilities over your End User Computing landscape!
-Features  Unified Visibility: Workspace ONE Intelligence aggregates and correlates device, application and user data together in one place to deliver a complete view of the entire digital workspace environment.]]></description>
+Features Unified Visibility: Workspace ONE Intelligence aggregates and correlates device, application and user data together in one place to deliver a complete view of the entire digital workspace environment.]]></description>
+</item><item>
+    <title>Update 1: Migration tool for WS1 Access</title>
+    <link>https://cloudtekki.com/post/access-migration-u1/</link>
+    <pubDate>Wed, 14 Apr 2021 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/access-migration-u1/</guid>
+    <description><![CDATA[This is a quick post covering an exciting update to the Workspace ONE Access Migration Tool. If you are interested in learning more about the tool, please check out these resources -
+Why was this Migration tool built? How can you use it? Download the Migration tool Access Migration Tool - Logo As a quick recap, the fling allows easy migration of Apps (excluding virtual apps) from one WS1 Access tenant to another (both on-prem to SaaS as well as SaaS to SaaS) by preserving the user experience as much as possible while reducing the migration effort by automating these major tasks -]]></description>
 </item></channel>
 </rss>

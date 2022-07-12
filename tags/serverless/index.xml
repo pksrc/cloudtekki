@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Serverless - Tag - Cloud Tekki</title>
+        <link>https://cloudtekki.com/tags/serverless/</link>
+        <description>Serverless - Tag - Cloud Tekki</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</managingEditor>
+            <webMaster>partheeban.kandasamy@gmail.com (Partheeban Kandasamy (PK))</webMaster><lastBuildDate>Mon, 03 Jan 2022 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://cloudtekki.com/tags/serverless/" rel="self" type="application/rss+xml" /><item>
+    <title>Edge Services Observability - Part 2</title>
+    <link>https://cloudtekki.com/post/eso-2/</link>
+    <pubDate>Mon, 03 Jan 2022 00:00:00 &#43;0000</pubDate>
+    <author>partheeban.kandasamy@gmail.com</author>
+    <guid>https://cloudtekki.com/post/eso-2/</guid>
+    <description><![CDATA[Edge Services Observability In Part-1 of this Blog Series, we introduced Project ESO - Edge Services Observability (released as VMware Fling). P.K and I would like to thank all those had the opportunity to use ESO and provide feedback to us. We certainly appreciate all the fedback! We also had the opportunity at VMworld 2021 to demonstrate several use-cases made possible with ESO. The session is available in VMworld 2021 On-demand Video Library if you would like to check it out.]]></description>
+</item></channel>
+</rss>
