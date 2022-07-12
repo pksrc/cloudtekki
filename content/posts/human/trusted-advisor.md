@@ -9,7 +9,7 @@ tags:
 - Process
 ---
 
-I've spent close to a decade working with Customers and this blog post aims to summarize my most valuable learnings from working closely with Customers in the hopes that it will help others with their Customer Relationship Management! 
+I've spent a lot of time working closely with Customers and this blog post aims to summarize my most valuable learnings from those interaction in the hopes that it will help others with their Customer Relationship Management! 
 
 My entire customer experience can be summed up as - "Working with the top tier Customers who need strategic, tactical and technical guidance on utilizing VMware Products effectively and achieving their Business Objectives!". Over the years I'd worked with around 20 of the Fortune 500 Companies and I ensured that I left a lasting impression by providing great Customer Service. I empathized with my Customers and viewed theirs problems as if they were my own. I would then move mountains and earth to get them where they needed to be! With every one of my Customer, I had a thought process on how to gain their trust and I managed to deliver the results they needed by being their trusted advisor. Let's explore what that means... 
 

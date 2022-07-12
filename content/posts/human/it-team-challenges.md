@@ -9,7 +9,7 @@ tags:
 - Process
 ---
 
-I've spent close to a decade working with Customers and this blog post aims to summarize my most valuable learnings from working closely with Customers in the hopes that it will help others with their Customer Relationship Management! 
+I've spent a lot of time working closely with Customers and this blog post aims to summarize my most valuable learnings from those interaction in the hopes that it will help others with their Customer Relationship Management! 
 
 My time with the Customers gave me a front row seat to various IT teams ranging from those that consider themselves inadequate (:warning: SPOILER ALERT! ALMOST everyone thinks/knows that they have some issue - organizational silos, lack expertise, lack leadership, lack discipline or lack organization skills. Based on my observation, you'll be glad to hear that no one is perfect! ) and with those that know they are a big deal. I've had plenty of time to observe what works well and what didn't work well within a team. 
 

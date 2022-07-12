@@ -1,7 +1,7 @@
 ---
 title: "Summing up Chapter 4, My Field Experiences"
 date: 2021-10-10T00:00:00-00:00
-draft: false
+draft: true
 categories: [TWO CENTS]
 featuredImage: /img/misc/time-cx/stones.jpeg
 tags:
