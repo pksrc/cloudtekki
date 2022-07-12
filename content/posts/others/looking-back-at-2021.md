@@ -1,7 +1,7 @@
 ---
 title: "2021: Taking Back The Reins"
 date: 2021-12-29
-draft: false
+draft: true
 tags:
 - AuthorNotes
 categories: [AUTHOR NOTES]

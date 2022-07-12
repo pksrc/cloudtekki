@@ -2,7 +2,7 @@
 title: "Welcome to the Flip Side"
 description: "Career Advice and Guidance to become a Product Manager"
 date: 2021-07-19
-draft: false
+draft: true
 tags:
 - AuthorNotes
 categories: [AUTHOR NOTES]

@@ -1,7 +1,7 @@
 ---
 title: "2020: Shattering Comfort Zones"
 date: 2020-12-28
-draft: false
+draft: true
 tags:
 - AuthorNotes
 categories: [AUTHOR NOTES]
